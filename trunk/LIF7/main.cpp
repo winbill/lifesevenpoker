@@ -1,5 +1,6 @@
 #include<iostream>
 
+//truc
 int main (void)
 {
 	std::printf ("bonjour");
