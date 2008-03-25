@@ -1,0 +1,15 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Les membres de l'équipe de développement de Life'Seven Poker.
+
+
+= Details =
+
+L'équipe est constituée de 4 jeunes et beaux (en général) étudiants lyonnais.
+  *Tristan
+  *Olivier
+  *Bob Marley (guest star)
+  *Benjamin
+  *James
