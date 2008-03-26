@@ -8,7 +8,7 @@ Les membres de l'équipe de développement de Life'Seven Poker.
 = Details =
 
 L'équipe est constituée de 4 jeunes et _(en général)_ beaux étudiants lyonnais.
-  ** Tristan _(dit le Doyen)_
+  * * Tristan _(dit le Doyen)_
   * Olivier
   * Bob Marley _(guest dead star)_
   * Benjamin
