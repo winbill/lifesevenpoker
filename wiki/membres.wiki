@@ -14,3 +14,10 @@ L'équipe est constituée de 4 jeunes et _(en général)_ beaux étudiants lyonn
   * Bob Marley _(guest dead star)_
   * Benjamin
   * James
+
+*bold*
+_italic_
+~~strike~~
+^superscript^
+,,subscript,,
+`inline code`
