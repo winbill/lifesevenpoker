@@ -1,8 +1,3 @@
-/**	@brief module Table.h
-	@author Tristan & James
-	@version 1.0
-        @date 2008/04/01
-*/
 #ifndef Table_H
 #define Table_H
 #include "Carte.h"

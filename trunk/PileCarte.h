@@ -1,9 +1,3 @@
-/**	@brief module PileCarte.h
-	@author James
-	@version 1.0
-        @date 2008/04/01
-*/
-
 #ifndef Pilecarte_H
 #define Pilecarte_H
 #include "Carte.h"
