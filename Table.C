@@ -91,4 +91,4 @@ void setMaxJoueur (Table& table, int n)
 int getMaxJoueur (const Table& table)
 {
 	return table.nMaxJoueur;
-}l
+}

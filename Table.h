@@ -13,7 +13,7 @@ struct Table
 };
 
 void initTable (Table& table);
-//initialise la table
+//initialise la table et crée dans le tas les tableaux
 
 void setNJoueur (Table& table, int n);
 //établit un nombre de joueurs n a la table
