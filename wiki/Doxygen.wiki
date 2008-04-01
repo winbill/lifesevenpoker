@@ -1,5 +1,5 @@
 #summary comment utiliser doxygen
-#labels Phase-Implementation,Doxygen
+#labels Phase-Implementation,Doxygen,help
 
 == Introduction ==
 Doxygen sert a créer des doc à partir de code source
