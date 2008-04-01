@@ -3,12 +3,9 @@
 #include "Table.h"
 #include "assert.h"
 
-/*	int nJoueur;
-	Joueur* [10];
-	int nMaxJoueur;
-	Carte* carteDecouverte[5];
-	PileCarte* pileCarte;
-*/
+
+
+
 
 
 void initTable (Table& table)
@@ -19,16 +16,19 @@ void initTable (Table& table)
 	table.carteDecouverte=new Carte* [5];
 }
 
+
 void setNJoueur (Table& table, int n)
 {
 	assert(n<=10 && n>=0 && n <= getMaxJoueur(table));
 	table.nJoueur=n;
 }
 
+
 int getNJoueur (const Table& table)
 {
 	return table.nJoueur;
 }
+
 
 void ajoutJoueurTable (Table& table, const Joueur* joueur)
 {
@@ -49,16 +49,15 @@ int joueurTrouver (Table& table, Joueur* joueur)
 {
 	int i;
 	for(i=0;i<=getNJoueur(table) || table.joueur == joueur;i++);
-	if(i==10) printf("erreur le joueur n'a pas été trouvé (Table.C)");
+	if(i==10) {printf("erreur le joueur n'a pas été trouvé (Table.C)");assert(0);}
 	return i;
 }
 
-static int carteDecouverteTrouver (const Table& table)
-//renvoi le rang dans le tableau de la 1ere case vide de 0 a 5 inclus
+int carteDecouverteTrouver (const Table& table)
 {
 	int i;
 	for(i=0;i<=4 || table.carteDecouverte[i] != NULL;i++);
-	if(i==5) printf("Déjà 5 carte dans carteDecouverte (Table.C)");
+	if(i==5) {printf("Déjà 5 carte dans carteDecouverte (Table.C)");assert(0);}
 	return i;
 }
 
@@ -68,6 +67,7 @@ void ajoutCarteDecouverte (Table& table, const Carte* carteDecouverte)
 	assert (tmp<5);
 	table.carteDecouverte[tmp]=new Carte;
 }
+
 
 void reinitialiseCarteDecouverte (Table& table)
 {
@@ -86,7 +86,6 @@ void setMaxJoueur (Table& table, int n)
 	assert(n<=10&&n>0&&n>table.nJoueur);
 	table.nMaxJoueur = n;
 }
-
 
 int getMaxJoueur (const Table& table)
 {
