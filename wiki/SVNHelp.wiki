@@ -1,4 +1,4 @@
-#summary SVN Help
+#summary comment utiliser SVN
 #labels help,Phase-Implementation
 
 = Introduction =
