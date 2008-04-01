@@ -30,12 +30,27 @@ Quelques commandes en vrac svn
 
 tous ce qui est en _italique_ est a remplacer
 
+===pour se connecter===
+----
+
    * {{{svn checkout https://lifesevenpoker.googlecode.com/svn/trunk/ lifesevenpoker --username }}}_tonidgoogle_
 
    * tu tape ton mot de passe (si demandé)
 
    * {{{cd lifesevenpoker}}}
 
-   * {{{svn add }}}_fichier_
+===envoyer fichiers===
+----
 
-   * {{{svn commit -m }}}"_commentaires_" 
+   * {{{svn add }}}_fichier_  : uniquement les fichiers locaux sont modifiés
+
+   * {{{svn commit -m }}}"_commentaires_"   : tous les changements locaux sont envoyés
+
+
+===récupèrez fichiers===
+---- 
+
+   * {{{svn update }}}  : récupère les fichiers qui sont sur le serveur (ca met dans ~/lifesevenpoker/ )
+
+----
+
