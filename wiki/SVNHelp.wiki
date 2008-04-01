@@ -21,5 +21,9 @@ Quelques commandes en vrac svn
 
    * {{{svn update}}} met à jours les fichiers locaux 
 
+   * {{{svn add Table.h}}} ajoute Table.h sur le net
 
-*T R I S T A N    L E    B O U L E T*
+   * bg : si on a oublié de mettre & (par ex 'scite Table.h' ctrl-Z puis bg)
+
+   * history
+
