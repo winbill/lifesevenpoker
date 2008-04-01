@@ -23,7 +23,6 @@ Quelques commandes en vrac svn
 
    * {{{svn add Table.h}}} ajoute Table.h sur le net
 
-   * bg : si on a oublié de mettre & (par ex 'scite Table.h' ctrl-Z puis bg)
+   * {{{bg}}} : si on a oublié de mettre & (par ex 'scite Table.h' ctrl-Z puis bg)
 
-   * history
-
+   * {{{history}}}
