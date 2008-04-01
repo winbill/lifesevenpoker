@@ -1,4 +1,4 @@
-#labels svn,help,Phase-Implementation
+#labels help,Phase-Implementation
 #SVN Help
 
 = Introduction =
@@ -26,3 +26,16 @@ Quelques commandes en vrac svn
    * {{{bg}}} : si on a oublié de mettre & (par ex 'scite Table.h' ctrl-Z puis bg)
 
    * {{{history}}}
+
+
+==Ajout fichier==
+
+   * {{{svn checkout https://lifesevenpoker.googlecode.com/svn/trunk/ lifesevenpoker --username _tonnom_}}}
+
+   * tu tape ton mot de passe (si demandé)
+
+   * {{{cd lifesevenpoker}}}
+
+   * {{{svn add _fichier_}}}
+
+   * {{{svn commit -m "_commentaires_"}}} 
