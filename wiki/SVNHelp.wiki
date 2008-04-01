@@ -46,11 +46,9 @@ tous ce qui est en _italique_ est a remplacer
 
    * {{{svn commit -m }}}"_commentaires_"   : tous les changements locaux sont envoyés
 
-
 ===récupèrez fichiers===
----- 
+----
 
    * {{{svn update }}}  : récupère les fichiers qui sont sur le serveur (ca met dans ~/lifesevenpoker/ )
 
 ----
-
