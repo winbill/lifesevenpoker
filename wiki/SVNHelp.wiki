@@ -1,5 +1,5 @@
 #summary comment utiliser SVN
-#labels help,Phase-Implementation
+#labels SVN,Phase-Implementation,help
 
 = Introduction =
 Quelques commandes en vrac svn
