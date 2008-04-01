@@ -20,3 +20,6 @@ Quelques commandes en vrac svn
    * {{{ svn ls .@36 }}} affiche les fichiers de la version 36
 
    * {{{svn update}}} met à jours les fichiers locaux 
+
+
+*T R I S T A N  L E  B O U L E T*
