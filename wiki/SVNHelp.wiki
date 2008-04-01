@@ -28,7 +28,9 @@ Quelques commandes en vrac svn
 
 ==Ajout fichier==
 
-   * {{{svn checkout https://lifesevenpoker.googlecode.com/svn/trunk/ lifesevenpoker --username _tonnom_}}}
+ce qui est en _italique_ est a remplacer
+
+   * {{{svn checkout https://lifesevenpoker.googlecode.com/svn/trunk/ lifesevenpoker --username }}}_tonnom_
 
    * tu tape ton mot de passe (si demandé)
 
