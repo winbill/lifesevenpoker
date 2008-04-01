@@ -1,5 +1,5 @@
+#summary SVN Help
 #labels help,Phase-Implementation
-#SVN Help
 
 = Introduction =
 Quelques commandes en vrac svn
