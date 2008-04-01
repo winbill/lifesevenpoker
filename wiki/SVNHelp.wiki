@@ -22,4 +22,4 @@ Quelques commandes en vrac svn
    * {{{svn update}}} met à jours les fichiers locaux 
 
 
-*T R I S T A N  L E  B O U L E T*
+*T R I S T A N    L E    B O U L E T*
