@@ -1,8 +1,3 @@
-/**	@brief module PileCarte.C
-	@author James
-	@version 1.0
-        @date 2008/04/01
-*/
 #include "Carte.h"
 #include "PileCarte.h"
 #include "assert.h"
