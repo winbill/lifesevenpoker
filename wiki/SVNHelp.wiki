@@ -7,7 +7,7 @@ Quelques commandes en vrac svn
 
 = Details =
 
-{{{ svn ls .@36 }}} affiche les fichiers de la version 36 /n
+{{{ svn ls .@36 }}} affiche les fichiers de la version 36 <br>
 {{{svn update}}} met à jours les fichiers locaux 
 {{{svn status}}} regarde si les fichiers sont sur le serveur 
 {{{svn rm --force LIF7}}} supprime le répertoire LIF7 
