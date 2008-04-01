@@ -25,7 +25,7 @@ Doxygen sert a créer des doc à partir de code source
 
 {{{
 /**	@brief renvoi le rang dans le tableau du Joueur
-	@param }}} _joueur_ {{{pointeur vers joueur
+	@param _joueur_ pointeur vers joueur
 	@note appel la fonction joueurTrouver
 	@warning affiche un message derreur sur la sortie standart si aucun joueur correspondant n'a ete trouve
 */
