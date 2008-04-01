@@ -2,6 +2,7 @@
 #include "PileCarte.h"
 #include "Table.h"
 #include "assert.h"
+#include "Joueur.h"
 
 
 
