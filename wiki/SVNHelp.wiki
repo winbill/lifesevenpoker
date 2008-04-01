@@ -11,12 +11,12 @@ Quelques commandes en vrac svn
 
    * {{{svn update}}} met à jours les fichiers locaux 
 
-{{{svn status}}} regarde si les fichiers sont sur le serveur 
+   * {{{svn status}}} regarde si les fichiers sont sur le serveur 
 
-{{{svn rm --force LIF7}}} supprime le répertoire LIF7 
+   * {{{svn rm --force LIF7}}} supprime le répertoire LIF7 
 
-{{{svn commit -m "commentaire"}}} met à jour le serveur 
+   * {{{svn commit -m "commentaire"}}} met à jour le serveur 
 
-{{{ svn ls .@36 }}} affiche les fichiers de la version 36
+   * {{{ svn ls .@36 }}} affiche les fichiers de la version 36
 
-{{{svn update}}} met à jours les fichiers locaux 
+   * {{{svn update}}} met à jours les fichiers locaux 
