@@ -5,7 +5,7 @@
 Quelques commandes en vrac svn
 
 
-= Details =
+== Details ==
 
    * {{{ svn ls .@36 }}} affiche les fichiers de la version 36
 
