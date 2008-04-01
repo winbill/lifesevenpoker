@@ -7,8 +7,6 @@ Quelques commandes en vrac svn
 
 == Details ==
 
-   * {{{ svn ls .@36 }}} : affiche les fichiers de la version 36
-
    * {{{svn update}}} : met à jours les fichiers locaux 
 
    * {{{svn status}}} : regarde si les fichiers sont sur le serveur 
@@ -36,6 +34,6 @@ Quelques commandes en vrac svn
 
    * {{{cd lifesevenpoker}}}
 
-   * {{{svn add _fichier_}}}
+   * {{{svn add }}}_fichier_
 
-   * {{{svn commit -m "_commentaires_"}}} 
+   * {{{svn commit -m }}}"_commentaires_" 
