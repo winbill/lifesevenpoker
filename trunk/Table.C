@@ -76,13 +76,19 @@ void reinitialiseCarteDecouverte (Table& table)
 		table.carteDecouverte[i]=NULL;
 }
 
-void initPileCarte (table& table,const pile& pileCarte)
+void initPileCarte (table& table,const PileCarte* pileCarte)
 {
-	
+	table.pileCarte = pileCarte;
 }
 
 void setMaxJoueur (Table& table, int n)
-//établit un nombre de joueurs maximal n à la table
+{
+	assert(n<=10&&n>0&&n>table.nJoueur);
+	table.nMaxJoueur = n;
+}
+
 
 int getMaxJoueur (const Table& table)
-//renvoi le nombre de joueurs maximal
+{
+	return table.nMaxJoueur;
+}l
