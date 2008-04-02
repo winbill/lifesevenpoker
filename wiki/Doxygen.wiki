@@ -9,7 +9,7 @@ Doxygen sert a créer des doc à partir de code source
 == Details ==
 
   * Installer Doxygen ({{{sudo apt-get...}}})
-  * taper {{{Doxygene Doxyfile}}} Doxyfile etant le fichier de configuration (langues, titre du projet...) qui est sur le serveur svn, cela va vous crer un repertoire html, allez dedans et double cliquez sur index.html
+  * taper {{{Doxygen Doxyfile}}} Doxyfile etant le fichier de configuration (langues, titre du projet...) qui est sur le serveur svn, cela va vous crer un repertoire html, allez dedans et double cliquez sur index.html
 
 ----
 
