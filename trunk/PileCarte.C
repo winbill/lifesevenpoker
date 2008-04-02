@@ -4,7 +4,7 @@
 
 /*struct PileCarte
 {
-	Carte* pileDesCartes[52];
+	Carte* ensembleCarte[52];
 	int taille;
 };
 */
@@ -21,23 +21,31 @@ void initPileCarte (PileCarte & pileCarte)
 		{
 			carte = new Carte;
 			setCarte(carte,i,j);
-			pileCarte.pileDesCartes[k] = *carte;
+			pileCarte.ensembleCarte[k] = *carte;
 			k++;
 		}
 	}
 	
 }
 
-Carte* recevoirCarte(PileCarte & pileCarte)
+PileCarte* creePileCarte()
+{
+	pileCarte = new PileCarte;
+	initPileCarte(pileCarte);
+	return *pileCarte;
+}
+
+
+Carte* tirerCarte(PileCarte& pileCarte)
 {
 	int x = hasard(0,pileCarte.taille-1);
 	carte = new Carte;
-	*carte = pileCarte.pileDesCartes[x];
+	*carte = pileCarte.ensembleCarte[x];
 	//ou carte  ?????
 	
 	//on permute pour que la carte soit a la fin (apres le rang taille -2 du tableau)
 	if(x!=pileCarte.taille-1)
-		pileCarte.pileDesCartes[x] = pileCarte.[pileCarte.taille-1];
+		pileCarte.ensembleCarte[x] = pileCarte.ensembleCarte[pileCarte.taille-1];
 	
 	//on enleve une carte a la taille, mais la carte est toujours présente dans le tableau
 	pileCarte.taille --;
