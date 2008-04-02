@@ -32,7 +32,7 @@ Carte* recevoirCarte(PileCarte & pileCarte)
 {
 	int x = hasard(0,pileCarte.taille-1);
 	carte = new Carte;
-	carte* = pileCarte.pileDesCartes[x];
+	*carte = pileCarte.pileDesCartes[x];
 	//ou carte  ?????
 	
 	//on permute pour que la carte soit a la fin (apres le rang taille -2 du tableau)
@@ -43,7 +43,7 @@ Carte* recevoirCarte(PileCarte & pileCarte)
 	pileCarte.taille --;
 	
 	
-	return carte
-	//ou *carte ??
+	return *carte
+	//ou carte ??
 	
 }
