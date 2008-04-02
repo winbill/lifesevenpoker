@@ -17,13 +17,18 @@ void initTable (Table& table)
 	table.carteDecouverte=new Carte* [5];
 }
 
+Table* creeTable()
+{
+	table = new Table;
+	initTable(table);
+	return table;	
+}
 
 void setNJoueur (Table& table, int n)
 {
 	assert(n<=10 && n>=0 && n <= getMaxJoueur(table));
 	table.nJoueur=n;
 }
-
 
 int getNJoueur (const Table& table)
 {
