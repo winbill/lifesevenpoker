@@ -45,6 +45,9 @@ Celles avec une portée réduite peuvent avoir des noms courts
 == Divers ==
 
 Les pluriels, pour une collection d'objets
+
 Le préfixe "n", variables représentant un nombre d'objets
+
 Le préfixe "no", variables représentant un numéro d'entité
+
 Les variables d'itération, un caractère minuscule
