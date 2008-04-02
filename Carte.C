@@ -17,12 +17,6 @@ Couleur getCarteCouleur(const Carte & c)
 	return c.couleur;
 }
 
-/*Carte getCarte(const Carte & c)
-{
-	return c;
-}
-*/
-
 void setCarte(Carte & c,const Couleur & couleur,const Rang & rang)
 {
 	c.couleur = couleur;
@@ -47,7 +41,5 @@ int compareCarte(const Carte & c1, const Carte & c2)
 		return 0;
 	}
 }
-
-//void testamentCarte(Carte & c);
 
 
