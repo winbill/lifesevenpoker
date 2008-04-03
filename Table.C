@@ -46,7 +46,7 @@ void initTable (Table& table,int nJoueur,PileCarte* & pileCarte)
 
 Table* creeTable()
 {
-	table* t = new Table;
+	Table* t = new Table;
 	initTable(*table);
 	return table;	
 }
