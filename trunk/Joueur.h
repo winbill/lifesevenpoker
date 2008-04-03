@@ -37,10 +37,14 @@ struct Joueur
 
 };
 
+/**	@brief initialise un joueur
+*/
+void initJoueur(Joueur & joueur)
 
 /**	@brief creer un joueur
+	@note appel initJoueur
 */
-void creerJoueur (Joureur& joueur);
+Joueur* creerJoueur (Joureur & joueur);
 
 
 
