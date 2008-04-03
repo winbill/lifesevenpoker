@@ -6,8 +6,8 @@
 
 struct MainCarte
 {
-  Carte * tab_main[5];
-  char nb_carte;
+  Carte * tabMain[5];
+  char nCarte;
 };
 
 void initialisationMain(MainCarte & m);
@@ -20,9 +20,9 @@ MainCarte getMainCarte(const MainCarte & m);
 //pré: m est initialisée
 //post: renvoie certaines valeurs de la structure m
 
-void setMainCarteTab_main(MainCarte & m, const char & tab_main[]);
-void setMainCarteNb_carte(MainCarte & m, const char & nb_carte);
-void MainCarte setMainCarte(MainCarte & m, const char & tab_main[], const char & nb_carte);
+void setMainCarteTab_main(MainCarte & m, const char & tabMain[]);
+void setMainCarteNb_carte(MainCarte & m, const char & nCarte);
+void MainCarte setMainCarte(MainCarte & m, const char & tabMain[], const char & nCarte);
 //pré: m est initialisée
 //post: modifie certaines valeurs de la structure m
 
