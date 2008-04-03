@@ -1,7 +1,7 @@
 #ifndef _MainCarte
 #define _MainCarte
 #include "Carte.h"
-
+#include "PileCarte.h"
 
 
 struct MainCarte

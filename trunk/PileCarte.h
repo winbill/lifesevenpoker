@@ -21,7 +21,7 @@ struct PileCarte
 void initPileCarte (PileCarte & pileCarte);
 
 
-/**	@brief cree la pile de carte, en appelant initPileCarte
+/**	@brief cree la pile de carte
 	@return renvoie l'adresse dune PileCarte
 */
 PileCarte* creePileCarte();

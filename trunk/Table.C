@@ -1,49 +1,94 @@
-#include "Carte.h"
-#include "PileCarte.h"
 #include "Table.h"
-#include "assert.h"
-#include "Joueur.h"
 
 
-
-
+/*
+struct Table
+{
+	int nJoueur;
+	Joueur* joueur[10];
+	int nMaxJoueur;
+	Carte* carteDecouverte[5];
+	PileCarte* pileCarte;
+};
+*/
 
 
 void initTable (Table& table)
 {
 	table.nJoueur = 0;
 	table.joueur = new Joueur* [10];
-	setMaxJoueur (table, 0);
+	setMaxJoueur (table,0);
 	table.carteDecouverte=new Carte* [5];
+	memset(table.joueur,0,sizeof(*table.joueur));
+	table.pileCarte = NULL;
+	
+}
+
+void initTable (Table& table,int nJoueur)
+{
+	table.nJoueur = nJoueur;
+	table.joueur = new Joueur* [10];
+	setMaxJoueur (table, n);
+	table.carteDecouverte=new Carte* [5];
+	memset(table.joueur,0,sizeof(*table.joueur));
+	table.pileCarte = NULL;
+}
+
+void initTable (Table& table,int nJoueur,PileCarte* & pileCarte)
+{
+	table.nJoueur = nJoueur;
+	table.joueur = new Joueur* [10];
+	setMaxJoueur (table, n);
+	table.carteDecouverte=new Carte* [5];
+	memset(table.joueur,0,sizeof(*table.joueur));
+	setTablePileCarte(table,pileCarte);
 }
 
 Table* creeTable()
 {
-	table = new Table;
-	initTable(table);
+	table* t = new Table;
+	initTable(*table);
 	return table;	
 }
 
-void setNJoueur (Table& table, int n)
+void tableLibere(Table& table)
+{
+	table.nJoueur = 0;
+	delete[]	table.joueur;
+	table.joueur = NULL;
+	table.nMaxJoueur = 0;
+	delete[]	table.carteDecouverte;
+	table.carteDecouverte = NULL;
+	table.pileCarte = NULL;
+}
+
+void tableDetruit(Table* & table)
+{
+	tableLibere(*table);
+	delete table;
+	*table = NULL;	
+}
+
+void setNJoueur (Table & table, int n)
 {
 	assert(n<=10 && n>=0 && n <= getMaxJoueur(table));
 	table.nJoueur=n;
 }
 
-int getNJoueur (const Table& table)
+int getNJoueur (const Table & table)
 {
 	return table.nJoueur;
 }
 
 
-void ajoutJoueurTable (Table& table, const Joueur* joueur)
+void ajoutJoueurTable (Table & table, const Joueur* & joueur)
 {
 	int tmp = getNJoueur(table);
 	table.joueur[tmp] = joueur;
 	setNJoueur(table,tmp+1);
 }
 
-void supprimeJoueurTable (Table& table,const Joueur* joueur)
+void supprimeJoueurTable (Table & table,const Joueur* & joueur)
 {
 	int tmp = joueurTrouver (table, joueur);
 	assert (tmp<10);
@@ -51,7 +96,7 @@ void supprimeJoueurTable (Table& table,const Joueur* joueur)
 	table.joueur[tmp]=NULL;
 }
 
-int joueurTrouver (Table& table, Joueur* joueur)
+int joueurTrouver (Table & table, Joueur* & joueur)
 {
 	int i;
 	for(i=0;i<=getNJoueur(table) || table.joueur == joueur;i++);
@@ -59,7 +104,7 @@ int joueurTrouver (Table& table, Joueur* joueur)
 	return i;
 }
 
-int carteDecouverteTrouver (const Table& table)
+int carteDecouverteTrouver (const Table & table)
 {
 	int i;
 	for(i=0;i<=4 || table.carteDecouverte[i] != NULL;i++);
@@ -67,7 +112,7 @@ int carteDecouverteTrouver (const Table& table)
 	return i;
 }
 
-void ajoutCarteDecouverte (Table& table, const Carte* carteDecouverte)
+void ajoutCarteDecouverte (Table & table, const Carte* carteDecouverte)
 {
 	int tmp=carteDecouverteTrouver (table);
 	assert (tmp<5);
@@ -75,25 +120,35 @@ void ajoutCarteDecouverte (Table& table, const Carte* carteDecouverte)
 }
 
 
-void reinitialiseCarteDecouverte (Table& table)
+void reinitialiseCarteDecouverte (Table & table)
 {
 	int i;
 	for (i=0;i<5;i++)
 		table.carteDecouverte[i]=NULL;
 }
 
-void initPileCarte (table& table,const PileCarte* pileCarte)
+void initPileCarte (Table & table,const PileCarte* & pileCarte)
 {
 	table.pileCarte = pileCarte;
 }
 
-void setMaxJoueur (Table& table, int n)
+void setMaxJoueur (Table & table, int n)
 {
 	assert(n<=10&&n>0&&n>table.nJoueur);
 	table.nMaxJoueur = n;
 }
 
-int getMaxJoueur (const Table& table)
+int getMaxJoueur (const Table & table)
 {
 	return table.nMaxJoueur;
+}
+
+void setTablePileCarte(Table & table,PileCarte* & pileCarte)
+{
+	table.pileCarte = pileCarte;
+}
+
+PileCarte* getTablePileCarte(const Table & table)
+{
+	return table.pileCarte;
 }
