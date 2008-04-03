@@ -1,7 +1,7 @@
 #ifndef Table_H
 #define Table_H
-#include "Carte.h"
-#include "PileCarte.h"
+#include "IArtificelle.h"
+#include "MainCarte.h"
 
 
 enum Statut
