@@ -3,23 +3,43 @@
 #include "Carte.h"
 #include "PileCarte.h"
 
-
+/**	@brief Structure représentant une main de cartes.
+	@param Le champ tabMain est un tableau de pointeurs sur Carte.
+	@param Le champ nCarte est un entier représentant le nombre de pointeurs sur Carte valides dans le tableau, c'est à dire le nombre de cartes contenues dans la main.
+	@note La main peut contenir de 0 à 5 cartes.
+*/
 struct MainCarte
 {
-  Carte * tabMain[5];
-  char nCarte;
+  Carte* tabMain[5];
+  int nCarte;
 };
 
+/**	@brief Procédure créant une main de cartes.
+	@param Prend en entrée une variable de type MainCarte.
+	@return Alloue un espace mémoire à la variable de type MainCarte.
+*/
+void creeMain(MainCarte & m);
+
+/**	@brief Procédure initialisant une main de cartes.
+	@param Prend en entrée une variable de type MainCarte correctement crée.
+	@return Initialise la variable de type MainCarte.
+*/
 void initialisationMain(MainCarte & m);
-//pré: aucune
-//post: m est initialisée
 
-char getMainCarteTab_main(const MainCarte & m);
-char getMainCarteNb_carte(const MainCarte & m);
-MainCarte getMainCarte(const MainCarte & m);
-//pré: m est initialisée
-//post: renvoie certaines valeurs de la structure m
+/**	@brief Fonction récupérant le tableau de pointeurs sur Carte de la structure MainCarte.
+	@param Prend en entrée une variable de type MainCarte.
+	@return Renvoie le premier pointeur sur Carte contenu dans le tableau de pointeurs sur Carte de la variable de type MainCarte.
+*/
+Carte* getMainCarteTab_main(const MainCarte & m);
 
+/**	@brief Fonction récupérant le nombre de pointeurs sur Carte contenus dans le tableau de la variable de type MainCarte.
+	@param Prend en entrée une variable de type MainCarte.
+	@return Renvoie la valeur du champ nCarte de la variable de type MainCarte.
+*/
+int getMainCarteNb_carte(const MainCarte & m);
+
+/**	@brief Procédure modifiant le tableau
+*/
 void setMainCarteTab_main(MainCarte & m, const char & tabMain[]);
 void setMainCarteNb_carte(MainCarte & m, const char & nCarte);
 void MainCarte setMainCarte(MainCarte & m, const char & tabMain[], const char & nCarte);

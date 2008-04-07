@@ -47,6 +47,15 @@ struct Carte
 	Rang rang;
 };
 
+/**	@brief Procédure créant une carte.
+	@param Prend en entrée une variable de type Carte.
+	@return Alloue un espace mémoire sur le tas pour la variable de type Carte en la créant.
+*/
+void creerCarte(Carte & c)
+{
+	c=new Carte;
+}
+
 /**	@brief Procédure initialisant une nouvelle carte.
 	@param Prend en entrée une variable de type Carte.
 	@return Initialise la variable de type Carte avec des valeurs par défaut : rang = INIT_RANG et couleur = INIT_COULEUR.
@@ -83,6 +92,12 @@ void setCarte(Carte & c,const Couleur & couleur,const Rang & rang);
 			->	-1 si la première carte est plus forte que la deuxième
 */
 int compareCarte(const Carte & c1, const Carte & c2);
+
+/**	@brief Procédure qui détruit une carte et désalloue son espace mémoire.
+	@param Prend en entrée une variable de type pointeur sur Carte.
+	@return Désalloue la zone mémoire pointée par le pointeur sur Carte et détruit ce pointeur.
+*/
+void testamentCarte(Carte* &c);
 
 #endif
 
