@@ -57,8 +57,10 @@ Carte* tirerCarte(PileCarte& pileCarte)
 	
 	//on permute pour que la carte soit a la fin (apres le rang taille -2 du tableau)
 	if(x!=pileCarte.taille-1)
+	{
 		pileCarte.ensembleCarte[x] = pileCarte.ensembleCarte[pileCarte.taille-1];
-	
+		pileCarte.ensembleCarte[pileCarte.taille-1] = *carte;
+	}
 	//on enleve une carte a la taille, mais la carte est toujours présente dans le tableau
 	pileCarte.taille --;
 	

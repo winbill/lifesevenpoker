@@ -115,6 +115,4 @@ int getNJoueurTable (const Table & table);
 
 
 
-
-getM
 #endif
