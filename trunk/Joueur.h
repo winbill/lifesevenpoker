@@ -33,13 +33,13 @@ struct Joueur
 	int idJoueur;
 	int noPlace;
 	Statut statut;
-	MainCarte* main; // on doit mettre rien
-
+	MainCarte* mainJoueur;
 };
 
 /**	@brief initialise un joueur
 */
 void initJoueur(Joueur & joueur)
+
 
 /**	@brief creer un joueur
 	@note appel initJoueur
@@ -48,7 +48,75 @@ Joueur* creerJoueur (Joureur & joueur);
 
 
 
+/**	@brief initialise un joueur
+	@param pseudo : nom du joueur 15 caractères max
+*/
+void initJoueur (Joueur & joueur,char[15] pseudo);
 
+
+/** 	@brief cree dans le tas une variable joueur puis l'initialise
+	@note appel la fonction initJoueur
+	@return renvoie l'adresse d'un Joueur
+*/
+Joueur* creeJoueur();
+
+
+/**	@brief libere les allocations internes a joueur
+*/
+void joueurLibere(Joueur & joueur);
+
+
+/**	@brief libere plus detruit la structure
+	@param joueur adresse d'un joueur
+	@note appel la fonction tableLibere
+*/
+void tableDetruit(Joueur* & joueur);
+
+
+/**	@brief Ajoute un joueur a la table
+	@param mainJoueur pointeur sur une MainCarte
+*/
+void ajoutMainCarteJoueur (Joueur & joueur, const MainCarte* & mainJoueur);
+
+
+/**	@brief supprime la main du joueur
+	@param mainJoueur pointeur sur une MainCarte
+*/
+void supprimeMainJoueur (Joueur & joueur,const MainCarte* & mainJoueur);
+
+
+/** 	@brief donne un identifiant unique et différent a chauqe joueur
+*/
+void setIdJoueur (Joueur & joueur);
+
+
+/**	@brief renvoi l'identifiant du joueur
+	@return idJoueur
+*/
+int getIdJoueur (const Joueur & joueur);
+
+
+/** 	@brief etablit l'adresse de la main du joueur
+	@param mainJoueur pointeur sur une MainCarte
+*/
+void setTablePileCarteTable (Joueur & joueur,MainCarte* & mainJoueur);
+
+
+/**     @brief renvoi l'adresse de mainJoueur
+*/
+MainCarte* getAdMainJoueur (const Joueur & joueur);
+
+
+/**	@brief etablit un numero de place à un joueur
+	@param n numéro de la place
+	@note appel la fonction placeVide
+*/
+void setNJoueurTable (Table & table, int n);
+
+
+/**     @brief renvoi le numero de la premiere place libre, 0 sinon
+*/
+int placeVide (const Table & table);
 
 
 #endif
