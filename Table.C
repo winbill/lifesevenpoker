@@ -53,10 +53,8 @@ Table* creeTable()
 
 void tableLibere(Table& table)
 {
-	table.nJoueur = 0;
 	delete[]	table.joueur;
 	table.joueur = NULL;
-	table.nMaxJoueur = 0;
 	delete table.carteDecouverte;
 	table.carteDecouverte = NULL;
 	table.pileCarte = NULL;
@@ -67,7 +65,7 @@ void tableDetruit(Table* & table)
 {
 	tableLibere(*table);
 	delete table;
-	*table = NULL;	
+	table = NULL;	
 }
 
 void ajoutJoueurTable (Table & table, const Joueur* & joueur)

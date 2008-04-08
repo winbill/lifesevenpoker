@@ -113,7 +113,6 @@ void setNJoueurTable (Table & table, int n);
 */
 int getNJoueurTable (const Table & table);
 
-
 /**	@brief etablit un numero de place à un joueur
 	@note appel la fonction placeVide
 */
@@ -122,6 +121,7 @@ void setJoueurTable (Joueur* & joueur, Table & table);
 /**     @brief renvoi le numero de la premiere place libre, 0 sinon
 */
 int placeVide (const Table & table);
+
 
 
 
