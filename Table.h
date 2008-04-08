@@ -63,21 +63,21 @@ void tableDetruit(Table* & table);
 
 /**	@brief Ajoute un joueur a la table
 */
-void ajoutJoueurTable (Table & table, const Joueur* & joueur);
+void ajoutJoueurTable (Table & table, Joueur* joueur);
 
 
 /**	@brief supprime le joueur du tableau en effectuant une recherche
 	le joueur existe encore apres
 	@param joueur pointeur vers joueur
 */
-void supprimeJoueurTable (Table & table,const Joueur* & joueur);
+void supprimeJoueurTable (Table & table,Joueur* joueur);
 
 
 /**	@brief renvoi le rang dans le tableau du Joueur
 	@param joueur pointeur vers joueur
 	@warning affiche un message derreur sur la sortie standart si aucun joueur correspondant n'a ete trouve
 */
-int joueurTrouver (Table & table, const Joueur* & joueur);
+int joueurTrouver (Table & table, Joueur* joueur);
 
 
 /**	@brief etablit un nombre de joueurs maximal (pour le reseau)
