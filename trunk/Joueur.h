@@ -24,7 +24,6 @@ enum Statut
 	@param noPlace placement du joueur sur la table de 1 a 10
 	@param statut indique le statut actuel du joueur sur la table
 	@param mainCarte pointeur pointant sur la main du joueur
-	@param carte1 et carte2 pointeur sur carte pointant sur les 2 cartes que le joueur a en main
 */
 struct Joueur
 {
@@ -114,9 +113,6 @@ MainCarte* getAdMainJoueur (const Joueur & joueur);
 void setNJoueurTable (Table & table, int n);
 
 
-/**     @brief renvoi le numero de la premiere place libre, 0 sinon
-*/
-int placeVide (const Table & table);
 
 
 #endif
