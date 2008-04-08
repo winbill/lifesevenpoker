@@ -102,11 +102,6 @@ int getMaxJoueurTable (const Table & table)
 	return table.nMaxJoueur;
 }
 
-void setTablePileCarteTable(Table & table,PileCarte* & pileCarte)
-{
-	table.pileCarte = pileCarte;
-}
-
 PileCarte* getTablePileCarteTable(const Table & table)
 {
 	return table.pileCarte;
@@ -118,7 +113,7 @@ void setNJoueurTable (Table & table, int n)
 	table.nJoueur=n;
 }
 
-int getNJoueur (const Table & table)
+int getNJoueurTable (const Table & table)
 {
 	return table.nJoueur;
 }
