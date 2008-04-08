@@ -71,10 +71,10 @@ void joueurLibere(Joueur & joueur);
 void joueurDetruit(Joueur* & joueur);
 
 
-/**	@brief supprime la main du joueur
+/**	@brief réinitialise la main du joueur
 	@param mainJoueur pointeur sur une MainCarte
 */
-void supprimeMainJoueur (Joueur & joueur,const MainCarte* & mainJoueur);
+void reinitialiseMainJoueur (Joueur & joueur);
 
 
 /** 	@brief donne un identifiant unique et différent a chaque joueur
@@ -86,12 +86,6 @@ void setIdJoueur (Joueur & joueur);
 	@return idJoueur
 */
 int getIdJoueur (const Joueur & joueur);
-
-
-/** 	@brief etablit l'adresse de la main du joueur
-	@param mainJoueur pointeur sur une MainCarte
-*/
-void setMainJoueur (Joueur & joueur,MainCarte* & mainJoueur);
 
 
 /**     @brief renvoi l'adresse de mainJoueur
