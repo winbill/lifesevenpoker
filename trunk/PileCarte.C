@@ -34,6 +34,19 @@ PileCarte* creePileCarte()
 	return *pileCarte;
 }
 
+void pileCarteLibere (PileCarte & pileCarte)
+	delete[]	pileCarte.ensembleCarte;
+	pileCarte.ensembleCarte = NULL;
+	pileCarte.taille = 0;
+
+}
+
+void pileCarteDetruit(PileCarte* & pileCarte)
+{
+	pileCarteLibere(*PileCarte);
+	delete PileCarte;
+	*PileCarte = NULL;
+}
 
 Carte* tirerCarte(PileCarte& pileCarte)
 {
