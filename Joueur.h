@@ -66,9 +66,9 @@ void joueurLibere(Joueur & joueur);
 
 /**	@brief libere plus detruit la structure
 	@param joueur adresse d'un joueur
-	@note appel la fonction tableLibere
+	@note appel la fonction joueurLibere
 */
-void tableDetruit(Joueur* & joueur);
+void joueurDetruit(Joueur* & joueur);
 
 
 /**	@brief supprime la main du joueur
@@ -77,7 +77,7 @@ void tableDetruit(Joueur* & joueur);
 void supprimeMainJoueur (Joueur & joueur,const MainCarte* & mainJoueur);
 
 
-/** 	@brief donne un identifiant unique et différent a chauqe joueur
+/** 	@brief donne un identifiant unique et différent a chaque joueur
 */
 void setIdJoueur (Joueur & joueur);
 
