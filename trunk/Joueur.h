@@ -58,6 +58,18 @@ void initJoueur (Joueur & joueur,char[15] pseudo);
 */
 Joueur* creeJoueur();
 
+/** 	@brief change le statut du joueur en statut
+	@note appel la fonction initJoueur
+*/
+void setStatutJoueur (Joueur & joueur, const Statut statut);
+
+
+/** 	@brief change le statut du joueur en statut
+	@note appel la fonction initJoueur
+	@return renvoie le statut actuel du joueur
+*/
+Statut getStatutJoueur (Joueur & joueur);
+
 
 /**	@brief libere les allocations internes a joueur
 */
