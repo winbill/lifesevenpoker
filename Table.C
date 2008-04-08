@@ -62,6 +62,7 @@ void tableLibere(Table& table)
 	table.pileCarte = NULL;
 }
 
+
 void tableDetruit(Table* & table)
 {
 	tableLibere(*table);
