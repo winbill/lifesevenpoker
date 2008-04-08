@@ -68,14 +68,14 @@ void tableDetruit(Table* & table)
 	table = NULL;	
 }
 
-void ajoutJoueurTable (Table & table, const Joueur* & joueur)
+void ajoutJoueurTable (Table & table, Joueur*  joueur)
 {
 	int tmp = getNJoueur(table);
 	table.joueur[tmp] = joueur;
 	setNJoueur(table,tmp+1);
 }
 
-void supprimeJoueurTable (Table & table,const Joueur* & joueur)
+void supprimeJoueurTable (Table & table,Joueur* joueur)
 {
 	int tmp = joueurTrouver (table, joueur);
 	assert (tmp<10);
@@ -83,7 +83,7 @@ void supprimeJoueurTable (Table & table,const Joueur* & joueur)
 	table.joueur[tmp]=NULL;
 }
 
-int joueurTrouver (Table & table, const Joueur* & joueur)
+int joueurTrouver (Table & table,  Joueur* joueur)
 {
 	int i;
 	for(i=0;i<=getNJoueur(table) || table.joueur == joueur;i++);
