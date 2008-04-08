@@ -1,5 +1,5 @@
-#ifndef Table_H
-#define Table_H
+#ifndef Joueur_H
+#define Joueur_H
 #include "IArtificelle.h"
 #include "MainCarte.h"
 
@@ -41,7 +41,6 @@ void initJoueur(Joueur & joueur)
 
 
 /**	@brief creer un joueur
-	@note appel initJoueur
 */
 Joueur* creerJoueur (Joureur & joueur);
 
@@ -72,12 +71,6 @@ void joueurLibere(Joueur & joueur);
 void tableDetruit(Joueur* & joueur);
 
 
-/**	@brief Ajoute un joueur a la table
-	@param mainJoueur pointeur sur une MainCarte
-*/
-void ajoutMainCarteJoueur (Joueur & joueur, const MainCarte* & mainJoueur);
-
-
 /**	@brief supprime la main du joueur
 	@param mainJoueur pointeur sur une MainCarte
 */
@@ -98,21 +91,12 @@ int getIdJoueur (const Joueur & joueur);
 /** 	@brief etablit l'adresse de la main du joueur
 	@param mainJoueur pointeur sur une MainCarte
 */
-void setTablePileCarteTable (Joueur & joueur,MainCarte* & mainJoueur);
+void setMainJoueur (Joueur & joueur,MainCarte* & mainJoueur);
 
 
 /**     @brief renvoi l'adresse de mainJoueur
 */
-MainCarte* getAdMainJoueur (const Joueur & joueur);
-
-
-/**	@brief etablit un numero de place à un joueur
-	@param n numéro de la place
-	@note appel la fonction placeVide
-*/
-void setNJoueurTable (Table & table, int n);
-
-
+MainCarte* getMainJoueur (const Joueur & joueur);
 
 
 #endif
