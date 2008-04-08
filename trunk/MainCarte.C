@@ -9,34 +9,34 @@
   int nCarte;
 }; */
 
-void creeMain(MainCarte & m)
+MainCarte* creeMain()
+{
+	MainCarte* m = new MainCarte;
+	initialisationMain(m);
+	return m;
+}
+
+void initialisationMain(MainCarte & m)
 {
 	m.tabMain=new Carte* [5];
 	m.nCarte=0;
 }
 
-void initMain(MainCarte & m)
-{
-	m.tabMain=NULL;
-	m.nCarte=0;
-}
-
-Carte* getMainCarteTab_main(const MainCarte & m)
+Carte* getMainCarteTabMain(const MainCarte & m)
 {
 	return m.tabMain;
 }
-int getMainCarteNb_carte(const MainCarte & m)
+
+int getMainCarteNbCarte(const MainCarte & m)
 {
 	return m.nCarte;
 }
-//pré: m est initialisée
-//post: renvoie certaines valeurs de la structure m
 
-void setMainCarteTab_main(MainCarte & m, const Carte* & tabMain[])
+void setMainCarteTabMain(MainCarte & m, const Carte* & tabMain[])
 {
 	m.tabMain=&tabMain;
 }
-void setMainCarteNb_carte(MainCarte & m, const int & nCarte)
+void setMainCarteNbCarte(MainCarte & m, const int & nCarte)
 {
 	m.nCarte=nCarte;
 }
@@ -86,9 +86,19 @@ MainCarte compareMain(const MainCarte & m1, const MainCarte & m2)
 //pré: m1 et m2 sont initialisées et contiennent exactement 5 cartes(m1.nb_carte ==5 && m2.nb_carte==5)
 //post: renvoie la meilleur main. renvoie les 2 mains dans le cas où les 2 mains ont même valeur
 
-void testament(MainCarte & m);
+
+void MainCarteLibere(MainCarte &m)
+{
+	delete [] m.tabMain;
+	m.nCarte=0;
+}
 //pré: m est initialisée
 //post: m est supprimée
+
+void MainCarteDetruit(MainCarte & m)
+{
+	delete m;
+}
 
 //procédure d'ajout et d'insertion d'un élément
 void ajouteElementTableauDynamique(TableauDynamique & t,const int & e);

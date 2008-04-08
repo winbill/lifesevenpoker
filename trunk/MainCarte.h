@@ -3,9 +3,9 @@
 #include "Carte.h"
 #include "PileCarte.h"
 
-/**	@brief Structure représentant une main de cartes.
+/**	@brief Structure representant une main de cartes.
 	@param Le champ tabMain est un tableau de pointeurs sur Carte.
-	@param Le champ nCarte est un entier représentant le nombre de pointeurs sur Carte valides dans le tableau, c'est à dire le nombre de cartes contenues dans la main.
+	@param Le champ nCarte est un entier representant le nombre de pointeurs sur Carte valides dans le tableau, c'est a dire le nombre de cartes contenues dans la main.
 	@note La main peut contenir de 0 à 5 cartes.
 */
 struct MainCarte
@@ -14,37 +14,48 @@ struct MainCarte
   int nCarte;
 };
 
-/**	@brief Procédure créant une main de cartes.
-	@param Prend en entrée une variable de type MainCarte.
-	@return Alloue un espace mémoire à la variable de type MainCarte.
+/**	@brief Procedure creant une main de cartes.
+	@param Prend en entree une variable de type MainCarte.
+	@return Alloue un espace memoire a la variable de type MainCarte.
 */
 void creeMain(MainCarte & m);
 
-/**	@brief Procédure initialisant une main de cartes.
-	@param Prend en entrée une variable de type MainCarte correctement crée.
+/**	@brief Procedure initialisant une main de cartes.
+	@param Prend en entree une variable de type MainCarte correctement cree.
 	@return Initialise la variable de type MainCarte.
 */
 void initialisationMain(MainCarte & m);
 
-/**	@brief Fonction récupérant le tableau de pointeurs sur Carte de la structure MainCarte.
-	@param Prend en entrée une variable de type MainCarte.
+/**	@brief Fonction recuperant le tableau de pointeurs sur Carte de la structure MainCarte.
+	@param Prend en entree une variable de type MainCarte.
 	@return Renvoie le premier pointeur sur Carte contenu dans le tableau de pointeurs sur Carte de la variable de type MainCarte.
 */
-Carte* getMainCarteTab_main(const MainCarte & m);
+Carte* getMainCarteTabMain(const MainCarte & m);
 
-/**	@brief Fonction récupérant le nombre de pointeurs sur Carte contenus dans le tableau de la variable de type MainCarte.
-	@param Prend en entrée une variable de type MainCarte.
+/**	@brief Fonction recuperant le nombre de pointeurs sur Carte contenus dans le tableau de la variable de type MainCarte.
+	@param Prend en entree une variable de type MainCarte.
 	@return Renvoie la valeur du champ nCarte de la variable de type MainCarte.
 */
-int getMainCarteNb_carte(const MainCarte & m);
+int getMainCarteNbCarte(const MainCarte & m);
 
-/**	@brief Procédure modifiant le tableau
+/**	@brief Procedure modifiant le tableau de pointeur sur Carte de la structure MainCarte.
+	@param Prend en entree une variable de type MainCarte et une variable de type tableau de pointeur sur Carte.
+	@return La structure de type MainCarte a son champ tabMain remplace par l'adresse du tableau de pointeur sur Carte. 
 */
-void setMainCarteTab_main(MainCarte & m, const char & tabMain[]);
-void setMainCarteNb_carte(MainCarte & m, const char & nCarte);
-void MainCarte setMainCarte(MainCarte & m, const char & tabMain[], const char & nCarte);
-//pré: m est initialisée
-//post: modifie certaines valeurs de la structure m
+void setMainCarteTabMain(MainCarte & m, const Carte* & tabMain[]);
+
+/**	@brief Procedure modifiant la valeur de du nombre de Carte dans la structure MainCarte.
+	@param Prend en entree une variable de type MainCarte et une variable de type int.
+	@return La structure de type MainCarte a son champ nCarte remplace par la valeur de l'int.
+*/
+void setMainCarteNbCarte(MainCarte & m, const int & nCarte);
+
+/**	@brief Procedure modifiant toutes les valeurs de la structure MainCarte.
+	@param Prend en entree une variable de type MainCarte, une variable de type tableau de pointeur sur Carte et une variable de type int.
+	@return Remplace les champs de la structure de type MainCarte par les valeurs des deux autres parametres.
+*/
+void MainCarte setMainCarte(MainCarte & m, const Carte* & tabMain[], const int & nCarte);
+
 
 void ajouteCarte(MainCarte & m, const Carte & c);
 //pré: m et c sont initialisées

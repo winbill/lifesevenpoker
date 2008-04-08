@@ -1,6 +1,6 @@
 #include "Carte.h"
 
-void creerCarte(Carte & c)
+void creerCarte(Carte* & c)
 {
 	c=new Carte;
 }
