@@ -92,12 +92,6 @@ void setMaxJoueurTable (Table & table, int n);
 int getMaxJoueurTable (const Table & table);
 
 
-/**	@brief etablit un ladresse de la pile de carte
-	@param pileCarte pointeur
-*/
-void setTablePileCarteTable (Table & table,PileCarte* & pileCarte);
-
-
 /**	@brief renvoi l adresse de la pile de carte
 */
 PileCarte* getTablePileCarteTable (const Table & table);
