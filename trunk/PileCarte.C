@@ -45,27 +45,27 @@ void pileCarteDetruit(PileCarte* & pileCarte)
 {
 	pileCarteLibere(*PileCarte);
 	delete PileCarte;
-	*PileCarte = NULL;
+	PileCarte = NULL;
 }
 
 Carte* tirerCarte(PileCarte& pileCarte)
 {
 	int x = hasard(0,pileCarte.taille-1);
-	carte = new Carte;
-	*carte = pileCarte.ensembleCarte[x];
+	Carte* carte;
+	carte = pileCarte.ensembleCarte[x];
 	//ou carte  ?????
 	
 	//on permute pour que la carte soit a la fin (apres le rang taille -2 du tableau)
 	if(x!=pileCarte.taille-1)
 	{
 		pileCarte.ensembleCarte[x] = pileCarte.ensembleCarte[pileCarte.taille-1];
-		pileCarte.ensembleCarte[pileCarte.taille-1] = *carte;
+		pileCarte.ensembleCarte[pileCarte.taille-1] = carte;
 	}
 	//on enleve une carte a la taille, mais la carte est toujours présente dans le tableau
 	pileCarte.taille --;
 	
 	
-	return *carte
+	return carte;
 	//ou carte ??
 	
 }
