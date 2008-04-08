@@ -27,9 +27,15 @@ void initPileCarte (PileCarte & pileCarte);
 PileCarte* creePileCarte();
 
 
-/**	@brief detruit la pile de carte proprement
+
+/**	@brief libere les allocations internes a pileCarte
 */
-void testamentPileCarte (PileCarte & pileCarte);
+void pileCarteLibere (PileCarte & pileCarte);
+
+/**	@brief detruit la pile de carte proprement
+	@note appel pileCarteLibere
+*/
+void pileCarteDetruit(PileCarte* & pileCarte);
 
 
 /**	@brief sort une carte au hasard de pileDesCartes
