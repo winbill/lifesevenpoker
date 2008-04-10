@@ -118,6 +118,10 @@ void setJoueurTable (Joueur* & joueur, Table & table);
 */
 int placeVide (const Table & table);
 
+/**	@brief initialise la position du dealer au premier joueur
+*/
+void setDealerTable(Table & table);
+
 /**	@brief change la position du dealer (decale de un)
 */
 void changeDealerTable(Table & table);

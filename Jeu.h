@@ -6,6 +6,8 @@
 //#include "AfficheDynamique.h"
 
 
+
+
 /**	@brief initialise le jeu
 	@note donne 1000c a chacun des joueurs, affecte les IA, les places, le dealer....
 */
@@ -31,3 +33,16 @@ void lanceJeu(Table & table);
 */
 void donneVictoireJeu(Table & table);
 
+/**	@brief fonction utilise lorsque le joueur change de status
+	@note par exemple s'il relance de n c.
+*/
+void actionJoueurJeu(Table & table,Joueur & joueur,Statut statut,int n);
+
+/**	@brief interroge les joueurs tours à tours
+
+	s'arrete lorsque les mises sont egales
+*/
+void lanceTourJeu(Table & table);
+
+
+#endif
