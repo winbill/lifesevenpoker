@@ -11,6 +11,7 @@
 	@param nMaxJoueur nombre de joueur maximale (pour le reseau apres)
 	@param carteDecouverte represente ladresse de la "main" qui represente les cartes visible par tous
 	@param pileCarte represente la pile de carte (celle dou on distribue les cartes)
+	@param positionDealer indice du dealer dans le tableau joueur[10]
 	@note la position du joueur dans le tableau indique sa position a la table
 */
 struct Table
@@ -20,6 +21,7 @@ struct Table
 	int nMaxJoueur;
 	MainCarte* carteDecouverte;
 	PileCarte* pileCarte;
+	int positionDealer;
 };
 
 
