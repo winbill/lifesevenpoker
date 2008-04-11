@@ -1,3 +1,14 @@
+/**
+	@brief Fichier H pour Joeur
+	
+	
+	gere la structure joueur et leur parametre
+     
+	@author Tristan James
+	@file Joueur.h
+	@version 1.1
+	@date 2008/04/11
+ */
 #ifndef Joueur_H
 #define Joueur_H
 #include "IArtificelle.h"

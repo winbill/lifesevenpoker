@@ -1,3 +1,15 @@
+/**
+	@brief Fichier H qui gere le jeu
+	
+	
+	fichier principal qui sert a initialiser une partie et la terminer
+     
+	@author James
+	@file Jeu.h
+	@version 1.1
+	@date 2008/04/11
+ */
+ 
 #ifndef Jeu_H
 #define Jeu_H
 #include "AfficheTxt.h"

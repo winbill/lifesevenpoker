@@ -1,3 +1,14 @@
+/**
+	@brief Fichier H pour les controle
+	
+	
+	gere l'interaction du joueur avec le programme
+     
+	@author James
+	@file Controles.h
+	@version 1.1
+	@date 2008/04/11
+ */
 #ifndef Controles_H
 #define Controles_H
 
