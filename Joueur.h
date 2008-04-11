@@ -44,6 +44,7 @@ struct Joueur
 	int argent;
 	char pseudo[15];
 	int idJoueur;
+	int mise;
 	Statut statut;
 	MainCarte* mainJoueur;
 };
@@ -123,6 +124,27 @@ void setIdJoueur (Joueur & joueur,int n);
 	@return idJoueur
 */
 int getIdJoueur (const Joueur & joueur);
+
+/** 	@brief entre la mise d'un joueur
+	@param [in] n valeur de la mise
+	@param [in,out] joueur
+*/
+void setMiseJoueur (Joueur & joueur,int n);
+
+
+/**	@brief renvoi la mise qu'a effectuer un joueur
+	@param [in,out] joueur
+	@return mise du joueur
+*/
+int getMiseJoueur (const Joueur & joueur);
+
+/** 	@brief entre la mise d'un joueur
+	@param [in] n valeur de la mise ajouter a la valeur de ca mise courante
+	@param [in,out] joueur
+	@return ca nouvelle mise (mise davant + n);
+	@note sorte de get et set sur la mise du joueur
+*/
+int ajoutMiseJoueur(Joueur & joueur,int n);
 
 
 /**	@brief renvoi l'adresse de mainJoueur

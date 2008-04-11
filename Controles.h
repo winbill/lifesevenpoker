@@ -14,6 +14,7 @@
 
 
 /**	@brief demande au joueur ce qu il veut faire
+	@param [in, out] joueur un joueur
 	@note change eventuellement son statut
 	@return peut retourner le montant de ca relance
 */
