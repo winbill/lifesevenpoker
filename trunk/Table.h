@@ -160,7 +160,7 @@ int getNJoueurTable (const Table & table);
 */
 int placeVide (const Table & table);
 
-/**	@brief change la position du dealer (decale de un)
+/**	@brief change la position du dealer (decale de un en verifiant quil y a un joueur)
 	@param [in, out] table une table
 */
 void changeDealerTable(Table & table);
