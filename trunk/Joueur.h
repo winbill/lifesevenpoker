@@ -14,21 +14,24 @@
 #include "IArtificelle.h"
 #include "MainCarte.h"
 
-
+/** 	@brief Statut du joueur
+*/
 enum Statut
 {
-	SIT_OUT=0,
-	SIT= 1,
-	CALL=2
-	CHECK= 3,
-	RAISE= 4,
-	FOLD= 5,
-	ALL_IN= 6,
-	FIN_STATUT
+	SIT_OUT=0, 	/**< Joueur pas assis */
+	SIT= 1,		/**< Joueur assis */
+	CALL=2,		/**< Joueur suis */
+	CHECK= 3,	/**< Joueur check */
+	RAISE= 4,	/**< Joueur relance */
+	FOLD= 5,		/**< Joueur se couche */
+	ALL_IN= 6,	/**< Joueur fait tapis */
+	FIN_STATUT	/**< Joueur erreur*/
 };
 
 
-/**	@brief structure representant le joueur de poker assis à la table
+/**	
+	@struct Joueur
+	@brief structure representant le joueur de poker assis à la table
 	@param argent, réel représentant la somme que possède le joueur en main
 	@param pseudo, chaine de caractère représentant le pseudo du joueur
 	@param idJoueur identifiant joueur unique
