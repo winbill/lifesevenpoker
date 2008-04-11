@@ -50,11 +50,13 @@ struct Joueur
 };
 
 /**	@brief initialise un joueur
+	@param [in,out] joueur
 */
 void initJoueur(Joueur & joueur)
 
 
 /**	@brief creer un joueur
+	@param [in,out] joueur
 */
 Joueur* creerJoueur (Joureur & joueur);
 
@@ -62,6 +64,7 @@ Joueur* creerJoueur (Joureur & joueur);
 
 /**	@brief initialise un joueur
 	@param pseudo : nom du joueur 15 caractères max
+	@param [in,out] joueur
 */
 void initJoueur (Joueur & joueur,char[15] pseudo);
 
@@ -73,12 +76,15 @@ void initJoueur (Joueur & joueur,char[15] pseudo);
 Joueur* creeJoueur();
 
 /** 	@brief change le statut du joueur en statut
+	@param [in,out] joueur
+	@param [in] statut
 	@note appel la fonction initJoueur
 */
 void setStatutJoueur (Joueur & joueur, const Statut statut);
 
 
 /** 	@brief change le statut du joueur en statut
+	@param [in,out] joueur
 	@note appel la fonction initJoueur
 	@return renvoie le statut actuel du joueur
 */
@@ -86,35 +92,40 @@ Statut getStatutJoueur (Joueur & joueur);
 
 
 /**	@brief libere les allocations internes a joueur
+	@param [in,out] joueur
 */
 void joueurLibere(Joueur & joueur);
 
 
 /**	@brief libere plus detruit la structure
-	@param joueur adresse d'un joueur
+	@param [in, out] joueur adresse d'un joueur
 	@note appel la fonction joueurLibere
 */
 void joueurDetruit(Joueur* & joueur);
 
 
 /**	@brief réinitialise la main du joueur
+	@param [in,out] joueur
 	@param mainJoueur pointeur sur une MainCarte
 */
 void reinitialiseMainJoueur (Joueur & joueur);
 
 
 /** 	@brief donne un identifiant unique et différent a chaque joueur
+	@param [in,out] joueur
 */
 void setIdJoueur (Joueur & joueur);
 
 
 /**	@brief renvoi l'identifiant du joueur
+	@param [in,out] joueur
 	@return idJoueur
 */
 int getIdJoueur (const Joueur & joueur);
 
 
-/**     @brief renvoi l'adresse de mainJoueur
+/**	@brief renvoi l'adresse de mainJoueur
+	@param [in] joueur
 */
 MainCarte* getMainJoueur (const Joueur & joueur);
 
