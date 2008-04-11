@@ -91,29 +91,23 @@ void tableDetruit(Table* & table)
 }
 
 
-void ajoutJoueurTable (Table & table,const Joueur* joueur)
+void ajoutJoueurTable (Table & table,Joueur* joueur)
 {
+	assert(getNJoueurTable(table)  < getMaxJoueurTable);
 	int tmp = getNJoueur(table);
 	table.joueur[tmp] = joueur;
 	setNJoueur(table,tmp+1);
+	setIdJoueur(joueur,tmp+1);
 }
 
 
-void supprimeJoueurTable (Table & table,const Joueur* joueur)
+void supprimeJoueurTable (Table & table,Joueur* joueur)
 {
 	int tmp = joueurTrouver (table, joueur);
 	assert (tmp<10);
 	setNJoueur(table,getNJoueur(table)-1);
 	table.joueur[tmp]=NULL;
-}
-
-
-int joueurTrouver (Table & table,const Joueur* joueur)
-{
-	int i;
-	for(i=0;i<=getNJoueur(table) || table.joueur == joueur;i++);
-	if(i==10) {printf("erreur le joueur n'a pas été trouvé (Table.C)");assert(0);}
-	return i;
+	setIdJoueur(joueur,-1);
 }
 
 
@@ -163,7 +157,12 @@ int placeVide (const Table & table)
 void changeDealerTable(Table & table)
 {
 	table.positionDealer++;
-	if(positionDealer == getNJoueurTable(table))
+	while(table.joueur[positionDealer] == 0)
+	{
+		table.positionDealer++;
+	}
+
+	if(positionDealer >= getNJoueurTable(table))
 		table.positionDealer =0;
 }
 

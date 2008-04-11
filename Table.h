@@ -97,26 +97,18 @@ void tableDetruit(Table* & table);
 
 /**	@brief Ajoute un joueur a la table
 	@param [in, out] table une table
-	@param [in] joueur un joueur
+	@param [in,out] joueur un joueur  , on met dans joueur.idJoueur l'indice qu'il a dans le tableau de joueurs
 	@note change table.nJoueur en incrementant de 1
 */
-void ajoutJoueurTable (Table & table,const Joueur* joueur);
+void ajoutJoueurTable (Table & table, Joueur* joueur);
 
 
 /**	@brief supprime le joueur du tableau en effectuant une recherche
 	le joueur existe encore apres
 	@param [in, out] table une table
-	@param [in] joueur pointeur vers joueur
+	@param [in,out] joueur pointeur vers joueur,on met dans joueur.idJoueur -1
 */
-void supprimeJoueurTable (Table & table,const Joueur* joueur);
-
-
-/**	@brief renvoi le rang dans le tableau du Joueur
-	@param [in] joueur pointeur vers joueur
-	@param [in, out] table une table
-	@warning affiche un message derreur sur la sortie standart si aucun joueur correspondant n'a ete trouve
-*/
-int joueurTrouver (Table & table,const Joueur* joueur);
+void supprimeJoueurTable (Table & table, Joueur* joueur);
 
 
 /**	@brief etablit un nombre de joueurs maximal (pour le reseau)
@@ -157,6 +149,7 @@ int getNJoueurTable (const Table & table);
 /**	@brief cherche une place vide dans le tableau de joueur
 	@param [in] table une table
 	@return renvoi l'indice de la premiere place libre, -1 sinon
+	@note cette fonction sera utile si l'on souhaite ajouter un joueur a la table pendant une partie
 */
 int placeVide (const Table & table);
 

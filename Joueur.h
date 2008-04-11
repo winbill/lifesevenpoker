@@ -34,8 +34,8 @@ enum Statut
 	@brief structure representant le joueur de poker assis à la table
 	@param argent, réel représentant la somme que possède le joueur en main
 	@param pseudo, chaine de caractère représentant le pseudo du joueur
-	@param idJoueur identifiant joueur unique
-	@param noPlace placement du joueur sur la table de 1 a 10
+	@param idJoueur identifiant joueur unique, correspond a sa place a la table, et a son indice dans le tableau de joueur de la table ou il est, egale a -1 s'il nest pas associe a une table (dans ce cas il peut ne pas etre unique)
+	@param noPlace placement du joueur sur la table de 0 a 10
 	@param statut indique le statut actuel du joueur sur la table
 	@param mainCarte pointeur pointant sur la main du joueur
 */
@@ -44,13 +44,13 @@ struct Joueur
 	int argent;
 	char pseudo[15];
 	int idJoueur;
-	int noPlace;
 	Statut statut;
 	MainCarte* mainJoueur;
 };
 
 /**	@brief initialise un joueur
 	@param [in,out] joueur
+	@note on initialise idJoueur avec -1
 */
 void initJoueur(Joueur & joueur)
 
@@ -111,13 +111,14 @@ void joueurDetruit(Joueur* & joueur);
 void reinitialiseMainJoueur (Joueur & joueur);
 
 
-/** 	@brief donne un identifiant unique et différent a chaque joueur
+/** 	@brief donne un id unique et différent a chaque joueur
+	@param [in] n entier
 	@param [in,out] joueur
 */
-void setIdJoueur (Joueur & joueur);
+void setIdJoueur (Joueur & joueur,int n);
 
 
-/**	@brief renvoi l'identifiant du joueur
+/**	@brief renvoi l'id du joueur
 	@param [in,out] joueur
 	@return idJoueur
 */
