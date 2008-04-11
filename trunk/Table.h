@@ -1,3 +1,28 @@
+/**
+	@brief Fichier H pour Table
+	
+	
+	gere la table du jeu
+     
+	@author Tristan James
+	@file Table.h
+	@version 1.1
+	@date 2008/04/11
+	@note exemple d'utilisation:
+	@code
+		//cree une table dans la pile
+		Table table1
+		initTable(table1,5,*pileCarte1);
+	
+		//ou pour cree une table a partir du tas et l'initialiser
+		Table* table2;
+		table2 = creeTable();
+		
+		
+	
+	@endcode
+ */
+ 
 #ifndef Table_H
 #define Table_H
 #include "MainCarte.h"
@@ -11,7 +36,7 @@
 	@param nMaxJoueur nombre de joueur maximale (pour le reseau apres)
 	@param carteDecouverte represente ladresse de la "main" qui represente les cartes visible par tous
 	@param pileCarte represente la pile de carte (celle dou on distribue les cartes)
-	@param positionDealer indice du dealer dans le tableau joueur[10]
+	@param positionDealer la position du dealer au départ est a 0, il correspond a l'indice dans le tableau de joueurs du dealer
 	@note la position du joueur dans le tableau indique sa position a la table
 */
 struct Table
@@ -21,27 +46,27 @@ struct Table
 	int nMaxJoueur;
 	MainCarte* carteDecouverte;
 	PileCarte* pileCarte;
-	int positionDealer;
+	int positionDealer
 };
 
 
 
 /**	@brief initialise la variable table
 */
-void initTable (Table& table);
+void initTable (Table & table);
 
 
 /**	@brief initialise la variable table
 	@param nJoueur nombre de joueur souhaite et nombre de joueur maximal
 */
-void initTable (Table& table,int nJoueur);
+void initTable (Table & table,int nJoueur);
 
 
 /**	@brief initialise lune variable table
 	@param nJoueur nombre de joueur souhaite et nombre de joueur maximal
 	@param pileCarte adresse de la pile de carte
 */
-void initTable (Table& table,int nJoueur,PileCarte* & pileCarte);
+void initTable (Table & table,int nJoueur,PileCarte* & pileCarte);
 
 
 /**	@brief cree dans le tas une variable table puis l'initialise
@@ -53,7 +78,7 @@ Table* creeTable();
 
 /**	@brief libere les allocations internes a table
 */
-void tableLibere(Table& table);
+void tableLibere(Table & table);
 
 
 /**	@brief libere plus detruit la structure
@@ -64,22 +89,23 @@ void tableDetruit(Table* & table);
 
 
 /**	@brief Ajoute un joueur a la table
+	@note change table.nJoueur en incrementant de 1
 */
-void ajoutJoueurTable (Table & table, Joueur* joueur);
+void ajoutJoueurTable (Table & table,const Joueur* joueur);
 
 
 /**	@brief supprime le joueur du tableau en effectuant une recherche
 	le joueur existe encore apres
 	@param joueur pointeur vers joueur
 */
-void supprimeJoueurTable (Table & table,Joueur* joueur);
+void supprimeJoueurTable (Table & table,const Joueur* joueur);
 
 
 /**	@brief renvoi le rang dans le tableau du Joueur
 	@param joueur pointeur vers joueur
 	@warning affiche un message derreur sur la sortie standart si aucun joueur correspondant n'a ete trouve
 */
-int joueurTrouver (Table & table, Joueur* joueur);
+int joueurTrouver (Table & table,const Joueur* joueur);
 
 
 /**	@brief etablit un nombre de joueurs maximal (pour le reseau)
@@ -109,22 +135,15 @@ void setNJoueurTable (Table & table, int n);
 */
 int getNJoueurTable (const Table & table);
 
-/**	@brief etablit un numero de place à un joueur
-	@note appel la fonction placeVide
-*/
-void setJoueurTable (Joueur* & joueur, Table & table);
 
-/**     @brief renvoi le numero de la premiere place libre, 0 sinon
+/**     @brief renvoi le numero de la premiere place libre, -1 sinon
 */
 int placeVide (const Table & table);
 
-/**	@brief initialise la position du dealer au premier joueur
-*/
-void setDealerTable(Table & table);
-
-/**	@brief change la position du dealer (decale de un)
+/**     @brief change la position du dealer (decale de un)
 */
 void changeDealerTable(Table & table);
+
 
 
 

@@ -1,7 +1,25 @@
-#include "Table.h"
+/**
+	@brief Fichier C pour Table
+	
+	
+	gere la table du jeu
+     
+	@author Tristan James
+	@file Table.C
+	@version 1.1
+	@date 2008/04/11
+ */
+ 
+
+#ifndef Table_H
+#define Table_H
+#include "MainCarte.h"
+#include "PileCarte.h"
+#include "Joueur.h"
 
 
 /*
+
 struct Table
 {
 	int nJoueur;
@@ -13,7 +31,7 @@ struct Table
 */
 
 
-void initTable (Table& table)
+void initTable (Table & table)
 {
 	table.nJoueur = 0;
 	table.joueur = new Joueur* [10];
@@ -21,10 +39,11 @@ void initTable (Table& table)
 	memset(table.joueur,0,sizeof(*table.joueur));
 	carteDecouverte=new MainCarte;
 	table.pileCarte = NULL;
-	
+
 }
 
-void initTable (Table& table,int nJoueur)
+
+void initTable (Table & table,int nJoueur)
 {
 	table.nJoueur = nJoueur;
 	table.joueur = new Joueur* [10];
@@ -34,7 +53,8 @@ void initTable (Table& table,int nJoueur)
 	table.pileCarte = NULL;
 }
 
-void initTable (Table& table,int nJoueur,PileCarte* & pileCarte)
+
+void initTable (Table & table,int nJoueur,PileCarte* & pileCarte)
 {
 	table.nJoueur = nJoueur;
 	table.joueur = new Joueur* [10];
@@ -44,14 +64,16 @@ void initTable (Table& table,int nJoueur,PileCarte* & pileCarte)
 	setTablePileCarte(table,pileCarte);
 }
 
+
 Table* creeTable()
 {
 	Table* t = new Table;
 	initTable(*table);
-	return table;	
+	return table;
 }
 
-void tableLibere(Table& table)
+
+void tableLibere(Table & table)
 {
 	delete[]	table.joueur;
 	table.joueur = NULL;
@@ -65,17 +87,19 @@ void tableDetruit(Table* & table)
 {
 	tableLibere(*table);
 	delete table;
-	table = NULL;	
+	table = NULL;
 }
 
-void ajoutJoueurTable (Table & table, Joueur*  joueur)
+
+void ajoutJoueurTable (Table & table,const Joueur* joueur)
 {
 	int tmp = getNJoueur(table);
 	table.joueur[tmp] = joueur;
 	setNJoueur(table,tmp+1);
 }
 
-void supprimeJoueurTable (Table & table,Joueur* joueur)
+
+void supprimeJoueurTable (Table & table,const Joueur* joueur)
 {
 	int tmp = joueurTrouver (table, joueur);
 	assert (tmp<10);
@@ -83,7 +107,8 @@ void supprimeJoueurTable (Table & table,Joueur* joueur)
 	table.joueur[tmp]=NULL;
 }
 
-int joueurTrouver (Table & table,  Joueur* joueur)
+
+int joueurTrouver (Table & table,const Joueur* joueur)
 {
 	int i;
 	for(i=0;i<=getNJoueur(table) || table.joueur == joueur;i++);
@@ -91,16 +116,19 @@ int joueurTrouver (Table & table,  Joueur* joueur)
 	return i;
 }
 
+
 void setMaxJoueurTable (Table & table, int n)
 {
 	assert(n<=10&&n>0&&n>table.nJoueur);
 	table.nMaxJoueur = n;
 }
 
+
 int getMaxJoueurTable (const Table & table)
 {
 	return table.nMaxJoueur;
 }
+
 
 PileCarte* getTablePileCarteTable(const Table & table)
 {
@@ -113,7 +141,31 @@ void setNJoueurTable (Table & table, int n)
 	table.nJoueur=n;
 }
 
+
 int getNJoueurTable (const Table & table)
 {
 	return table.nJoueur;
 }
+
+int placeVide (const Table & table)
+{
+    int i=0;
+    for(i=0;i<table.nJoueur;i++)
+    {
+        if(table.joueur[i] != 0)
+            return i;
+    }
+    return -1;
+
+}
+
+
+void changeDealerTable(Table & table)
+{
+	table.positionDealer++;
+	if(positionDealer == getNJoueurTable(table))
+		table.positionDealer =0;
+}
+
+
+#endif

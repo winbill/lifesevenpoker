@@ -1,3 +1,14 @@
+/**
+	@brief Fichier H pour la pile de Carte
+	
+	
+	gere la pile de carte d'ou sont distribuees les cartes
+     
+	@author Tristan James
+	@file PileCarte.h
+	@version 1.1
+	@date 2008/04/11
+ */
 #ifndef Pilecarte_H
 #define Pilecarte_H
 #include "Carte.h"
