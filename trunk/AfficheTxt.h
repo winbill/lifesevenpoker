@@ -23,31 +23,36 @@
 	*/
 	
 /**	@brief affiche les informations personnel dun joueur
+	@param [in] joueur
 	@note argent, pseudo,idJoueur,noPlace,status,cartes, 
 */
 void afficheTInfosPersoJoueur(const Joueur & joueur);
 
 
 /**	@brief affiche les informations publique dun joueurs
+	@param [in] joueur
 	@note argent, pseudo,idJoueur,noPlace,status 
 	@note informations non personnel
 */
 void afficheTInfosPubliqueJoueur(const Joueur & joueur);
 
 /**	@brief affiche la main dun joueur
+	@param [in] joueur
 */
-void afficheTMainJoueur(const Joueur & joueu
+void afficheTMainJoueur(const Joueur & joueur);
 
 /**	@brief affiche successivement les cartes d'une main
+	@param [in] mainCarte
 */
 void afficheTMainCarte(const MainCarte & mainCarte);
 
 /**	@brief affiche une carte
+	@param [in] carte
 */
 void afficheTCarte(const Carte & carte);
 
 /**	@brief affiche un texte
-	@param char chaine de caractere
+	@param [in] char chaine de caractere
 */
 void afficheTText(const char & tab[]);
 
