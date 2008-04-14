@@ -1,3 +1,13 @@
+/**	
+	@brief Fichier H pour les mains des joueurs.
+	
+	Gere les donnees de type MainCarte.
+	
+	@author Benjamin, Olivier
+	@file MainCarte.h
+	@version 1.0
+	@date 2008/04/14
+*/
 #ifndef _MainCarte
 #define _MainCarte
 #include "Carte.h"

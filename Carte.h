@@ -1,3 +1,14 @@
+/**
+	@brief Fichier H pour les cartes.
+	
+	Gere les donnees de type Carte.
+	
+	@author Benjamin, Olivier
+	@file Carte.h
+	@version 1.2
+	@date 2008/04/14
+*/
+	
 #ifndef _Carte
 #define _Carte
 
