@@ -27,6 +27,7 @@ struct Table
 	int nMaxJoueur;
 	MainCarte* carteDecouverte;
 	PileCarte* pileCarte;
+	int positionDealer
 };
 */
 
@@ -39,6 +40,7 @@ void initTable (Table & table)
 	memset(table.joueur,0,sizeof(*table.joueur));
 	carteDecouverte=new MainCarte;
 	table.pileCarte = NULL;
+	table.positionDealer = 0;
 
 }
 
@@ -51,6 +53,7 @@ void initTable (Table & table,int nJoueur)
 	carteDecouverte=new MainCarte;
 	memset(table.joueur,0,sizeof(*table.joueur));
 	table.pileCarte = NULL;
+	table.positionDealer = 0;
 }
 
 
@@ -62,6 +65,7 @@ void initTable (Table & table,int nJoueur,PileCarte* & pileCarte)
 	carteDecouverte=new MainCarte;
 	memset(table.joueur,0,sizeof(*table.joueur));
 	setTablePileCarte(table,pileCarte);
+	table.positionDealer = 0;
 }
 
 
