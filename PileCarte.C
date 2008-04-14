@@ -69,3 +69,12 @@ Carte* tirerCarte(PileCarte& pileCarte)
 	//ou carte ??
 	
 }
+
+
+
+
+int hasard(x,y)
+{
+	
+	return ;
+}
