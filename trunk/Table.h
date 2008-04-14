@@ -48,7 +48,7 @@ struct Table
 	int nMaxJoueur;
 	MainCarte* carteDecouverte;
 	PileCarte* pileCarte;
-	int positionDealer
+	int positionDealer;
 };
 
 
