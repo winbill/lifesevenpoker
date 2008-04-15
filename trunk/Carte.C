@@ -30,7 +30,7 @@ int compareCarte(const Carte* & c1, const Carte* & c2)
 {
 	Rang rang1=getCarteRang(c1);
 	Rang rang2=getCarteRang(c2);
-	
+
 	if(rang1<rang2)
 	{
 		return 1;
@@ -45,7 +45,7 @@ int compareCarte(const Carte* & c1, const Carte* & c2)
 	}
 }
 
-void testamentCarte(Carte* &c)
+void carteDetruit(Carte* & c)
 {
 	delete c;
 }

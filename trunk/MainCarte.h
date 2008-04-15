@@ -1,8 +1,8 @@
-/**	
+/**
 	@brief Fichier H pour les mains des joueurs.
-	
+
 	Gere les donnees de type MainCarte.
-	
+
 	@author Benjamin, Olivier
 	@file MainCarte.h
 	@version 1.0
@@ -50,7 +50,7 @@ int getMainCarteNbCarte(const MainCarte & m);
 
 /**	@brief Procedure modifiant le tableau de pointeur sur Carte de la structure MainCarte.
 	@param Prend en entree une variable de type MainCarte et une variable de type tableau de pointeur sur Carte.
-	@return La structure de type MainCarte a son champ tabMain remplace par l'adresse du tableau de pointeur sur Carte. 
+	@return La structure de type MainCarte a son champ tabMain remplace par l'adresse du tableau de pointeur sur Carte.
 */
 void setMainCarteTabMain(MainCarte & m, const Carte* & tabMain[]);
 
@@ -66,32 +66,40 @@ void setMainCarteNbCarte(MainCarte & m, const int & nCarte);
 */
 void MainCarte setMainCarte(MainCarte & m, const Carte* & tabMain[], const int & nCarte);
 
-
+/** @brief Procedure ajoutant une carte dans la main.
+    @param Prend en entree une variable de type MainCarte et une variable de type Carte.
+    @return Ajoute une valeur au tableau du champ de MainCarte tabMain.
+*/
 void ajouteCarte(MainCarte & m, const Carte & c);
-//pré: m et c sont initialisées
-//post: c est une carte de m
 
+/** @brief Procedure d'insertion d'une carte dans une main.
+    @param Prend en entree une variable de type Carte et une variable de type MainCarte.
+    @return La carte est inseree correctement dans la main.
+*/
+void insereCarte(MainCarte & m, const Carte & c, int position);
+
+/** @brief Fonction de comparaison de deux variables de type MainCarte.
+    @param Prend en entree deux variables de type MainCarte.
+    @return Renvoie la meilleure main.
+*/
 MainCarte compareMain(const MainCarte & m1, const MainCarte & m2);
-//pré: m1 et m2 sont initialisées et contiennent exactement 5 cartes(m1.nb_carte ==5 && m2.nb_carte==5)
-//post: renvoie la meilleur main. renvoie les 2 mains dans le cas où les 2 mains ont même valeur
 
+/** @brief Procedure d'affectation de mains.
+    @param Prend en entree deux variables de type MainCarte.
+    @return Affecte la deuxieme main a la premiere.
+*/
+void affectation(MainCarte & m1, const MainCarte & m2);
+
+/** @brief Procedure de tri de main.
+    @param Prend en entree une variable de type MainCarte et une option de tri.
+    @return Trie la main selon l'option donnee.
+*/
+void tri(MainCarte & m, int option);
+
+/** @brief Procedure qui prepare une variable de type MainCarte a la destruction.
+    @param Prend en entree une variable de type MainCarte.
+    @return La variable est prete a etre detruite.
+*/
 void testament(MainCarte & m);
-//pré: m est initialisée
-//post: m est supprimée
-
-//procédure d'ajout et d'insertion d'un élément
-void ajouteElementTableauDynamique(TableauDynamique & t,const int & e);
-void insereElementTableauDynamique(TableauDynamique & t,const int & e,int i);
-
-
-
-//procédure d'affectation
-void affectation(TableauDynamique & t1,const TableauDynamique & t2);
-
-
-//procédure de tri
-void tri(TableauDynamique & t,int(*pcomparaison)(const int &,const int &));
-
-
 
 #endif
