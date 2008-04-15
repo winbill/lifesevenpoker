@@ -31,46 +31,29 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="AfficheTxt.h">
-			<Option target="Debug" />
-		</Unit>
+		<Unit filename="AfficheTxt.h" />
 		<Unit filename="Carte.C">
 			<Option compilerVar="CC" />
-			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Carte.h">
-			<Option target="Debug" />
+		<Unit filename="Carte.h" />
+		<Unit filename="Controles.h" />
+		<Unit filename="Jeu.C">
+			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Controles.h">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="Jeu.h">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="Joueur.h">
-			<Option target="Debug" />
-		</Unit>
+		<Unit filename="Jeu.h" />
+		<Unit filename="Joueur.h" />
 		<Unit filename="MainCarte.C">
 			<Option compilerVar="CC" />
-			<Option target="Debug" />
 		</Unit>
-		<Unit filename="MainCarte.h">
-			<Option target="Debug" />
-		</Unit>
+		<Unit filename="MainCarte.h" />
 		<Unit filename="PileCarte.C">
 			<Option compilerVar="CC" />
-			<Option target="Debug" />
 		</Unit>
-		<Unit filename="PileCarte.h">
-			<Option target="Debug" />
-		</Unit>
+		<Unit filename="PileCarte.h" />
 		<Unit filename="Table.C">
 			<Option compilerVar="CC" />
-			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Table.h">
-			<Option target="Debug" />
-		</Unit>
+		<Unit filename="Table.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
