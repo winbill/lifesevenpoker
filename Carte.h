@@ -1,14 +1,14 @@
 /**
 	@brief Fichier H pour les cartes.
-	
+
 	Gere les donnees de type Carte.
-	
+
 	@author Benjamin, Olivier
 	@file Carte.h
 	@version 1.2
 	@date 2008/04/14
 */
-	
+
 #ifndef _Carte
 #define _Carte
 
@@ -32,7 +32,7 @@ enum Couleur
 enum Rang
 {
 	INIT_RANG = 0,
-	DEUX = 2, 
+	DEUX = 2,
 	TROIS = 3,
 	QUATRE = 4,
 	CINQ = 5,
@@ -41,13 +41,13 @@ enum Rang
 	HUIT = 8,
 	NEUF = 9,
 	DIX = 10,
-	VALET = 11, 
+	VALET = 11,
 	DAME = 12,
 	ROI = 13,
 	AS = 14,
 	FIN_RANG
 };
-	
+
 /**	@brief Structure representant une carte du jeu.
 	@param Le champ couleur prend ses valeurs dans l'enumeration Couleur et represente la couleur de la carte.
 	@param Le champ rang prend ses valeurs dans l'enumeration Rang et represente le rang de la carte, c'est a dire sa valeur.
@@ -105,7 +105,7 @@ int compareCarte(const Carte & c1, const Carte & c2);
 	@param Prend en entree une variable de type pointeur sur Carte.
 	@return Desalloue la zone memoire pointeée par le pointeur sur Carte et detruit ce pointeur.
 */
-void testamentCarte(Carte* &c);
+void carteDetruit(Carte* & c);
 
 #endif
 
