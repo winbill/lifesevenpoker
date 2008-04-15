@@ -1,9 +1,9 @@
 /**
 	@brief Fichier H pour Table
-	
-	
+
+
 	gere la table du jeu
-     
+
 	@author Tristan James
 	@file Table.h
 	@version 1.1
@@ -13,16 +13,16 @@
 		//cree une table dans la pile
 		Table table1
 		initTable(table1,5,*pileCarte1);
-	
+
 		//ou pour cree une table a partir du tas et l'initialiser
 		Table* table2;
 		table2 = creeTable();
-		
-		
-	
+
+
+
 	@endcode
  */
- 
+
 #ifndef Table_H
 #define Table_H
 #include "MainCarte.h"
@@ -55,7 +55,7 @@ struct Table
 
 
 
-/**	
+/**
 	@brief initialise la variable table
 	@param [in, out] table une table
 */
@@ -171,7 +171,7 @@ Joueur* getIemeJoueur(const Table & table,int n);
 	@param [in] table une table
 	@return pointeur sur MainCarte
 */
-MainCarte*  (const Table & table);
+MainCarte* getMainCarteTable(const Table & table);
 
 
 /**	@brief etablit ula petite blind

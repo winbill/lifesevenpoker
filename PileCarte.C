@@ -24,7 +24,7 @@ void initPileCarte (PileCarte & pileCarte)
 			k++;
 		}
 	}
-	
+
 }
 
 PileCarte* creePileCarte()
@@ -35,7 +35,7 @@ PileCarte* creePileCarte()
 }
 
 void pileCarteLibere (PileCarte & pileCarte)
-	delete[]	pileCarte.ensembleCarte;
+	delete[] pileCarte.ensembleCarte;
 	pileCarte.ensembleCarte = NULL;
 	pileCarte.taille = 0;
 
@@ -54,7 +54,7 @@ Carte* tirerCarte(PileCarte& pileCarte)
 	Carte* carte;
 	carte = pileCarte.ensembleCarte[x];
 	//ou carte  ?????
-	
+
 	//on permute pour que la carte soit a la fin (apres le rang taille -2 du tableau)
 	if(x!=pileCarte.taille-1)
 	{
@@ -63,23 +63,23 @@ Carte* tirerCarte(PileCarte& pileCarte)
 	}
 	//on enleve une carte a la taille, mais la carte est toujours présente dans le tableau
 	pileCarte.taille --;
-	
-	
+
+
 	return carte;
 	//ou carte ??
-	
+
 }
 
 
 void nouvellePileCarte(PileCarte & pileCarte)
 {
-	pileCarte.taille = 52;	
+	pileCarte.taille = 52;
 }
 
 
 
 int hasard(x,y)
 {
-	
+
 	return ;
 }
