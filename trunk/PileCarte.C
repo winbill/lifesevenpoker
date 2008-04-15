@@ -71,6 +71,11 @@ Carte* tirerCarte(PileCarte& pileCarte)
 }
 
 
+void nouvellePileCarte(PileCarte & pileCarte)
+{
+	pileCarte.taille = 52;	
+}
+
 
 
 int hasard(x,y)

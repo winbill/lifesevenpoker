@@ -53,7 +53,20 @@ void distribuer1CarteDecouverteJeu(Table & table,int n)
 	@note change la position du dealer
 	@note mise de la petite et grosse blind
 */
-void lanceJeu(Table & table);
+void lanceJeu(Table & table)
+{
+	int i;
+	//nouvelle pile de carte pleine
+	nouvellePileCarte(table);
+	//remise a zero des mains des autres joueurs
+	for(i=0;i<getNJoueurTable(table);i++);
+	{
+		initialisationMain(*getMainJoueur(*getIemeJoueur(table,i)))
+	}
+	//remise des cartes decouvertes a 0
+	initialisationMain(*getMainCarteTable(table));
+	
+}
 
 /**	@brief donne la victoire a un (ou plus) joueur(s)
 	@param [in, out] table une table
