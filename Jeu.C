@@ -1,15 +1,15 @@
 /**
 	@brief Fichier C qui gere le jeu
-	
-	
+
+
 	fichier principal qui sert a initialiser une partie et la terminer
-     
+
 	@author James
 	@file Jeu.C
 	@version 1.1
 	@date 2008/04/16
  */
- 
+
 
 
 
@@ -21,21 +21,21 @@ void initialiseJeu(Table & table,int argent)
 	{
 		setArgentJoueur(*getIemeJoueur(table,i),argent);
 	}
-	
-//etc... atand IArtificielle.h	
-	
+
+//etc... atand IArtificielle.h
+
 }
 
 
 void distribuer2CartesJoueursJeu(Table & table)
-{	
+{
 	int i;
 	for(i=0;i<getNJoueurTable(table);i++);
 	{
 		ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),*tirerCarte(*getTablePileCarteTable(table)));
-		ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),*tirerCarte(*getTablePileCarteTable(table)));	
+		ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),*tirerCarte(*getTablePileCarteTable(table)));
 	}
-	
+
 }
 
 
@@ -58,7 +58,7 @@ void lanceJeu(Table & table)
 	initialisationMain(*getMainCarteTable(table));
 	//change la position du dealer
 	changeDealerTable(table);
-	
+
 }
 
 /**	@brief donne la victoire a un (ou plus) joueur(s)
@@ -67,8 +67,21 @@ void lanceJeu(Table & table)
 */
 void donneVictoireJeu(Table & table)
 {
-	
-	
+
+
+}
+
+/** @brief fonction qui attent une action d'une personne humaine
+	@param [in] table une table qui normellement n'est pas modifiee
+	@param [in, out] Joueur un joueur
+	@return entier de notification : relance -> 1, reste dans leu sans relance -> 0, quit ->-1
+	@note   cette fonction appel actionJoueurJeu(...) pour les
+            modifications du joueur
+*/
+int atendActionJoueurHumain(const Table & table,Joueur & joueur)
+{
+
+
 }
 
 /**	@brief fonction utilise lorsque le joueur change de status
@@ -79,9 +92,9 @@ void donneVictoireJeu(Table & table)
 */
 void actionJoueurJeu(Table & table,Joueur & joueur,Statut statut,int n)
 {
-	
-	
-	
+
+
+
 }
 
 /**	@brief interroge les joueurs tours à tours
@@ -91,8 +104,9 @@ void actionJoueurJeu(Table & table,Joueur & joueur,Statut statut,int n)
 */
 void lanceTourJeu(Table & table)
 {
-	
-	
-	
-	
+
+
+
+
 }
+

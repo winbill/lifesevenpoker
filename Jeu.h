@@ -1,15 +1,15 @@
 /**
 	@brief Fichier H qui gere le jeu
-	
-	
+
+
 	fichier principal qui sert a initialiser une partie et la terminer
-     
+
 	@author James
 	@file Jeu.h
 	@version 1.1
 	@date 2008/04/11
  */
- 
+
 #ifndef Jeu_H
 #define Jeu_H
 #include "AfficheTxt.h"
@@ -51,6 +51,15 @@ void lanceJeu(Table & table);
 	@note analyse la (ou les) main(s) gagnante et répartie le pot en fonction
 */
 void donneVictoireJeu(Table & table);
+
+/** @brief fonction qui attent une action d'une personne humaine
+	@param [in] table une table qui normellement n'est pas modifiee
+	@param [in, out] Joueur un joueur
+	@return entier de notification de relance (a 1 si relance)
+	@note   cette fonction appel actionJoueurJeu(...) pour les
+            modifications du joueur
+*/
+int atendActionJoueurHumain(const Table & table,Joueur & joueur);
 
 /**	@brief fonction utilise lorsque le joueur change de status
 	@param [in, out] table une table
