@@ -39,6 +39,7 @@
 	@param carteDecouverte represente ladresse de la "main" qui represente les cartes visible par tous
 	@param pileCarte represente la pile de carte (celle dou on distribue les cartes)
 	@param positionDealer la position du dealer au départ est a 0, il correspond a l'indice dans le tableau de joueurs du dealer
+	@param petiteBlind montant de la PB la grosse blind est le double
 	@note la position du joueur dans le tableau indique sa position a la table
 */
 struct Table
@@ -49,6 +50,7 @@ struct Table
 	MainCarte* carteDecouverte;
 	PileCarte* pileCarte;
 	int positionDealer;
+	int petiteBlind;
 };
 
 
@@ -172,5 +174,30 @@ Joueur* getIemeJoueur(const Table & table,int n);
 MainCarte*  (const Table & table);
 
 
+/**	@brief etablit ula petite blind
+	@param [in, out] table
+	@param [in] n montant de la petite blind
+*/
+void setPetiteBlindTable (Table & table, int n);
+
+
+/**	@brief renvoi la valeur de la petite blind
+	@param [in] table une table
+	@return valeur de la PB
+*/
+int getPetiteBlindTable (const Table & table);
+
+
+/**	@brief renvoit l'indice du joueur suivant
+	@param [in] table une table
+	@return entier correspondant a lindice du joueur suivant
+*/
+int getJoueurSuivant(const Table & table,int i);
+
+/**	@brief renvoit la valeure de positionDealer
+	@param [in] table une table
+	@return entier correspondant a lindice du dealer
+*/
+int getPositionDealerTable(const Table & table);
 
 #endif

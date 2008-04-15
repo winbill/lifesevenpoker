@@ -28,6 +28,15 @@ enum Statut
 	FIN_STATUT	/**< Joueur erreur*/
 };
 
+/** 	@brief indique le type du joueur
+*/
+enum TypeJoueur
+{
+	Humain=0, 	/**< Joueur humain mais pas le joueur qui joue (pour le reseau)*/
+	IA= 1,		/**< Joueur simulé par l'ordinateur */
+	Joueur=2,	/**< Joueur qui joue */
+	FIN_STATUT	/**< Joueur erreur*/
+};
 
 /**	
 	@struct Joueur
@@ -38,6 +47,7 @@ enum Statut
 	@param noPlace placement du joueur sur la table de 0 a 10
 	@param statut indique le statut actuel du joueur sur la table
 	@param mainCarte pointeur pointant sur la main du joueur
+	@param type type du joueur humain, IA ou joueur
 */
 struct Joueur
 {
@@ -47,6 +57,7 @@ struct Joueur
 	int mise;
 	Statut statut;
 	MainCarte* mainJoueur;
+	TypeJoueur type;
 };
 
 /**	@brief initialise un joueur
@@ -167,7 +178,18 @@ void setArgentJoueur (Joueur & joueur,int n);
 int getArgentJoueur (const Joueur & joueur);
 
 
+/**	@brief etablit le type du joueur
+	@param [in, out] table
+	@param [in] n nombre de joueurs desires
+*/
+void setTypeJoueurTable (Table & table, int n);
 
+
+/**	@brief renvoi le type du joueur
+	@param [in] table une table
+	@return type du joueur a la table
+*/
+int getTypeJoueurTable (const Table & table);
 
 
 #endif
