@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="AfficheDynamique.C">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="AfficheDynamique.h" />
 		<Unit filename="AfficheTxt.h" />
 		<Unit filename="Carte.C">
 			<Option compilerVar="CC" />
@@ -54,6 +58,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Table.h" />
+		<Unit filename="main.C">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
