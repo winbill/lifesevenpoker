@@ -1,32 +1,33 @@
 #include "Carte.h"
 
-void creerCarte(Carte* & c)
+void creerCarte(Carte & c)
 {
-	c=new Carte;
-}
-void initialisationCarte(Carte* & c)
-{
-	c->couleur = INIT_COULEUR;
-	c->rang = INIT_RANG;
+	initialisationCarte(c);
 }
 
-Rang getCarteRang(const Carte* & c)
+void initialisationCarte(Carte & c)
 {
-	return c->rang;
+	c.couleur = INIT_COULEUR;
+	c.rang = INIT_RANG;
 }
 
-Couleur getCarteCouleur(const Carte* & c)
+Rang getCarteRang(const Carte & c)
 {
-	return c->couleur;
+	return c.rang;
 }
 
-void setCarte(Carte* & c,const Couleur & couleur,const Rang & rang)
+Couleur getCarteCouleur(const Carte & c)
 {
-	c->couleur = couleur;
-	c->rang = rang;
+	return c.couleur;
 }
 
-int compareCarte(const Carte* & c1, const Carte* & c2)
+void setCarte(Carte & c,const Couleur & couleur,const Rang & rang)
+{
+	c.couleur = couleur;
+	c.rang = rang;
+}
+
+int compareCarte(const Carte & c1, const Carte & c2)
 {
 	Rang rang1=getCarteRang(c1);
 	Rang rang2=getCarteRang(c2);
@@ -45,7 +46,6 @@ int compareCarte(const Carte* & c1, const Carte* & c2)
 	}
 }
 
-void carteDetruit(Carte* & c)
+void carteDetruit(Carte & c)
 {
-	delete c;
 }

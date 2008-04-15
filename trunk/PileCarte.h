@@ -1,13 +1,13 @@
 /**
 	@brief Fichier H pour la pile de Carte
-	
-	
+
+
 	gere la pile de carte d'ou sont distribuees les cartes
-     
-	@author Tristan James
+
+	@author Tristan, James, Benjamin
 	@file PileCarte.h
 	@version 1.1
-	@date 2008/04/11
+	@date 2008/04/15
  */
 #ifndef Pilecarte_H
 #define Pilecarte_H
@@ -15,9 +15,9 @@
 
 
 
-/**	@brief structure representant le jeu (de 52 cartes au depart) dou sont distribuees les cartes
-	@param ensembleCarte tableau contenant les cartes
-	@param taille du tableau des cartes (au depart dune partie 52)
+/**	@brief Structure representant le jeu (de 52 cartes au depart) d'ou sont distribuees les cartes.
+	@param ensembleCarte est un tableau contenant les 52 cartes du jeu.
+	@param taille represente le nombre de cartes restant dans la pile de carte (au depart d'une partie il en reste 52)
 */
 struct PileCarte
 {
@@ -73,8 +73,9 @@ void nouvellePileCarte(PileCarte & pileCarte);
 	@param y le plus grand chiffre qui peut etre renvoye
 	@return entier aleatoire compris entre x et y (compris)
 */
-int hasard(x,y);
+int hasard(int x,int y);
 
 
 
 #endif
+
