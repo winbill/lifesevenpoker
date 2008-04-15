@@ -6,7 +6,7 @@
 	@author Benjamin, Olivier
 	@file Carte.h
 	@version 1.2
-	@date 2008/04/14
+	@date 2008/04/15
 */
 
 #ifndef _Carte
@@ -105,7 +105,7 @@ int compareCarte(const Carte & c1, const Carte & c2);
 	@param Prend en entree une variable de type pointeur sur Carte.
 	@return Desalloue la zone memoire pointeée par le pointeur sur Carte et detruit ce pointeur.
 */
-void carteDetruit(Carte* & c);
+void carteDetruit(Carte & c);
 
 #endif
 

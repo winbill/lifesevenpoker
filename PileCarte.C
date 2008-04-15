@@ -14,13 +14,16 @@ void initPileCarte (PileCarte & pileCarte)
 	int i;
 	int j;
 	int k=0;
+
+	Carte carte;
+    initialisationCarte(carte);
+
 	for(i=1;i<=4;i++)
 	{
 		for(j=2;j<=14;j++)
 		{
-			carte = new Carte;
-			setCarte(carte,i,j);
-			pileCarte.ensembleCarte[k] = *carte;
+            setCarte(carte,i,j);
+			pileCarte.ensembleCarte[k] = carte;
 			k++;
 		}
 	}
@@ -35,6 +38,7 @@ PileCarte* creePileCarte()
 }
 
 void pileCarteLibere (PileCarte & pileCarte)
+{
 	delete[] pileCarte.ensembleCarte;
 	pileCarte.ensembleCarte = NULL;
 	pileCarte.taille = 0;
@@ -78,7 +82,7 @@ void nouvellePileCarte(PileCarte & pileCarte)
 
 
 
-int hasard(x,y)
+int hasard(int x,int y)
 {
 
 	return ;
