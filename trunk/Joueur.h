@@ -153,4 +153,21 @@ int ajoutMiseJoueur(Joueur & joueur,int n);
 MainCarte* getMainJoueur (const Joueur & joueur);
 
 
+/** 	@brief pour changer l'argent qu'a un joueur
+	@param [in] n entier
+	@param [in,out] joueur
+*/
+void setArgentJoueur (Joueur & joueur,int n);
+
+
+/**	@brief renvoi le montant de l'argent que possede le joueur
+	@param [in,out] joueur
+	@return argent
+*/
+int getArgentJoueur (const Joueur & joueur);
+
+
+
+
+
 #endif

@@ -171,4 +171,9 @@ void changeDealerTable(Table & table)
 }
 
 
+Joueur* getIemeJoueur(const Table & table,int n)
+{
+	return table.joueur [n];
+}
+
 #endif

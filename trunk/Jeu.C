@@ -17,18 +17,35 @@
 	@note donne 1000c a chacun des joueurs, affecte les IA, les places, le dealer....
 	@param [in, out] table une table
 */
-void initialiseJeu(Table & table);
+void initialiseJeu(Table & table)
+{
+	int i;
+	for(i=0;i<getNJoueurTable(table);i++);
+	{
+		setArgentJoueur(*getIemeJoueur(table,i),1000);
+	}
+	
+//etc... atand IArtificielle.h	
+	
+}
 
-/**	@brief donne deux carte a chacun des joueurs de la table
-	@param [in, out] table une table
-*/
-void distribuerCarteJoueursJeu(Table & table);
 
-/**	@brief decouvre n carte sur la table
-	@param [in, out] table une table
-	@param [in] n un entier qui correspond au nombre de carte a retourner sur  la table
-*/
-void distribuerCarteDecouverteJeu(Table & table,int n);
+void distribuer2CartesJoueursJeu(Table & table)
+{	
+	int i;
+	for(i=0;i<getNJoueurTable(table);i++);
+	{
+		ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),*tirerCarte(*getTablePileCarteTable(table)));
+		ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),*tirerCarte(*getTablePileCarteTable(table)));	
+	}
+	
+}
+
+
+void distribuer1CarteDecouverteJeu(Table & table,int n)
+{
+	ajouteCarte(*getMainCarteTable(table),*tirerCarte(*getTablePileCarteTable(table)));
+}
 
 /**	@brief relance une nouvelle partie
 	@param [in, out] table une table

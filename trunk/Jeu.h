@@ -29,13 +29,13 @@ void initialiseJeu(Table & table);
 /**	@brief donne deux carte a chacun des joueurs de la table
 	@param [in, out] table une table
 */
-void distribuerCarteJoueursJeu(Table & table);
+void distribuer2CartesJoueursJeu(Table & table)
 
 /**	@brief decouvre n carte sur la table
 	@param [in, out] table une table
 	@param [in] n un entier qui correspond au nombre de carte a retourner sur  la table
 */
-void distribuerCarteDecouverteJeu(Table & table,int n);
+void distribuer1CarteDecouverteJeu(Table & table,int n);
 
 /**	@brief relance une nouvelle partie
 	@param [in, out] table une table

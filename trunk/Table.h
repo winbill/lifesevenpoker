@@ -106,7 +106,7 @@ void ajoutJoueurTable (Table & table, Joueur* joueur);
 /**	@brief supprime le joueur du tableau en effectuant une recherche
 	le joueur existe encore apres
 	@param [in, out] table une table
-	@param [in,out] joueur pointeur vers joueur,on met dans joueur.idJoueur -1
+	@param [in,out] joueur pointeur vers joueur,on met dans joueur.idJoueur: -1
 */
 void supprimeJoueurTable (Table & table, Joueur* joueur);
 
@@ -158,6 +158,18 @@ int placeVide (const Table & table);
 */
 void changeDealerTable(Table & table);
 
+/**	@brief renvoi le joueur a la nieme position
+	@param [in] table une table
+	@param [in] n un entier
+	@return renvoi un pointeur vers le joueur qui a pour indice n dans le tableau de joueur de la table
+*/
+Joueur* getIemeJoueur(const Table & table,int n);
+
+/**	@brief renvoi l adresse des cartes decouvertes
+	@param [in] table une table
+	@return pointeur sur MainCarte
+*/
+MainCarte*  (const Table & table);
 
 
 
