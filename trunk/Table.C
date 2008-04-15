@@ -1,15 +1,15 @@
 /**
 	@brief Fichier C pour Table
-	
-	
+
+
 	gere la table du jeu
-     
+
 	@author Tristan James
 	@file Table.C
 	@version 1.1
 	@date 2008/04/11
  */
- 
+
 
 #ifndef Table_H
 #define Table_H
@@ -38,7 +38,7 @@ void initTable (Table & table)
 	table.joueur = new Joueur* [10];
 	setMaxJoueur (table,0);
 	memset(table.joueur,0,sizeof(*table.joueur));
-	carteDecouverte=new MainCarte;
+	table.carteDecouverte=NULL;
 	table.pileCarte = NULL;
 	table.positionDealer = 0;
 
@@ -161,19 +161,64 @@ int placeVide (const Table & table)
 void changeDealerTable(Table & table)
 {
 	table.positionDealer++;
+    if(positionDealer >= getNJoueurTable(table))
+        table.positionDealer =0;
 	while(table.joueur[positionDealer] == 0)
 	{
 		table.positionDealer++;
+        if(positionDealer >= getNJoueurTable(table))
+            table.positionDealer =0;
 	}
 
-	if(positionDealer >= getNJoueurTable(table))
-		table.positionDealer =0;
+
 }
 
 
 Joueur* getIemeJoueur(const Table & table,int n)
 {
 	return table.joueur [n];
+}
+
+
+MainCarte* getMainCarteTable (const Table & table)
+{
+    return table.carteDecouverte;
+}
+
+
+void setPetiteBlindTable (Table & table, int n)
+{
+    assert(n>0 && n<99999);
+    table.petiteBlind = n;
+}
+
+
+
+int getPetiteBlindTable (const Table & table)
+{
+    return table.petiteBlind;
+}
+
+
+
+int getJoueurSuivant(const Table & table,int i)
+{
+    i++;
+    if(i >= getNJoueurTable(table))
+            i =0;
+	while(table.joueur[i] == 0)
+	{
+		i++;
+        if(positionDealer >= getNJoueurTable(table))
+            table.positionDealer =0;
+	}
+    return i;
+}
+
+
+int getPositionDealerTable(const Table & table)
+{
+    return table.positionDealer;
 }
 
 #endif
