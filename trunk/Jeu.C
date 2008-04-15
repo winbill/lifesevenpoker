@@ -13,16 +13,13 @@
 
 
 
-/**	@brief initialise le jeu
-	@note donne 1000c a chacun des joueurs, affecte les IA, les places, le dealer....
-	@param [in, out] table une table
-*/
-void initialiseJeu(Table & table)
+
+void initialiseJeu(Table & table,int argent)
 {
 	int i;
 	for(i=0;i<getNJoueurTable(table);i++);
 	{
-		setArgentJoueur(*getIemeJoueur(table,i),1000);
+		setArgentJoueur(*getIemeJoueur(table,i),argent);
 	}
 	
 //etc... atand IArtificielle.h	
@@ -47,12 +44,6 @@ void distribuer1CarteDecouverteJeu(Table & table,int n)
 	ajouteCarte(*getMainCarteTable(table),*tirerCarte(*getTablePileCarteTable(table)));
 }
 
-/**	@brief relance une nouvelle partie
-	@param [in, out] table une table
-	@note remet la main de tous à zero et re remplit pileCarte (en changeant la taille)
-	@note change la position du dealer
-	@note mise de la petite et grosse blind
-*/
 void lanceJeu(Table & table)
 {
 	int i;
@@ -65,6 +56,8 @@ void lanceJeu(Table & table)
 	}
 	//remise des cartes decouvertes a 0
 	initialisationMain(*getMainCarteTable(table));
+	//change la position du dealer
+	changeDealerTable(table);
 	
 }
 
@@ -72,7 +65,11 @@ void lanceJeu(Table & table)
 	@param [in, out] table une table
 	@note analyse la (ou les) main(s) gagnante et répartie le pot en fonction
 */
-void donneVictoireJeu(Table & table);
+void donneVictoireJeu(Table & table)
+{
+	
+	
+}
 
 /**	@brief fonction utilise lorsque le joueur change de status
 	@param [in, out] table une table
@@ -80,11 +77,22 @@ void donneVictoireJeu(Table & table);
 	@param [in] statut son nouveau statut
 	@param [in] n s'il relance on met le montant dedans
 */
-void actionJoueurJeu(Table & table,Joueur & joueur,Statut statut,int n);
+void actionJoueurJeu(Table & table,Joueur & joueur,Statut statut,int n)
+{
+	
+	
+	
+}
 
 /**	@brief interroge les joueurs tours à tours
 	@param [in, out] table une table
 
 	s'arrete lorsque les mises sont egales
 */
-void lanceTourJeu(Table & table);
+void lanceTourJeu(Table & table)
+{
+	
+	
+	
+	
+}
