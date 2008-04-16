@@ -1,5 +1,5 @@
+#summary Créer un script réalisant le checkout et lançant ensuite codeblocks.
 #labels Script,Checkout,Help
-#Explications pour créer un script réalisant le checkout server avec son username et lance ensuite codeblocks avec le projet qui va bien.
 
 = Introduction =
 
