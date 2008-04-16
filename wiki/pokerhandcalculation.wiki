@@ -1,5 +1,5 @@
 #labels Phase-Design,Phase-Implementation
-Comment calculer une main de poker?
+#Summary Comment calculer une main de poker?
 
 = Introduction =
 
