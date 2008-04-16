@@ -3,7 +3,7 @@
 
 
 	gere la table du jeu
-
+	
 	@author Tristan James
 	@file Table.h
 	@version 1.1
@@ -21,6 +21,12 @@
 
 
 	@endcode
+	
+	@todo debuuger
+	@test aucun
+	@bug pas encore
+	@deprecated c quoi ca ?
+
  */
 
 #ifndef Table_H
@@ -93,6 +99,10 @@ void tableLibere(Table & table);
 /**	@brief libere plus detruit la structure
 	@param [in, out] table adresse d une table
 	@note appel la fonction tableLibere
+	
+	@todo debuuger !!
+	@test aucun !!
+	@bug pas encore !!
 */
 void tableDetruit(Table* & table);
 

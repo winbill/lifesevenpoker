@@ -41,6 +41,7 @@
 		</Unit>
 		<Unit filename="Carte.h" />
 		<Unit filename="Controles.h" />
+		<Unit filename="IArtificielle.h" />
 		<Unit filename="Jeu.C">
 			<Option compilerVar="CC" />
 		</Unit>
