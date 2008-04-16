@@ -104,8 +104,16 @@ void actionJoueurJeu(Table & table,Joueur & joueur,Statut statut,int n)
 */
 void lanceTourJeu(Table & table)
 {
+    int k=getNJoueurTable(table)+2; //on fait joueur les PB et GB deux fois
+    //au premier tour
+    int i;
+
+    while(k>0)
+    {
+        if(ta
 
 
+    }
 
 
 }
