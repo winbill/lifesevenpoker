@@ -124,5 +124,15 @@ int suiteMainCarte(const MainCarte & m,int i,int j);
 
 */
 void nombreOcurenceCarte(const MainCarte & m,int & tab[]);
+
+
+/** @brief fonction directement lié a nombreOcurenceCarte, et permet de faire le choix des cartes
+    @param [in] MainCarte
+    @param [in] tab tableau de taille 15
+    @return renvoie un code pour ce qu'il a trouve
+    @author James
+
+*/
+int choixCarteMultiple(const MainCarte & m,const int & tab[]);
 #endif
 
