@@ -190,25 +190,63 @@ void nombreOcurenceCarte(const MainCarte & m,int & tab[])
 int choixCarteMultiple(const MainCarte & m,const int & tab[])
 {
     //double triage du tableau tab
-        //on trie dabord en fonction de tab[i] puis en fonction de i
+        //on trie dabord en fonction de tab[i] puis en fonction de i dans un tableau a 2d tab[x][y]
+        //de sorte que tab[x][0] contient un entier compris entre 0 et 4 (trié d'abord par rapport a x puis a y)
+        //et tab[x][1] contient le rang de la carte
+        //exemple : tab[1][0] = 2  tab[1][1] = 6  => une paire de 6 en 2e position
+        //donc tab[0][0] > 2 ou tab[0][1] >6 => soit un brelan ou mieu soit une paire de 7 ou+
             //A FAIRE  (il va de 0 a 14)
+
+
 
     int k=0;    //variable qui compte le nombre de carte
                 //(ne dois jamais depasse 5 et doit etre a 5 a la fin de la boucle)
     int l =0;   //variable d'incrementation (on change le rang)
 
-    while(k=!5)
+
+    //boucle qui permet de choisir les 5cartes
+    while(k!=5)
     {
-        if(k+tab[l] <=5)
+        assert(tab[l][0] != 0); //si tab[l][0] == 0 le tableau ne pas etre bien trie ou le tableau est foireu
+        if(k+tab[l][0] <=5)
         {
-            k = k+tab[l];
+            k = k+tab[l][0];
+        }else{
+            //on met a zero pour dire que cette combinaison ne sera pas selectionnée
+            tab[l][0] = 0;
         }
-        //on met a zero pour dire que cela ne sera pas selectionné
-        tab[l] = 0;
         l++;
     }
 
-    //a lissue de la boucle on a toutes les informations pour donner un nom avec des valeur a la main
+    //a lissue de la boucle on a toutes les informations pour donner un nom et des valeur a la main:
+    switch (tab[0][0])
+    {
+        case 4:
+            c ="carre";
+        break;
+        case 3:
+            if(k+tab[l+1][0] ==2)
+            {
+                c ="code full";
+            }else{
+                c="code brelan"
+            }
+        break;
+        case 2:
+            if(k+tab[l+1][0] ==2)
+            {
+                c ="code double paire";
+            }else{
+                c="code paire"
+            }
+        break;
+        case 1:
+            c = "carte maitresse";
+        break;
+
+
+
+    }
 
 
 }
