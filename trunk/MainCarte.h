@@ -123,7 +123,7 @@ int suiteMainCarte2(const MainCarte & m,int i,int j, int & k);
 /** @brief fonction qui permet de savoir si on peut faire une quinte avec la main
     @note appel la fonction suiteMainCarte2
     @param [in] MainCarte (/!\ le passage sans reference EST volontaire)
-    @param [out] k permet de savoir si c'est une quinte flush (a 1 si oui)
+    @param [out] k permet de savoir si c'est une quinte flush (k=0 si pas de quinte FLUSH)
     @return 0 s'il n'y a pas de suite, 14 suite a l'AS, 13 au roi ..... 5
     @author James
 */
