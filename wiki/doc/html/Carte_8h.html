@@ -1,0 +1,491 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker: Référence du fichier Carte.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<h1>Référence du fichier Carte.h</h1>Fichier H pour les cartes. <a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="Carte_8h-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCarte.html">Carte</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Structure representant une carte du jeu.  <a href="structCarte.html#_details">Plus de détails...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Énumérations</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7">Couleur</a> { <br>
+&nbsp;&nbsp;<a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd74be9430314cad90bc1f2b9a881baf235">INIT_COULEUR</a> =  0, 
+<a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7ff50f65df1ad73caec3e886c499657ba">TREFLE</a>, 
+<a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7a8e960c091829457b4833077289e00a0">CARREAU</a>, 
+<a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7fe25ae4ef5c689f46e1c4c972243d4db">COEUR</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7835c1d28b93fd71585c0bd8c629ea98a">PIQUE</a>, 
+<a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7064df4b4061c452c6e3ccd9664854bf6">FIN_COULEUR</a>
+<br>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Enumeration representant les couleurs des cartes du jeu de poker.  <a href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7">Plus de détails...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c">Rang</a> { <br>
+&nbsp;&nbsp;<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25cb1ce64b2678db206f2cdb94374f8f67e">INIT_RANG</a> =  0, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25cfa98f875c543680be40a482aa523e8f5">DEUX</a> =  2, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25cf4a3bc43057599ac388b5a887335cdb5">TROIS</a> =  3, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c97125267358e895064da940f571daec7">QUATRE</a> =  4, 
+<br>
+&nbsp;&nbsp;<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25ce2996d8da47978a309deebde23aec4ab">CINQ</a> =  5, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25cadffddd32c3e7497e32cd7e430c9c106">SIX</a> =  6, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c9a9953fcb482418f2a1fe258c4f46a70">SEPT</a> =  7, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c29ed9d7f614ba184a86644f1c9a03291">HUIT</a> =  8, 
+<br>
+&nbsp;&nbsp;<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c79e4607adbe51052bdfebc8c55cc85c8">NEUF</a> =  9, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c1507d51307dbb0fbb3b438e591dc99e4">DIX</a> =  10, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c63afc18876b4864ae749c6343dae3ba0">VALET</a> =  11, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c436250abd7e6692a3ab0983590128093">DAME</a> =  12, 
+<br>
+&nbsp;&nbsp;<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c630b67ff829a4c185e65091797e9a03c">ROI</a> =  13, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c0b84664ffa026b1a5f43c051cd6fe69f">AS</a> =  14, 
+<a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c126221db2984662f687dde730f79dfdc">FIN_RANG</a>
+<br>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Enumeration representant les 13 cartes de chaque couleur du jeu de poker.  <a href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c">Plus de détails...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Carte_8h.html#870ea65eb5c211727113f07e1607e2b5">creerCarte</a> (<a class="el" href="structCarte.html">Carte</a> &amp;c)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Procedure creant une carte.  <a href="#870ea65eb5c211727113f07e1607e2b5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Carte_8h.html#ded28a33d5cd051c2bbc63b1a23bc8a8">initialisationCarte</a> (<a class="el" href="structCarte.html">Carte</a> &amp;c)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Procedure initialisant une nouvelle carte.  <a href="#ded28a33d5cd051c2bbc63b1a23bc8a8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c">Rang</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Carte_8h.html#198808bbc7b9b153d1395e692aaa795a">getCarteRang</a> (const <a class="el" href="structCarte.html">Carte</a> &amp;c)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction recuperant le rang d'une carte.  <a href="#198808bbc7b9b153d1395e692aaa795a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7">Couleur</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Carte_8h.html#2dca7da65f5d42da8350a54d33c4e1dd">getCarteCouleur</a> (const <a class="el" href="structCarte.html">Carte</a> &amp;c)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction recuperant la couleur d'une carte.  <a href="#2dca7da65f5d42da8350a54d33c4e1dd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Carte_8h.html#7018d9387cfcef32fef037253a6c8df3">setCarte</a> (<a class="el" href="structCarte.html">Carte</a> &amp;c, const <a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7">Couleur</a> &amp;couleur, const <a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c">Rang</a> &amp;rang)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Procedure modifiant les valeurs d'une carte.  <a href="#7018d9387cfcef32fef037253a6c8df3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Carte_8h.html#464e3efa717789dfd52f5bfed3487802">compareCarte</a> (const <a class="el" href="structCarte.html">Carte</a> &amp;c1, const <a class="el" href="structCarte.html">Carte</a> &amp;c2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction comparant deux carte par rapport a leur valeur.  <a href="#464e3efa717789dfd52f5bfed3487802"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Carte_8h.html#adb99f6b8756bc289e7e1d7741e49b1d">carteDetruit</a> (<a class="el" href="structCarte.html">Carte</a> &amp;c)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Procedure qui detruit une carte et desalloue son espace memoire.  <a href="#adb99f6b8756bc289e7e1d7741e49b1d"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Fichier H pour les cartes. 
+<p>
+Gere les donnees de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>.<p>
+<dl class="author" compact><dt><b>Auteur:</b></dt><dd>Benjamin, Olivier</dd></dl>
+<dl class="version" compact><dt><b>Version:</b></dt><dd>1.2 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>2008/04/15 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="Carte_8h-source.html">Carte.h</a>.</p>
+<hr><h2>Documentation du type de l'énumération</h2>
+<a class="anchor" name="a304d0ca681f782b1d7735da33037dd7"></a><!-- doxytag: member="Carte.h::Couleur" ref="a304d0ca681f782b1d7735da33037dd7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7">Couleur</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Enumeration representant les couleurs des cartes du jeu de poker. 
+<p>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Les couleurs sont Trefle, Carreau, Coeur et Pique. </dd></dl>
+<dl compact><dt><b>Valeurs énumérées: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="a304d0ca681f782b1d7735da33037dd74be9430314cad90bc1f2b9a881baf235"></a><!-- doxytag: member="INIT_COULEUR" ref="a304d0ca681f782b1d7735da33037dd74be9430314cad90bc1f2b9a881baf235" args="" -->INIT_COULEUR</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="a304d0ca681f782b1d7735da33037dd7ff50f65df1ad73caec3e886c499657ba"></a><!-- doxytag: member="TREFLE" ref="a304d0ca681f782b1d7735da33037dd7ff50f65df1ad73caec3e886c499657ba" args="" -->TREFLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="a304d0ca681f782b1d7735da33037dd7a8e960c091829457b4833077289e00a0"></a><!-- doxytag: member="CARREAU" ref="a304d0ca681f782b1d7735da33037dd7a8e960c091829457b4833077289e00a0" args="" -->CARREAU</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="a304d0ca681f782b1d7735da33037dd7fe25ae4ef5c689f46e1c4c972243d4db"></a><!-- doxytag: member="COEUR" ref="a304d0ca681f782b1d7735da33037dd7fe25ae4ef5c689f46e1c4c972243d4db" args="" -->COEUR</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="a304d0ca681f782b1d7735da33037dd7835c1d28b93fd71585c0bd8c629ea98a"></a><!-- doxytag: member="PIQUE" ref="a304d0ca681f782b1d7735da33037dd7835c1d28b93fd71585c0bd8c629ea98a" args="" -->PIQUE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="a304d0ca681f782b1d7735da33037dd7064df4b4061c452c6e3ccd9664854bf6"></a><!-- doxytag: member="FIN_COULEUR" ref="a304d0ca681f782b1d7735da33037dd7064df4b4061c452c6e3ccd9664854bf6" args="" -->FIN_COULEUR</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Carte_8h-source.html#l00018">18</a> du fichier <a class="el" href="Carte_8h-source.html">Carte.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c"></a><!-- doxytag: member="Carte.h::Rang" ref="111cfd1411d6d7dc1338315274a0c25c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c">Rang</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Enumeration representant les 13 cartes de chaque couleur du jeu de poker. 
+<p>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Les differentes cartes sont les chiffres de 2 a 10, le Valet, la Dame, le Roi et l'As. </dd></dl>
+<dl class="warning" compact><dt><b>Avertissement:</b></dt><dd>Le Joker n'est pas represente car cette carte n'est pas utilisee dans ce jeu. </dd></dl>
+<dl compact><dt><b>Valeurs énumérées: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25cb1ce64b2678db206f2cdb94374f8f67e"></a><!-- doxytag: member="INIT_RANG" ref="111cfd1411d6d7dc1338315274a0c25cb1ce64b2678db206f2cdb94374f8f67e" args="" -->INIT_RANG</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25cfa98f875c543680be40a482aa523e8f5"></a><!-- doxytag: member="DEUX" ref="111cfd1411d6d7dc1338315274a0c25cfa98f875c543680be40a482aa523e8f5" args="" -->DEUX</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25cf4a3bc43057599ac388b5a887335cdb5"></a><!-- doxytag: member="TROIS" ref="111cfd1411d6d7dc1338315274a0c25cf4a3bc43057599ac388b5a887335cdb5" args="" -->TROIS</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c97125267358e895064da940f571daec7"></a><!-- doxytag: member="QUATRE" ref="111cfd1411d6d7dc1338315274a0c25c97125267358e895064da940f571daec7" args="" -->QUATRE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25ce2996d8da47978a309deebde23aec4ab"></a><!-- doxytag: member="CINQ" ref="111cfd1411d6d7dc1338315274a0c25ce2996d8da47978a309deebde23aec4ab" args="" -->CINQ</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25cadffddd32c3e7497e32cd7e430c9c106"></a><!-- doxytag: member="SIX" ref="111cfd1411d6d7dc1338315274a0c25cadffddd32c3e7497e32cd7e430c9c106" args="" -->SIX</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c9a9953fcb482418f2a1fe258c4f46a70"></a><!-- doxytag: member="SEPT" ref="111cfd1411d6d7dc1338315274a0c25c9a9953fcb482418f2a1fe258c4f46a70" args="" -->SEPT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c29ed9d7f614ba184a86644f1c9a03291"></a><!-- doxytag: member="HUIT" ref="111cfd1411d6d7dc1338315274a0c25c29ed9d7f614ba184a86644f1c9a03291" args="" -->HUIT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c79e4607adbe51052bdfebc8c55cc85c8"></a><!-- doxytag: member="NEUF" ref="111cfd1411d6d7dc1338315274a0c25c79e4607adbe51052bdfebc8c55cc85c8" args="" -->NEUF</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c1507d51307dbb0fbb3b438e591dc99e4"></a><!-- doxytag: member="DIX" ref="111cfd1411d6d7dc1338315274a0c25c1507d51307dbb0fbb3b438e591dc99e4" args="" -->DIX</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c63afc18876b4864ae749c6343dae3ba0"></a><!-- doxytag: member="VALET" ref="111cfd1411d6d7dc1338315274a0c25c63afc18876b4864ae749c6343dae3ba0" args="" -->VALET</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c436250abd7e6692a3ab0983590128093"></a><!-- doxytag: member="DAME" ref="111cfd1411d6d7dc1338315274a0c25c436250abd7e6692a3ab0983590128093" args="" -->DAME</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c630b67ff829a4c185e65091797e9a03c"></a><!-- doxytag: member="ROI" ref="111cfd1411d6d7dc1338315274a0c25c630b67ff829a4c185e65091797e9a03c" args="" -->ROI</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c0b84664ffa026b1a5f43c051cd6fe69f"></a><!-- doxytag: member="AS" ref="111cfd1411d6d7dc1338315274a0c25c0b84664ffa026b1a5f43c051cd6fe69f" args="" -->AS</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="111cfd1411d6d7dc1338315274a0c25c126221db2984662f687dde730f79dfdc"></a><!-- doxytag: member="FIN_RANG" ref="111cfd1411d6d7dc1338315274a0c25c126221db2984662f687dde730f79dfdc" args="" -->FIN_RANG</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Carte_8h-source.html#l00032">32</a> du fichier <a class="el" href="Carte_8h-source.html">Carte.h</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="adb99f6b8756bc289e7e1d7741e49b1d"></a><!-- doxytag: member="Carte.h::carteDetruit" ref="adb99f6b8756bc289e7e1d7741e49b1d" args="(Carte &amp;c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void carteDetruit           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCarte.html">Carte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>c</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Procedure qui detruit une carte et desalloue son espace memoire. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type pointeur sur <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Desalloue la zone memoire pointe�e par le pointeur sur <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> et detruit ce pointeur. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Carte_8C-source.html#l00049">49</a> du fichier <a class="el" href="Carte_8C-source.html">Carte.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="464e3efa717789dfd52f5bfed3487802"></a><!-- doxytag: member="Carte.h::compareCarte" ref="464e3efa717789dfd52f5bfed3487802" args="(const Carte &amp;c1, const Carte &amp;c2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int compareCarte           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structCarte.html">Carte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>c1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structCarte.html">Carte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>c2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Fonction comparant deux carte par rapport a leur valeur. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entrees deux variables de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Renvoie differentes valeurs numeriques selon le resultat de la comparaison : -&gt; 1 si la deuxieme carte est plus forte que la premiere -&gt; 0 si les deux cartes sont de meme force -&gt; -1 si la premiere carte est plus forte que la deuxieme </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Carte_8C-source.html#l00030">30</a> du fichier <a class="el" href="Carte_8C-source.html">Carte.C</a>.</p>
+
+<p>Références <a class="el" href="Carte_8C-source.html#l00014">getCarteRang()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="870ea65eb5c211727113f07e1607e2b5"></a><!-- doxytag: member="Carte.h::creerCarte" ref="870ea65eb5c211727113f07e1607e2b5" args="(Carte &amp;c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void creerCarte           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCarte.html">Carte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>c</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Procedure creant une carte. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Alloue un espace memoire sur le tas pour la variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> en la creant. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Carte_8C-source.html#l00003">3</a> du fichier <a class="el" href="Carte_8C-source.html">Carte.C</a>.</p>
+
+<p>Références <a class="el" href="Carte_8C-source.html#l00008">initialisationCarte()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2dca7da65f5d42da8350a54d33c4e1dd"></a><!-- doxytag: member="Carte.h::getCarteCouleur" ref="2dca7da65f5d42da8350a54d33c4e1dd" args="(const Carte &amp;c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7">Couleur</a> getCarteCouleur           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structCarte.html">Carte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>c</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Fonction recuperant la couleur d'une carte. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Renvoie la valeur de la couleur de la variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>. </dd></dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Accesseur. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Carte_8C-source.html#l00019">19</a> du fichier <a class="el" href="Carte_8C-source.html">Carte.C</a>.</p>
+
+<p>Références <a class="el" href="Carte_8h-source.html#l00057">Carte::couleur</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="198808bbc7b9b153d1395e692aaa795a"></a><!-- doxytag: member="Carte.h::getCarteRang" ref="198808bbc7b9b153d1395e692aaa795a" args="(const Carte &amp;c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c">Rang</a> getCarteRang           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structCarte.html">Carte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>c</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Fonction recuperant le rang d'une carte. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Renvoie la valeur du rang de la variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>. </dd></dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Accesseur. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Carte_8C-source.html#l00014">14</a> du fichier <a class="el" href="Carte_8C-source.html">Carte.C</a>.</p>
+
+<p>Références <a class="el" href="Carte_8h-source.html#l00058">Carte::rang</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ded28a33d5cd051c2bbc63b1a23bc8a8"></a><!-- doxytag: member="Carte.h::initialisationCarte" ref="ded28a33d5cd051c2bbc63b1a23bc8a8" args="(Carte &amp;c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initialisationCarte           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCarte.html">Carte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>c</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Procedure initialisant une nouvelle carte. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Initialise la variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> avec des valeurs par defaut : rang = INIT_RANG et couleur = INIT_COULEUR. </dd></dl>
+<dl class="warning" compact><dt><b>Avertissement:</b></dt><dd>Ces deux valeurs par defaut sont considerees commes des 0. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Carte_8C-source.html#l00008">8</a> du fichier <a class="el" href="Carte_8C-source.html">Carte.C</a>.</p>
+
+<p>Références <a class="el" href="Carte_8h-source.html#l00057">Carte::couleur</a>, <a class="el" href="Carte_8h-source.html#l00020">INIT_COULEUR</a>, <a class="el" href="Carte_8h-source.html#l00034">INIT_RANG</a>, et <a class="el" href="Carte_8h-source.html#l00058">Carte::rang</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7018d9387cfcef32fef037253a6c8df3"></a><!-- doxytag: member="Carte.h::setCarte" ref="7018d9387cfcef32fef037253a6c8df3" args="(Carte &amp;c, const Couleur &amp;couleur, const Rang &amp;rang)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setCarte           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCarte.html">Carte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="Carte_8h.html#a304d0ca681f782b1d7735da33037dd7">Couleur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>couleur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="Carte_8h.html#111cfd1411d6d7dc1338315274a0c25c">Rang</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>rang</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Procedure modifiant les valeurs d'une carte. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>, une variable de type Couleur et une variable de type Rang. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Modifie les champs de la variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> avec les autres parametres donnes. </dd></dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Mutateur </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Carte_8C-source.html#l00024">24</a> du fichier <a class="el" href="Carte_8C-source.html">Carte.C</a>.</p>
+
+<p>Références <a class="el" href="Carte_8h-source.html#l00057">Carte::couleur</a>, et <a class="el" href="Carte_8h-source.html#l00058">Carte::rang</a>.</p>
+
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:51 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>

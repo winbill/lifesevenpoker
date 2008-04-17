@@ -1,0 +1,886 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker: Référence du fichier Table.C</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<h1>Référence du fichier Table.C</h1>Fichier C pour <a class="el" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a>. <a href="#_details">Plus de détails...</a>
+<p>
+<code>#include &quot;<a class="el" href="MainCarte_8h-source.html">MainCarte.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="PileCarte_8h-source.html">PileCarte.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="Joueur_8h-source.html">Joueur.h</a>&quot;</code><br>
+
+<p>
+<a href="Table_8C-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#f8655df9910a8f930f814c4f767fb247">initTable</a> (<a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">initialise la variable table  <a href="#f8655df9910a8f930f814c4f767fb247"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#936a4b3a18a7f19765195422bc444111">initTable</a> (<a class="el" href="structTable.html">Table</a> &amp;table, int nJoueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">initialise la variable table  <a href="#936a4b3a18a7f19765195422bc444111"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#6869ebbeec7e4f2a49a1fa7caec2e4f3">initTable</a> (<a class="el" href="structTable.html">Table</a> &amp;table, int nJoueur, <a class="el" href="structPileCarte.html">PileCarte</a> *&amp;pileCarte)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">initialise lune variable table  <a href="#6869ebbeec7e4f2a49a1fa7caec2e4f3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structTable.html">Table</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#b3b74e23ba144d26f6638aaa9e6ef129">creeTable</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">cree dans le tas une variable table puis l'initialise  <a href="#b3b74e23ba144d26f6638aaa9e6ef129"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#e33263654975099f9d5f6126e9c264a6">tableLibere</a> (<a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">libere les allocations internes a table  <a href="#e33263654975099f9d5f6126e9c264a6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#6240cb7448efad4aac9beb23f1e9ad30">tableDetruit</a> (<a class="el" href="structTable.html">Table</a> *&amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">libere plus detruit la structure  <a href="#6240cb7448efad4aac9beb23f1e9ad30"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#1a688c1c885ce9bd696fce82d450f010">ajoutJoueurTable</a> (<a class="el" href="structTable.html">Table</a> &amp;table, <a class="el" href="structJoueur.html">Joueur</a> *joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajoute un joueur a la table.  <a href="#1a688c1c885ce9bd696fce82d450f010"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#ebbaa044451bb48db5cf142b32b6d529">supprimeJoueurTable</a> (<a class="el" href="structTable.html">Table</a> &amp;table, <a class="el" href="structJoueur.html">Joueur</a> *joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">supprime le joueur du tableau en effectuant une recherche le joueur existe encore apres  <a href="#ebbaa044451bb48db5cf142b32b6d529"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#24fcaa7604c7a2ce3c3e8616db15bd48">setMaxJoueurTable</a> (<a class="el" href="structTable.html">Table</a> &amp;table, int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">etablit un nombre de joueurs maximal (pour le reseau)  <a href="#24fcaa7604c7a2ce3c3e8616db15bd48"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#97ea978b19e0b5b5673d5de4b67dbcbe">getMaxJoueurTable</a> (const <a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi le nombre de joueurs maximal  <a href="#97ea978b19e0b5b5673d5de4b67dbcbe"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structPileCarte.html">PileCarte</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#cf6409da83123aff248fd28be0d8a889">getTablePileCarteTable</a> (const <a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi l adresse de la pile de carte  <a href="#cf6409da83123aff248fd28be0d8a889"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#72c1258e9848a45ee1a51cf361df0835">setNJoueurTable</a> (<a class="el" href="structTable.html">Table</a> &amp;table, int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">etablit un nombre de joueurs n a la table  <a href="#72c1258e9848a45ee1a51cf361df0835"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#9ba7617d40eace158f2bd2713dc399c2">getNJoueurTable</a> (const <a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi le nombre de joueurs  <a href="#9ba7617d40eace158f2bd2713dc399c2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#47f9610aad7505df038016a0c6ce1d67">placeVide</a> (const <a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">cherche une place vide dans le tableau de joueur  <a href="#47f9610aad7505df038016a0c6ce1d67"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#e487f501ef6521698ee210381fb3f876">changeDealerTable</a> (<a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">change la position du dealer (decale de un en verifiant quil y a un joueur)  <a href="#e487f501ef6521698ee210381fb3f876"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structJoueur.html">Joueur</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#de7bc2848cb213e8804fa8a7ee3045ec">getIemeJoueur</a> (const <a class="el" href="structTable.html">Table</a> &amp;table, int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi le joueur a la nieme position  <a href="#de7bc2848cb213e8804fa8a7ee3045ec"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structMainCarte.html">MainCarte</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#3419374df45cf6c77ebb1acaf5fdb04f">getMainCarteTable</a> (const <a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi l adresse des cartes decouvertes  <a href="#3419374df45cf6c77ebb1acaf5fdb04f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#7dd85b208a85126ea8355bad8ace1e88">setPetiteBlindTable</a> (<a class="el" href="structTable.html">Table</a> &amp;table, int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">etablit ula petite blind  <a href="#7dd85b208a85126ea8355bad8ace1e88"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#21029b454c4a2c2ac32e8ac140096371">getPetiteBlindTable</a> (const <a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi la valeur de la petite blind  <a href="#21029b454c4a2c2ac32e8ac140096371"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#5eb74dd6e3a7700e156dbce8f9d7bd9e">getJoueurSuivant</a> (const <a class="el" href="structTable.html">Table</a> &amp;table, int i)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoit l'indice du joueur suivant  <a href="#5eb74dd6e3a7700e156dbce8f9d7bd9e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Table_8C.html#2601823bdd8902e2381e0d2b24790374">getPositionDealerTable</a> (const <a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoit la valeure de positionDealer  <a href="#2601823bdd8902e2381e0d2b24790374"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Fichier C pour <a class="el" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a>. 
+<p>
+gere la table du jeu<p>
+<dl class="author" compact><dt><b>Auteur:</b></dt><dd>Tristan James</dd></dl>
+<dl class="version" compact><dt><b>Version:</b></dt><dd>1.1 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>2008/04/11 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="1a688c1c885ce9bd696fce82d450f010"></a><!-- doxytag: member="Table.C::ajoutJoueurTable" ref="1a688c1c885ce9bd696fce82d450f010" args="(Table &amp;table, Joueur *joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ajoutJoueurTable           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> *&nbsp;</td>
+          <td class="paramname"> <em>joueur</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Ajoute un joueur a la table. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td>un joueur , on met dans joueur.idJoueur l'indice qu'il a dans le tableau de joueurs </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>change table.nJoueur en incrementant de 1 </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00098">98</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e487f501ef6521698ee210381fb3f876"></a><!-- doxytag: member="Table.C::changeDealerTable" ref="e487f501ef6521698ee210381fb3f876" args="(Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changeDealerTable           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+change la position du dealer (decale de un en verifiant quil y a un joueur) 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00161">161</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Jeu_8C-source.html#l00047">lanceJeu()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b3b74e23ba144d26f6638aaa9e6ef129"></a><!-- doxytag: member="Table.C::creeTable" ref="b3b74e23ba144d26f6638aaa9e6ef129" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structTable.html">Table</a>* creeTable           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+cree dans le tas une variable table puis l'initialise 
+<p>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>appel la fonction initTable </dd></dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>renvoie l'adresse dune <a class="el" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00072">72</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="de7bc2848cb213e8804fa8a7ee3045ec"></a><!-- doxytag: member="Table.C::getIemeJoueur" ref="de7bc2848cb213e8804fa8a7ee3045ec" args="(const Table &amp;table, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structJoueur.html">Joueur</a>* getIemeJoueur           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi le joueur a la nieme position 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>un entier </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>renvoi un pointeur vers le joueur qui a pour indice n dans le tableau de joueur de la table </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00177">177</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Jeu_8C-source.html#l00030">distribuer2CartesJoueursJeu()</a>, <a class="el" href="Jeu_8C-source.html#l00017">initialiseJeu()</a>, et <a class="el" href="Jeu_8C-source.html#l00047">lanceJeu()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5eb74dd6e3a7700e156dbce8f9d7bd9e"></a><!-- doxytag: member="Table.C::getJoueurSuivant" ref="5eb74dd6e3a7700e156dbce8f9d7bd9e" args="(const Table &amp;table, int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getJoueurSuivant           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoit l'indice du joueur suivant 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>entier correspondant a lindice du joueur suivant </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00204">204</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3419374df45cf6c77ebb1acaf5fdb04f"></a><!-- doxytag: member="Table.C::getMainCarteTable" ref="3419374df45cf6c77ebb1acaf5fdb04f" args="(const Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMainCarte.html">MainCarte</a>* getMainCarteTable           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi l adresse des cartes decouvertes 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>pointeur sur <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00183">183</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Jeu_8C-source.html#l00042">distribuer1CarteDecouverteJeu()</a>, et <a class="el" href="Jeu_8C-source.html#l00047">lanceJeu()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="97ea978b19e0b5b5673d5de4b67dbcbe"></a><!-- doxytag: member="Table.C::getMaxJoueurTable" ref="97ea978b19e0b5b5673d5de4b67dbcbe" args="(const Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getMaxJoueurTable           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi le nombre de joueurs maximal 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>nombre de joueur max </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00125">125</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Table_8C-source.html#l00098">ajoutJoueurTable()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9ba7617d40eace158f2bd2713dc399c2"></a><!-- doxytag: member="Table.C::getNJoueurTable" ref="9ba7617d40eace158f2bd2713dc399c2" args="(const Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getNJoueurTable           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi le nombre de joueurs 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>nombre de joueur a la table </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00143">143</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Table_8C-source.html#l00098">ajoutJoueurTable()</a>, <a class="el" href="Table_8C-source.html#l00161">changeDealerTable()</a>, <a class="el" href="Jeu_8C-source.html#l00030">distribuer2CartesJoueursJeu()</a>, <a class="el" href="Table_8C-source.html#l00204">getJoueurSuivant()</a>, <a class="el" href="Jeu_8C-source.html#l00017">initialiseJeu()</a>, <a class="el" href="Jeu_8C-source.html#l00047">lanceJeu()</a>, et <a class="el" href="Jeu_8C-source.html#l00105">lanceTourJeu()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="21029b454c4a2c2ac32e8ac140096371"></a><!-- doxytag: member="Table.C::getPetiteBlindTable" ref="21029b454c4a2c2ac32e8ac140096371" args="(const Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getPetiteBlindTable           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi la valeur de la petite blind 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>valeur de la PB </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00197">197</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2601823bdd8902e2381e0d2b24790374"></a><!-- doxytag: member="Table.C::getPositionDealerTable" ref="2601823bdd8902e2381e0d2b24790374" args="(const Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getPositionDealerTable           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoit la valeure de positionDealer 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>entier correspondant a lindice du dealer </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00219">219</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cf6409da83123aff248fd28be0d8a889"></a><!-- doxytag: member="Table.C::getTablePileCarteTable" ref="cf6409da83123aff248fd28be0d8a889" args="(const Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPileCarte.html">PileCarte</a>* getTablePileCarteTable           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi l adresse de la pile de carte 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>l'adresse de la pile de carte utilise a la table </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00131">131</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Jeu_8C-source.html#l00042">distribuer1CarteDecouverteJeu()</a>, et <a class="el" href="Jeu_8C-source.html#l00030">distribuer2CartesJoueursJeu()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6869ebbeec7e4f2a49a1fa7caec2e4f3"></a><!-- doxytag: member="Table.C::initTable" ref="6869ebbeec7e4f2a49a1fa7caec2e4f3" args="(Table &amp;table, int nJoueur, PileCarte *&amp;pileCarte)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initTable           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>nJoueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPileCarte.html">PileCarte</a> *&amp;&nbsp;</td>
+          <td class="paramname"> <em>pileCarte</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+initialise lune variable table 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nJoueur</em>&nbsp;</td><td>nombre de joueur souhaite et nombre de joueur maximal </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pileCarte</em>&nbsp;</td><td>adresse de la pile de carte </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00060">60</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="936a4b3a18a7f19765195422bc444111"></a><!-- doxytag: member="Table.C::initTable" ref="936a4b3a18a7f19765195422bc444111" args="(Table &amp;table, int nJoueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initTable           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>nJoueur</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+initialise la variable table 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nJoueur</em>&nbsp;</td><td>nombre de joueur souhaite et nombre de joueur maximal </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00048">48</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f8655df9910a8f930f814c4f767fb247"></a><!-- doxytag: member="Table.C::initTable" ref="f8655df9910a8f930f814c4f767fb247" args="(Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initTable           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+initialise la variable table 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00035">35</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Table_8C-source.html#l00072">creeTable()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="47f9610aad7505df038016a0c6ce1d67"></a><!-- doxytag: member="Table.C::placeVide" ref="47f9610aad7505df038016a0c6ce1d67" args="(const Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int placeVide           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+cherche une place vide dans le tableau de joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>renvoi l'indice de la premiere place libre, -1 sinon </dd></dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>cette fonction sera utile si l'on souhaite ajouter un joueur a la table pendant une partie </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00148">148</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="24fcaa7604c7a2ce3c3e8616db15bd48"></a><!-- doxytag: member="Table.C::setMaxJoueurTable" ref="24fcaa7604c7a2ce3c3e8616db15bd48" args="(Table &amp;table, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setMaxJoueurTable           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+etablit un nombre de joueurs maximal (pour le reseau) 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>n</em>&nbsp;</td><td>nombre de joueur maximum </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00118">118</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="72c1258e9848a45ee1a51cf361df0835"></a><!-- doxytag: member="Table.C::setNJoueurTable" ref="72c1258e9848a45ee1a51cf361df0835" args="(Table &amp;table, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setNJoueurTable           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+etablit un nombre de joueurs n a la table 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>nombre de joueurs desires </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00136">136</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7dd85b208a85126ea8355bad8ace1e88"></a><!-- doxytag: member="Table.C::setPetiteBlindTable" ref="7dd85b208a85126ea8355bad8ace1e88" args="(Table &amp;table, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setPetiteBlindTable           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+etablit ula petite blind 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>montant de la petite blind </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00189">189</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ebbaa044451bb48db5cf142b32b6d529"></a><!-- doxytag: member="Table.C::supprimeJoueurTable" ref="ebbaa044451bb48db5cf142b32b6d529" args="(Table &amp;table, Joueur *joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void supprimeJoueurTable           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> *&nbsp;</td>
+          <td class="paramname"> <em>joueur</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+supprime le joueur du tableau en effectuant une recherche le joueur existe encore apres 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td>pointeur vers joueur,on met dans joueur.idJoueur: -1 </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00108">108</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6240cb7448efad4aac9beb23f1e9ad30"></a><!-- doxytag: member="Table.C::tableDetruit" ref="6240cb7448efad4aac9beb23f1e9ad30" args="(Table *&amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tableDetruit           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> *&amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+libere plus detruit la structure 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>adresse d une table </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>appel la fonction tableLibere</dd></dl>
+<dl compact><dt><b><a class="el" href="todo.html#_todo000002">À faire:</a></b></dt><dd>debuuger !! </dd></dl>
+<dl compact><dt><b><a class="el" href="test.html#_test000002">Test:</a></b></dt><dd>aucun !! </dd></dl>
+<dl compact><dt><b><a class="el" href="bug.html#_bug000002">Bogue:</a></b></dt><dd>pas encore !! </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00090">90</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e33263654975099f9d5f6126e9c264a6"></a><!-- doxytag: member="Table.C::tableLibere" ref="e33263654975099f9d5f6126e9c264a6" args="(Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tableLibere           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+libere les allocations internes a table 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Table_8C-source.html#l00080">80</a> du fichier <a class="el" href="Table_8C-source.html">Table.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Table_8C-source.html#l00090">tableDetruit()</a>.</p>
+
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:52 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>

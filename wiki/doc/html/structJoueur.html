@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker: Référence de la structure Joueur</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li class="current"><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li><a href="functions.html"><span>Champs&nbsp;de&nbsp;donnée</span></a></li>
+  </ul>
+</div>
+<h1>Référence de la structure Joueur</h1><!-- doxytag: class="Joueur" -->structure representant le joueur de poker assis � la table  
+<a href="#_details">Plus de détails...</a>
+<p>
+<code>#include &lt;<a class="el" href="Joueur_8h-source.html">Joueur.h</a>&gt;</code>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structJoueur.html#2942315769e4a5958eda94e4e4648a3a">argent</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structJoueur.html#8c89a0bf02cd31857cf4c1619157ea90">pseudo</a> [15]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structJoueur.html#24439178f5ec7f3dd3a2cd726b99641b">idJoueur</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structJoueur.html#77dfcb6701f2b6a62c55526c96c45783">mise</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Statut</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structJoueur.html#f8effcf48cee4f06d9afecc10646db58">statut</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structMainCarte.html">MainCarte</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structJoueur.html#dafbcfd67b78da5a52c5980a62831573">mainJoueur</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5">TypeJoueur</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structJoueur.html#7e72e7087d4d7defc40aefb8bd631000">type</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+structure representant le joueur de poker assis � la table 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>argent,r�el</em>&nbsp;</td><td>repr�sentant la somme que poss�de le joueur en main </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pseudo,chaine</em>&nbsp;</td><td>de caract�re repr�sentant le pseudo du joueur </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>idJoueur</em>&nbsp;</td><td>identifiant joueur unique, correspond a sa place a la table, et a son indice dans le tableau de joueur de la table ou il est, egale a -1 s'il nest pas associe a une table (dans ce cas il peut ne pas etre unique) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>noPlace</em>&nbsp;</td><td>placement du joueur sur la table de 0 a 10 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>statut</em>&nbsp;</td><td>indique le statut actuel du joueur sur la table </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mainCarte</em>&nbsp;</td><td>pointeur pointant sur la main du joueur </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>type</em>&nbsp;</td><td>type du joueur humain, IA ou joueur </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Joueur_8h-source.html#l00052">52</a> du fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+<hr><h2>Documentation des champs</h2>
+<a class="anchor" name="2942315769e4a5958eda94e4e4648a3a"></a><!-- doxytag: member="Joueur::argent" ref="2942315769e4a5958eda94e4e4648a3a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structJoueur.html#2942315769e4a5958eda94e4e4648a3a">Joueur::argent</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="Joueur_8h-source.html#l00054">54</a> du fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8c89a0bf02cd31857cf4c1619157ea90"></a><!-- doxytag: member="Joueur::pseudo" ref="8c89a0bf02cd31857cf4c1619157ea90" args="[15]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="structJoueur.html#8c89a0bf02cd31857cf4c1619157ea90">Joueur::pseudo</a>[15]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="Joueur_8h-source.html#l00055">55</a> du fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="24439178f5ec7f3dd3a2cd726b99641b"></a><!-- doxytag: member="Joueur::idJoueur" ref="24439178f5ec7f3dd3a2cd726b99641b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structJoueur.html#24439178f5ec7f3dd3a2cd726b99641b">Joueur::idJoueur</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="Joueur_8h-source.html#l00056">56</a> du fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="77dfcb6701f2b6a62c55526c96c45783"></a><!-- doxytag: member="Joueur::mise" ref="77dfcb6701f2b6a62c55526c96c45783" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structJoueur.html#77dfcb6701f2b6a62c55526c96c45783">Joueur::mise</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="Joueur_8h-source.html#l00057">57</a> du fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f8effcf48cee4f06d9afecc10646db58"></a><!-- doxytag: member="Joueur::statut" ref="f8effcf48cee4f06d9afecc10646db58" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Statut</a> <a class="el" href="structJoueur.html#f8effcf48cee4f06d9afecc10646db58">Joueur::statut</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="Joueur_8h-source.html#l00058">58</a> du fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dafbcfd67b78da5a52c5980a62831573"></a><!-- doxytag: member="Joueur::mainJoueur" ref="dafbcfd67b78da5a52c5980a62831573" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMainCarte.html">MainCarte</a>* <a class="el" href="structJoueur.html#dafbcfd67b78da5a52c5980a62831573">Joueur::mainJoueur</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="Joueur_8h-source.html#l00059">59</a> du fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7e72e7087d4d7defc40aefb8bd631000"></a><!-- doxytag: member="Joueur::type" ref="7e72e7087d4d7defc40aefb8bd631000" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5">TypeJoueur</a> <a class="el" href="structJoueur.html#7e72e7087d4d7defc40aefb8bd631000">Joueur::type</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="Joueur_8h-source.html#l00060">60</a> du fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+
+</div>
+</div><p>
+<hr>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li><a class="el" href="Joueur_8h-source.html">Joueur.h</a></ul>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:52 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>

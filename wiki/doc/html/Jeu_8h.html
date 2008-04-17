@@ -1,0 +1,405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker: Référence du fichier Jeu.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<h1>Référence du fichier Jeu.h</h1>Fichier H qui gere le jeu. <a href="#_details">Plus de détails...</a>
+<p>
+<code>#include &quot;<a class="el" href="AfficheTxt_8h-source.html">AfficheTxt.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="Table_8h-source.html">Table.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="Controles_8h-source.html">Controles.h</a>&quot;</code><br>
+
+<p>
+<a href="Jeu_8h-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Jeu_8h.html#9a9fa984d840c1cfa34abc90e8245e0c">initialiseJeu</a> (<a class="el" href="structTable.html">Table</a> &amp;table, int argent, int nombreJoueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">initialise le jeu automatiquement pour une partie contre l'ordinateur (9 IA au max)  <a href="#9a9fa984d840c1cfa34abc90e8245e0c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Jeu_8h.html#8df7df6c7c06045aa60bc4878e84ab37">distribuer2CartesJoueursJeu</a> (<a class="el" href="structTable.html">Table</a> &amp;table) void distribuer1CarteDecouverteJeu(<a class="el" href="structTable.html">Table</a> &amp;table</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">donne deux carte a chacun des joueurs de la table  <a href="#8df7df6c7c06045aa60bc4878e84ab37"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Jeu_8h.html#2db4c3a16a0c1d8f2d3d111cb1908194">lanceJeu</a> (<a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">relance une nouvelle partie  <a href="#2db4c3a16a0c1d8f2d3d111cb1908194"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Jeu_8h.html#5e7505f5680d14b08cb46e3f2fc755e9">donneVictoireJeu</a> (<a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">donne la victoire a un (ou plus) joueur(s)  <a href="#5e7505f5680d14b08cb46e3f2fc755e9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Jeu_8h.html#81f31aeb68c5315c1c9d60e714e3bb61">atendActionJoueurHumain</a> (const <a class="el" href="structTable.html">Table</a> &amp;table, <a class="el" href="structJoueur.html">Joueur</a> &amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">fonction qui attent une action d'une personne humaine  <a href="#81f31aeb68c5315c1c9d60e714e3bb61"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Jeu_8h.html#f6a4947ea60bb545d800514835f7f929">actionJoueurJeu</a> (<a class="el" href="structTable.html">Table</a> &amp;table, <a class="el" href="structJoueur.html">Joueur</a> &amp;joueur, <a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Statut</a> statut, int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">fonction utilise lorsque le joueur change de status  <a href="#f6a4947ea60bb545d800514835f7f929"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Jeu_8h.html#0bd2758f91f42db8aad0517fb83d6b1a">lanceTourJeu</a> (<a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">interroge les joueurs tours � tours  <a href="#0bd2758f91f42db8aad0517fb83d6b1a"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Fichier H qui gere le jeu. 
+<p>
+fichier principal qui sert a initialiser une partie et la terminer<p>
+<dl class="author" compact><dt><b>Auteur:</b></dt><dd>James</dd></dl>
+<dl class="version" compact><dt><b>Version:</b></dt><dd>1.1 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>2008/04/11 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="Jeu_8h-source.html">Jeu.h</a>.</p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="f6a4947ea60bb545d800514835f7f929"></a><!-- doxytag: member="Jeu.h::actionJoueurJeu" ref="f6a4947ea60bb545d800514835f7f929" args="(Table &amp;table, Joueur &amp;joueur, Statut statut, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void actionJoueurJeu           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Statut</a>&nbsp;</td>
+          <td class="paramname"> <em>statut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+fonction utilise lorsque le joueur change de status 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td>sujet de l'action </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>statut</em>&nbsp;</td><td>son nouveau statut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>s'il relance on met le montant dedans </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Jeu_8C-source.html#l00093">93</a> du fichier <a class="el" href="Jeu_8C-source.html">Jeu.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="81f31aeb68c5315c1c9d60e714e3bb61"></a><!-- doxytag: member="Jeu.h::atendActionJoueurHumain" ref="81f31aeb68c5315c1c9d60e714e3bb61" args="(const Table &amp;table, Joueur &amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int atendActionJoueurHumain           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+fonction qui attent une action d'une personne humaine 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table qui normellement n'est pas modifiee </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em><a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a></em>&nbsp;</td><td>un joueur </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>entier de notification de relance (a 1 si relance) </dd></dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>cette fonction appel actionJoueurJeu(...) pour les modifications du joueur</dd></dl>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table qui normellement n'est pas modifiee </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em><a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a></em>&nbsp;</td><td>un joueur </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>entier de notification : relance -&gt; 1, reste dans leu sans relance -&gt; 0, quit -&gt;-1 </dd></dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>cette fonction appel actionJoueurJeu(...) pour les modifications du joueur </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Jeu_8C-source.html#l00081">81</a> du fichier <a class="el" href="Jeu_8C-source.html">Jeu.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8df7df6c7c06045aa60bc4878e84ab37"></a><!-- doxytag: member="Jeu.h::distribuer2CartesJoueursJeu" ref="8df7df6c7c06045aa60bc4878e84ab37" args="(Table &amp;table) void distribuer1CarteDecouverteJeu(Table &amp;table" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void distribuer2CartesJoueursJeu           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+donne deux carte a chacun des joueurs de la table 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table decouvre n carte sur la table </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>un entier qui correspond au nombre de carte a retourner sur la table </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="5e7505f5680d14b08cb46e3f2fc755e9"></a><!-- doxytag: member="Jeu.h::donneVictoireJeu" ref="5e7505f5680d14b08cb46e3f2fc755e9" args="(Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void donneVictoireJeu           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+donne la victoire a un (ou plus) joueur(s) 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>analyse la (ou les) main(s) gagnante et r�partie le pot en fonction </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Jeu_8C-source.html#l00068">68</a> du fichier <a class="el" href="Jeu_8C-source.html">Jeu.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9a9fa984d840c1cfa34abc90e8245e0c"></a><!-- doxytag: member="Jeu.h::initialiseJeu" ref="9a9fa984d840c1cfa34abc90e8245e0c" args="(Table &amp;table, int argent, int nombreJoueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initialiseJeu           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>argent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>nombreJoueur</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+initialise le jeu automatiquement pour une partie contre l'ordinateur (9 IA au max) 
+<p>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>donne de largent a chacun des joueurs, affecte les IA, les places, le dealer.... </dd></dl>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>argent</em>&nbsp;</td><td>montant au depart </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>nombreJoueur</em>&nbsp;</td><td>le nombre de joueur total </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="2db4c3a16a0c1d8f2d3d111cb1908194"></a><!-- doxytag: member="Jeu.h::lanceJeu" ref="2db4c3a16a0c1d8f2d3d111cb1908194" args="(Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lanceJeu           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+relance une nouvelle partie 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>remet la main de tous � zero et re remplit pileCarte (en changeant la taille) <p>
+change la position du dealer </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="Jeu_8C-source.html#l00047">47</a> du fichier <a class="el" href="Jeu_8C-source.html">Jeu.C</a>.</p>
+
+<p>Références <a class="el" href="Table_8C-source.html#l00161">changeDealerTable()</a>, <a class="el" href="Table_8C-source.html#l00177">getIemeJoueur()</a>, <a class="el" href="Table_8C-source.html#l00183">getMainCarteTable()</a>, <a class="el" href="Joueur_8h.html#6da332c3ab6efcbfce61f7168232b39d">getMainJoueur()</a>, <a class="el" href="Table_8C-source.html#l00143">getNJoueurTable()</a>, <a class="el" href="MainCarte_8C-source.html#l00012">initialisationMain()</a>, et <a class="el" href="PileCarte_8C-source.html#l00078">nouvellePileCarte()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0bd2758f91f42db8aad0517fb83d6b1a"></a><!-- doxytag: member="Jeu.h::lanceTourJeu" ref="0bd2758f91f42db8aad0517fb83d6b1a" args="(Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lanceTourJeu           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+interroge les joueurs tours � tours 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table</td></tr>
+  </table>
+</dl>
+s'arrete lorsque les mises sont egales 
+<p>Définition à la ligne <a class="el" href="Jeu_8C-source.html#l00105">105</a> du fichier <a class="el" href="Jeu_8C-source.html">Jeu.C</a>.</p>
+
+<p>Références <a class="el" href="Table_8C-source.html#l00143">getNJoueurTable()</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="db4647482ce277c0839ccc9bc3ffb75d"></a><!-- doxytag: member="Jeu.h::n" ref="db4647482ce277c0839ccc9bc3ffb75d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="Jeu_8h-source.html#l00040">40</a> du fichier <a class="el" href="Jeu_8h-source.html">Jeu.h</a>.</p>
+
+<p>Référencé par <a class="el" href="Table_8C-source.html#l00048">initTable()</a>.</p>
+
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:51 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>

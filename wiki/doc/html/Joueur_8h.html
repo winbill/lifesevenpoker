@@ -1,0 +1,826 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker: Référence du fichier Joueur.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<h1>Référence du fichier Joueur.h</h1>Fichier H pour Joeur. <a href="#_details">Plus de détails...</a>
+<p>
+<code>#include &quot;IArtificelle.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="MainCarte_8h-source.html">MainCarte.h</a>&quot;</code><br>
+
+<p>
+<a href="Joueur_8h-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structJoueur.html">Joueur</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">structure representant le joueur de poker assis � la table  <a href="structJoueur.html#_details">Plus de détails...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Énumérations</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Statut</a> { <br>
+&nbsp;&nbsp;<a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad16676ea289319556078197a8bd9764937393">SIT_OUT</a> = 0, 
+<a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667f5f355227edfaaf75b7c76371b2782a7">SIT</a> =  1, 
+<a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667bd0ebc08c262bab82a1882256d2d66e8">CALL</a> = 2, 
+<a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667ed65b7dfe470f4e500b15f7074bb7fa2">CHECK</a> =  3, 
+<br>
+&nbsp;&nbsp;<a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667e9ec39715b515cb7a00034bced1c1ad4">RAISE</a> =  4, 
+<a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad16674c06ebc69df9afd471c3044ba969a17f">FOLD</a> =  5, 
+<a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad16675bdc920a6a424d57b64113e7ebe0c4a3">ALL_IN</a> =  6, 
+<a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e">FIN_STATUT</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e">FIN_STATUT</a>
+<br>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Statut du joueur.  <a href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Plus de détails...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5">TypeJoueur</a> { <br>
+&nbsp;&nbsp;<a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a53f3e85ca39e78296efc1f246b2a16946">Humain</a> = 0, 
+<a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5e578d86b989f74d77e5fc5f6be806f92">IA</a> =  1, 
+<a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5ba09605ac6dfc2026ae8236fe779032d">Joueur</a> = 2, 
+<a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e">FIN_STATUT</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e">FIN_STATUT</a>
+<br>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">indique le type du joueur  <a href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5">Plus de détails...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#2e947bea4b8936a240229e3c24a0f693">initJoueur</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur) <a class="el" href="structJoueur.html">Joueur</a> *creerJoueur(Joureur &amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">initialise un joueur  <a href="#2e947bea4b8936a240229e3c24a0f693"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#09fc694adc36d4178f39b3aff442f709">initJoueur</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur, char[15] pseudo)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">initialise un joueur  <a href="#09fc694adc36d4178f39b3aff442f709"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structJoueur.html">Joueur</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#ac52d95628b9ff2d9174811187886e50">creeJoueur</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">cree dans le tas une variable joueur puis l'initialise  <a href="#ac52d95628b9ff2d9174811187886e50"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#35385087d918153a6fff38a32bc74ac4">setStatutJoueur</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur, const <a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Statut</a> statut)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">change le statut du joueur en statut  <a href="#35385087d918153a6fff38a32bc74ac4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Statut</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#89dea2d22efed5a19ac726526d14384f">getStatutJoueur</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">change le statut du joueur en statut  <a href="#89dea2d22efed5a19ac726526d14384f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#988ffe0032c191481b8e215b35fc80fd">joueurLibere</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">libere les allocations internes a joueur  <a href="#988ffe0032c191481b8e215b35fc80fd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#3bf9ad5f923de19b563d59df803be3e6">joueurDetruit</a> (<a class="el" href="structJoueur.html">Joueur</a> *&amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">libere plus detruit la structure  <a href="#3bf9ad5f923de19b563d59df803be3e6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#a8859c5c358f396e1665d461db866140">reinitialiseMainJoueur</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">r�initialise la main du joueur  <a href="#a8859c5c358f396e1665d461db866140"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#51acc948df9c3fb67c447ba03bd61151">setIdJoueur</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur, int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">donne un id unique et diff�rent a chaque joueur  <a href="#51acc948df9c3fb67c447ba03bd61151"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#f4155f33390c31a6b5e5d5da4c0c4956">getIdJoueur</a> (const <a class="el" href="structJoueur.html">Joueur</a> &amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi l'id du joueur  <a href="#f4155f33390c31a6b5e5d5da4c0c4956"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#4c0907167fe7d5439ff035620d17deb7">setMiseJoueur</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur, int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">entre la mise d'un joueur  <a href="#4c0907167fe7d5439ff035620d17deb7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#a27459843403ff3b8fbc796e0cf4676d">getMiseJoueur</a> (const <a class="el" href="structJoueur.html">Joueur</a> &amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi la mise qu'a effectuer un joueur  <a href="#a27459843403ff3b8fbc796e0cf4676d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#d0fd650c6ff694a9f215ffae42c0ca48">ajoutMiseJoueur</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur, int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">entre la mise d'un joueur  <a href="#d0fd650c6ff694a9f215ffae42c0ca48"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structMainCarte.html">MainCarte</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#6da332c3ab6efcbfce61f7168232b39d">getMainJoueur</a> (const <a class="el" href="structJoueur.html">Joueur</a> &amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi l'adresse de mainJoueur  <a href="#6da332c3ab6efcbfce61f7168232b39d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#27e63ee48741c044ae618b9567a9bbb7">setArgentJoueur</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur, int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">pour changer l'argent qu'a un joueur  <a href="#27e63ee48741c044ae618b9567a9bbb7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#8179d34ea91a1ee551d7ec95b4e009db">getArgentJoueur</a> (const <a class="el" href="structJoueur.html">Joueur</a> &amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi le montant de l'argent que possede le joueur  <a href="#8179d34ea91a1ee551d7ec95b4e009db"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#dc5a0044b714e737adccfce53d6bde39">setTypeJoueurTable</a> (<a class="el" href="structTable.html">Table</a> &amp;table, int <a class="el" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">etablit le type du joueur  <a href="#dc5a0044b714e737adccfce53d6bde39"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Joueur_8h.html#bc3f80fa819bcec71f47435dafdddc6f">getTypeJoueurTable</a> (const <a class="el" href="structTable.html">Table</a> &amp;table)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi le type du joueur  <a href="#bc3f80fa819bcec71f47435dafdddc6f"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Fichier H pour Joeur. 
+<p>
+gere la structure joueur et leur parametre<p>
+<dl class="author" compact><dt><b>Auteur:</b></dt><dd>Tristan James</dd></dl>
+<dl class="version" compact><dt><b>Version:</b></dt><dd>1.1 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>2008/04/11 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+<hr><h2>Documentation du type de l'énumération</h2>
+<a class="anchor" name="51cc5d61d45bf71507aceec544ad1667"></a><!-- doxytag: member="Joueur.h::Statut" ref="51cc5d61d45bf71507aceec544ad1667" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Statut</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Statut du joueur. 
+<p>
+<dl compact><dt><b>Valeurs énumérées: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="51cc5d61d45bf71507aceec544ad16676ea289319556078197a8bd9764937393"></a><!-- doxytag: member="SIT_OUT" ref="51cc5d61d45bf71507aceec544ad16676ea289319556078197a8bd9764937393" args="" -->SIT_OUT</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> pas assis </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="51cc5d61d45bf71507aceec544ad1667f5f355227edfaaf75b7c76371b2782a7"></a><!-- doxytag: member="SIT" ref="51cc5d61d45bf71507aceec544ad1667f5f355227edfaaf75b7c76371b2782a7" args="" -->SIT</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> assis </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="51cc5d61d45bf71507aceec544ad1667bd0ebc08c262bab82a1882256d2d66e8"></a><!-- doxytag: member="CALL" ref="51cc5d61d45bf71507aceec544ad1667bd0ebc08c262bab82a1882256d2d66e8" args="" -->CALL</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> suis </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="51cc5d61d45bf71507aceec544ad1667ed65b7dfe470f4e500b15f7074bb7fa2"></a><!-- doxytag: member="CHECK" ref="51cc5d61d45bf71507aceec544ad1667ed65b7dfe470f4e500b15f7074bb7fa2" args="" -->CHECK</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> check </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="51cc5d61d45bf71507aceec544ad1667e9ec39715b515cb7a00034bced1c1ad4"></a><!-- doxytag: member="RAISE" ref="51cc5d61d45bf71507aceec544ad1667e9ec39715b515cb7a00034bced1c1ad4" args="" -->RAISE</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> relance </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="51cc5d61d45bf71507aceec544ad16674c06ebc69df9afd471c3044ba969a17f"></a><!-- doxytag: member="FOLD" ref="51cc5d61d45bf71507aceec544ad16674c06ebc69df9afd471c3044ba969a17f" args="" -->FOLD</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> se couche </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="51cc5d61d45bf71507aceec544ad16675bdc920a6a424d57b64113e7ebe0c4a3"></a><!-- doxytag: member="ALL_IN" ref="51cc5d61d45bf71507aceec544ad16675bdc920a6a424d57b64113e7ebe0c4a3" args="" -->ALL_IN</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> fait tapis </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e"></a><!-- doxytag: member="FIN_STATUT" ref="49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e" args="" -->FIN_STATUT</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> erreur </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e"></a><!-- doxytag: member="FIN_STATUT" ref="49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e" args="" -->FIN_STATUT</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> erreur </td></tr>
+</table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Joueur_8h-source.html#l00019">19</a> du fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="49d49ad1a38f9cbf2e9a8e27156446a5"></a><!-- doxytag: member="Joueur.h::TypeJoueur" ref="49d49ad1a38f9cbf2e9a8e27156446a5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="Joueur_8h.html#49d49ad1a38f9cbf2e9a8e27156446a5">TypeJoueur</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+indique le type du joueur 
+<p>
+<dl compact><dt><b>Valeurs énumérées: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="49d49ad1a38f9cbf2e9a8e27156446a53f3e85ca39e78296efc1f246b2a16946"></a><!-- doxytag: member="Humain" ref="49d49ad1a38f9cbf2e9a8e27156446a53f3e85ca39e78296efc1f246b2a16946" args="" -->Humain</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> humain mais pas le joueur qui joue (pour le reseau) </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="49d49ad1a38f9cbf2e9a8e27156446a5e578d86b989f74d77e5fc5f6be806f92"></a><!-- doxytag: member="IA" ref="49d49ad1a38f9cbf2e9a8e27156446a5e578d86b989f74d77e5fc5f6be806f92" args="" -->IA</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> simul� par l'ordinateur </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="49d49ad1a38f9cbf2e9a8e27156446a5ba09605ac6dfc2026ae8236fe779032d"></a><!-- doxytag: member="Joueur" ref="49d49ad1a38f9cbf2e9a8e27156446a5ba09605ac6dfc2026ae8236fe779032d" args="" -->Joueur</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> qui joue </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e"></a><!-- doxytag: member="FIN_STATUT" ref="49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e" args="" -->FIN_STATUT</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> erreur </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e"></a><!-- doxytag: member="FIN_STATUT" ref="49d49ad1a38f9cbf2e9a8e27156446a5e95eb5dcfd0a1a961929f725ecf1509e" args="" -->FIN_STATUT</em>&nbsp;</td><td>
+<a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> erreur </td></tr>
+</table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="Joueur_8h-source.html#l00033">33</a> du fichier <a class="el" href="Joueur_8h-source.html">Joueur.h</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="d0fd650c6ff694a9f215ffae42c0ca48"></a><!-- doxytag: member="Joueur.h::ajoutMiseJoueur" ref="d0fd650c6ff694a9f215ffae42c0ca48" args="(Joueur &amp;joueur, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ajoutMiseJoueur           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+entre la mise d'un joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>valeur de la mise ajouter a la valeur de ca mise courante </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>ca nouvelle mise (mise davant + n); </dd></dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>sorte de get et set sur la mise du joueur </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="ac52d95628b9ff2d9174811187886e50"></a><!-- doxytag: member="Joueur.h::creeJoueur" ref="ac52d95628b9ff2d9174811187886e50" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structJoueur.html">Joueur</a>* creeJoueur           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+cree dans le tas une variable joueur puis l'initialise 
+<p>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>appel la fonction initJoueur </dd></dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>renvoie l'adresse d'un <a class="el" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="8179d34ea91a1ee551d7ec95b4e009db"></a><!-- doxytag: member="Joueur.h::getArgentJoueur" ref="8179d34ea91a1ee551d7ec95b4e009db" args="(const Joueur &amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getArgentJoueur           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi le montant de l'argent que possede le joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>argent </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="f4155f33390c31a6b5e5d5da4c0c4956"></a><!-- doxytag: member="Joueur.h::getIdJoueur" ref="f4155f33390c31a6b5e5d5da4c0c4956" args="(const Joueur &amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getIdJoueur           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi l'id du joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>idJoueur </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="6da332c3ab6efcbfce61f7168232b39d"></a><!-- doxytag: member="Joueur.h::getMainJoueur" ref="6da332c3ab6efcbfce61f7168232b39d" args="(const Joueur &amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMainCarte.html">MainCarte</a>* getMainJoueur           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi l'adresse de mainJoueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+
+<p>Référencé par <a class="el" href="Jeu_8C-source.html#l00030">distribuer2CartesJoueursJeu()</a>, et <a class="el" href="Jeu_8C-source.html#l00047">lanceJeu()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a27459843403ff3b8fbc796e0cf4676d"></a><!-- doxytag: member="Joueur.h::getMiseJoueur" ref="a27459843403ff3b8fbc796e0cf4676d" args="(const Joueur &amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getMiseJoueur           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi la mise qu'a effectuer un joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>mise du joueur </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="89dea2d22efed5a19ac726526d14384f"></a><!-- doxytag: member="Joueur.h::getStatutJoueur" ref="89dea2d22efed5a19ac726526d14384f" args="(Joueur &amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Statut</a> getStatutJoueur           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+change le statut du joueur en statut 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>appel la fonction initJoueur </dd></dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>renvoie le statut actuel du joueur </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="bc3f80fa819bcec71f47435dafdddc6f"></a><!-- doxytag: member="Joueur.h::getTypeJoueurTable" ref="bc3f80fa819bcec71f47435dafdddc6f" args="(const Table &amp;table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getTypeJoueurTable           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi le type du joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td>une table </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>type du joueur a la table </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="09fc694adc36d4178f39b3aff442f709"></a><!-- doxytag: member="Joueur.h::initJoueur" ref="09fc694adc36d4178f39b3aff442f709" args="(Joueur &amp;joueur, char[15] pseudo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initJoueur           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>pseudo</em>[15]</td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+initialise un joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pseudo</em>&nbsp;</td><td>: nom du joueur 15 caract�res max </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="2e947bea4b8936a240229e3c24a0f693"></a><!-- doxytag: member="Joueur.h::initJoueur" ref="2e947bea4b8936a240229e3c24a0f693" args="(Joueur &amp;joueur) Joueur *creerJoueur(Joureur &amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initJoueur           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+initialise un joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>on initialise idJoueur avec -1 creer un joueur </dd></dl>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="3bf9ad5f923de19b563d59df803be3e6"></a><!-- doxytag: member="Joueur.h::joueurDetruit" ref="3bf9ad5f923de19b563d59df803be3e6" args="(Joueur *&amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void joueurDetruit           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> *&amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+libere plus detruit la structure 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td>adresse d'un joueur </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>appel la fonction joueurLibere </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="988ffe0032c191481b8e215b35fc80fd"></a><!-- doxytag: member="Joueur.h::joueurLibere" ref="988ffe0032c191481b8e215b35fc80fd" args="(Joueur &amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void joueurLibere           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+libere les allocations internes a joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="a8859c5c358f396e1665d461db866140"></a><!-- doxytag: member="Joueur.h::reinitialiseMainJoueur" ref="a8859c5c358f396e1665d461db866140" args="(Joueur &amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reinitialiseMainJoueur           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+r�initialise la main du joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mainJoueur</em>&nbsp;</td><td>pointeur sur une <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="27e63ee48741c044ae618b9567a9bbb7"></a><!-- doxytag: member="Joueur.h::setArgentJoueur" ref="27e63ee48741c044ae618b9567a9bbb7" args="(Joueur &amp;joueur, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setArgentJoueur           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+pour changer l'argent qu'a un joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>entier </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+
+<p>Référencé par <a class="el" href="Jeu_8C-source.html#l00017">initialiseJeu()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="51acc948df9c3fb67c447ba03bd61151"></a><!-- doxytag: member="Joueur.h::setIdJoueur" ref="51acc948df9c3fb67c447ba03bd61151" args="(Joueur &amp;joueur, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setIdJoueur           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+donne un id unique et diff�rent a chaque joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>entier </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+
+<p>Référencé par <a class="el" href="Table_8C-source.html#l00098">ajoutJoueurTable()</a>, et <a class="el" href="Table_8C-source.html#l00108">supprimeJoueurTable()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4c0907167fe7d5439ff035620d17deb7"></a><!-- doxytag: member="Joueur.h::setMiseJoueur" ref="4c0907167fe7d5439ff035620d17deb7" args="(Joueur &amp;joueur, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setMiseJoueur           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+entre la mise d'un joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>valeur de la mise </td></tr>
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="35385087d918153a6fff38a32bc74ac4"></a><!-- doxytag: member="Joueur.h::setStatutJoueur" ref="35385087d918153a6fff38a32bc74ac4" args="(Joueur &amp;joueur, const Statut statut)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setStatutJoueur           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="Joueur_8h.html#51cc5d61d45bf71507aceec544ad1667">Statut</a>&nbsp;</td>
+          <td class="paramname"> <em>statut</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+change le statut du joueur en statut 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>statut</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>appel la fonction initJoueur </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="dc5a0044b714e737adccfce53d6bde39"></a><!-- doxytag: member="Joueur.h::setTypeJoueurTable" ref="dc5a0044b714e737adccfce53d6bde39" args="(Table &amp;table, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setTypeJoueurTable           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTable.html">Table</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+etablit le type du joueur 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>table</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>nombre de joueurs desires </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:51 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>

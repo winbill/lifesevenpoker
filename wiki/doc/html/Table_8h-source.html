@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker:  Fichier source de Table.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<h1>Table.h</h1><a href="Table_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00032"></a>00032 <span class="preprocessor">#ifndef Table_H</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span><span class="preprocessor">#define Table_H</span>
+<a name="l00034"></a>00034 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="MainCarte_8h.html" title="Fichier H pour les mains des joueurs.">MainCarte.h</a>"</span>
+<a name="l00035"></a>00035 <span class="preprocessor">#include "<a class="code" href="PileCarte_8h.html" title="Fichier H pour la pile de Carte.">PileCarte.h</a>"</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include "<a class="code" href="Joueur_8h.html" title="Fichier H pour Joeur.">Joueur.h</a>"</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 
+<a name="l00051"></a><a class="code" href="structTable.html">00051</a> <span class="keyword">struct </span><a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a>
+<a name="l00052"></a>00052 {
+<a name="l00053"></a><a class="code" href="structTable.html#84762efaa7e8b6a530d15b7e61068b90">00053</a>         <span class="keywordtype">int</span> <a class="code" href="structTable.html#84762efaa7e8b6a530d15b7e61068b90">nJoueur</a>;
+<a name="l00054"></a><a class="code" href="structTable.html#f76d6e575ca55e0c781a965b570875df">00054</a>         <a class="code" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a>* <a class="code" href="structTable.html#f76d6e575ca55e0c781a965b570875df">joueur</a>[10];
+<a name="l00055"></a><a class="code" href="structTable.html#35090b2c60d4bc8360b21a048da2f676">00055</a>         <span class="keywordtype">int</span> <a class="code" href="structTable.html#35090b2c60d4bc8360b21a048da2f676">nMaxJoueur</a>;
+<a name="l00056"></a><a class="code" href="structTable.html#8ef045898272e777402ea23e86152572">00056</a>         <a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>* <a class="code" href="structTable.html#8ef045898272e777402ea23e86152572">carteDecouverte</a>;
+<a name="l00057"></a><a class="code" href="structTable.html#dc9089c4d47db560e347619051b8dca1">00057</a>         <a class="code" href="structPileCarte.html" title="Structure representant le jeu (de 52 cartes au depart) d&amp;#39;ou sont distribuees...">PileCarte</a>* <a class="code" href="structTable.html#dc9089c4d47db560e347619051b8dca1">pileCarte</a>;
+<a name="l00058"></a><a class="code" href="structTable.html#641f547a06d2e62d9cf8bb3e9e633aaa">00058</a>         <span class="keywordtype">int</span> <a class="code" href="structTable.html#641f547a06d2e62d9cf8bb3e9e633aaa">positionDealer</a>;
+<a name="l00059"></a><a class="code" href="structTable.html#a22329bcce78fa2e77226f41e35db795">00059</a>         <span class="keywordtype">int</span> <a class="code" href="structTable.html#a22329bcce78fa2e77226f41e35db795">petiteBlind</a>;
+<a name="l00060"></a>00060 };
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 
+<a name="l00068"></a>00068 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#f8655df9910a8f930f814c4f767fb247" title="initialise la variable table">initTable</a> (<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table);
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00075"></a>00075 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#f8655df9910a8f930f814c4f767fb247" title="initialise la variable table">initTable</a> (<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table,<span class="keywordtype">int</span> nJoueur);
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 
+<a name="l00083"></a>00083 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#f8655df9910a8f930f814c4f767fb247" title="initialise la variable table">initTable</a> (<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table,<span class="keywordtype">int</span> nJoueur,<a class="code" href="structPileCarte.html" title="Structure representant le jeu (de 52 cartes au depart) d&amp;#39;ou sont distribuees...">PileCarte</a>* &amp; pileCarte);
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085 
+<a name="l00090"></a>00090 <a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a>* <a class="code" href="Table_8C.html#b3b74e23ba144d26f6638aaa9e6ef129" title="cree dans le tas une variable table puis l&amp;#39;initialise">creeTable</a>();
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 
+<a name="l00096"></a>00096 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#e33263654975099f9d5f6126e9c264a6" title="libere les allocations internes a table">tableLibere</a>(<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table);
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 
+<a name="l00107"></a>00107 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#6240cb7448efad4aac9beb23f1e9ad30" title="libere plus detruit la structure">tableDetruit</a>(<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a>* &amp; table);
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 
+<a name="l00115"></a>00115 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#1a688c1c885ce9bd696fce82d450f010" title="Ajoute un joueur a la table.">ajoutJoueurTable</a> (<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table, <a class="code" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a>* joueur);
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 
+<a name="l00123"></a>00123 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#ebbaa044451bb48db5cf142b32b6d529" title="supprime le joueur du tableau en effectuant une recherche le joueur existe encore...">supprimeJoueurTable</a> (<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table, <a class="code" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a>* joueur);
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125 
+<a name="l00130"></a>00130 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#24fcaa7604c7a2ce3c3e8616db15bd48" title="etablit un nombre de joueurs maximal (pour le reseau)">setMaxJoueurTable</a> (<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table, <span class="keywordtype">int</span> <a class="code" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>);
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 
+<a name="l00137"></a>00137 <span class="keywordtype">int</span> <a class="code" href="Table_8C.html#97ea978b19e0b5b5673d5de4b67dbcbe" title="renvoi le nombre de joueurs maximal">getMaxJoueurTable</a> (<span class="keyword">const</span> <a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table);
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 
+<a name="l00144"></a>00144 <a class="code" href="structPileCarte.html" title="Structure representant le jeu (de 52 cartes au depart) d&amp;#39;ou sont distribuees...">PileCarte</a>* <a class="code" href="Table_8C.html#cf6409da83123aff248fd28be0d8a889" title="renvoi l adresse de la pile de carte">getTablePileCarteTable</a> (<span class="keyword">const</span> <a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table);
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 
+<a name="l00151"></a>00151 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#72c1258e9848a45ee1a51cf361df0835" title="etablit un nombre de joueurs n a la table">setNJoueurTable</a> (<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table, <span class="keywordtype">int</span> <a class="code" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>);
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153 
+<a name="l00158"></a>00158 <span class="keywordtype">int</span> <a class="code" href="Table_8C.html#9ba7617d40eace158f2bd2713dc399c2" title="renvoi le nombre de joueurs">getNJoueurTable</a> (<span class="keyword">const</span> <a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table);
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160 
+<a name="l00166"></a>00166 <span class="keywordtype">int</span> <a class="code" href="Table_8C.html#47f9610aad7505df038016a0c6ce1d67" title="cherche une place vide dans le tableau de joueur">placeVide</a> (<span class="keyword">const</span> <a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table);
+<a name="l00167"></a>00167 
+<a name="l00171"></a>00171 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#e487f501ef6521698ee210381fb3f876" title="change la position du dealer (decale de un en verifiant quil y a un joueur)">changeDealerTable</a>(<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table);
+<a name="l00172"></a>00172 
+<a name="l00178"></a>00178 <a class="code" href="structJoueur.html" title="structure representant le joueur de poker assis � la table">Joueur</a>* <a class="code" href="Table_8C.html#de7bc2848cb213e8804fa8a7ee3045ec" title="renvoi le joueur a la nieme position">getIemeJoueur</a>(<span class="keyword">const</span> <a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table,<span class="keywordtype">int</span> <a class="code" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>);
+<a name="l00179"></a>00179 
+<a name="l00184"></a>00184 <a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>* <a class="code" href="Table_8C.html#3419374df45cf6c77ebb1acaf5fdb04f" title="renvoi l adresse des cartes decouvertes">getMainCarteTable</a>(<span class="keyword">const</span> <a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table);
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186 
+<a name="l00191"></a>00191 <span class="keywordtype">void</span> <a class="code" href="Table_8C.html#7dd85b208a85126ea8355bad8ace1e88" title="etablit ula petite blind">setPetiteBlindTable</a> (<a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table, <span class="keywordtype">int</span> <a class="code" href="Jeu_8h.html#db4647482ce277c0839ccc9bc3ffb75d">n</a>);
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193 
+<a name="l00198"></a>00198 <span class="keywordtype">int</span> <a class="code" href="Table_8C.html#21029b454c4a2c2ac32e8ac140096371" title="renvoi la valeur de la petite blind">getPetiteBlindTable</a> (<span class="keyword">const</span> <a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table);
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200 
+<a name="l00205"></a>00205 <span class="keywordtype">int</span> <a class="code" href="Table_8C.html#5eb74dd6e3a7700e156dbce8f9d7bd9e" title="renvoit l&amp;#39;indice du joueur suivant">getJoueurSuivant</a>(<span class="keyword">const</span> <a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table,<span class="keywordtype">int</span> i);
+<a name="l00206"></a>00206 
+<a name="l00211"></a>00211 <span class="keywordtype">int</span> <a class="code" href="Table_8C.html#2601823bdd8902e2381e0d2b24790374" title="renvoit la valeure de positionDealer">getPositionDealerTable</a>(<span class="keyword">const</span> <a class="code" href="structTable.html" title="structure representant la table du jeu de poker, maximum 10 joueurs">Table</a> &amp; table);
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:51 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>

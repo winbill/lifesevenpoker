@@ -1,0 +1,419 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker: Référence du fichier MainCarte.C</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<h1>Référence du fichier MainCarte.C</h1><code>#include &lt;cstdio&gt;</code><br>
+<code>#include &quot;<a class="el" href="Carte_8h-source.html">Carte.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="MainCarte_8h-source.html">MainCarte.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="PileCarte_8h-source.html">PileCarte.h</a>&quot;</code><br>
+
+<p>
+<a href="MainCarte_8C-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="MainCarte_8C.html#95518f5e0c51a3e774923d7394488af9">initialisationMain</a> (<a class="el" href="structMainCarte.html">MainCarte</a> &amp;m)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Procedure initialisant une main de cartes.  <a href="#95518f5e0c51a3e774923d7394488af9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structCarte.html">Carte</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="MainCarte_8C.html#9eb4db3347362834056ef981b916e80c">getMainCarteTabMain</a> (const <a class="el" href="structMainCarte.html">MainCarte</a> &amp;m)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction recuperant le tableau de pointeurs sur <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> de la structure <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>.  <a href="#9eb4db3347362834056ef981b916e80c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="MainCarte_8C.html#5d265301b0f059a3a809de72d41d6c67">getMainCarteNbCarte</a> (const <a class="el" href="structMainCarte.html">MainCarte</a> &amp;m)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction recuperant le nombre de pointeurs sur <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> contenus dans le tableau de la variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>.  <a href="#5d265301b0f059a3a809de72d41d6c67"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="MainCarte_8C.html#8ade791f4015c8cf3461b68dcb7e1256">setMainCarte</a> (<a class="el" href="structMainCarte.html">MainCarte</a> &amp;m, const <a class="el" href="structCarte.html">Carte</a> *&amp;tabMain, int nCarte)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="MainCarte_8C.html#d618f0f747766791e4bf82fa2fe1d5f0">ajouteCarte</a> (<a class="el" href="structMainCarte.html">MainCarte</a> &amp;m, const <a class="el" href="structCarte.html">Carte</a> *&amp;c)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Procedure ajoutant une carte dans la main.  <a href="#d618f0f747766791e4bf82fa2fe1d5f0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="MainCarte_8C.html#2b2bf841399e3a86e8af71b05ace6975">trieMain</a> (<a class="el" href="structMainCarte.html">MainCarte</a> &amp;m, char option)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Procedure de tri de main.  <a href="#2b2bf841399e3a86e8af71b05ace6975"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="MainCarte_8h.html#82fcfa4ae6add610abbc1b42b567d458">Main</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="MainCarte_8C.html#ed760671666c37d46a0795f5deb3abfa">identifieMainCarte</a> (const <a class="el" href="structMainCarte.html">MainCarte</a> &amp;m)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Procedure d'identification de main.  <a href="#ed760671666c37d46a0795f5deb3abfa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structMainCarte.html">MainCarte</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="MainCarte_8C.html#b6ffbb94b5bc3c7649686cbf980f8996">compareMain</a> (const <a class="el" href="structMainCarte.html">MainCarte</a> &amp;m1, const <a class="el" href="structMainCarte.html">MainCarte</a> &amp;m2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction de comparaison de deux variables de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>.  <a href="#b6ffbb94b5bc3c7649686cbf980f8996"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="MainCarte_8C.html#220cc7939659c015223e6ce87b505de1">MainCarteLibere</a> (<a class="el" href="structMainCarte.html">MainCarte</a> &amp;m)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Procedure qui prepare une variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> a la destruction.  <a href="#220cc7939659c015223e6ce87b505de1"></a><br></td></tr>
+</table>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="d618f0f747766791e4bf82fa2fe1d5f0"></a><!-- doxytag: member="MainCarte.C::ajouteCarte" ref="d618f0f747766791e4bf82fa2fe1d5f0" args="(MainCarte &amp;m, const Carte *&amp;c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ajouteCarte           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMainCarte.html">MainCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structCarte.html">Carte</a> *&amp;&nbsp;</td>
+          <td class="paramname"> <em>c</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Procedure ajoutant une carte dans la main. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> et une variable de type <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Ajoute une valeur au tableau du champ de <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> tabMain. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8C-source.html#l00038">38</a> du fichier <a class="el" href="MainCarte_8C-source.html">MainCarte.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Jeu_8C-source.html#l00042">distribuer1CarteDecouverteJeu()</a>, et <a class="el" href="Jeu_8C-source.html#l00030">distribuer2CartesJoueursJeu()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b6ffbb94b5bc3c7649686cbf980f8996"></a><!-- doxytag: member="MainCarte.C::compareMain" ref="b6ffbb94b5bc3c7649686cbf980f8996" args="(const MainCarte &amp;m1, const MainCarte &amp;m2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMainCarte.html">MainCarte</a> compareMain           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMainCarte.html">MainCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>m1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMainCarte.html">MainCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>m2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Fonction de comparaison de deux variables de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree deux variables de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Renvoie la meilleure main. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8C-source.html#l00108">108</a> du fichier <a class="el" href="MainCarte_8C-source.html">MainCarte.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5d265301b0f059a3a809de72d41d6c67"></a><!-- doxytag: member="MainCarte.C::getMainCarteNbCarte" ref="5d265301b0f059a3a809de72d41d6c67" args="(const MainCarte &amp;m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getMainCarteNbCarte           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMainCarte.html">MainCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>m</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Fonction recuperant le nombre de pointeurs sur <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> contenus dans le tableau de la variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Renvoie la valeur du champ nCarte de la variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8C-source.html#l00023">23</a> du fichier <a class="el" href="MainCarte_8C-source.html">MainCarte.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9eb4db3347362834056ef981b916e80c"></a><!-- doxytag: member="MainCarte.C::getMainCarteTabMain" ref="9eb4db3347362834056ef981b916e80c" args="(const MainCarte &amp;m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCarte.html">Carte</a>* getMainCarteTabMain           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMainCarte.html">MainCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>m</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Fonction recuperant le tableau de pointeurs sur <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> de la structure <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Renvoie le premier pointeur sur <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> contenu dans le tableau de pointeurs sur <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> de la variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8C-source.html#l00018">18</a> du fichier <a class="el" href="MainCarte_8C-source.html">MainCarte.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ed760671666c37d46a0795f5deb3abfa"></a><!-- doxytag: member="MainCarte.C::identifieMainCarte" ref="ed760671666c37d46a0795f5deb3abfa" args="(const MainCarte &amp;m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MainCarte_8h.html#82fcfa4ae6add610abbc1b42b567d458">Main</a> identifieMainCarte           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMainCarte.html">MainCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>m</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Procedure d'identification de main. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Renvoie le type de la meilleur combinaison possible avec cette main. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8C-source.html#l00099">99</a> du fichier <a class="el" href="MainCarte_8C-source.html">MainCarte.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="95518f5e0c51a3e774923d7394488af9"></a><!-- doxytag: member="MainCarte.C::initialisationMain" ref="95518f5e0c51a3e774923d7394488af9" args="(MainCarte &amp;m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initialisationMain           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMainCarte.html">MainCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>m</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Procedure initialisant une main de cartes. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> correctement cree. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Initialise la variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8C-source.html#l00012">12</a> du fichier <a class="el" href="MainCarte_8C-source.html">MainCarte.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Jeu_8C-source.html#l00047">lanceJeu()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="220cc7939659c015223e6ce87b505de1"></a><!-- doxytag: member="MainCarte.C::MainCarteLibere" ref="220cc7939659c015223e6ce87b505de1" args="(MainCarte &amp;m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainCarteLibere           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMainCarte.html">MainCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>m</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Procedure qui prepare une variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> a la destruction. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Libère le tableau de pointeurs sur carte et met a 0 le champ nCarte. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8C-source.html#l00121">121</a> du fichier <a class="el" href="MainCarte_8C-source.html">MainCarte.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8ade791f4015c8cf3461b68dcb7e1256"></a><!-- doxytag: member="MainCarte.C::setMainCarte" ref="8ade791f4015c8cf3461b68dcb7e1256" args="(MainCarte &amp;m, const Carte *&amp;tabMain, int nCarte)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setMainCarte           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMainCarte.html">MainCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structCarte.html">Carte</a> *&amp;&nbsp;</td>
+          <td class="paramname"> <em>tabMain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>nCarte</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8C-source.html#l00028">28</a> du fichier <a class="el" href="MainCarte_8C-source.html">MainCarte.C</a>.</p>
+
+<p>Références <a class="el" href="MainCarte_8h-source.html#l00024">MainCarte::nCarte</a>, et <a class="el" href="MainCarte_8h-source.html#l00023">MainCarte::tabMain</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2b2bf841399e3a86e8af71b05ace6975"></a><!-- doxytag: member="MainCarte.C::trieMain" ref="2b2bf841399e3a86e8af71b05ace6975" args="(MainCarte &amp;m, char option)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void trieMain           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMainCarte.html">MainCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>option</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Procedure de tri de main. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Prend</em>&nbsp;</td><td>en entree une variable de type <a class="el" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> et une option de tri. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Trie la main selon l'option donnee. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8C-source.html#l00056">56</a> du fichier <a class="el" href="MainCarte_8C-source.html">MainCarte.C</a>.</p>
+
+<p>Référencé par <a class="el" href="MainCarte_8C-source.html#l00099">identifieMainCarte()</a>.</p>
+
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:52 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>

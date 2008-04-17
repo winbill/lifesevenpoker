@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker:  Fichier source de MainCarte.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<h1>MainCarte.h</h1><a href="MainCarte_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00011"></a>00011 <span class="preprocessor">#ifndef _MainCarte</span>
+<a name="l00012"></a>00012 <span class="preprocessor"></span><span class="preprocessor">#define _MainCarte</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="Carte_8h.html" title="Fichier H pour les cartes.">Carte.h</a>"</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include "<a class="code" href="PileCarte_8h.html" title="Fichier H pour la pile de Carte.">PileCarte.h</a>"</span>
+<a name="l00015"></a>00015 
+<a name="l00021"></a><a class="code" href="structMainCarte.html">00021</a> <span class="keyword">struct </span><a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a>
+<a name="l00022"></a>00022 {
+<a name="l00023"></a><a class="code" href="structMainCarte.html#e893d70d1995b4546cc6a9980d2fa86a">00023</a>   <a class="code" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>* <a class="code" href="structMainCarte.html#e893d70d1995b4546cc6a9980d2fa86a">tabMain</a>; <span class="comment">// 2 cartes dans la main + 5 sur la table = 7 cartes au maximum.</span>
+<a name="l00024"></a><a class="code" href="structMainCarte.html#c74ca8f7d0468453c5b9b679b3492713">00024</a>   <span class="keywordtype">int</span> <a class="code" href="structMainCarte.html#c74ca8f7d0468453c5b9b679b3492713">nCarte</a>;
+<a name="l00025"></a>00025 };
+<a name="l00026"></a>00026 
+<a name="l00031"></a>00031 <span class="keywordtype">void</span> <a class="code" href="MainCarte_8C.html#95518f5e0c51a3e774923d7394488af9" title="Procedure initialisant une main de cartes.">initialisationMain</a>(<a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> &amp; m);
+<a name="l00032"></a>00032 
+<a name="l00037"></a>00037 <a class="code" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>* <a class="code" href="MainCarte_8C.html#9eb4db3347362834056ef981b916e80c" title="Fonction recuperant le tableau de pointeurs sur Carte de la structure MainCarte.">getMainCarteTabMain</a>(<span class="keyword">const</span> <a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> &amp; m);
+<a name="l00038"></a>00038 
+<a name="l00043"></a>00043 <span class="keywordtype">int</span> <a class="code" href="MainCarte_8C.html#5d265301b0f059a3a809de72d41d6c67" title="Fonction recuperant le nombre de pointeurs sur Carte contenus dans le tableau de...">getMainCarteNbCarte</a>(<span class="keyword">const</span> <a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> &amp; m);
+<a name="l00044"></a>00044 
+<a name="l00049"></a>00049 <span class="keywordtype">void</span> <a class="code" href="MainCarte_8C.html#8ade791f4015c8cf3461b68dcb7e1256">setMainCarte</a>(<a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> &amp; m, <span class="keyword">const</span> <a class="code" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>* &amp; tabMain, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; nCarte);
+<a name="l00050"></a>00050 
+<a name="l00055"></a>00055 <span class="keywordtype">void</span> <a class="code" href="MainCarte_8C.html#d618f0f747766791e4bf82fa2fe1d5f0" title="Procedure ajoutant une carte dans la main.">ajouteCarte</a>(<a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> &amp; m, <span class="keyword">const</span> <a class="code" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>* &amp; c);
+<a name="l00056"></a>00056 
+<a name="l00061"></a>00061 <span class="keywordtype">void</span> <a class="code" href="MainCarte_8C.html#2b2bf841399e3a86e8af71b05ace6975" title="Procedure de tri de main.">trieMain</a>(<a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> &amp; m, <span class="keywordtype">char</span> option);
+<a name="l00062"></a>00062 
+<a name="l00065"></a><a class="code" href="MainCarte_8h.html#82fcfa4ae6add610abbc1b42b567d458">00065</a> <span class="keyword">enum</span> <a class="code" href="MainCarte_8h.html#82fcfa4ae6add610abbc1b42b567d458" title="Enumeration representant les differentes mains du jeu de poker.">Main</a>
+<a name="l00066"></a>00066 {
+<a name="l00067"></a>00067     DEF=0;
+<a name="l00068"></a>00068     CARTE_HAUTE=1;
+<a name="l00069"></a>00069     PAIRE=2;
+<a name="l00070"></a>00070     DOUBLE_PAIRE=3;
+<a name="l00071"></a>00071     BRELAN=4;
+<a name="l00072"></a>00072     QUINTE=5;
+<a name="l00073"></a>00073     FLUSH=6;
+<a name="l00074"></a>00074     FULL_HOUSE=7;
+<a name="l00075"></a>00075     CARRE=8;
+<a name="l00076"></a>00076     QUINTE_FLUSH=9;
+<a name="l00077"></a><a class="code" href="MainCarte_8h.html#82fcfa4ae6add610abbc1b42b567d4589d4ebdc6ba6faeaf1d25c94f5631c2c4">00077</a>     <a class="code" href="MainCarte_8h.html#82fcfa4ae6add610abbc1b42b567d4589d4ebdc6ba6faeaf1d25c94f5631c2c4">QUINTE_FLUSH_ROYALE</a>=10;
+<a name="l00078"></a>00078 };
+<a name="l00079"></a>00079 
+<a name="l00084"></a>00084 <a class="code" href="MainCarte_8h.html#82fcfa4ae6add610abbc1b42b567d458" title="Enumeration representant les differentes mains du jeu de poker.">Main</a> <a class="code" href="MainCarte_8C.html#ed760671666c37d46a0795f5deb3abfa" title="Procedure d&amp;#39;identification de main.">identifieMainCarte</a>(<span class="keyword">const</span> <a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> &amp; m);
+<a name="l00085"></a>00085 
+<a name="l00090"></a>00090 <a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> <a class="code" href="MainCarte_8C.html#b6ffbb94b5bc3c7649686cbf980f8996" title="Fonction de comparaison de deux variables de type MainCarte.">compareMain</a>(<span class="keyword">const</span> <a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> &amp; m1, <span class="keyword">const</span> <a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> &amp; m2);
+<a name="l00091"></a>00091 
+<a name="l00096"></a>00096 <span class="keywordtype">void</span> <a class="code" href="MainCarte_8C.html#220cc7939659c015223e6ce87b505de1" title="Procedure qui prepare une variable de type MainCarte a la destruction.">MainCarteLibere</a>(<a class="code" href="structMainCarte.html" title="Structure representant une main de cartes.">MainCarte</a> &amp; m);
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 <span class="preprocessor">#endif</span>
+<a name="l00100"></a>00100 <span class="preprocessor"></span>
+</pre></div><hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:51 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker: Référence du fichier PileCarte.C</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<h1>Référence du fichier PileCarte.C</h1><code>#include &quot;<a class="el" href="PileCarte_8h-source.html">PileCarte.h</a>&quot;</code><br>
+
+<p>
+<a href="PileCarte_8C-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="PileCarte_8C.html#d04de806dd6d0f364feccb4ebcf6fefa">initPileCarte</a> (<a class="el" href="structPileCarte.html">PileCarte</a> &amp;pileCarte)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">initialise la pile de carte, en creant 52 cartes dans le tas  <a href="#d04de806dd6d0f364feccb4ebcf6fefa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structPileCarte.html">PileCarte</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="PileCarte_8C.html#5314e481124a3179410420202b1d3cda">creePileCarte</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">cree la pile de carte  <a href="#5314e481124a3179410420202b1d3cda"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="PileCarte_8C.html#e78025ca2be3e8a89a82a27fd163e7e0">pileCarteLibere</a> (<a class="el" href="structPileCarte.html">PileCarte</a> &amp;pileCarte)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">libere les allocations internes a pileCarte  <a href="#e78025ca2be3e8a89a82a27fd163e7e0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="PileCarte_8C.html#d3e38c549276dbd5f23bfbfa8a3b23e0">pileCarteDetruit</a> (<a class="el" href="structPileCarte.html">PileCarte</a> *&amp;pileCarte)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">detruit la pile de carte proprement  <a href="#d3e38c549276dbd5f23bfbfa8a3b23e0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structCarte.html">Carte</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="PileCarte_8C.html#18a66df80cdbb8a041e5c4c395e460a1">tirerCarte</a> (<a class="el" href="structPileCarte.html">PileCarte</a> &amp;pileCarte)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">sort une carte au hasard de pileDesCartes  <a href="#18a66df80cdbb8a041e5c4c395e460a1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="PileCarte_8C.html#1e7cb48256bddc38d6569656ff9a5669">nouvellePileCarte</a> (<a class="el" href="structPileCarte.html">PileCarte</a> &amp;pileCarte)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">reinitialise la pile de carte en mettant la taille a 52  <a href="#1e7cb48256bddc38d6569656ff9a5669"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="PileCarte_8C.html#d7cbf04b0b8cb581819820d55243c782">hasard</a> (int x, int y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renvoi un nombre au hasard dans l'intervalle (inclus)  <a href="#d7cbf04b0b8cb581819820d55243c782"></a><br></td></tr>
+</table>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="5314e481124a3179410420202b1d3cda"></a><!-- doxytag: member="PileCarte.C::creePileCarte" ref="5314e481124a3179410420202b1d3cda" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPileCarte.html">PileCarte</a>* creePileCarte           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+cree la pile de carte 
+<p>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>renvoie l'adresse dune <a class="el" href="structPileCarte.html" title="Structure representant le jeu (de 52 cartes au depart) d&#39;ou sont distribuees...">PileCarte</a> </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="PileCarte_8C-source.html#l00033">33</a> du fichier <a class="el" href="PileCarte_8C-source.html">PileCarte.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d7cbf04b0b8cb581819820d55243c782"></a><!-- doxytag: member="PileCarte.C::hasard" ref="d7cbf04b0b8cb581819820d55243c782" args="(int x, int y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hasard           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+renvoi un nombre au hasard dans l'intervalle (inclus) 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>le plus petit chiffre qui peut etre renvoye </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>le plus grand chiffre qui peut etre renvoye </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>entier aleatoire compris entre x et y (compris) </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="PileCarte_8C-source.html#l00085">85</a> du fichier <a class="el" href="PileCarte_8C-source.html">PileCarte.C</a>.</p>
+
+<p>Référencé par <a class="el" href="PileCarte_8C-source.html#l00055">tirerCarte()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d04de806dd6d0f364feccb4ebcf6fefa"></a><!-- doxytag: member="PileCarte.C::initPileCarte" ref="d04de806dd6d0f364feccb4ebcf6fefa" args="(PileCarte &amp;pileCarte)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initPileCarte           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPileCarte.html">PileCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>pileCarte</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+initialise la pile de carte, en creant 52 cartes dans le tas 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>pileCarte</em>&nbsp;</td><td>une pile de carte </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>ne melange pas les cartes </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="PileCarte_8C-source.html#l00012">12</a> du fichier <a class="el" href="PileCarte_8C-source.html">PileCarte.C</a>.</p>
+
+<p>Référencé par <a class="el" href="PileCarte_8C-source.html#l00033">creePileCarte()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1e7cb48256bddc38d6569656ff9a5669"></a><!-- doxytag: member="PileCarte.C::nouvellePileCarte" ref="1e7cb48256bddc38d6569656ff9a5669" args="(PileCarte &amp;pileCarte)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void nouvellePileCarte           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPileCarte.html">PileCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>pileCarte</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+reinitialise la pile de carte en mettant la taille a 52 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>pileCarte</em>&nbsp;</td><td>une pile de carte (on change uniquement la taille) </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="PileCarte_8C-source.html#l00078">78</a> du fichier <a class="el" href="PileCarte_8C-source.html">PileCarte.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Jeu_8C-source.html#l00047">lanceJeu()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d3e38c549276dbd5f23bfbfa8a3b23e0"></a><!-- doxytag: member="PileCarte.C::pileCarteDetruit" ref="d3e38c549276dbd5f23bfbfa8a3b23e0" args="(PileCarte *&amp;pileCarte)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pileCarteDetruit           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPileCarte.html">PileCarte</a> *&amp;&nbsp;</td>
+          <td class="paramname"> <em>pileCarte</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+detruit la pile de carte proprement 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>pileCarte</em>&nbsp;</td><td>une adresse de pile de carte </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>appel pileCarteLibere </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="PileCarte_8C-source.html#l00048">48</a> du fichier <a class="el" href="PileCarte_8C-source.html">PileCarte.C</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e78025ca2be3e8a89a82a27fd163e7e0"></a><!-- doxytag: member="PileCarte.C::pileCarteLibere" ref="e78025ca2be3e8a89a82a27fd163e7e0" args="(PileCarte &amp;pileCarte)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pileCarteLibere           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPileCarte.html">PileCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>pileCarte</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+libere les allocations internes a pileCarte 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>pileCarte</em>&nbsp;</td><td>une pile de carte </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="PileCarte_8C-source.html#l00040">40</a> du fichier <a class="el" href="PileCarte_8C-source.html">PileCarte.C</a>.</p>
+
+<p>Référencé par <a class="el" href="PileCarte_8C-source.html#l00048">pileCarteDetruit()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="18a66df80cdbb8a041e5c4c395e460a1"></a><!-- doxytag: member="PileCarte.C::tirerCarte" ref="18a66df80cdbb8a041e5c4c395e460a1" args="(PileCarte &amp;pileCarte)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCarte.html">Carte</a>* tirerCarte           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPileCarte.html">PileCarte</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>pileCarte</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+sort une carte au hasard de pileDesCartes 
+<p>
+ne la supprime pas du tableau donc pas la peine de reinitialiser pileCarte a chaque debut de partie ,il suffit de mettre la taille a 52 <dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>pileCarte</em>&nbsp;</td><td>une pile de carte </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>utilise la fonction hasard </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="PileCarte_8C-source.html#l00055">55</a> du fichier <a class="el" href="PileCarte_8C-source.html">PileCarte.C</a>.</p>
+
+<p>Référencé par <a class="el" href="Jeu_8C-source.html#l00042">distribuer1CarteDecouverteJeu()</a>, et <a class="el" href="Jeu_8C-source.html#l00030">distribuer2CartesJoueursJeu()</a>.</p>
+
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:52 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>

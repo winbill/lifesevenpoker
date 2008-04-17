@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker: Référence du fichier Controles.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<h1>Référence du fichier Controles.h</h1>Fichier H pour les controle. <a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="Controles_8h-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Controles_8h.html#b7e37c42daec250516ad3ecd909cb4ed">controleTActionJoueur</a> (<a class="el" href="structJoueur.html">Joueur</a> &amp;joueur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">demande au joueur ce qu il veut faire  <a href="#b7e37c42daec250516ad3ecd909cb4ed"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Controles_8h.html#2367e0d2a340df260b075b35af6d8e5e">controleTDebugMode</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">permet d executer des commandes pour le beboguage  <a href="#2367e0d2a340df260b075b35af6d8e5e"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Fichier H pour les controle. 
+<p>
+gere l'interaction du joueur avec le programme<p>
+<dl class="author" compact><dt><b>Auteur:</b></dt><dd>James</dd></dl>
+<dl class="version" compact><dt><b>Version:</b></dt><dd>1.1 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>2008/04/11 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="Controles_8h-source.html">Controles.h</a>.</p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="b7e37c42daec250516ad3ecd909cb4ed"></a><!-- doxytag: member="Controles.h::controleTActionJoueur" ref="b7e37c42daec250516ad3ecd909cb4ed" args="(Joueur &amp;joueur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int controleTActionJoueur           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJoueur.html">Joueur</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>joueur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+demande au joueur ce qu il veut faire 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in,out]</tt>&nbsp;</td><td valign="top"><em>joueur</em>&nbsp;</td><td>un joueur </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>change eventuellement son statut </dd></dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>peut retourner le montant de ca relance </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="2367e0d2a340df260b075b35af6d8e5e"></a><!-- doxytag: member="Controles.h::controleTDebugMode" ref="2367e0d2a340df260b075b35af6d8e5e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void controleTDebugMode           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+permet d executer des commandes pour le beboguage 
+<p>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>comme voir les cartes de d'autres joueur </dd></dl>
+
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:51 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>

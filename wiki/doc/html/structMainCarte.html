@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LifeSevenPoker: Référence de la structure MainCarte</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+    <li class="current"><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul>
+</div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+    <li><a href="functions.html"><span>Champs&nbsp;de&nbsp;donnée</span></a></li>
+  </ul>
+</div>
+<h1>Référence de la structure MainCarte</h1><!-- doxytag: class="MainCarte" -->Structure representant une main de cartes.  
+<a href="#_details">Plus de détails...</a>
+<p>
+<code>#include &lt;<a class="el" href="MainCarte_8h-source.html">MainCarte.h</a>&gt;</code>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structCarte.html">Carte</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMainCarte.html#e893d70d1995b4546cc6a9980d2fa86a">tabMain</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMainCarte.html#c74ca8f7d0468453c5b9b679b3492713">nCarte</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Structure representant une main de cartes. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Le</em>&nbsp;</td><td>champ tabMain est un tableau de pointeurs sur <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a>. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Le</em>&nbsp;</td><td>champ nCarte est un entier representant le nombre de pointeurs sur <a class="el" href="structCarte.html" title="Structure representant une carte du jeu.">Carte</a> valides dans le tableau, c'est a dire le nombre de cartes contenues dans la main. </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>La main peut contenir de 0 à 5 cartes. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8h-source.html#l00021">21</a> du fichier <a class="el" href="MainCarte_8h-source.html">MainCarte.h</a>.</p>
+<hr><h2>Documentation des champs</h2>
+<a class="anchor" name="e893d70d1995b4546cc6a9980d2fa86a"></a><!-- doxytag: member="MainCarte::tabMain" ref="e893d70d1995b4546cc6a9980d2fa86a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCarte.html">Carte</a>* <a class="el" href="structMainCarte.html#e893d70d1995b4546cc6a9980d2fa86a">MainCarte::tabMain</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8h-source.html#l00023">23</a> du fichier <a class="el" href="MainCarte_8h-source.html">MainCarte.h</a>.</p>
+
+<p>Référencé par <a class="el" href="MainCarte_8C-source.html#l00038">ajouteCarte()</a>, <a class="el" href="MainCarte_8C-source.html#l00018">getMainCarteTabMain()</a>, <a class="el" href="MainCarte_8C-source.html#l00012">initialisationMain()</a>, <a class="el" href="MainCarte_8C-source.html#l00121">MainCarteLibere()</a>, <a class="el" href="MainCarte_8C-source.html#l00028">setMainCarte()</a>, et <a class="el" href="MainCarte_8C-source.html#l00056">trieMain()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c74ca8f7d0468453c5b9b679b3492713"></a><!-- doxytag: member="MainCarte::nCarte" ref="c74ca8f7d0468453c5b9b679b3492713" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structMainCarte.html#c74ca8f7d0468453c5b9b679b3492713">MainCarte::nCarte</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="MainCarte_8h-source.html#l00024">24</a> du fichier <a class="el" href="MainCarte_8h-source.html">MainCarte.h</a>.</p>
+
+<p>Référencé par <a class="el" href="MainCarte_8C-source.html#l00038">ajouteCarte()</a>, <a class="el" href="MainCarte_8C-source.html#l00023">getMainCarteNbCarte()</a>, <a class="el" href="MainCarte_8C-source.html#l00012">initialisationMain()</a>, <a class="el" href="MainCarte_8C-source.html#l00121">MainCarteLibere()</a>, et <a class="el" href="MainCarte_8C-source.html#l00028">setMainCarte()</a>.</p>
+
+</div>
+</div><p>
+<hr>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li><a class="el" href="MainCarte_8h-source.html">MainCarte.h</a></ul>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Apr 17 13:59:52 2008 pour LifeSevenPoker par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.3 </small></address>
+</body>
+</html>
