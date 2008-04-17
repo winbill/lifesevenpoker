@@ -164,13 +164,25 @@ int suiteMainCarte(const MainCarte & m,int i,int j)
 {
     if(j=4)
         return (getCarteRang[i-4]);
-    if(i=6)
+    if(i=getMainCarteNbCarte(m)-1)
         return 0;
     if(getCarteRang(*(m.tabCarte[i])) = getCarteRang(*(m.tabCarte[i+1])+1))
     {
         suiteMainCarte(m,i+1,j+1);
     }else{
         suiteMainCarte(m,i+1,0);
+    }
+}
+
+
+void nombreOcurenceCarte(const MainCarte & m,int & tab[])
+{
+    int i;
+    for(i=0;i<15;i++)
+        tab[i] = 0;
+    for(i=0;i<getMainCarteNbCarte(m);i++)
+    {
+        tab[getCarteRang(*(m.tabCarte[i])]++;
     }
 }
 

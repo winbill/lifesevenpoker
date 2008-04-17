@@ -113,6 +113,16 @@ int couleurMainCarte(const MainCarte & m);
 */
 int suiteMainCarte(const MainCarte & m,int i,int j);
 
+/** @brief fonction qui permet de compter le nombre d'occurence d'une main
+        de carte indiféremment de ca couleur
+    @param [in] MainCarte
+    @param [out] tab tableau de taille 15
+    @return renvoie les valeurs dans tab
+    @note par exemple : si tab[11] = 4 => carré de valet
+        si tab[2]=3 et tab[14]=2 brelan aux 2 par les As
+    @author James
 
+*/
+void nombreOcurenceCarte(const MainCarte & m,int & tab[]);
 #endif
 
