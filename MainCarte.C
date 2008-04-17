@@ -57,42 +57,59 @@ void trieMain(MainCarte & m, char option)
 {
     if(option="couleur")
     {
-        int ctab[4]={0,0,0,0}; //Tableau où sont stockés les nombres de carte pour chaque couleur.
-        int i;
-        for(i=0;i<7;i++)
+        //Algo de test avec 2 indices de déplacement. Par Ben :)
+        int j=0;
+        int i=1;
+        while(j<6)
         {
-            switch(m.tabMain[i]->couleur)
+            if(i==6)
             {
-                case 1 :
-                    ctab[0]=ctab[0]+1;
-                    break;
-                case 2 :
-                    ctab[1]=ctab[1]+1;
-                    break;
-                case 3 :
-                    ctab[2]=ctab[2]+1;
-                    break;
-                case 4 :
-                    ctab[3]=ctab[3]+1;
-                    break;
+                i=j+1;
+            }
+            if(((m.tabMain[j])->couleur) == ((m.tabMain[i])->couleur))
+            {
+                i=i+1;
+                j=j+1;
+            }
+            else
+            {
+                Carte* temp=m.tabMain[i+1];
+                m.tabMain[i+1]=m.tabMain[i];
+                m.tabMain[i]=temp;
+
+                i=i+1;
             }
         }
-        int domCoul; //Numéro de la couleur ayant 5 carte ou plus si elle éxiste.
-        for(i=1;i<=4;i++)
-        {
-            ctab[i]>=5 ? domCoul=i : domCoul=0;
-        }
-        //Début du tri selon la couleur dominante.
-
-        //ALGO TENDU DU SLIP A FINIR
-        //Note : il me semblait qu'Olivier avait fait un algo là dessus; A voir avec lui, il l'a pas mis en ligne apparement.
     }
     if(option="rang")
     {
-        int rtab[13]={0,0,0,0,0,0,0,0,0,0,0,0,0};
+        //Principe du tri minimum sur les rangs des 7 (au maximum) cartes d'une main.
+        int i,j;
+        int posmin;
+        Carte* rmin;
 
-        //ALGO TENDU DU SLIP A FINIR
+        for(i=0;i<m.nCarte-1;i++)
+        {
+            posmin=i;
+            rmin=m.tabMain[i];
+            for(j=i+1;j<m.nCarte;j++)
+            {
+                if(((m.tabMain[j])->rang) < ((m.tabMain[posmin])->rang))
+                {
+                    posmin=j;
+                }
+            }
+            rmin=m.tabMain[posmin];
+            m.tabMain[posmin]=m.tabMain[i];
+            m.tabMain[i]=rmin;
+        }
+    }
+    if(option="rc")
+    {
+        //ALGO A FAIRE.
 
+        //TRIER PAR COULEUR PUIS CHAQUE COULEUR PAR RANG
+        //J'AI DEJA UNE PETITE IDEE DE COMMENT FAIRE EN RECYCLANT LES DEUX OPTIONS DU DESSUS ET EN DECOUPANT LE TABLEAU DE MAINCARTE.
     }
 }
 
