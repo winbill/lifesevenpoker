@@ -95,6 +95,24 @@ MainCarte compareMain(const MainCarte & m1, const MainCarte & m2);
 */
 void MainCarteLibere(MainCarte & m);
 
+/** @brief test si la main presente une couleur (5 cartes de meme couleur)
+    @param [in] m MainCarte
+    @return 0 si pas de couleur puis 1,2,3,4 pour TREFLE,CARREAU,COEUR,PIQUE
+    @author James
+*/
+int couleurMainCarte(const MainCarte & m);
+
+/** @brief fonction qui permet de savoir si on peut faire une suite avce la main
+    @note appel récursif utilisé
+    @param [in] m MainCarte trie dans l'ordre DECROISSANT si il y a un AS il
+            doit etre mis en premiere et derniere position
+    @param [in] i utilisé pour l'appel récursif à 0 quand on appel la fonction
+    @param [in] j utilisé pour l'appel récursif à 0 quand on appel la fonction
+    @return 0 s'il n'y a pas de suite, 14 suite a l'AS, 13 au roi ..... 5
+    @author James
+*/
+int suiteMainCarte(const MainCarte & m,int i,int j);
+
 
 #endif
 

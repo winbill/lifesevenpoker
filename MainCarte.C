@@ -142,3 +142,36 @@ void MainCarteLibere(MainCarte & m)
 }
 
 
+int couleurMainCarte(const MainCarte & m)
+{
+    char[4] c;
+    c = {0,0,0,0};
+    for(int i=0;i<=getMainCarteNbCarte(m);i++)
+    {
+        c[getCarteCouleur(*(m.tabCarte[i]))-1] ++;
+    }
+    i=0;
+    while(i<4)
+    {
+        if(c[i] >= 5)
+            return i+1;
+    }
+    return 0
+
+}
+
+int suiteMainCarte(const MainCarte & m,int i,int j)
+{
+    if(j=4)
+        return (getCarteRang[i-4]);
+    if(i=6)
+        return 0;
+    if(getCarteRang(*(m.tabCarte[i])) = getCarteRang(*(m.tabCarte[i+1])+1))
+    {
+        suiteMainCarte(m,i+1,j+1);
+    }else{
+        suiteMainCarte(m,i+1,0);
+    }
+}
+
+
