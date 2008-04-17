@@ -187,3 +187,28 @@ void nombreOcurenceCarte(const MainCarte & m,int & tab[])
 }
 
 
+int choixCarteMultiple(const MainCarte & m,const int & tab[])
+{
+    //double triage du tableau tab
+        //on trie dabord en fonction de tab[i] puis en fonction de i
+            //A FAIRE  (il va de 0 a 14)
+
+    int k=0;    //variable qui compte le nombre de carte
+                //(ne dois jamais depasse 5 et doit etre a 5 a la fin de la boucle)
+    int l =0;   //variable d'incrementation (on change le rang)
+
+    while(k=!5)
+    {
+        if(k+tab[l] <=5)
+        {
+            k = k+tab[l];
+        }
+        //on met a zero pour dire que cela ne sera pas selectionné
+        tab[l] = 0;
+        l++;
+    }
+
+    //a lissue de la boucle on a toutes les informations pour donner un nom avec des valeur a la main
+
+
+}
