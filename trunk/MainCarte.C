@@ -160,7 +160,7 @@ int couleurMainCarte(const MainCarte & m)
 
 }
 
-int suiteMainCarte(const MainCarte & m,int i,int j)
+int suiteMainCarte2(const MainCarte & m,int i,int j, int & k)
 {
     if(j=4)
         return (getCarteRang[i-4]);
@@ -174,6 +174,18 @@ int suiteMainCarte(const MainCarte & m,int i,int j)
     }
 }
 
+int suiteMainCarte(MainCarte m,int & k)
+{
+    if(il y a un as)
+    {
+        carte = new Carte;
+        setCarte(carte,1,1); //on cree un "as" qui vaut 1
+        ajouteCarte(m, carte);
+    }
+    trieMain(m,"rang"); //le trie il est decroissant ,ben faut esperer
+    k=0;
+    return suiteMainCarte2(m,0,0,k)
+}
 
 void nombreOcurenceCarte(const MainCarte & m,int & tab[])
 {
@@ -187,7 +199,7 @@ void nombreOcurenceCarte(const MainCarte & m,int & tab[])
 }
 
 
-int choixCarteMultiple(const MainCarte & m,const int & tab[])
+void choixCarteMultiple(const MainCarte & m,const int & tab[],int & tabResultat[6])
 {
     //double triage du tableau tab
         //on trie dabord en fonction de tab[i] puis en fonction de i dans un tableau a 2d tab[x][y]
@@ -222,27 +234,83 @@ int choixCarteMultiple(const MainCarte & m,const int & tab[])
     switch (tab[0][0])
     {
         case 4:
-            return 60000+tab[0][1];
+            tabResultat[0]=7;
+            tabResultat[1]=tab[0][1];
+            tabResultat[2]=tab[0][1];
+            tabResultat[3]=tab[0][1];
+            tabResultat[4]=tab[0][1];
+            tabResultat[5]=tab[1][1];
         break;
         case 3:
             if(k+tab[l+1][0] ==2)
             {
-                return 50000+tab[0][1]*100+tab[1][1];
+                tabResultat[0]=6;
+                tabResultat[1] =tab[0][1];
+                tabResultat[2] =tab[0][1];
+                tabResultat[3] =tab[0][1];
+                tabResultat[4] = tab[1][1];
+                tabResultat[5] = tab[1][1];
             }else{
-                return 40000+tab[0][1];
+                tabResultat[0]=3;
+                tabResultat[1] =tab[0][1];
+                tabResultat[2] =tab[0][1];
+                tabResultat[3] =tab[0][1];
+                tabResultat[4] =tab[1][1];
+                tabResultat[5] =tab[2][1];
             }
         break;
         case 2:
             if(k+tab[l+1][0] ==2)
             {
-                return 30000+tab[0][1]*100+tab[1][1];
+                tabResultat[0]=2;
+                tabResultat[1] =tab[0][1];
+                tabResultat[2] =tab[0][1];
+                tabResultat[3] =tab[1][1];
+                tabResultat[4] =tab[1][1];
+                tabResultat[5] =tab[2][1];
             }else{
-                return 20000+tab[0][1];
+                tabResultat[0]=1;
+                tabResultat[1] =tab[0][1];
+                tabResultat[2] =tab[0][1];
+                tabResultat[3] =tab[1][1];
+                tabResultat[4] =tab[2][1];
+                tabResultat[5] =tab[3][1];
             }
         break;
         case 1:
-            return 10000+tab[0][1]*100+tab[1][1];
+                tabResultat[0]=0;
+                tabResultat[1] =tab[0][1];
+                tabResultat[2] =tab[1][1];
+                tabResultat[3] =tab[2][1];
+                tabResultat[4] =tab[3][1];
+                tabResultat[5] =tab[4][1];
         break;
     }
+
+    //codage dans un tableau d'entier (faudrait faire un tableau de quadret parce que
+    //stoquer des nombres qui ne depasse pas 14 sur 32bits c'est gros
+    //le premier indice du tableau correspond au code de la forme
+    //vous l'aurez compris (paire brelan carré...)
+    //les 4 dernier elements sont le rang des cartes
+}
+
+
+
+
+void codageScoreMain(const MainCarte &m, int & tabResultat[6])
+{
+    //on test la suite
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
