@@ -56,7 +56,10 @@ void ajouteCarte(MainCarte & m, const Carte* & c);
 
 /** @brief Procedure de tri de main.
     @param Prend en entree une variable de type MainCarte et une option de tri.
+    @james : les commentaires doxy sont pratiques et existent justement pour enumérer ces options de tris !!!!!
+    @james : et trop cool ton trie, il detecte automatiquement s'il faut faire en decroissant ou croissant
     @return Trie la main selon l'option donnee.
+
 */
 void trieMain(MainCarte & m, char option);
 
@@ -102,16 +105,29 @@ void MainCarteLibere(MainCarte & m);
 */
 int couleurMainCarte(const MainCarte & m);
 
-/** @brief fonction qui permet de savoir si on peut faire une suite avce la main
+/** @brief fonction qui permet de savoir si on peut faire une quinte avec la main
     @note appel récursif utilisé
+    @note est appelé par suiteMainCarte
     @param [in] m MainCarte trie dans l'ordre DECROISSANT si il y a un AS il
             doit etre mis en premiere et derniere position
     @param [in] i utilisé pour l'appel récursif à 0 quand on appel la fonction
     @param [in] j utilisé pour l'appel récursif à 0 quand on appel la fonction
+    @param [out] k permet de savoir si c'est une quinte flush
     @return 0 s'il n'y a pas de suite, 14 suite a l'AS, 13 au roi ..... 5
     @author James
 */
-int suiteMainCarte(const MainCarte & m,int i,int j);
+int suiteMainCarte2(const MainCarte & m,int i,int j, int & k);
+
+
+
+/** @brief fonction qui permet de savoir si on peut faire une quinte avec la main
+    @note appel la fonction suiteMainCarte2
+    @param [in] MainCarte (/!\ le passage sans reference EST volontaire)
+    @param [out] k permet de savoir si c'est une quinte flush (a 1 si oui)
+    @return 0 s'il n'y a pas de suite, 14 suite a l'AS, 13 au roi ..... 5
+    @author James
+*/
+int suiteMainCarte(MainCarte m,int & k)
 
 /** @brief fonction qui permet de compter le nombre d'occurence d'une main
         de carte indiféremment de ca couleur
@@ -128,11 +144,28 @@ void nombreOcurenceCarte(const MainCarte & m,int & tab[]);
 
 /** @brief fonction directement lié a nombreOcurenceCarte, et permet de faire le choix des cartes
     @param [in] MainCarte
-    @param [in] tab tableau de taille 15
-    @return renvoie un code pour ce qu'il a trouve
+    @param [in] tab tableau de taille 15 (0 a 14)
+    @param [out] tabResultat renvoit un tableau (le 1er element est le code de
+    la forme et les 5 derniers sont les cartes ordonnés pour une comparaison avec
+    une autre main du meme code de forme)
     @author James
 
 */
-int choixCarteMultiple(const MainCarte & m,const int & tab[]);
+void choixCarteMultiple(const MainCarte & m,const int & tab[],int & tabResultat[6])
+
+
+/** @brief
+
+    @note si on a une suite on ne peut avoir mieux avec choixCarteMultiple
+    @note par contre si on a une couleur on peut avoir mieu : un carre
+
+*/
+int choixCouleurQuinte();
+
+
+
+
+void codageScoreMain(const MainCarte &m, int & tabResultat[6]);
+
 #endif
 
