@@ -162,15 +162,25 @@ int couleurMainCarte(const MainCarte & m)
 
 int suiteMainCarte2(const MainCarte & m,int i,int j, int & k)
 {
-    if(j=4)
-        return (getCarteRang[i-4]);
-    if(i=getMainCarteNbCarte(m)-1)
-        return 0;
-    if(getCarteRang(*(m.tabCarte[i])) = getCarteRang(*(m.tabCarte[i+1])+1))
+    if(j==4)
     {
-        suiteMainCarte(m,i+1,j+1);
+
+
+
+        return (getCarteRang[i-4]);
+    }
+    if(i==getMainCarteNbCarte(m)-1)
+        return 0;
+    if(getCarteRang(*(m.tabCarte[i])) == getCarteRang(*(m.tabCarte[i+1])+1))
+    {
+        if(getCarteCouleur(*(m.tabCarte[i])) != getCarteCouleur(*(m.tabCarte[i+1])+1))
+        {
+            suiteMainCarte(m,i+1,j+1,0);
+        }else{
+            suiteMainCarte(m,i+1,j+1,k+1);
+        }
     }else{
-        suiteMainCarte(m,i+1,0);
+        suiteMainCarte(m,i+1,0,0);
     }
 }
 
@@ -178,7 +188,7 @@ int suiteMainCarte(MainCarte m,int & k)
 {
     if(il y a un as)
     {
-        carte = new Carte;
+        Carte* carte = new Carte;
         setCarte(carte,1,1); //on cree un "as" qui vaut 1
         ajouteCarte(m, carte);
     }
@@ -300,6 +310,9 @@ void choixCarteMultiple(const MainCarte & m,const int & tab[],int & tabResultat[
 void codageScoreMain(const MainCarte &m, int & tabResultat[6])
 {
     //on test la suite
+    int k=0;
+    int l;
+    l=suiteMainCarte(m,k)
 
 
 

@@ -14,6 +14,7 @@ void initPileCarte (PileCarte & pileCarte)
         int i;
         int j;
         int k=0;
+        Carte* carte = NULL;
         for(i=1;i<=4;i++)
         {
                 for(j=2;j<=14;j++)
