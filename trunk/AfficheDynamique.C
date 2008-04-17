@@ -1,3 +1,14 @@
+/**
+	@brief Fichier C pour l'affichage dynamique
+
+
+	gere l'affichage dynamique en utilisant l'affichage de "bas niveau"
+
+	@author  James
+	@file AfficheDynamique.C
+	@version 1.0
+	@date 2008/04/17
+ */
 #include "AfficheSdl.h"
 
 
