@@ -222,31 +222,27 @@ int choixCarteMultiple(const MainCarte & m,const int & tab[])
     switch (tab[0][0])
     {
         case 4:
-            c ="carre";
+            return 60000+tab[0][1];
         break;
         case 3:
             if(k+tab[l+1][0] ==2)
             {
-                c ="code full";
+                return 50000+tab[0][1]*100+tab[1][1];
             }else{
-                c="code brelan"
+                return 40000+tab[0][1];
             }
         break;
         case 2:
             if(k+tab[l+1][0] ==2)
             {
-                c ="code double paire";
+                return 30000+tab[0][1]*100+tab[1][1];
             }else{
-                c="code paire"
+                return 20000+tab[0][1];
             }
         break;
         case 1:
-            c = "carte maitresse";
+            return 10000+tab[0][1]*100+tab[1][1];
         break;
-
-
-
     }
-
 
 }
