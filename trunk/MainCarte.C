@@ -142,13 +142,13 @@ void MainCarteLibere(MainCarte & m)
 }
 
 
-int couleurMainCarte(const MainCarte & m)
+int couleurMainCarte(const int & tab7Carte[8][2])
 {
     char[4] c;
     c = {0,0,0,0}; //tableau qui va contenir le nombre de carte de chaque couleur
-    for(int i=0;i<=getMainCarteNbCarte(m);i++)
+    for(int i=0;i<=7;i++)
     {
-        c[getCarteCouleur(*(m.tabCarte[i]))-1] ++; //on incremente chaque celulle correspondant a la couleur
+        c[tab7Carte[i][1]-1] ++; //on incremente chaque celulle correspondant a la couleur
                                                     //du tableau de un
     }
     i=0;
@@ -161,108 +161,67 @@ int couleurMainCarte(const MainCarte & m)
 
 }
 
-int suiteMainCarte2(const MainCarte & m,int i,int j)
+int suiteMainCarte2(const int & tab7Carte[8][2],int i,int j,int l)
 {
     if(j==4)
     {
-        return (getCarteRang[i-4]);
+        return (tab7Carte[i-4][0]);
     }
     //s'il reste qu'une carte et que j != 4 , il ne peut pas avoir de suite
-    if(i==getMainCarteNbCarte(m)-1)
+    if(i==l-1)
         return 0;
-    if(getCarteRang(*(m.tabCarte[i])) == getCarteRang(*(m.tabCarte[i+1])+1))
+    if(tab7Carte[i][0] == tab7Carte[i+1][0]+1)
     {
-        if(getCarteCouleur(*(m.tabCarte[i])) != getCarteCouleur(*(m.tabCarte[i+1])+1))
-        {
-            suiteMainCarte(m,i+1,j+1);
-        }
+        suiteMainCarte(tab7Carte,i+1,j+1,l);
     }else{
-        suiteMainCarte(m,i+1,0);
+        suiteMainCarte(tab7Carte,i+1,0,l);
     }
 }
 
-int suiteMainCarte(MainCarte m)
+int suiteMainCarte(int & tab7Carte[8][2])
 {
-    if(il y a un as)
-    {
-        Carte* carte = new Carte;
-        setCarte(carte,1,1); //on cree un "as" qui vaut 1
-        ajouteCarte(m, carte);
-    }
-    trieMain(m,"rang"); //le trie il est decroissant ,ben faut esperer
-    return suiteMainCarte2(m,0,0)
-}
+    //on trie le tableau en fonction du RANG (DECROISSANT) !!
 
-
-int quinteFlushMainCarte2(const MainCarte & m,int i,int j,int k)
-{
-    if(j==4)
+    if(tab[0][0]!=14) //test pour savoir s'il y a un as
     {
-        return (getCarteRang[i-4]);
-    }
-    //s'il reste qu'une carte et que j != 4 , il ne peut pas avoir de suite
-    if(i==getMainCarteNbCarte(m)-1)
-        return 0;
-    if(getCarteRang(*(m.tabCarte[i])) == getCarteRang(*(m.tabCarte[i+1])+1))
-    {
-        if(getCarteCouleur(*(m.tabCarte[i])) != getCarteCouleur(*(m.tabCarte[i+1])+1))
-        {
-            quinteFlushMainCarte2(m,i+1,j+1);
-        }
+        return suiteMainCarte2(m,0,0,7);
     }else{
-        quinteFlushMainCarte2(m,i+1,0);
+        tab[7][0] = 1;//on rajoute un 1 (as) pour LA suite du type (1 2 3 4 5)
+        tab[7][1] = 1;//on se fout de la couleur de l'as
+        int k = suiteMainCarte2(m,0,0,8);
+        //on enleve l'as rajoute
+        tab[7][1]=0;
+        tab[7][0] = 0;
+        return k;
     }
+
+
 }
 
-int quinteFlushMainCarte(MainCarte m)
+
+
+int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur);
 {
-    if(il y a un as)
-    {
-        Carte* carte = new Carte;
-        setCarte(carte,getCarteCouleur(l as de la main),1); //on cree un "as" qui vaut 1
-        ajouteCarte(m, carte);
-    }
-    trieMain(m,"rang"); //le trie il est decroissant ,ben faut esperer
-    return quinteFlushMainCarte2(m,0,0,0)
+
 }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void nombreOcurenceCarte(const MainCarte & m,int & tab[])
+void nombreOcurenceCarte(const int & tab7Carte[10][2],int & tab[])
 {
     int i;
     for(i=0;i<15;i++)
         tab[i] = 0;
-    for(i=0;i<getMainCarteNbCarte(m);i++)
+    for(i=0;i<7;i++)
     {
-        tab[getCarteRang(*(m.tabCarte[i])]++;
+        tab[tab7Carte[i][0]]++;
     }
 }
 
 
-void choixCarteMultiple(const MainCarte & m,const int & tab[],int & tabResultat[6])
+void choixCarteMultiple(const int & tab[],int & tabResultat[6])
 {
     //double triage du tableau tab
         //on trie dabord en fonction de tab[i] puis en fonction de i dans un tableau a 2d tab[x][y]
@@ -363,6 +322,18 @@ void choixCarteMultiple(const MainCarte & m,const int & tab[],int & tabResultat[
 
 int codageScoreMain(const MainCarte &m, int & tabResultat[6])
 {
+    int i;
+    //on utilise un tableau a 2 dimensions representant les 7 cartes
+    int tabMainTotale[7][2];
+    tabMainTotale[0][0] = getCarteRang(*(m.tabMain[0]));
+    tabMainTotale[0][1] = getCarteCouleur(*(m.tabMain[0]));
+    tabMainTotale[1][0] = getCarteRang(*(m.tabMain[0]));
+    tabMainTotale[1][1] = getCarteCouleur(*(m.tabMain[0]));
+    for(i=0;i<5;i++)
+    {
+
+
+    }
 
     //regle : si on a une couleur on a au mieux une quinte flush sinon une quinte
     //regle : si on a une quinte on a au mieux une quinte flush ou une couleure ou au pire une quinte

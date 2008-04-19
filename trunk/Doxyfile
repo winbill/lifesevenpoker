@@ -31,7 +31,7 @@ PROJECT_NAME           = LifeSevenPoker
 # This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
-PROJECT_NUMBER         = 1
+PROJECT_NUMBER         = "Merci de regarder dans les pages associees la liste des choses a faire"
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) 
 # base path where the generated documentation will be put. 
