@@ -1,9 +1,9 @@
 /**
 	@brief Fichier H pour Joeur
-	
-	
+
+
 	gere la structure joueur et leur parametre
-     
+
 	@author Tristan James
 	@file Joueur.h
 	@version 1.1
@@ -11,7 +11,7 @@
  */
 #ifndef Joueur_H
 #define Joueur_H
-#include "IArtificelle.h"
+#include "IArtificielle.h"
 #include "MainCarte.h"
 
 /** 	@brief Statut du joueur
@@ -35,10 +35,10 @@ enum TypeJoueur
 	Humain=0, 	/**< Joueur humain mais pas le joueur qui joue (pour le reseau)*/
 	IA= 1,		/**< Joueur simulé par l'ordinateur */
 	Joueur=2,	/**< Joueur qui joue */
-	FIN_STATUT	/**< Joueur erreur*/
+	FIN_TYPE	/**< Joueur erreur*/
 };
 
-/**	
+/**
 	@struct Joueur
 	@brief structure representant le joueur de poker assis à la table
 	@param argent, réel représentant la somme que possède le joueur en main
@@ -193,3 +193,4 @@ int getTypeJoueurTable (const Table & table);
 
 
 #endif
+

@@ -9,8 +9,9 @@
 	@version 1.1
 	@date 2008/04/19
  */
-#include "AfficheSdl.h"
-
+#include <SDL/SDL.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 
 /** @brief initialise l'affichage SDL

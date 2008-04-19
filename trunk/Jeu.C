@@ -10,8 +10,14 @@
 	@date 2008/04/16
  */
 
-
-
+#include "Jeu.h"
+#include "Carte.h"
+#include "PileCarte.h"
+#include "MainCarte.h"
+#include "Joueur.h"
+#include "Table.h"
+#include "IArtificielle.h"
+#include "Controles.h"
 
 
 void initialiseJeu(Table & table,int argent)
