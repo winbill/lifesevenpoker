@@ -36,7 +36,11 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-pedantic" />
+			<Add option="-W" />
 			<Add option="-Wall" />
+			<Add option="-ansi" />
+			<Add option="-g" />
 		</Compiler>
 		<Unit filename="AfficheDynamique.C">
 			<Option compilerVar="CC" />
