@@ -4,26 +4,26 @@
 
 	gere l'affichage dynamique en utilisant l'affichage de "bas niveau"
 
-	@author  James
+	@author  James Benjamin
 	@file AfficheDynamique.h
-	@version 1.0
-	@date 2008/04/17
+	@version 1.1
+	@date 2008/04/19
  */
 #include "AfficheSdl.h"
 
 
 
-/** @brief initialise SDL
+/** @brief initialise l'affichage SDL
 */
-void initialiseSdl();
+void initialisationAffichage();
 
 /** @brief ferme Sdl proprement et toute autre chose a fermer
 */
-void fermeSdl();
+void fermetureSystemes();
 
 /** @brief ouvre une fenetre Sdl
 */
-void ouvreFenetreSdl();
+void ouvreFenetrePrincipale();
 
 
 
