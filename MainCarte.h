@@ -69,17 +69,17 @@ void trieMain(MainCarte & m, char option);
 */
 enum Main
 {
-    DEF=0;
-    CARTE_HAUTE=1;
-    PAIRE=2;
-    DOUBLE_PAIRE=3;
-    BRELAN=4;
-    QUINTE=5;
-    FLUSH=6;
-    FULL_HOUSE=7;
-    CARRE=8;
-    QUINTE_FLUSH=9;
-    QUINTE_FLUSH_ROYALE=10;
+    DEF=0,
+    CARTE_HAUTE=1,
+    PAIRE=2,
+    DOUBLE_PAIRE=3,
+    BRELAN=4,
+    QUINTE=5,
+    FLUSH=6,
+    FULL_HOUSE=7,
+    CARRE=8,
+    QUINTE_FLUSH=9,
+    QUINTE_FLUSH_ROYALE=10
 };
 
 /** @brief Procedure d'identification de main.

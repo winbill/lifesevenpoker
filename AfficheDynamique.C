@@ -9,14 +9,16 @@
 	@version 1.1
 	@date 2008/04/19
  */
-#include "AfficheSdl.h"
-
+#include <SDL/SDL.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <cassert>
 
 
 void initialisationAffichage()
 {
     //dans notre programme on gere la video le son et le temps
-    assert(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER)==0);
+    assert(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER));
 }
 
 
