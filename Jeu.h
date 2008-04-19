@@ -77,4 +77,21 @@ void actionJoueurJeu(Table & table,Joueur & joueur,Statut statut,int n);
 void lanceTourJeu(Table & table);
 
 
+/** @brief fonction PRINCIPALE pour obtenir le code d'une main donc ca force
+        pour la comparer aux autres mains,la fonction renvoit dans un tableau un code
+        qui permet de pouvoir savoir qu'elle main est plus forte qu'une autre
+    @param [in] m la main de carte qui donnera le code
+    @param [out] tabResultat contient le code
+    @param [in] table du jeu
+    @return renvoit 1 si tout c'est bien passé
+    @note le code renvoyé est composé de la facon suivante : le premier element du tableau
+        correspond au code de la forme (8 Quinte flush,7 Carre,6 Full ...., 1 paire,0 carte haute)
+        puis sont classés dans un ordre (fonction du code de la forme) les 5 cartes qui permettent de
+        former cette combinaison
+    @note la fonction appel toutes les autres fonctions de test de forme
+    @author James
+*/
+int codageScoreMain(const MainCarte &m, int & tabResultat[6],const Table & table);
+
+
 #endif

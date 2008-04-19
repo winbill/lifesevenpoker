@@ -99,11 +99,11 @@ MainCarte compareMain(const MainCarte & m1, const MainCarte & m2);
 void MainCarteLibere(MainCarte & m);
 
 /** @brief test si la main presente une couleur (5 cartes de meme couleur)
-    @param [in] m MainCarte
+    @param [in] tab7Carte tableau des cartes (voir codageScoreMain)
     @return 0 si pas de couleur puis 1,2,3,4 pour TREFLE,CARREAU,COEUR,PIQUE
     @author James
 */
-int couleurMainCarte(const MainCarte & m);
+int couleurMainCarte(const int & tab7Carte[8][2]);
 
 /** @brief fonction qui permet de savoir si on peut faire une quinte avec la main
     @note appel récursif utilisé
@@ -112,43 +112,34 @@ int couleurMainCarte(const MainCarte & m);
             doit etre mis en premiere et derniere position
     @param [in] i utilisé pour l'appel récursif à 0 quand on appel la fonction
     @param [in] j utilisé pour l'appel récursif à 0 quand on appel la fonction
+    @param [in] l nombre de carte dans le tableau
     @return 0 s'il n'y a pas de suite, 14 suite a l'AS, 13 au roi ..... 5
     @author James
 */
-int suiteMainCarte2(const MainCarte & m,int i,int j);
+int suiteMainCarte2(const int & tab7Carte[8][2],int i,int j,int l);
 
 
 /** @brief fonction qui permet de savoir si on peut faire une quinte avec la main
     @note appel la fonction suiteMainCarte2
-    @param [in] MainCarte (/!\ le passage sans reference EST volontaire, on utilise une copie de MainCarte qui sera modifiee)
+    @param [in] tab7Carte @see codageScoreMain
     @return 0 s'il n'y a pas de suite, 14 suite a l'AS, 13 au roi ..... 5
     @author James
+    @todo il faut faire une fonction qui trie le tableau en fonction du rang (DECROISSANT) (tableau a 2d)
 */
-int suiteMainCarte(MainCarte m);
+int suiteMainCarte(int & tab7Carte[8][2]);
 
 /** @brief fonction qui identifie une Quinte flush
-    @param  [in] MainCarte (/!\ le passage sans reference EST volontaire, on utilise une copie de MainCarte qui sera modifiee)
-    @note fonctionne de la meme facon que suiteMainCarte (par recursivite)
+    @param [in] couleur couleur de la quinte flush s'il y en a une
     @return 0 s'il n'y a pas de quinte flush, 14 quinte flush a l'AS, 13 au roi ..... 5
+    @todo il faut faire cette fonction, on peut imiter la fonction suiteMainCarte (a voir)
 */
-int quinteFlushMainCarte(MainCarte m);
+int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur);
 
-/** @brief fonction qui identifie une Quinte flush
-    @note appel récursif utilisé
-    @note est appelé par quinteFlushMainCarte
-    @param [in] m MainCarte trie dans l'ordre DECROISSANT si il y a un AS il
-            doit etre mis en premiere et derniere position
-    @param [in] i utilisé pour l'appel récursif à 0 quand on appel la fonction
-    @param [in] j utilisé pour l'appel récursif à 0 quand on appel la fonction
-    @param [in] k utilisé pour l'appel récursif à 0 quand on appel la fonction
-    @return 0 s'il n'y a pas de quinte flush, 14 quinte flush a l'AS, 13 au roi ..... 5
-    @note fonctionne de la meme facon que suiteMainCarte2 (par recursivite)
-*/
-int quinteFlushMainCarte2(const MainCarte & m,int i,int j,int k);
 
 /** @brief fonction qui permet de compter le nombre d'occurence d'une main
         de carte indiféremment de sa couleur
-    @param [in] MainCarte
+    @param [in] tab7Carte tableau representatif des 7 cartes
+    @see Jeu.h codageScoreMain
     @param [out] tab tableau de taille 15
     @return renvoie les valeurs dans tab
     @note par exemple : si tab[11] = 4 => carré de valet
@@ -156,35 +147,22 @@ int quinteFlushMainCarte2(const MainCarte & m,int i,int j,int k);
     @author James
 
 */
-void nombreOcurenceCarte(const MainCarte & m,int & tab[]);
+void nombreOcurenceCarte(const int & tab7Carte[10][2],int & tab[]);
 
 
 /** @brief fonction directement lié a nombreOcurenceCarte, et permet de faire le choix des cartes
-    @param [in] MainCarte
     @param [in] tab tableau de taille 15 (0 a 14)
     @param [out] tabResultat renvoit un tableau (le 1er element est le code de
     la forme et les 5 derniers sont les cartes ordonnés pour une comparaison avec
     une autre main du meme code de forme)
     @author James
+    @todo fonction qui trie le tableau en fonction des 2 dimensions (voir commentaires de MainCarte.C)
 
 */
-void choixCarteMultiple(const MainCarte & m,const int & tab[],int & tabResultat[6])
+void choixCarteMultiple(const int & tab[],int & tabResultat[6]);
 
 
-/** @brief fonction PRINCIPALE pour obtenir le code d'une main donc ca force
-        pour la comparer aux autres mains,la fonction renvoit dans un tableau un code
-        qui permet de pouvoir savoir qu'elle main est plus forte qu'une autre
-    @param [in] m la main de carte qui donnera le code
-    @param [out] tabResultat contient le code
-    @return renvoit 1 si tout c'est bien passé
-    @note le code renvoyé est composé de la facon suivante : le premier element du tableau
-        correspond au code de la forme (8 Quinte flush,7 Carre,6 Full ...., 1 paire,0 carte haute)
-        puis sont classés dans un ordre (fonction du code de la forme) les 5 cartes qui permettent de
-        former cette combinaison
-    @note la fonction appel toutes les autres fonctions de test de forme
-    @author James
-*/
-int codageScoreMain(const MainCarte &m, int & tabResultat[6]);
+
 
 #endif
 
