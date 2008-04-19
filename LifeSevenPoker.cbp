@@ -11,16 +11,17 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-pedantic" />
 					<Add option="-W" />
 					<Add option="-Wall" />
 					<Add option="-ansi" />
 					<Add option="-g" />
-					<Add option="`sdl-config --cflags`" />
 				</Compiler>
 				<Linker>
-					<Add option="`sdl-config --libs`" />
+					<Add library="SDL" />
+					<Add library="SDLmain" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -35,6 +36,8 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="SDL" />
+					<Add library="SDLmain" />
 				</Linker>
 			</Target>
 		</Build>
