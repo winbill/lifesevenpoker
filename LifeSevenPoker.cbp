@@ -16,7 +16,6 @@
 					<Add option="-Wall" />
 					<Add option="-ansi" />
 					<Add option="-g" />
-					<Add option="-gddb" />
 					<Add option="`sdl-config --cflags`" />
 				</Compiler>
 				<Linker>
