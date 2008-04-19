@@ -187,13 +187,14 @@ void setPetiteBlindTable (Table & table, int n);
 
 /**	@brief renvoi la valeur de la petite blind
 	@param [in] table une table
-	@return valeur de la PB
+	@return valeur de la Petite Blind
 */
 int getPetiteBlindTable (const Table & table);
 
 
 /**	@brief renvoit l'indice du joueur suivant
 	@param [in] table une table
+	@param [in] i represente le joueur en cours
 	@return entier correspondant a lindice du joueur suivant
 */
 int getJoueurSuivant(const Table & table,int i);
