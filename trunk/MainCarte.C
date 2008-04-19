@@ -145,46 +145,43 @@ void MainCarteLibere(MainCarte & m)
 int couleurMainCarte(const MainCarte & m)
 {
     char[4] c;
-    c = {0,0,0,0};
+    c = {0,0,0,0}; //tableau qui va contenir le nombre de carte de chaque couleur
     for(int i=0;i<=getMainCarteNbCarte(m);i++)
     {
-        c[getCarteCouleur(*(m.tabCarte[i]))-1] ++;
+        c[getCarteCouleur(*(m.tabCarte[i]))-1] ++; //on incremente chaque celulle correspondant a la couleur
+                                                    //du tableau de un
     }
     i=0;
     while(i<4)
     {
         if(c[i] >= 5)
-            return i+1;
+            return i+1; //s'il y a une couleur presente 5 fois on renvoit son code
     }
     return 0
 
 }
 
-int suiteMainCarte2(const MainCarte & m,int i,int j, int & k)
+int suiteMainCarte2(const MainCarte & m,int i,int j)
 {
     if(j==4)
     {
-
-
-
         return (getCarteRang[i-4]);
     }
+    //s'il reste qu'une carte et que j != 4 , il ne peut pas avoir de suite
     if(i==getMainCarteNbCarte(m)-1)
         return 0;
     if(getCarteRang(*(m.tabCarte[i])) == getCarteRang(*(m.tabCarte[i+1])+1))
     {
         if(getCarteCouleur(*(m.tabCarte[i])) != getCarteCouleur(*(m.tabCarte[i+1])+1))
         {
-            suiteMainCarte(m,i+1,j+1,0);
-        }else{
-            suiteMainCarte(m,i+1,j+1,k+1);
+            suiteMainCarte(m,i+1,j+1);
         }
     }else{
-        suiteMainCarte(m,i+1,0,0);
+        suiteMainCarte(m,i+1,0);
     }
 }
 
-int suiteMainCarte(MainCarte m,int & k)
+int suiteMainCarte(MainCarte m)
 {
     if(il y a un as)
     {
@@ -193,9 +190,65 @@ int suiteMainCarte(MainCarte m,int & k)
         ajouteCarte(m, carte);
     }
     trieMain(m,"rang"); //le trie il est decroissant ,ben faut esperer
-    k=0;
-    return suiteMainCarte2(m,0,0,k)
+    return suiteMainCarte2(m,0,0)
 }
+
+
+int quinteFlushMainCarte2(const MainCarte & m,int i,int j,int k)
+{
+    if(j==4)
+    {
+        return (getCarteRang[i-4]);
+    }
+    //s'il reste qu'une carte et que j != 4 , il ne peut pas avoir de suite
+    if(i==getMainCarteNbCarte(m)-1)
+        return 0;
+    if(getCarteRang(*(m.tabCarte[i])) == getCarteRang(*(m.tabCarte[i+1])+1))
+    {
+        if(getCarteCouleur(*(m.tabCarte[i])) != getCarteCouleur(*(m.tabCarte[i+1])+1))
+        {
+            quinteFlushMainCarte2(m,i+1,j+1);
+        }
+    }else{
+        quinteFlushMainCarte2(m,i+1,0);
+    }
+}
+
+int quinteFlushMainCarte(MainCarte m)
+{
+    if(il y a un as)
+    {
+        Carte* carte = new Carte;
+        setCarte(carte,getCarteCouleur(l as de la main),1); //on cree un "as" qui vaut 1
+        ajouteCarte(m, carte);
+    }
+    trieMain(m,"rang"); //le trie il est decroissant ,ben faut esperer
+    return quinteFlushMainCarte2(m,0,0,0)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void nombreOcurenceCarte(const MainCarte & m,int & tab[])
 {
@@ -222,25 +275,26 @@ void choixCarteMultiple(const MainCarte & m,const int & tab[],int & tabResultat[
 
 
     int k=0;    //variable qui compte le nombre de carte
-                //(ne dois jamais depasse 5 et doit etre a 5 a la fin de la boucle)
+                //(ne dois jamais depasse 5 et doit etre egale a 5 a la fin de la boucle)
     int l =0;   //variable d'incrementation (on change le rang)
 
 
     //boucle qui permet de choisir les 5cartes
     while(k!=5)
     {
-        assert(tab[l][0] != 0); //si tab[l][0] == 0 le tableau ne pas etre bien trie ou le tableau est foireu
+        assert(tab[l][0] != 0); //si tab[l][0] == 0 le tableau ne pas etre bien trie ou le tableau est "foireu"
         if(k+tab[l][0] <=5)
         {
             k = k+tab[l][0];
         }else{
-            //on met a zero pour dire que cette combinaison ne sera pas selectionnée
-            tab[l][0] = 0;
+            //on enleve une ou des cartes (pour que cela en fasse 5 au total)
+            tab[l][0] = 5-k;
+            k=5;
         }
         l++;
     }
 
-    //a lissue de la boucle on a toutes les informations pour donner un nom et des valeur a la main:
+    //a lissue de la boucle on a toutes les informations pour donner un nom et des valeurs a la main:
     switch (tab[0][0])
     {
         case 4:
@@ -307,23 +361,63 @@ void choixCarteMultiple(const MainCarte & m,const int & tab[],int & tabResultat[
 
 
 
-void codageScoreMain(const MainCarte &m, int & tabResultat[6])
+int codageScoreMain(const MainCarte &m, int & tabResultat[6])
 {
+
+    //regle : si on a une couleur on a au mieux une quinte flush sinon une quinte
+    //regle : si on a une quinte on a au mieux une quinte flush ou une couleure ou au pire une quinte
     //on test la suite
-    int k=0;
-    int l;
-    l=suiteMainCarte(m,k)
+    int couleur=0;
+    int quinte=0;
+
+    //on regarde en 1er s'il y a une couleure
+    couleur = couleurMainCarte(m);
+    //one ragarde s'il y a une quinte
+    quinte = suiteMainCarte(m);
+
+    //sil y a une quinte et une couleur on regarde s'il y a une quinte flush
+    if((couleur!=0)&&(quinte!=0))
+    {
+        if(testquinteflush()!=0)
+        {
+            return;
+        }
+    }
+    //s'il y a qu'une couleure c'est la meillleur possibilité
+    if(couleur != 0)
+    {
+        tabResultat[0] = 5;
+        //on doit prendre les 5 meilleurs cartes de la couleur correspondante
+        tabResultat[1...6] =...;
 
 
 
+        return 1; //on renvoit 1 pour quitter la fonction
 
+    }
+    //s'il y a qu'une suite c'est la meilleur possibilité
+    if(quinte != 0)
+    {
+        tabResultat[0] = 4;
+        //on doit prendre les 5 cartes de la suite
+        tabResultat[1] =quinte;
+        tabResultat[2] =quinte-1;
+        tabResultat[3] =quinte-2;
+        tabResultat[4] =quinte-3;
+        tabResultat[5] =quinte-4;
 
+        return 1;//on renvoit 1 pour quitter la fonction
+    }
+    //s'il a ni couleur ni quinte on regarde le reste
 
-
-
-
-
-
-
+    int tabOccurence[15];       //on cree le tableau d'occurence
+    nombreOcurenceCarte(m,tabOccurence);    //on met dans un tableau le nombre d'occurence de chaque carte
+    choixCarteMultiple(m,tabOccurence,tabResultat);     //on obtient directement le code dans tabResultat
+    if(tabResultat[0] >= 0)
+    {
+        return 1;
+    }else{
+        return 0;
+    }
 
 }

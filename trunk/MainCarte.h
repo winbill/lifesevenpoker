@@ -112,25 +112,42 @@ int couleurMainCarte(const MainCarte & m);
             doit etre mis en premiere et derniere position
     @param [in] i utilisé pour l'appel récursif à 0 quand on appel la fonction
     @param [in] j utilisé pour l'appel récursif à 0 quand on appel la fonction
-    @param [out] k permet de savoir si c'est une quinte flush
     @return 0 s'il n'y a pas de suite, 14 suite a l'AS, 13 au roi ..... 5
     @author James
 */
-int suiteMainCarte2(const MainCarte & m,int i,int j, int & k);
-
+int suiteMainCarte2(const MainCarte & m,int i,int j);
 
 
 /** @brief fonction qui permet de savoir si on peut faire une quinte avec la main
     @note appel la fonction suiteMainCarte2
-    @param [in] MainCarte (/!\ le passage sans reference EST volontaire)
-    @param [out] k permet de savoir si c'est une quinte flush (k=0 si pas de quinte FLUSH)
+    @param [in] MainCarte (/!\ le passage sans reference EST volontaire, on utilise une copie de MainCarte qui sera modifiee)
     @return 0 s'il n'y a pas de suite, 14 suite a l'AS, 13 au roi ..... 5
     @author James
 */
-int suiteMainCarte(MainCarte m,int & k)
+int suiteMainCarte(MainCarte m);
+
+/** @brief fonction qui identifie une Quinte flush
+    @param  [in] MainCarte (/!\ le passage sans reference EST volontaire, on utilise une copie de MainCarte qui sera modifiee)
+    @note fonctionne de la meme facon que suiteMainCarte (par recursivite)
+    @return 0 s'il n'y a pas de quinte flush, 14 quinte flush a l'AS, 13 au roi ..... 5
+*/
+int quinteFlushMainCarte(MainCarte m);
+
+/** @brief fonction qui identifie une Quinte flush
+    @note appel récursif utilisé
+    @note est appelé par quinteFlushMainCarte
+    @param [in] m MainCarte trie dans l'ordre DECROISSANT si il y a un AS il
+            doit etre mis en premiere et derniere position
+    @param [in] i utilisé pour l'appel récursif à 0 quand on appel la fonction
+    @param [in] j utilisé pour l'appel récursif à 0 quand on appel la fonction
+    @param [in] k utilisé pour l'appel récursif à 0 quand on appel la fonction
+    @return 0 s'il n'y a pas de quinte flush, 14 quinte flush a l'AS, 13 au roi ..... 5
+    @note fonctionne de la meme facon que suiteMainCarte2 (par recursivite)
+*/
+int quinteFlushMainCarte2(const MainCarte & m,int i,int j,int k);
 
 /** @brief fonction qui permet de compter le nombre d'occurence d'une main
-        de carte indiféremment de ca couleur
+        de carte indiféremment de sa couleur
     @param [in] MainCarte
     @param [out] tab tableau de taille 15
     @return renvoie les valeurs dans tab
@@ -154,18 +171,20 @@ void nombreOcurenceCarte(const MainCarte & m,int & tab[]);
 void choixCarteMultiple(const MainCarte & m,const int & tab[],int & tabResultat[6])
 
 
-/** @brief
-
-    @note si on a une suite on ne peut avoir mieux avec choixCarteMultiple
-    @note par contre si on a une couleur on peut avoir mieu : un carre
-
+/** @brief fonction PRINCIPALE pour obtenir le code d'une main donc ca force
+        pour la comparer aux autres mains,la fonction renvoit dans un tableau un code
+        qui permet de pouvoir savoir qu'elle main est plus forte qu'une autre
+    @param [in] m la main de carte qui donnera le code
+    @param [out] tabResultat contient le code
+    @return renvoit 1 si tout c'est bien passé
+    @note le code renvoyé est composé de la facon suivante : le premier element du tableau
+        correspond au code de la forme (8 Quinte flush,7 Carre,6 Full ...., 1 paire,0 carte haute)
+        puis sont classés dans un ordre (fonction du code de la forme) les 5 cartes qui permettent de
+        former cette combinaison
+    @note la fonction appel toutes les autres fonctions de test de forme
+    @author James
 */
-int choixCouleurQuinte();
-
-
-
-
-void codageScoreMain(const MainCarte &m, int & tabResultat[6]);
+int codageScoreMain(const MainCarte &m, int & tabResultat[6]);
 
 #endif
 
