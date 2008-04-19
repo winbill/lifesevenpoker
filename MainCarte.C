@@ -202,7 +202,7 @@ int suiteMainCarte(int & tab7Carte[8][2])
 
 int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur);
 {
-
+    // a faire
 }
 
 
@@ -231,27 +231,20 @@ void choixCarteMultiple(const int & tab[],int & tabResultat[6])
         //donc tab[0][0] > 2 ou tab[0][1] >6 => soit un brelan ou mieu soit une paire de 7 ou+
             //A FAIRE  (il va de 0 a 14)
 
-
-
-    int k=0;    //variable qui compte le nombre de carte
-                //(ne dois jamais depasse 5 et doit etre egale a 5 a la fin de la boucle)
-    int l =0;   //variable d'incrementation (on change le rang)
-
-
-    //boucle qui permet de choisir les 5cartes
+    int k=0;
+    int l=0;
+    int i=0;
+    int max = 0;
+    int tabTemp[5];
     while(k!=5)
     {
-        assert(tab[l][0] != 0); //si tab[l][0] == 0 le tableau ne pas etre bien trie ou le tableau est "foireu"
-        if(k+tab[l][0] <=5)
-        {
-            k = k+tab[l][0];
-        }else{
-            //on enleve une ou des cartes (pour que cela en fasse 5 au total)
-            tab[l][0] = 5-k;
-            k=5;
-        }
-        l++;
+        if(tab[l] >= max)
+
+
+
     }
+
+
 
     //a lissue de la boucle on a toutes les informations pour donner un nom et des valeurs a la main:
     switch (tab[0][0])
@@ -265,7 +258,7 @@ void choixCarteMultiple(const int & tab[],int & tabResultat[6])
             tabResultat[5]=tab[1][1];
         break;
         case 3:
-            if(k+tab[l+1][0] ==2)
+            if(k+tab[l+1][0] >=2)
             {
                 tabResultat[0]=6;
                 tabResultat[1] =tab[0][1];
@@ -317,78 +310,3 @@ void choixCarteMultiple(const int & tab[],int & tabResultat[6])
     //les 4 dernier elements sont le rang des cartes
 }
 
-
-
-
-int codageScoreMain(const MainCarte &m, int & tabResultat[6])
-{
-    int i;
-    //on utilise un tableau a 2 dimensions representant les 7 cartes
-    int tabMainTotale[7][2];
-    tabMainTotale[0][0] = getCarteRang(*(m.tabMain[0]));
-    tabMainTotale[0][1] = getCarteCouleur(*(m.tabMain[0]));
-    tabMainTotale[1][0] = getCarteRang(*(m.tabMain[0]));
-    tabMainTotale[1][1] = getCarteCouleur(*(m.tabMain[0]));
-    for(i=0;i<5;i++)
-    {
-
-
-    }
-
-    //regle : si on a une couleur on a au mieux une quinte flush sinon une quinte
-    //regle : si on a une quinte on a au mieux une quinte flush ou une couleure ou au pire une quinte
-    //on test la suite
-    int couleur=0;
-    int quinte=0;
-
-    //on regarde en 1er s'il y a une couleure
-    couleur = couleurMainCarte(m);
-    //one ragarde s'il y a une quinte
-    quinte = suiteMainCarte(m);
-
-    //sil y a une quinte et une couleur on regarde s'il y a une quinte flush
-    if((couleur!=0)&&(quinte!=0))
-    {
-        if(testquinteflush()!=0)
-        {
-            return;
-        }
-    }
-    //s'il y a qu'une couleure c'est la meillleur possibilité
-    if(couleur != 0)
-    {
-        tabResultat[0] = 5;
-        //on doit prendre les 5 meilleurs cartes de la couleur correspondante
-        tabResultat[1...6] =...;
-
-
-
-        return 1; //on renvoit 1 pour quitter la fonction
-
-    }
-    //s'il y a qu'une suite c'est la meilleur possibilité
-    if(quinte != 0)
-    {
-        tabResultat[0] = 4;
-        //on doit prendre les 5 cartes de la suite
-        tabResultat[1] =quinte;
-        tabResultat[2] =quinte-1;
-        tabResultat[3] =quinte-2;
-        tabResultat[4] =quinte-3;
-        tabResultat[5] =quinte-4;
-
-        return 1;//on renvoit 1 pour quitter la fonction
-    }
-    //s'il a ni couleur ni quinte on regarde le reste
-
-    int tabOccurence[15];       //on cree le tableau d'occurence
-    nombreOcurenceCarte(m,tabOccurence);    //on met dans un tableau le nombre d'occurence de chaque carte
-    choixCarteMultiple(m,tabOccurence,tabResultat);     //on obtient directement le code dans tabResultat
-    if(tabResultat[0] >= 0)
-    {
-        return 1;
-    }else{
-        return 0;
-    }
-
-}
