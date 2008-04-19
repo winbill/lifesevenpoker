@@ -4,33 +4,113 @@
 
 void main()
 {
-    Table table;
-    PileCarte pileCarte;
+    // INITIALISATION DE L'AFFICHAGE, DU SON & DES PERIPHERIQUES DE CONTROLE
 
-    SDL_Event event;
+    //INTRO :
+        // Logo lifesevenpoker , petit jingle ...
 
-    //afficheSdlIntro();
+    //AFFICHAGE DU MENU PRINCIPAL:
+        //UN JOUEUR
+        //MULTIJOUEURS
+        //OPTIONS
+        //CREDITS
+        //QUITTER
 
-    //choix des options nombre de joueur, difficultés etc ...
-
-    //on appel les fonctions dinitialisation de la table de la piledecarte des joueurs de lia etc....
-
-
-
-//debut d'un tour de table
-
-    //on commence au premier tour
-    while(k==0)
-    {
+    // + musique ambiance ? sons particuliers sur clicks ?
 
 
+    //=> UN JOUEUR
+        // Fait démarrer une nouvelle partie contre IA.
+        // REGLAGES PREALABLES : Nombre IA, difficulté IA. Argent de départ. Peut etre d'autres options liées aux regles ??
+
+    //=> MULTIJOUEUR
+        // Formulaire pour Creer/rejoindre une partie. Par IP a priori ... détails multijoueurs à voir plus tard ... optionnel.
+
+    //=> OPTIONS
+        //Pouvoir modifier la résolution d'affichage, les raccourcis clavier, niveau sonore musique/effets
+        //  /!\ Utilisation d'un fichier de configuration externe ??? A voir.
+    //=> CREDITS
+        //Affichage des credits mode déroulement ou autre. A priori assez simple.
+
+    //=> QUITTER
+        //Destruction de tout ce qui est chargé en mémoire.
+        //Fermeture de tous les systemes propre.
+        //Fermeture Fenetre.
 
 
-    }
+
+
+    /* MODE UN JOUEUR:
+
+
+        BOUCLE DE BASE :
+
+            INITIALISATION DE TOUTES LES DONNEES NECESSAIRE A L'AFFICHAGE
+            AFFICHAGE MESSAGE BIENVENUE / DEBUT DE PARTIE
+
+            AFFICHAGE TABLE DE JEU
+                basique => tapis vert type solitaire windows
+                    noms et argent des joueurs
+
+            GENERATION DE LA PILE DE CARTES
+
+            ATTRIBUTION DES ROLES SELON PLACES :
+                        - DEALER
+                        - PETITE BLIND
+                        - GROSSE BLIND
+                        - JOUEUR
+
+            DISTRIBUTION DES CARTES AUX JOUEURS
+                deux cartes à chaque joueur
+                    animation ? pourquoi pas
+                pas de carte au milieu
+
+            PREMIERE PHASE DE MISES:
+                Cycle : pour chaque joueur demande de mise
+                            prise en compte des blinds
+                            possibilité de se coucher
+                        continue tant que les mises sont pas finies, plusieurs tours de table possibles
+
+            FLOP:
+                3 cartes découvertes au milieu
+                possibilité de se coucher
+
+            DEUXIEME PHASE DE MISES:
+                Cycle : idem
+
+            TURN:
+                4e carte découverte au milieu
+
+            TROISIEME PHASE DE MISES:
+                Cycle ...
+
+            RIVER
+                5e carte découverte au milieu
+
+            DERNIERE PHASE DE MISES:
+                Cycle ...
 
 
 
+                Résolution des mains
+                Determiner gagnant(s)
+                Attribuer gains
+                Sit out si plus d'argent
 
+            REINITIALISATION PILE/MAINS
+
+            RETOUR DEBUT DU CYCLE
+
+
+            //!\\ A TOUT MOMENT : POSSIBILITE DE : SIT OUT, FOLD, QUIT, (ACCES OPTIONS).
+
+
+        */
+
+        //MODE MULTIJOUEUR ASSEZ SIMILAIRE
+
+
+        //GESTION DE L'IA ET DES AUTRES JOUEURS ENCORE A DETERMINER
 
 
 

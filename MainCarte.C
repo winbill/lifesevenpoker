@@ -60,7 +60,7 @@ void trieMain(MainCarte & m, char option)
         //Algo de test avec 2 indices de déplacement. Par Ben :)
         int j=0;
         int i=1;
-        while(j<6)
+        while(j<m.nCarte-1)
         {
             if(i==6)
             {

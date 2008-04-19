@@ -56,8 +56,10 @@ void ajouteCarte(MainCarte & m, const Carte* & c);
 
 /** @brief Procedure de tri de main.
     @param Prend en entree une variable de type MainCarte et une option de tri.
-    @james : les commentaires doxy sont pratiques et existent justement pour enumérer ces options de tris !!!!!
-    @james : et trop cool ton trie, il detecte automatiquement s'il faut faire en decroissant ou croissant
+    @note Differentes options :
+            - couleur : trie par couleur sans ordre de couleur precis.
+            - rang : trie par rang décroissant et place l'as en carte haute.
+            - rc : trie par couleur puis par rang pour chacune des couleurs.
     @return Trie la main selon l'option donnee.
 
 */

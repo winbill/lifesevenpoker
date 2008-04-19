@@ -1,9 +1,5 @@
 #include "Carte.h"
 
-void creerCarte(Carte & c)
-{
-	initialisationCarte(c);
-}
 
 void initialisationCarte(Carte & c)
 {
@@ -46,6 +42,3 @@ int compareCarte(const Carte & c1, const Carte & c2)
 	}
 }
 
-void carteDetruit(Carte & c)
-{
-}
