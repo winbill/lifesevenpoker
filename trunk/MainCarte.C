@@ -37,7 +37,7 @@ void setMainCarte(MainCarte & m, const Carte* & tabMain, int nCarte)
 
 void ajouteCarte(MainCarte & m, const Carte* & c)
 {
-	if(nCarte<5)
+	if(m.nCarte<5)
 	{
 		Carte* temp[]=new Carte* [m.nCarte+1];
 		int i;
@@ -55,7 +55,7 @@ void ajouteCarte(MainCarte & m, const Carte* & c)
 
 void trieMain(MainCarte & m, char option)
 {
-    if(option="couleur")
+    if(option=="couleur")
     {
         //Algo de test avec 2 indices de déplacement. Par Ben :)
         int j=0;
@@ -81,7 +81,7 @@ void trieMain(MainCarte & m, char option)
             }
         }
     }
-    if(option="rang")
+    if(option=="rang")
     {
         //Principe du tri minimum sur les rangs des 7 (au maximum) cartes d'une main.
         int i,j;
@@ -104,7 +104,7 @@ void trieMain(MainCarte & m, char option)
             m.tabMain[i]=rmin;
         }
     }
-    if(option="rc")
+    if(option=="rc")
     {
         //ALGO A FAIRE.
 
