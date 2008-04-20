@@ -231,18 +231,6 @@ void choixCarteMultiple(const int & tab[],int & tabResultat[6])
         //donc tab[0][0] > 2 ou tab[0][1] >6 => soit un brelan ou mieu soit une paire de 7 ou+
             //A FAIRE  (il va de 0 a 14)
 
-    int k=0;
-    int l=0;
-    int i=0;
-    int max = 0;
-    int tabTemp[5];
-    while(k!=5)
-    {
-        if(tab[l] >= max)
-
-
-
-    }
 
 
 
