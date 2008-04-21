@@ -1,3 +1,13 @@
+/**
+	@brief Fichier C pour les mains des joueurs.
+
+	Gere les donnees de type MainCarte.
+
+	@author Benjamin, Olivier, James
+	@file MainCarte.h
+	@version 1.2
+	@date 2008/04/15
+*/
 #include <cstdio>
 #include "Carte.h"
 #include "MainCarte.h"

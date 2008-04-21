@@ -1,3 +1,14 @@
+/**
+	@brief Fichier C pour les cartes.
+
+	Gere les donnees de type Carte.
+
+	@author Benjamin, Olivier
+	@file Carte.h
+	@version 1.3
+	@date 2008/04/19
+*/
+
 #include "Carte.h"
 
 
