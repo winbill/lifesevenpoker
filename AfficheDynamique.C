@@ -2,36 +2,58 @@
 	@brief Fichier C pour l'affichage dynamique
 
 
-	gere l'affichage dynamique en utilisant l'affichage de "bas niveau"
+	Gere l'affichage dynamique en utilisant le moteur de rendu SDL (Simple Directmedia Layer).
 
 	@author  James Benjamin
 	@file AfficheDynamique.C
-	@version 1.1
-	@date 2008/04/19
+	@version 1.2
+	@date 2008/04/21
  */
-#include <SDL/SDL.h>
+//Librairies Standard.
 #include <stdlib.h>
 #include <stdio.h>
 #include <cassert>
 
+//Librairies SDL.
+#include <SDL/SDL.h>
+#include "SDL/SDL_image.h" //Gestion des images.
+#include "SDL/SDL_ttf.h" //Gestion des polices True Type Fonts.
+#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
 
-void initialisationAffichage()
+
+
+SDL_Surface *load_image( std::string filename )
 {
-    //dans notre programme on gere la video le son et le temps
-    assert(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER));
+	//Surface tampon qui nous servira pour charger l'image
+	SDL_Surface* loadedImage = NULL;
+
+	//L'image optimisée qu'on va utiliser
+	SDL_Surface* optimizedImage = NULL;
+
+	//Chargement de l'image
+	loadedImage = IMG_Load( filename.c_str() );
+
+	//Si le chargement se passe bien
+	if( loadedImage != NULL )
+	{
+		//Création de l'image optimisée
+		optimizedImage = SDL_DisplayFormat( loadedImage );
+
+		//Libération de l'ancienne image
+		SDL_FreeSurface( loadedImage );
+	}
+
+	//On retourne l'image optimisée
+	return optimizedImage;
 }
 
-
-void fermetureSystemes()
+void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination )
 {
-      SDL_Quit();
-}
+	SDL_Rect offset;
 
-void ouvreFenetrePrincipale()
-{
-    //nouvelle fenetre
-    SDL_SetVideoMode(1024  , 768, 32, SDL_HWSURFACE | SDL_DOUBLEBUF );
-    //titre de la fenetre
-    SDL_WM_SetCaption("Life'Seven Poker", NULL);
+	offset.x = x;
+	offset.y = y;
 
+	//On blitte la surface
+	SDL_BlitSurface( source, NULL, destination, &offset );
 }

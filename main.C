@@ -1,9 +1,54 @@
+//Librairies Life'Seven Poker
 #include "Jeu.h"
 
 
+//Librairies Standard.
+#include <stdlib.h>
+#include <stdio.h>
 
-void main()
+//Librairies SDL.
+#include <SDL/SDL.h>
+#include "SDL/SDL_image.h" //Gestion des images.
+#include "SDL/SDL_ttf.h" //Gestion des polices True Type Fonts.
+#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
+
+int main( int argc, char *argv[ ] )
 {
+    //Les attributs de notre écran
+    const int SCREEN_WIDTH = 640;
+    const int SCREEN_HEIGHT = 480;
+    const int SCREEN_BPP = 32;
+
+    //Les attributs temporels
+    const int STD_DELAY_TIME = 3000;
+
+    //Les elements de surface
+    SDL_Surface *screen;
+
+
+    //Initialisation des systemes
+    if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER ) == -1 )
+    {
+        printf( "Can't init SDL:  %s\n", SDL_GetError( ) );
+        return EXIT_FAILURE;
+    }
+
+    //Si l'utilisateur ferme l'application
+    atexit( SDL_Quit );
+
+    screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_HWSURFACE );
+
+    if( screen == NULL )
+    {
+        printf( "Can't set video mode: %s\n", SDL_GetError( ) );
+        return EXIT_FAILURE;
+    }
+
+    SDL_Delay( STD_DELAY_TIME );
+
+    return EXIT_SUCCESS;
+}
+
     // INITIALISATION DE L'AFFICHAGE, DU SON & DES PERIPHERIQUES DE CONTROLE
 
     //INTRO :
