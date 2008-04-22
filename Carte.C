@@ -53,3 +53,11 @@ int compareCarte(const Carte & c1, const Carte & c2)
 	}
 }
 
+void getCarteNomFichier(const Carte & c,char[] sortieNomFichier)
+{
+
+    //strcpy (char *dest, const char *src);
+    strcpy(sortieNomFichier,c.nomFichier);//copie le tableau c dans le tableau sortieNomFichier
+
+}
+
