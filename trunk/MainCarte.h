@@ -123,7 +123,7 @@ int suiteMainCarte2(const int & tab7Carte[8][2],int i,int j,int l);
 
 /** @brief fonction qui permet de savoir si on peut faire une quinte avec la main
     @note appel la fonction suiteMainCarte2
-    @param [in] tab7Carte @see codageScoreMain
+    @param [in,out] tab7Carte renvoyé trie DECROISSANT @see codageScoreMain
     @return 0 s'il n'y a pas de suite, 14 suite a l'AS, 13 au roi ..... 5
     @author James
     @todo il faut faire une fonction qui trie le tableau en fonction du rang (DECROISSANT) (tableau a 2d)
@@ -135,7 +135,7 @@ int suiteMainCarte(int & tab7Carte[8][2]);
     @return 0 s'il n'y a pas de quinte flush, 14 quinte flush a l'AS, 13 au roi ..... 5
     @todo il faut faire cette fonction, on peut imiter la fonction suiteMainCarte (a voir)
 */
-int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur);
+int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur,int quinte);
 
 
 /** @brief fonction qui permet de compter le nombre d'occurence d'une main
