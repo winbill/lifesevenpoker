@@ -28,7 +28,7 @@ void initialiseJeu(Table & table,int argent)
 		setArgentJoueur(*getIemeJoueur(table,i),argent);
 	}
 
-//etc... atand IArtificielle.h
+//etc... attend IArtificielle.h
 
 }
 
@@ -41,7 +41,6 @@ void distribuer2CartesJoueursJeu(Table & table)
 		ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),*tirerCarte(*getTablePileCarteTable(table)));
 		ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),*tirerCarte(*getTablePileCarteTable(table)));
 	}
-
 }
 
 
