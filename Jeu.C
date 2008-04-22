@@ -144,7 +144,7 @@ int codageScoreMain(const MainCarte &m, int & tabResultat[6],const Table & table
     }
 
 
-    //regle : si on a une couleur on a au mieux une quinte flush sinon une quinte
+    //regle : si on a une couleur on a au mieux une quinte flush
     //regle : si on a une quinte on a au mieux une quinte flush ou une couleure ou au pire une quinte
     //on test la suite
     int couleur=0;
@@ -160,6 +160,8 @@ int codageScoreMain(const MainCarte &m, int & tabResultat[6],const Table & table
     {
         if(testquinteflush()!=0)
         {
+            tabResultat[0] = 8 ou 9;
+            ...
             return;
         }
     }
@@ -180,6 +182,9 @@ int codageScoreMain(const MainCarte &m, int & tabResultat[6],const Table & table
     {
         tabResultat[0] = 4;
         //on doit prendre les 5 cartes de la suite
+        // /!\ il faut verifier que yen ai pas deux egale
+        // cas 10 9 9 8 7 6 2 1 -> 10 9 8 7 6 et non 10 9 9 8 7
+        ...;
         tabResultat[1] =quinte;
         tabResultat[2] =quinte-1;
         tabResultat[3] =quinte-2;

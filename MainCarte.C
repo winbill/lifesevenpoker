@@ -3,7 +3,7 @@
 
 	Gere les donnees de type MainCarte.
 
-	@author Benjamin, Olivier, James
+	@author Benjamin, Olivier, James, Tristan
 	@file MainCarte.h
 	@version 1.2
 	@date 2008/04/15
@@ -183,14 +183,33 @@ int suiteMainCarte2(const int & tab7Carte[8][2],int i,int j,int l)
     if(tab7Carte[i][0] == tab7Carte[i+1][0]+1)
     {
         suiteMainCarte(tab7Carte,i+1,j+1,l);
+    }else if(tab7Carte[i][0] == tab7Carte[i+1][0])
+        suiteMainCarte(tab7Carte,i+1,j,l);
     }else{
         suiteMainCarte(tab7Carte,i+1,0,l);
     }
 }
 
+
 int suiteMainCarte(int & tab7Carte[8][2])
 {
-    //on trie le tableau en fonction du RANG (DECROISSANT) !!
+    //on trie le tableau en fonction du RANG (DECROISSANT)
+    int temp,i,k;
+    for(k=0,k<7,k++)
+    {
+        for(i=0,i<7,i++)
+        {
+            if(tab[i][0]<tab[i+1][0])
+            {
+                tab[i][0]=temp; //temp du rang
+                tab[i][0]=tab[i+1][0];
+                tab[i+1][0]=temp;
+                tab[i][1]=temp; //temp de la couleur
+                tab[i][1]=tab[i+1][1];
+                tab[i+1][1]=temp;
+            }
+        }
+    }
 
     if(tab[0][0]!=14) //test pour savoir s'il y a un as
     {
@@ -210,12 +229,32 @@ int suiteMainCarte(int & tab7Carte[8][2])
 
 
 
-int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur);
+int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur,int quinte);
 {
-    // a faire
+    //on met a zero les cartes qui ne sont pas de la couleur dominante
+    int i;
+    for(i=0;i<7;i++)
+    {
+        if(tab7Carte[i][1]!=couleur)
+        {
+            tab7Carte[i][1]=0;
+            tab7Carte[i][0]=0;
+        }
+    }
+    //on rajoute sil y a un AS un "1" a la fin du tableau
+    if(tab7Carte[0][0] == 14)
+    {
+        tab7Carte[7][0]=1;
+    }else if(tab7Carte[1][0] == 14)
+    {
+        tab7Carte[7][0]=1;
+    }else if(tab7Carte[2][0] == 14)
+        tab7Carte[7][0]=1;
+    }
+
+
+
 }
-
-
 
 
 
