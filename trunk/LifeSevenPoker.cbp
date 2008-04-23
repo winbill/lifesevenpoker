@@ -54,6 +54,7 @@
 			<Add option="-Wall" />
 			<Add option="-ansi" />
 			<Add option="-g" />
+			<Add option="-gdb" />
 		</Compiler>
 		<Linker>
 			<Add library="SDL" />
