@@ -12,41 +12,98 @@
 #include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
 #include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
-int main( int argc, char *argv[ ] )
+#ifdef __cplusplus
+    #include <cstdlib>
+#else
+    #include <stdlib.h>
+#endif
+#include <SDL/SDL.h>
+
+int main ( int argc, char** argv )
 {
-    //Les attributs de notre écran
-    const int SCREEN_WIDTH = 640;
-    const int SCREEN_HEIGHT = 480;
+    // screen attributes
+    const int SCREEN_WIDTH = 1024;
+    const int SCREEN_HEIGHT = 768;
     const int SCREEN_BPP = 32;
 
-    //Les attributs temporels
-    const int STD_DELAY_TIME = 3000;
-
-    //Les elements de surface
-    SDL_Surface *screen;
-
-
-    //Initialisation des systemes
-    if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER ) == -1 )
+    // initialize SDL video
+    if ( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER ) < 0 )
     {
-        printf( "Can't init SDL:  %s\n", SDL_GetError( ) );
-        return EXIT_FAILURE;
+        printf( "Unable to init SDL: %s\n", SDL_GetError() );
+        return 1;
     }
 
-    //Si l'utilisateur ferme l'application
-    atexit( SDL_Quit );
+    // make sure SDL cleans up before exit
+    atexit(SDL_Quit);
 
-    screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_HWSURFACE );
-
-    if( screen == NULL )
+    // create a new window
+    SDL_Surface* screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_HWSURFACE|SDL_DOUBLEBUF);
+    if ( !screen )
     {
-        printf( "Can't set video mode: %s\n", SDL_GetError( ) );
-        return EXIT_FAILURE;
+        printf("Unable to set %d x %d video: %s\n", SCREEN_WIDTH , SCREEN_HEIGHT , SDL_GetError());
+        return 1;
     }
 
-    SDL_Delay( STD_DELAY_TIME );
+    // load an image
+    SDL_Surface* bmp = SDL_LoadBMP("cb.bmp");
+    if (!bmp)
+    {
+        printf("Unable to load bitmap: %s\n", SDL_GetError());
+        return 1;
+    }
 
-    return EXIT_SUCCESS;
+    // centre the bitmap on screen
+    SDL_Rect dstrect;
+    dstrect.x = (screen->w - bmp->w) / 2;
+    dstrect.y = (screen->h - bmp->h) / 2;
+
+    // program main loop
+    bool done = false;
+    while (!done)
+    {
+        // message processing loop
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            // check for messages
+            switch (event.type)
+            {
+                // exit if the window is closed
+            case SDL_QUIT:
+                done = true;
+                break;
+
+                // check for keypresses
+            case SDL_KEYDOWN:
+                {
+                    // exit if ESCAPE is pressed
+                    if (event.key.keysym.sym == SDLK_ESCAPE)
+                        done = true;
+                    break;
+                }
+            } // end switch
+        } // end of message processing
+
+        // DRAWING STARTS HERE
+
+        // clear screen
+        SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
+
+        // draw bitmap
+        SDL_BlitSurface(bmp, 0, screen, &dstrect);
+
+        // DRAWING ENDS HERE
+
+        // finally, update the screen :)
+        SDL_Flip(screen);
+    } // end main loop
+
+    // free loaded bitmap
+    SDL_FreeSurface(bmp);
+
+    // all is well ;)
+    printf("Exited cleanly\n");
+    return 0;
 }
 
     // INITIALISATION DE L'AFFICHAGE, DU SON & DES PERIPHERIQUES DE CONTROLE
