@@ -18,6 +18,7 @@
 					<Add option="-Wall" />
 					<Add option="-ansi" />
 					<Add option="-g" />
+					<Add option="gdb" />
 				</Compiler>
 				<Linker>
 					<Add library="SDL" />
@@ -41,6 +42,9 @@
 					<Add option="-s" />
 					<Add library="SDL" />
 					<Add library="SDLmain" />
+					<Add library="SDL_image" />
+					<Add library="SDL_ttf" />
+					<Add library="SDL_mixer" />
 				</Linker>
 			</Target>
 		</Build>
@@ -51,6 +55,13 @@
 			<Add option="-ansi" />
 			<Add option="-g" />
 		</Compiler>
+		<Linker>
+			<Add library="SDL" />
+			<Add library="SDLmain" />
+			<Add library="SDL_image" />
+			<Add library="SDL_ttf" />
+			<Add library="SDL_mixer" />
+		</Linker>
 		<Unit filename="AfficheDynamique.C">
 			<Option compilerVar="CC" />
 		</Unit>

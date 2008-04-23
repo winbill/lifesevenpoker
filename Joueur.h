@@ -1,14 +1,13 @@
-/**
-	@brief Fichier H pour Joeur
+/**	@brief Fichier H pour Joeur
 
 
-	gere la structure joueur et leur parametre
+	Gere la structure joueur et ses parametres.
 
-	@author Tristan James
+	@author Tristan James Benjamin
 	@file Joueur.h
-	@version 1.1
-	@date 2008/04/11
- */
+	@version 1.2
+	@date 2008/04/23
+*/
 #ifndef Joueur_H
 #define Joueur_H
 #include "IArtificielle.h"
@@ -18,41 +17,42 @@
 */
 enum Statut
 {
-	SIT_OUT=0, 	/**< Joueur pas assis */
-	SIT= 1,		/**< Joueur assis */
-	CALL=2,		/**< Joueur suis */
-	CHECK= 3,	/**< Joueur check */
-	RAISE= 4,	/**< Joueur relance */
-	FOLD= 5,		/**< Joueur se couche */
-	ALL_IN= 6,	/**< Joueur fait tapis */
-	FIN_STATUT	/**< Joueur erreur*/
+    DEF_STATUT=0,   /**< Valeur d'initialisation */
+	SIT_OUT, 	    /**< Joueur pas assis */
+	SIT,		    /**< Joueur assis */
+	CALL,		    /**< Joueur suis */
+	CHECK,	        /**< Joueur check */
+	RAISE,	        /**< Joueur relance */
+	FOLD,	        /**< Joueur se couche */
+	ALL_IN,	        /**< Joueur fait tapis */
+	FIN_STATUT	    /**< Joueur erreur*/
 };
 
-/** 	@brief indique le type du joueur
+/** 	@brief Indique le type du joueur
 */
 enum TypeJoueur
 {
-	Humain=0, 	/**< Joueur humain mais pas le joueur qui joue (pour le reseau)*/
-	IA= 1,		/**< Joueur simulé par l'ordinateur */
-	Joueur=2,	/**< Joueur qui joue */
-	FIN_TYPE	/**< Joueur erreur*/
+    DEF_TYPE_JOUEUR=0,  /**< Valeur d'initialisation */
+	Humain, 	        /**< Joueur humain mais pas le joueur qui joue (pour le reseau)*/
+	IA,		            /**< Joueur simulé par l'ordinateur */
+	JoueurLocal,	    /**< Joueur qui joue sur la machine locale */
+	FIN_TYPE	        /**< Joueur erreur */
 };
 
-/**
-	@struct Joueur
-	@brief structure representant le joueur de poker assis à la table
-	@param argent, réel représentant la somme que possède le joueur en main
-	@param pseudo, chaine de caractère représentant le pseudo du joueur
-	@param idJoueur identifiant joueur unique, correspond a sa place a la table, et a son indice dans le tableau de joueur de la table ou il est, egale a -1 s'il nest pas associe a une table (dans ce cas il peut ne pas etre unique)
-	@param noPlace placement du joueur sur la table de 0 a 10
-	@param statut indique le statut actuel du joueur sur la table
-	@param mainCarte pointeur pointant sur la main du joueur
-	@param type type du joueur humain, IA ou joueur
+/**	@struct Joueur
+	@brief Structure representant le joueur de poker assis à la table.
+	@param argent Reel représentant la somme d'argent que possede le joueur.
+	@param pseudo Chaine de caractere representant le pseudo du joueur.
+	@param idJoueur Identifiant du joueur, unique, correspondant a sa place a la table, ainsi qu'a son indice dans le tableau de joueurs de la table ou il est assis. Egal a -1 s'il nest pas associe a une table (dans ce cas il peut ne pas etre unique).
+	@param noPlace Placement du joueur sur la table (va de 0 a 10).
+	@param statut Indique le statut actuel du joueur sur la table.
+	@param mainCarte Pointeur vers la main du joueur.
+	@param type Type du joueur: humain, IA ou joueur local (sinon valeur par defaut).
 */
 struct Joueur
 {
 	int argent;
-	char pseudo[15];
+	char* pseudo;
 	int idJoueur;
 	int mise;
 	Statut statut;
@@ -60,137 +60,100 @@ struct Joueur
 	TypeJoueur type;
 };
 
-/**	@brief initialise un joueur
-	@param [in,out] joueur
-	@note on initialise idJoueur avec -1
+/**	@brief Initialise un joueur.
+	@param [in,out] joueur Un joueur.
+	@note On initialise le champ idJoueur avec la valeur -1.
 */
-void initJoueur(Joueur & joueur)
+void initJoueur(Joueur & joueur);
 
-
-/**	@brief creer un joueur
-	@param [in,out] joueur
+/**	@brief Initialise un joueur.
+    @param [in,out] joueur Un joueur.
+	@param [in] pseudo Nom du joueur (15 caracteres au maximum).
 */
-Joueur* creerJoueur (Joureur & joueur);
+void initJoueur (Joueur & joueur, char* pseudo);
 
-
-
-/**	@brief initialise un joueur
-	@param pseudo : nom du joueur 15 caractères max
-	@param [in,out] joueur
-*/
-void initJoueur (Joueur & joueur,char[15] pseudo);
-
-
-/** 	@brief cree dans le tas une variable joueur puis l'initialise
-	@note appel la fonction initJoueur
-	@return renvoie l'adresse d'un Joueur
+/** @brief Cree dans le tas une variable joueur puis l'initialise.
+	@note Appelle la fonction initJoueur.
+	@return Renvoie l'adresse d'un Joueur.
 */
 Joueur* creeJoueur();
 
-/** 	@brief change le statut du joueur en statut
-	@param [in,out] joueur
-	@param [in] statut
-	@note appel la fonction initJoueur
+/** @brief Change le statut du joueur.
+	@param [in,out] joueur Un joueur.
+	@param [in] statut La valeur de statut qui sera attribuee au joueur.
 */
 void setStatutJoueur (Joueur & joueur, const Statut statut);
 
-
-/** 	@brief change le statut du joueur en statut
-	@param [in,out] joueur
-	@note appel la fonction initJoueur
-	@return renvoie le statut actuel du joueur
+/** @brief Recupere le statut du joueur.
+	@param [in,out] joueur Un joueur.
+	@return Renvoie le valeur de statut actuelle de joueur.
 */
 Statut getStatutJoueur (Joueur & joueur);
 
-
-/**	@brief libere les allocations internes a joueur
-	@param [in,out] joueur
+/**	@brief Libere les allocations memoire internes a la structure joueur.
+	@param [in,out] joueur Un joueur.
 */
 void joueurLibere(Joueur & joueur);
 
-
-/**	@brief libere plus detruit la structure
-	@param [in, out] joueur adresse d'un joueur
-	@note appel la fonction joueurLibere
+/**	@brief Libere puis detruit le joueur et toutes les allocations memoires dependantes.
+	@param [in, out] joueur Adresse d'un joueur.
+	@note Appelle la fonction joueurLibere.
 */
 void joueurDetruit(Joueur* & joueur);
 
-
-/**	@brief réinitialise la main du joueur
-	@param [in,out] joueur
-	@param mainJoueur pointeur sur une MainCarte
+/**	@brief Reinitialise la main d'un joueur.
+	@param [in,out] joueur Un joueur.
 */
-void reinitialiseMainJoueur (Joueur & joueur);
+void reinitialiseMainJoueur(Joueur & joueur);
 
-
-/** 	@brief donne un id unique et différent a chaque joueur
-	@param [in] n entier
-	@param [in,out] joueur
+/** @brief Modifie l'id du joueur.
+	@param [in] n Un entier.
+	@param [in,out] joueur Un joueur.
 */
-void setIdJoueur (Joueur & joueur,int n);
+void setIdJoueur(Joueur & joueur, const int & n);
 
-
-/**	@brief renvoi l'id du joueur
-	@param [in,out] joueur
-	@return idJoueur
+/**	@brief Renvoie la valeur d'id du joueur.
+	@param [in,out] joueur Un joueur.
+	@return idJoueur Un entier.
 */
-int getIdJoueur (const Joueur & joueur);
+int getIdJoueur(const Joueur & joueur);
 
-/** 	@brief entre la mise d'un joueur
-	@param [in] n valeur de la mise
-	@param [in,out] joueur
+/** @brief Modifie la mise d'un joueur.
+	@param [in] n Entier representant la valeur de la mise totale faite par le joueur lors de la manche.
+	@param [in,out] joueur Un joueur.
 */
-void setMiseJoueur (Joueur & joueur,int n);
+void setMiseJoueur(Joueur & joueur, const int & n);
 
-
-/**	@brief renvoi la mise qu'a effectuer un joueur
-	@param [in,out] joueur
-	@return mise du joueur
+/**	@brief Recupere la mise totale qu'a effectue un joueur lors de la manche.
+	@param [in,out] joueur Un joueur.
+	@return mise Un entier.
 */
-int getMiseJoueur (const Joueur & joueur);
+int getMiseJoueur(const Joueur & joueur);
 
-/** 	@brief entre la mise d'un joueur
-	@param [in] n valeur de la mise ajouter a la valeur de ca mise courante
-	@param [in,out] joueur
-	@return ca nouvelle mise (mise davant + n);
-	@note sorte de get et set sur la mise du joueur
+/** @brief Repercute la nouvelle mise d'un joueur sur sa mise totale.
+	@param [in] n Entier representant la valeur de la mise ajoutee a la valeur de sa mise courrante.
+	@param [in,out] joueur Un joueur.
+	@return mise Sa nouvelle valeur de mise (mise d'avant + n)
+	@note C'est une sorte de get et set sur la mise du joueur dans la meme fonction.
 */
-int ajoutMiseJoueur(Joueur & joueur,int n);
+int ajoutMiseJoueur(Joueur & joueur,const int & n);
 
-
-/**	@brief renvoi l'adresse de mainJoueur
-	@param [in] joueur
+/**	@brief Renvoie l'adresse de mainJoueur dans la structure joueur.
+	@param [in] joueur Un joueur.
 */
-MainCarte* getMainJoueur (const Joueur & joueur);
+MainCarte* getMainJoueur(const Joueur & joueur);
 
-
-/** 	@brief pour changer l'argent qu'a un joueur
-	@param [in] n entier
-	@param [in,out] joueur
+/** @brief Modifie la somme d'argent que possede un joueur.
+	@param [in] n Un entier.
+	@param [in,out] joueur Un joueur.
 */
-void setArgentJoueur (Joueur & joueur,int n);
+void setArgentJoueur(Joueur & joueur, const int & n);
 
-
-/**	@brief renvoi le montant de l'argent que possede le joueur
-	@param [in,out] joueur
-	@return argent
+/**	@brief Recupere le montant que possede un joueur.
+	@param [in,out] joueur Un joueur.
+	@return argent Un entier representant la somme d'argent que possede joueur.
 */
-int getArgentJoueur (const Joueur & joueur);
-
-
-/**	@brief etablit le type du joueur
-	@param [in, out] table
-	@param [in] n nombre de joueurs desires
-*/
-void setTypeJoueurTable (Table & table, int n);
-
-
-/**	@brief renvoi le type du joueur
-	@param [in] table une table
-	@return type du joueur a la table
-*/
-int getTypeJoueurTable (const Table & table);
-
+int getArgentJoueur(const Joueur & joueur);
 
 #endif
 

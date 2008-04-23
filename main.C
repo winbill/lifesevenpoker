@@ -8,9 +8,9 @@
 
 //Librairies SDL.
 #include <SDL/SDL.h>
-#include "SDL/SDL_image.h" //Gestion des images.
-#include "SDL/SDL_ttf.h" //Gestion des polices True Type Fonts.
-#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
+#include <SDL/SDL_image.h> //Gestion des images.
+#include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
+#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
 int main( int argc, char *argv[ ] )
 {
