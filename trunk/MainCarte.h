@@ -6,7 +6,7 @@
 	@author Benjamin, Olivier, James
 	@file MainCarte.h
 	@version 1.2
-	@date 2008/04/15
+	@date 2008/04/23
 */
 #ifndef _MainCarte
 #define _MainCarte
@@ -105,7 +105,7 @@ void MainCarteLibere(MainCarte & m);
     @return 0 si pas de couleur puis 1,2,3,4 pour TREFLE,CARREAU,COEUR,PIQUE
     @author James
 */
-int couleurMainCarte(const int & tab7Carte[8][2]);
+int couleurMainCarte(const int tab7Carte[8][2]);
 
 /** @brief fonction qui permet de savoir si on peut faire une quinte avec la main
     @note appel récursif utilisé
@@ -118,7 +118,7 @@ int couleurMainCarte(const int & tab7Carte[8][2]);
     @return 0 s'il n'y a pas de suite, 14 suite a l'AS, 13 au roi ..... 5
     @author James
 */
-int suiteMainCarte2(const int & tab7Carte[8][2],int i,int j,int l);
+int suiteMainCarte2(const int tab7Carte[8][2],int i,int j,int l);
 
 
 /** @brief fonction qui permet de savoir si on peut faire une quinte avec la main
@@ -128,14 +128,14 @@ int suiteMainCarte2(const int & tab7Carte[8][2],int i,int j,int l);
     @author James
     @todo il faut faire une fonction qui trie le tableau en fonction du rang (DECROISSANT) (tableau a 2d)
 */
-int suiteMainCarte(int & tab7Carte[8][2]);
+int suiteMainCarte(int tab7Carte[8][2]);
 
 /** @brief fonction qui identifie une Quinte flush
     @param [in] couleur couleur de la quinte flush s'il y en a une
     @return 0 s'il n'y a pas de quinte flush, 14 quinte flush a l'AS, 13 au roi ..... 5
     @todo il faut faire cette fonction, on peut imiter la fonction suiteMainCarte (a voir)
 */
-int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur,int quinte);
+int quinteFlushMainCarte(int tab7Carte[10][2],int couleur,int quinte);
 
 
 /** @brief fonction qui permet de compter le nombre d'occurence d'une main
@@ -149,7 +149,7 @@ int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur,int quinte);
     @author James
 
 */
-void nombreOcurenceCarte(const int & tab7Carte[10][2],int & tab[]);
+void nombreOcurenceCarte(const int tab7Carte[10][2],int tab[]);
 
 
 /** @brief fonction directement lié a nombreOcurenceCarte, et permet de faire le choix des cartes
@@ -161,7 +161,7 @@ void nombreOcurenceCarte(const int & tab7Carte[10][2],int & tab[]);
     @todo fonction qui trie le tableau en fonction des 2 dimensions (voir commentaires de MainCarte.C)
 
 */
-void choixCarteMultiple(const int & tab[],int & tabResultat[6]);
+void choixCarteMultiple(const int tab[],int tabResultat[6]);
 
 
 

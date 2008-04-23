@@ -21,10 +21,10 @@
 #include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
 
-bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, std::string caption)
+bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, char* caption)
 {
 	//Initialisation de tous les sous-systèmes de SDL
-	if( SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
+	if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER ) == -1 )
 	{
 		return false;
 	}
@@ -51,7 +51,7 @@ bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_he
 	return true;
 }
 
-SDL_Surface *load_image( std::string filename )
+SDL_Surface *load_image( char* filename )
 {
 	//Surface tampon qui nous servira pour charger l'image
 	SDL_Surface* loadedImage = NULL;
@@ -60,7 +60,7 @@ SDL_Surface *load_image( std::string filename )
 	SDL_Surface* optimizedImage = NULL;
 
 	//Chargement de l'image
-	loadedImage = IMG_Load( filename.c_str() );
+	loadedImage = IMG_Load( filename );
 
 	//Si le chargement se passe bien
 	if( loadedImage != NULL )
