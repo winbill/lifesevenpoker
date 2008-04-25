@@ -29,6 +29,7 @@ struct PileCarte
 /**     @brief initialise la pile de carte, en creant 52 cartes dans le tas
         @param [in,out] pileCarte une pile de carte
         @note ne melange pas les cartes
+        associe un chemin dimage en fonction de la carte
 */
 void initPileCarte (PileCarte & pileCarte);
 

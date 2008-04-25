@@ -56,6 +56,7 @@ struct Carte
 {
 	Couleur couleur;
 	Rang rang;
+	char nomFichier[15];
 };
 
 /**	@brief Procedure initialisant une nouvelle carte.
@@ -96,6 +97,13 @@ void setCarte(Carte & c,const Couleur & couleur,const Rang & rang);
 			->	-1 si la premiere carte est plus forte que la deuxieme
 */
 int compareCarte(const Carte & c1, const Carte & c2);
+
+/** @brief procedure qui renvoit dans un tableau le nom de l'image associe a la carte
+    @param [in] c Carte
+    @param [out] sortieNomFichier : chemin de l'image
+*/
+void getCarteNomFichier(const Carte & c,char[] sortieNomFichier);
+
 
 #endif
 

@@ -21,6 +21,7 @@ void initPileCarte (PileCarte & pileCarte)
                 {
                         carte = new Carte;
                         setCarte(carte,i,j);
+                        sprintf(carte.nomFichier,"%s%d%s","cards/",(j-2)+13*(i-1),".png");
                         pileCarte.ensembleCarte[k] = *carte;
                         k++;
                 }
