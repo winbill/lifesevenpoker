@@ -31,7 +31,7 @@ void initialiseJeu(Table & table,int argent,int nombreJoueur);
 /**	@brief donne deux carte a chacun des joueurs de la table
 	@param [in, out] table une table
 */
-void distribuer2CartesJoueursJeu(Table & table)
+void distribuer2CartesJoueursJeu(Table & table);
 
 /**	@brief decouvre n carte sur la table
 	@param [in, out] table une table
@@ -91,7 +91,7 @@ void lanceTourJeu(Table & table);
     @note la fonction appel toutes les autres fonctions de test de forme
     @author James
 */
-int codageScoreMain(const MainCarte &m, int & tabResultat[6],const Table & table);
+int codageScoreMain(const MainCarte &m, int tabResultat[6], const Table & table);
 
 
 #endif

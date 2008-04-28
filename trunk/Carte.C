@@ -9,6 +9,7 @@
 	@date 2008/04/19
 */
 
+#include <cstring>
 #include "Carte.h"
 
 
@@ -53,7 +54,7 @@ int compareCarte(const Carte & c1, const Carte & c2)
 	}
 }
 
-void getCarteNomFichier(const Carte & c,char[] sortieNomFichier)
+void getCarteNomFichier(const Carte & c, char* sortieNomFichier)
 {
 
     //strcpy (char *dest, const char *src);

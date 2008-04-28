@@ -57,7 +57,7 @@ void lanceJeu(Table & table)
 	//remise a zero des mains des autres joueurs
 	for(i=0;i<getNJoueurTable(table);i++);
 	{
-		initialisationMain(*getMainJoueur(*getIemeJoueur(table,i)))
+		initialisationMain(*getMainJoueur(*getIemeJoueur(table,i)));
 	}
 	//remise des cartes decouvertes a 0
 	initialisationMain(*getMainCarteTable(table));
