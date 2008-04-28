@@ -102,7 +102,7 @@ int compareCarte(const Carte & c1, const Carte & c2);
     @param [in] c Carte
     @param [out] sortieNomFichier : chemin de l'image
 */
-void getCarteNomFichier(const Carte & c,char[] sortieNomFichier);
+void getCarteNomFichier(const Carte & c, char* sortieNomFichier);
 
 
 #endif

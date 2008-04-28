@@ -18,7 +18,7 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h> //Gestion des images.
 #include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
-#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
+//#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
 
 bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, char* caption)
