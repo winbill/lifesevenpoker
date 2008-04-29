@@ -183,7 +183,8 @@ int main ( /*int argc, char** argv */ )
 
     //ajouteCarte(*getMainJoueur(*getIemeJoueur(t,2)),tirerCarte(*t.pileCarte));
     afficheMainCarte(*getMainJoueur(*getIemeJoueur(t,2)),"main de j3");
-
+    distribuer1CarteDecouverteJeu(t,4);
+    afficheMainCarte(*t.carteDecouverte,"carte sur le tapis");
 
     joueurDetruit(j1);
     joueurDetruit(j2);
