@@ -39,7 +39,7 @@
 	@param nMaxJoueur nombre de joueur maximale (pour le reseau apres)
 	@param carteDecouverte represente ladresse de la "main" qui represente les cartes visible par tous
 	@param pileCarte represente la pile de carte (celle dou on distribue les cartes)
-	@param positionDealer la position du dealer au départ est a 0, il correspond a l'indice dans le tableau de joueurs du dealer
+	@param positionDealer la position du dealer au dÃ©part est a 0, il correspond a l'indice dans le tableau de joueurs du dealer
 	@param petiteBlind montant de la PB la grosse blind est le double
 	@note la position du joueur dans le tableau indique sa position a la table
 */
@@ -203,4 +203,10 @@ int getJoueurSuivant(const Table & table,int i);
 */
 int getPositionDealerTable(const Table & table);
 
+
+
+
+/** @brief juste pr le debug
+*/
+void afficheInfoTable(const Table & t);
 #endif
