@@ -37,12 +37,10 @@ void initialiseJeu(Table & table,int argent)
 void distribuer2CartesJoueursJeu(Table & table)
 {
 	int i;
-	for(i=0;i<getNJoueurTable(table);i++);
+	for(i=0;i<getNJoueurTable(table);i++)
 	{
-	    //ajouteCarte(*j3->mainJoueur,tirerCarte(*t.pileCarte));
-	    printf("----------------------%d---------------bababa",getNJoueurTable(table));
-	    ajouteCarte(*getMainJoueur(*getIemeJoueur(table,2)),tirerCarte(*table.pileCarte));
-
+	    ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),tirerCarte(*table.pileCarte));
+        ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),tirerCarte(*table.pileCarte));
 	}
 }
 
