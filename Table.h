@@ -35,7 +35,7 @@
 	@struct Table
 	@brief structure representant la table du jeu de poker, maximum 10 joueurs
 	@param nJoueur nombre de joueurs
-	@param joueur tableau de pointeur de joueurs
+	@param joueur pointeur sur pointeur de Joueur
 	@param nMaxJoueur nombre de joueur maximale (pour le reseau apres)
 	@param carteDecouverte represente ladresse de la "main" qui represente les cartes visible par tous
 	@param pileCarte represente la pile de carte (celle dou on distribue les cartes)
@@ -61,21 +61,6 @@ struct Table
 	@param [in, out] table une table
 */
 void initTable (Table & table);
-
-
-/**	@brief initialise la variable table
-	@param [in, out] table une table
-	@param nJoueur nombre de joueur souhaite et nombre de joueur maximal
-*/
-void initTable (Table & table,int nJoueur);
-
-
-/**	@brief initialise lune variable table
-	@param [in, out] table une table
-	@param nJoueur nombre de joueur souhaite et nombre de joueur maximal
-	@param pileCarte adresse de la pile de carte
-*/
-void initTable (Table & table,int nJoueur,PileCarte* pileCarte);
 
 
 /**	@brief cree dans le tas une variable table puis l'initialise
