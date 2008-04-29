@@ -55,7 +55,7 @@ void afficheTCarte(const Carte & carte);
 /**	@brief affiche un texte
 	@param [in] char chaine de caractere
 */
-void afficheTText(const char & tab[]);
+void afficheTText(const char tab[]);
 
 
 

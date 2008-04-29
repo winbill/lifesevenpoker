@@ -12,50 +12,14 @@
 #ifndef _Carte
 #define _Carte
 
-/**	@brief Enumeration representant les couleurs des cartes du jeu de poker.
-	@note Les couleurs sont Trefle, Carreau, Coeur et Pique.
-*/
-enum Couleur
-{
-	INIT_COULEUR = 0,
-	TREFLE,
-	CARREAU,
-	COEUR,
-	PIQUE,
-	FIN_COULEUR
-};
-
-/**	@brief Enumeration representant les 13 cartes de chaque couleur du jeu de poker.
-	@note Les differentes cartes sont les chiffres de 2 a 10, le Valet, la Dame, le Roi et l'As.
-	@warning Le Joker n'est pas represente car cette carte n'est pas utilisee dans ce jeu.
-*/
-enum Rang
-{
-	INIT_RANG = 0,
-	DEUX = 2,
-	TROIS = 3,
-	QUATRE = 4,
-	CINQ = 5,
-	SIX = 6,
-	SEPT = 7,
-	HUIT = 8,
-	NEUF = 9,
-	DIX = 10,
-	VALET = 11,
-	DAME = 12,
-	ROI = 13,
-	AS = 14,
-	FIN_RANG
-};
-
 /**	@brief Structure representant une carte du jeu.
-	@param Le champ couleur prend ses valeurs dans l'enumeration Couleur et represente la couleur de la carte.
-	@param Le champ rang prend ses valeurs dans l'enumeration Rang et represente le rang de la carte, c'est a dire sa valeur.
+	@param Le champ couleur prend ses valeurs dans l'intervalle ]0,4] et represente la couleur de la carte.
+	@param Le champ rang prend ses valeurs dans l'intervalle [2,14] et represente le rang de la carte, c'est a dire sa valeur.
 */
 struct Carte
 {
-	Couleur couleur;
-	Rang rang;
+	int couleur;
+	int rang;
 	char nomFichier[15];
 };
 
@@ -70,14 +34,14 @@ void initialisationCarte(Carte & c);
 	@return Renvoie la valeur du rang de la carte.
 	@note Accesseur.
 */
-Rang getCarteRang(const Carte & c);
+int getCarteRang(const Carte & c);
 
 /**	@brief Fonction recuperant la couleur d'une carte.
 	@param [in] Carte Une Carte.
 	@return Renvoie la valeur de la couleur de la carte.
 	@note Accesseur.
 */
-Couleur getCarteCouleur(const Carte & c);
+int getCarteCouleur(const Carte & c);
 
 /**	@brief Procedure modifiant les valeurs d'une carte.
 	@param [in,out] Carte Une carte.
@@ -86,7 +50,7 @@ Couleur getCarteCouleur(const Carte & c);
 	@return Modifie les champs de la variable de type Carte avec les autres parametres donnes.
 	@note Mutateur
 */
-void setCarte(Carte & c,const Couleur & couleur,const Rang & rang);
+void setCarte(Carte & c,const int & couleur,const int & rang);
 
 /**	@brief Fonction comparant deux carte par rapport a leur valeur.
 	@param [in,out] Carte Une carte.

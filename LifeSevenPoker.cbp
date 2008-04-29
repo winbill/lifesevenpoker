@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Life&apos;Seven Poker" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/lifesevenpoker" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -18,14 +18,12 @@
 					<Add option="-Wall" />
 					<Add option="-ansi" />
 					<Add option="-g" />
-					<Add option="gdb" />
 				</Compiler>
 				<Linker>
 					<Add library="SDL" />
 					<Add library="SDLmain" />
 					<Add library="SDL_image" />
 					<Add library="SDL_ttf" />
-					<Add library="SDL_mixer" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -60,39 +58,61 @@
 			<Add library="SDLmain" />
 			<Add library="SDL_image" />
 			<Add library="SDL_ttf" />
-			<Add library="SDL_mixer" />
 		</Linker>
 		<Unit filename="AfficheDynamique.C">
 			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option target="Release" />
 		</Unit>
-		<Unit filename="AfficheDynamique.h" />
-		<Unit filename="AfficheTxt.h" />
+		<Unit filename="AfficheDynamique.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="AfficheTxt.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="Carte.C">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Carte.h" />
-		<Unit filename="Controles.h" />
-		<Unit filename="IArtificielle.h" />
+		<Unit filename="Controles.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="IArtificielle.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="Jeu.C">
 			<Option compilerVar="CC" />
+			<Option target="Release" />
 		</Unit>
-		<Unit filename="Jeu.h" />
+		<Unit filename="Jeu.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="Joueur.C">
 			<Option compilerVar="CC" />
+			<Option target="Release" />
 		</Unit>
-		<Unit filename="Joueur.h" />
+		<Unit filename="Joueur.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="MainCarte.C">
 			<Option compilerVar="CC" />
+			<Option target="Release" />
 		</Unit>
-		<Unit filename="MainCarte.h" />
+		<Unit filename="MainCarte.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="PileCarte.C">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="PileCarte.h" />
 		<Unit filename="Table.C">
 			<Option compilerVar="CC" />
+			<Option target="Release" />
 		</Unit>
-		<Unit filename="Table.h" />
+		<Unit filename="Table.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="main.C">
 			<Option compilerVar="CC" />
 		</Unit>
