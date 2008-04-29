@@ -12,8 +12,8 @@
 
 //Librairies SDL.
 #include <SDL/SDL.h>
-#include <SDL/SDL_image.h> //Gestion des images.
-#include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
+//#include <SDL/SDL_image.h> //Gestion des images.
+//#include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
 //#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
 #ifdef __cplusplus
@@ -122,7 +122,55 @@ int main ( /*int argc, char** argv */ )
     printf("rang : %d \n", getCarteRang(*carte));
     printf("couleur : %d \n", getCarteCouleur(*carte));
 
-    Joueur j1;
+    Joueur* j1;
+    Joueur* j2;
+    Joueur* j3;
+    Joueur* j4;
+    j1 = creeJoueur();
+    j2 = creeJoueur();
+    j3 = creeJoueur();
+    j4 = creeJoueur();
+    initJoueur(*j1,"j1");
+    initJoueur(*j2,"j2");
+    initJoueur(*j3,"j3");
+    initJoueur(*j4,"j4");
+
+
+
+    ajoutJoueurTable(t,j1);
+    ajoutJoueurTable(t,j2);
+    ajoutJoueurTable(t,j3);
+
+    afficheInfoTable(t);
+    afficheInfoJoueur(*j1);
+    afficheInfoJoueur(*j2);
+    afficheInfoJoueur(*j3);
+
+    supprimeJoueurTable(t,j1);
+
+    ajoutJoueurTable(t,j4);
+
+
+    afficheInfoJoueur(*j1);
+    afficheInfoJoueur(*j2);
+    afficheInfoJoueur(*j3);
+    afficheInfoJoueur(*j4);
+
+    afficheInfoTable(t);
+
+
+
+
+
+
+
+
+    joueurDetruit(j1);
+    joueurDetruit(j2);
+    joueurDetruit(j3);
+    joueurDetruit(j4);
+
+
 
 
     //ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),*tirerCarte(*getTablePileCarteTable(table)));

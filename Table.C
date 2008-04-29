@@ -15,7 +15,8 @@
 #include "PileCarte.h"
 #include "Joueur.h"
 #include "Table.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 /*
 
 struct Table
@@ -35,10 +36,11 @@ void initTable (Table & table)
 	table.nJoueur = 0;
 	//table.joueur = new Joueur* [10];
 	setMaxJoueurTable(table,0);
-	memset(table.joueur,0,sizeof(*table.joueur));
+	memset(table.joueur,0,sizeof(*table.joueur[10]));
 	table.carteDecouverte=NULL;
 	table.pileCarte = NULL;
 	table.positionDealer = 0;
+	table.petiteBlind = 0;
 
 }
 
@@ -96,22 +98,25 @@ void tableDetruit(Table* & table)
 void ajoutJoueurTable (Table & table,Joueur* joueur)
 {
 //	assert(getNJoueurTable(table)  < getMaxJoueurTable);
-	int tmp = getNJoueurTable(table);
-	table.joueur[tmp] = joueur;
-	setNJoueurTable(table,tmp+1);
-	setIdJoueur(*joueur,tmp+1);
+    int i =0;
+    while(table.joueur[i] != NULL)
+    {
+        i++;
+    }
+	table.joueur[i] = joueur;
+	setNJoueurTable(table,getNJoueurTable(table)+1);
+	setIdJoueur(*joueur,i);
 }
 
-/*
+
 void supprimeJoueurTable (Table & table,Joueur* joueur)
 {
-	int tmp = joueurTrouver(table, joueur);
-	assert (tmp<10);
-	setNJoueur(table,getNJoueur(table)-1);
-	table.joueur[tmp]=NULL;
+
+	setNJoueurTable(table,getNJoueurTable(table)-1);
+	table.joueur[joueur->idJoueur]=NULL;
 	setIdJoueur(*joueur,-1);
 }
-*/
+
 
 void setMaxJoueurTable (Table & table, int n)
 {
@@ -220,4 +225,27 @@ int getPositionDealerTable(const Table & table)
     return table.positionDealer;
 }
 
+void afficheInfoTable(const Table & t)
+{
+    printf("--Infos Table--\n");
+    //printf("Argent : %d\n",t.carteDecouverte);
+
+    for(int i=0;i<10;i++)
+    {
+        if(t.joueur[i] != NULL)
+        {
+            printf("Joueur no:%d nom:%s\n",i,getIemeJoueur(t,i)->pseudo);
+        }else{
+            printf("Joueur no:%d   INEXISTANT\n",i);
+        }
+    }
+    printf("nJoueur : %d\n",t.nJoueur);
+    printf("nMaxJoueur : %d\n",t.nMaxJoueur);
+    printf("petiteBlind : %d\n",t.petiteBlind);
+    printf("positionDealer : %d\n",t.positionDealer);
+
+    printf("-----FIN-----\n");
+
+
+}
 

@@ -22,7 +22,6 @@
 				<Linker>
 					<Add library="SDL" />
 					<Add library="SDLmain" />
-					<Add library="SDL_image" />
 					<Add library="SDL_ttf" />
 				</Linker>
 			</Target>
@@ -56,7 +55,6 @@
 		<Linker>
 			<Add library="SDL" />
 			<Add library="SDLmain" />
-			<Add library="SDL_image" />
 			<Add library="SDL_ttf" />
 		</Linker>
 		<Unit filename="AfficheDynamique.C">

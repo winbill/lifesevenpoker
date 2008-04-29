@@ -44,10 +44,10 @@ enum TypeJoueur
 	@param argent Reel représentant la somme d'argent que possede le joueur.
 	@param pseudo Chaine de caractere representant le pseudo du joueur.
 	@param idJoueur Identifiant du joueur, unique, correspondant a sa place a la table, ainsi qu'a son indice dans le tableau de joueurs de la table ou il est assis. Egal a -1 s'il nest pas associe a une table (dans ce cas il peut ne pas etre unique).
-	@param noPlace Placement du joueur sur la table (va de 0 a 10).
 	@param statut Indique le statut actuel du joueur sur la table.
 	@param mainCarte Pointeur vers la main du joueur.
 	@param type Type du joueur: humain, IA ou joueur local (sinon valeur par defaut).
+	@param mise la somme des derniere mis quil a joue
 */
 struct Joueur
 {
@@ -158,6 +158,15 @@ void setArgentJoueur(Joueur & joueur, const int & n);
 	@return argent Un entier representant la somme d'argent que possede joueur.
 */
 int getArgentJoueur(const Joueur & joueur);
+
+/** @brief affiche les infos du joueurs
+    @note fonction debug
+*/
+void afficheInfoJoueur(const Joueur & j);
+
+
+
+
 
 #endif
 
