@@ -60,6 +60,10 @@ struct Joueur
 	TypeJoueur type;
 };
 
+
+
+
+
 /**	@brief Initialise un joueur.
 	@param [in,out] joueur Un joueur.
 	@note On initialise le champ idJoueur avec la valeur -1.
@@ -110,7 +114,7 @@ void reinitialiseMainJoueur(Joueur & joueur);
 	@param [in] n Un entier.
 	@param [in,out] joueur Un joueur.
 */
-void setIdJoueur(Joueur & joueur, const int & n);
+void setIdJoueur(Joueur & joueur, int n);
 
 /**	@brief Renvoie la valeur d'id du joueur.
 	@param [in,out] joueur Un joueur.
@@ -136,7 +140,7 @@ int getMiseJoueur(const Joueur & joueur);
 	@return mise Sa nouvelle valeur de mise (mise d'avant + n)
 	@note C'est une sorte de get et set sur la mise du joueur dans la meme fonction.
 */
-int ajoutMiseJoueur(Joueur & joueur,const int & n);
+int ajoutMiseJoueur(Joueur & joueur,int n);
 
 /**	@brief Renvoie l'adresse de mainJoueur dans la structure joueur.
 	@param [in] joueur Un joueur.

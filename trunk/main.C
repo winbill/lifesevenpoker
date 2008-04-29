@@ -1,6 +1,8 @@
 //Librairies Life'Seven Poker
 //#include "Jeu.h"
 #include "PileCarte.h"
+#include "Table.h"
+#include "Joueur.h"
 
 
 //Librairies Standard.
@@ -110,6 +112,9 @@ int main ( /*int argc, char** argv */ )
 
     //srand (time (0));
     PileCarte p;
+    Table t;
+
+    initTable(t);
 
     initPileCarte(p);
     Carte* carte=tirerCarte(p);
@@ -117,7 +122,11 @@ int main ( /*int argc, char** argv */ )
     printf("rang : %d \n", getCarteRang(*carte));
     printf("couleur : %d \n", getCarteCouleur(*carte));
 
-    pileCarteLibere(p);
+    Joueur j1;
+
+
+    //ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),*tirerCarte(*getTablePileCarteTable(table)));
+
 
     return 0;
 }

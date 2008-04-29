@@ -90,29 +90,20 @@
 		</Unit>
 		<Unit filename="Joueur.C">
 			<Option compilerVar="CC" />
-			<Option target="Release" />
 		</Unit>
-		<Unit filename="Joueur.h">
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="Joueur.h" />
 		<Unit filename="MainCarte.C">
 			<Option compilerVar="CC" />
-			<Option target="Release" />
 		</Unit>
-		<Unit filename="MainCarte.h">
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="MainCarte.h" />
 		<Unit filename="PileCarte.C">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="PileCarte.h" />
 		<Unit filename="Table.C">
 			<Option compilerVar="CC" />
-			<Option target="Release" />
 		</Unit>
-		<Unit filename="Table.h">
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="Table.h" />
 		<Unit filename="main.C">
 			<Option compilerVar="CC" />
 		</Unit>

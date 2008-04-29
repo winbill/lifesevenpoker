@@ -29,9 +29,7 @@
 #ifndef Table_H
 #define Table_H
 #include "MainCarte.h"
-#include "PileCarte.h"
 #include "Joueur.h"
-
 
 /**
 	@struct Table
@@ -77,7 +75,7 @@ void initTable (Table & table,int nJoueur);
 	@param nJoueur nombre de joueur souhaite et nombre de joueur maximal
 	@param pileCarte adresse de la pile de carte
 */
-void initTable (Table & table,int nJoueur,PileCarte* & pileCarte);
+void initTable (Table & table,int nJoueur,PileCarte* pileCarte);
 
 
 /**	@brief cree dans le tas une variable table puis l'initialise

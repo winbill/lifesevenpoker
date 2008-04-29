@@ -74,7 +74,7 @@ void reinitialiseMainJoueur(Joueur & joueur)
 }
 
 
-void setIdJoueur(Joueur & joueur, const int & n)
+void setIdJoueur(Joueur & joueur, int n)
 {
     joueur.idJoueur=n;
 }
@@ -98,9 +98,10 @@ int getMiseJoueur(const Joueur & joueur)
 }
 
 
-int ajoutMiseJoueur(Joueur & joueur,const int & n)
+int ajoutMiseJoueur(Joueur & joueur,int n)
 {
     joueur.mise=(joueur.mise + n);
+    return joueur.mise;
 }
 
 

@@ -1,3 +1,4 @@
+
 /**
 	@brief Fichier H pour les cartes.
 
@@ -9,8 +10,8 @@
 	@date 2008/04/19
 */
 
-#ifndef _Carte
-#define _Carte
+#ifndef _Carte_H
+#define _Carte_H
 
 /**	@brief Structure representant une carte du jeu.
 	@param Le champ couleur prend ses valeurs dans l'intervalle ]0,4] et represente la couleur de la carte.

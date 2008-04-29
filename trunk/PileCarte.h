@@ -17,6 +17,8 @@
 
 
 
+
+
 /**     @brief structure representant le jeu (de 52 cartes au depart) d'ou sont distribuees les cartes
         @param ensembleCarte tableau contenant les 52 cartes
         @param taille  du tableau des cartes (au depart d'une partie : 52)
