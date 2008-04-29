@@ -22,7 +22,6 @@
 				<Linker>
 					<Add library="SDL" />
 					<Add library="SDLmain" />
-					<Add library="SDL_ttf" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -55,7 +54,6 @@
 		<Linker>
 			<Add library="SDL" />
 			<Add library="SDLmain" />
-			<Add library="SDL_ttf" />
 		</Linker>
 		<Unit filename="AfficheDynamique.C">
 			<Option compilerVar="CC" />
@@ -81,11 +79,8 @@
 		</Unit>
 		<Unit filename="Jeu.C">
 			<Option compilerVar="CC" />
-			<Option target="Release" />
 		</Unit>
-		<Unit filename="Jeu.h">
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="Jeu.h" />
 		<Unit filename="Joueur.C">
 			<Option compilerVar="CC" />
 		</Unit>
