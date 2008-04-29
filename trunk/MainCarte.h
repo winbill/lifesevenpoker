@@ -165,7 +165,7 @@ void nombreOcurenceCarte(const int tab7Carte[10][2],int tab[]);
 */
 void choixCarteMultiple(const int tab[],int tabResultat[6]);
 
-
+void afficheMainCarte(const MainCarte & m,char titre[]);
 
 
 #endif

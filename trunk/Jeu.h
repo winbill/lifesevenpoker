@@ -12,9 +12,8 @@
 
 #ifndef Jeu_H
 #define Jeu_H
-#include "AfficheTxt.h"
 #include "Table.h"
-#include "Controles.h"
+
 //#include "AfficheDynamique.h"
 
 
@@ -38,43 +37,6 @@ void distribuer2CartesJoueursJeu(Table & table);
 	@param [in] n un entier qui correspond au nombre de carte a retourner sur  la table
 */
 void distribuer1CarteDecouverteJeu(Table & table,int n);
-
-/**	@brief relance une nouvelle partie
-	@param [in, out] table une table
-	@note remet la main de tous à zero et re remplit pileCarte (en changeant la taille)
-	@note change la position du dealer
-*/
-void lanceJeu(Table & table);
-
-/**	@brief donne la victoire a un (ou plus) joueur(s)
-	@param [in, out] table une table
-	@note analyse la (ou les) main(s) gagnante et répartie le pot en fonction
-*/
-void donneVictoireJeu(Table & table);
-
-/** @brief fonction qui attent une action d'une personne humaine
-	@param [in] table une table qui normellement n'est pas modifiee
-	@param [in, out] Joueur un joueur
-	@return entier de notification de relance (a 1 si relance)
-	@note   cette fonction appel actionJoueurJeu(...) pour les
-            modifications du joueur
-*/
-int atendActionJoueurHumain(const Table & table,Joueur & joueur);
-
-/**	@brief fonction utilise lorsque le joueur change de status
-	@param [in, out] table une table
-	@param [in, out] joueur sujet de l'action
-	@param [in] statut son nouveau statut
-	@param [in] n s'il relance on met le montant dedans
-*/
-void actionJoueurJeu(Table & table,Joueur & joueur,Statut statut,int n);
-
-/**	@brief interroge les joueurs tours à tours
-	@param [in, out] table une table
-
-	s'arrete lorsque les mises sont egales
-*/
-void lanceTourJeu(Table & table);
 
 
 /** @brief fonction PRINCIPALE pour obtenir le code d'une main donc ca force
