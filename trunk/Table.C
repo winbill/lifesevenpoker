@@ -219,6 +219,7 @@ void afficheInfoTable(const Table & t)
             printf("Joueur no:%d   INEXISTANT\n",i);
         }
     }
+
     printf("nJoueur : %d\n",t.nJoueur);
     printf("nMaxJoueur : %d\n",t.nMaxJoueur);
     printf("petiteBlind : %d\n",t.petiteBlind);

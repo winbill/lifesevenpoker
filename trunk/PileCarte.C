@@ -68,7 +68,7 @@ Carte* tirerCarte(PileCarte& pileCarte)
                 pileCarte.ensembleCarte[x] = pileCarte.ensembleCarte[pileCarte.taille-1];
                 pileCarte.ensembleCarte[pileCarte.taille-1] = carte;
         }
-        //on enleve une carte a la taille, mais la carte est toujours présente dans le tableau
+        //on enleve une carte a la taille, mais la carte est toujours prÃ©sente dans le tableau
         pileCarte.taille --;
 
 
@@ -87,7 +87,7 @@ void nouvellePileCarte(PileCarte & pileCarte)
 
 int hasard(int x,int y)
 {
-    printf("x : %d  y : %d\n",x,y);
+
     assert(x<y and x>=0 and y<52);
 
     return rand() % (y - x) +x;
