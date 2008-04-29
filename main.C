@@ -3,7 +3,7 @@
 #include "PileCarte.h"
 #include "Table.h"
 #include "Joueur.h"
-
+#include "Jeu.h"
 
 //Librairies Standard.
 #include <stdlib.h>
@@ -157,10 +157,10 @@ int main ( /*int argc, char** argv */ )
     afficheInfoJoueur(*j4);
 
     afficheInfoTable(t);
+    //distribuer2CartesJoueursJeu(t);
 
 
-
-
+    afficheMainCarte(*getMainJoueur(*j4),"main de j4");
 
 
 

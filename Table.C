@@ -51,7 +51,7 @@ void initTable (Table & table,int nJoueur)
 //	table.joueur = new Joueur* [10];
 	setMaxJoueurTable(table, nJoueur);
 	table.carteDecouverte=new MainCarte;
-	memset(table.joueur,0,sizeof(*table.joueur));
+	memset(table.joueur,0,sizeof(*table.joueur[10]));
 	table.pileCarte = NULL;
 	table.positionDealer = 0;
 }
