@@ -164,13 +164,25 @@ int main ( /*int argc, char** argv */ )
 
     afficheInfoTable(t);
 
-    //distribuer2CartesJoueursJeu(t);
-    //ajouteCarte(*getMainJoueur(*getIemeJoueur(t,2)),tirerCarte(*getTablePileCarteTable(t)));
+    t.pileCarte = &p;
+
+
+
+    distribuer2CartesJoueursJeu(t);
+    //ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),tirerCarte(*table.pileCarte));
+/*
+    ajouteCarte(*getMainJoueur(*getIemeJoueur(t,0)),tirerCarte(p));
+    afficheMainCarte(*getMainJoueur(*j1),"main de j1");
 
     ajouteCarte(*j4.mainJoueur,carte);
-
     afficheMainCarte(*getMainJoueur(j4),"main de j4");
+*/
+    //ajouteCarte(*j3->mainJoueur,tirerCarte(*t.pileCarte));
+    //ajouteCarte(*j3->mainJoueur,tirerCarte(*t.pileCarte));
+    afficheInfoTable(t);
 
+    //ajouteCarte(*getMainJoueur(*getIemeJoueur(t,2)),tirerCarte(*t.pileCarte));
+    afficheMainCarte(*getMainJoueur(*getIemeJoueur(t,2)),"main de j3");
 
 
     joueurDetruit(j1);

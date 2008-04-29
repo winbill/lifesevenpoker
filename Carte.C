@@ -49,7 +49,7 @@ int compareCarte(const Carte & c1, const Carte & c2)
 		return -1;
 	}
 	else
-	{
+	{// (ahahah le bug) jtai niké tristan
 		return 0;
 	}
 }
