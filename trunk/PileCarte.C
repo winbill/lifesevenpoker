@@ -1,5 +1,8 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <cassert>
 #include "PileCarte.h"
-
 
 /*struct PileCarte
 {
@@ -15,14 +18,15 @@ void initPileCarte (PileCarte & pileCarte)
         int j;
         int k=0;
         Carte* carte = NULL;
+        pileCarte.taille = 52;
         for(i=1;i<=4;i++)
         {
                 for(j=2;j<=14;j++)
                 {
                         carte = new Carte;
-                        setCarte(carte,i,j);
-                        sprintf(carte.nomFichier,"%s%d%s","cards/",(j-2)+13*(i-1),".png");
-                        pileCarte.ensembleCarte[k] = *carte;
+                        setCarte(*carte,i,j);
+                        sprintf(carte->nomFichier,"%s%d%s","cards/",(j-2)+13*(i-1),".png");
+                        pileCarte.ensembleCarte[k] = carte;
                         k++;
                 }
         }
@@ -31,24 +35,24 @@ void initPileCarte (PileCarte & pileCarte)
 
 PileCarte* creePileCarte()
 {
-        pileCarte = new PileCarte;
-        initPileCarte(pileCarte);
-        return *pileCarte;
+        PileCarte* pileCarte = new PileCarte;
+        initPileCarte(*pileCarte);
+        return pileCarte;
 }
 
 void pileCarteLibere (PileCarte & pileCarte)
 {
-        delete[] pileCarte.ensembleCarte;
-        pileCarte.ensembleCarte = NULL;
+        delete[] *pileCarte.ensembleCarte;
+        pileCarte.ensembleCarte[0] = NULL;
         pileCarte.taille = 0;
 
 }
 
 void pileCarteDetruit(PileCarte* & pileCarte)
 {
-        pileCarteLibere(*PileCarte);
-        delete PileCarte;
-        PileCarte = NULL;
+        pileCarteLibere(*pileCarte);
+        delete pileCarte;
+        pileCarte = NULL;
 }
 
 Carte* tirerCarte(PileCarte& pileCarte)
@@ -83,6 +87,8 @@ void nouvellePileCarte(PileCarte & pileCarte)
 
 int hasard(int x,int y)
 {
+    printf("x : %d  y : %d\n",x,y);
+    assert(x<y and x>=0 and y<52);
 
-        return ;
+    return rand() % (y - x) +x;
 }

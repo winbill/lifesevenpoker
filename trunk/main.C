@@ -1,16 +1,18 @@
 //Librairies Life'Seven Poker
-#include "Jeu.h"
+//#include "Jeu.h"
+#include "PileCarte.h"
 
 
 //Librairies Standard.
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 //Librairies SDL.
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h> //Gestion des images.
 #include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
-#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
+//#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
 #ifdef __cplusplus
     #include <cstdlib>
@@ -19,9 +21,9 @@
 #endif
 #include <SDL/SDL.h>
 
-int main ( int argc, char** argv )
+int main ( /*int argc, char** argv */ )
 {
-    // screen attributes
+    /*// screen attributes
     const int SCREEN_WIDTH = 1024;
     const int SCREEN_HEIGHT = 768;
     const int SCREEN_BPP = 32;
@@ -103,6 +105,20 @@ int main ( int argc, char** argv )
 
     // all is well ;)
     printf("Exited cleanly\n");
+
+    */
+
+    //srand (time (0));
+    PileCarte p;
+
+    initPileCarte(p);
+    Carte* carte=tirerCarte(p);
+    printf("taille pile Carte : %d \n",p.taille);
+    printf("rang : %d \n", getCarteRang(*carte));
+    printf("couleur : %d \n", getCarteCouleur(*carte));
+
+    pileCarteLibere(p);
+
     return 0;
 }
 
@@ -216,8 +232,3 @@ int main ( int argc, char** argv )
 
 
 
-
-
-
-    return 0;
-}

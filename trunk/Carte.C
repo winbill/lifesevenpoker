@@ -15,21 +15,21 @@
 
 void initialisationCarte(Carte & c)
 {
-	c.couleur = INIT_COULEUR;
-	c.rang = INIT_RANG;
+	c.couleur = 0;
+	c.rang = 0;
 }
 
-Rang getCarteRang(const Carte & c)
+int getCarteRang(const Carte & c)
 {
 	return c.rang;
 }
 
-Couleur getCarteCouleur(const Carte & c)
+int getCarteCouleur(const Carte & c)
 {
 	return c.couleur;
 }
 
-void setCarte(Carte & c,const Couleur & couleur,const Rang & rang)
+void setCarte(Carte & c,const int & couleur,const int & rang)
 {
 	c.couleur = couleur;
 	c.rang = rang;
@@ -37,8 +37,8 @@ void setCarte(Carte & c,const Couleur & couleur,const Rang & rang)
 
 int compareCarte(const Carte & c1, const Carte & c2)
 {
-	Rang rang1=getCarteRang(c1);
-	Rang rang2=getCarteRang(c2);
+	int rang1=getCarteRang(c1);
+	int rang2=getCarteRang(c2);
 
 	if(rang1<rang2)
 	{

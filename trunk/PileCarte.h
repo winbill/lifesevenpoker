@@ -11,6 +11,8 @@
  */
 #ifndef Pilecarte_H
 #define Pilecarte_H
+#include <cstring>
+#include <cstdlib>
 #include "Carte.h"
 
 
