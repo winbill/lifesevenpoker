@@ -24,7 +24,7 @@ void initJoueur(Joueur & joueur)
     joueur.mise=0;
     joueur.statut=DEF_STATUT;
     joueur.mainJoueur=new MainCarte;
-    initialisationMain(*joueur.mainJoueur);
+    initialisationMain(*(joueur).mainJoueur);
     joueur.type=DEF_TYPE_JOUEUR;
 }
 

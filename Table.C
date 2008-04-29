@@ -36,7 +36,9 @@ void initTable (Table & table)
 	table.nJoueur = 0;
 	//table.joueur = new Joueur* [10];
 	setMaxJoueurTable(table,0);
-	memset(table.joueur,0,sizeof(*table.joueur[10]));
+	table.joueur = new Joueur*[10];
+	memset(table.joueur,0,sizeof(*table.joueur));
+
 	table.carteDecouverte=NULL;
 	table.pileCarte = NULL;
 	table.positionDealer = 0;
@@ -45,28 +47,6 @@ void initTable (Table & table)
 }
 
 
-void initTable (Table & table,int nJoueur)
-{
-	table.nJoueur = nJoueur;
-//	table.joueur = new Joueur* [10];
-	setMaxJoueurTable(table, nJoueur);
-	table.carteDecouverte=new MainCarte;
-	memset(table.joueur,0,sizeof(*table.joueur[10]));
-	table.pileCarte = NULL;
-	table.positionDealer = 0;
-}
-
-
-void initTable (Table & table,int nJoueur,PileCarte* pileCarte)
-{
-	table.nJoueur = nJoueur;
-//	table.joueur = new Joueur* [10];
-	setMaxJoueurTable(table, nJoueur);
-	table.carteDecouverte=new MainCarte;
-	memset(table.joueur,0,sizeof(*table.joueur));
-	table.pileCarte =pileCarte;
-	table.positionDealer = 0;
-}
 
 
 Table* creeTable()
@@ -79,7 +59,7 @@ Table* creeTable()
 
 void tableLibere(Table & table)
 {
-	delete[]	table.joueur;
+	delete[] table.joueur;
 //	table.joueur = NULL;
 	delete table.carteDecouverte;
 	table.carteDecouverte = NULL;
