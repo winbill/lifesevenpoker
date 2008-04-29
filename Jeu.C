@@ -149,6 +149,7 @@ int codageScoreMain(const MainCarte &m, int & tabResultat[6],const Table & table
     //on test la suite
     int couleur=0;
     int quinte=0;
+    int k=0;
 
     //on regarde en 1er s'il y a une couleure
     couleur = couleurMainCarte(tabMainTotale);
@@ -158,11 +159,18 @@ int codageScoreMain(const MainCarte &m, int & tabResultat[6],const Table & table
     //sil y a une quinte et une couleur on regarde s'il y a une quinte flush
     if((couleur!=0)&&(quinte!=0))
     {
-        if(testquinteflush()!=0)
+        int tabMainTotale2[10][2];
+        strcpy(tabMainTotale2,tabMainTotale); //on fait une copie du tableau
+        k=quinteFlushMainCarte(tabMainTotale2,couleur);
+        if(k!=0)
         {
-            tabResultat[0] = 8 ou 9;
-            ...
-            return;
+            tabResultat[0] = 8;
+            tabResultat[1] = k;
+            tabResultat[2] = k-1;
+            tabResultat[3] = k-2;
+            tabResultat[4] = k-3;
+            tabResultat[5] = k-4;
+
         }
     }
     //s'il y a qu'une couleure c'est la meillleur possibilité
@@ -170,7 +178,11 @@ int codageScoreMain(const MainCarte &m, int & tabResultat[6],const Table & table
     {
         tabResultat[0] = 5;
         //on doit prendre les 5 meilleurs cartes de la couleur correspondante
-        tabResultat[1...6] =...;
+        tabResultat[1] = ;
+        tabResultat[2] = k-1;
+        tabResultat[3] = k-2;
+        tabResultat[4] = k-3;
+        tabResultat[5] = k-4;
 
 
 
