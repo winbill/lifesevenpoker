@@ -180,10 +180,15 @@ int suiteMainCarte2(const int & tab7Carte[8][2],int i,int j,int l)
     //s'il reste qu'une carte et que j != 4 , il ne peut pas avoir de suite
     if(i==l-1)
         return 0;
+
     if(tab7Carte[i][0] == tab7Carte[i+1][0]+1)
     {
         suiteMainCarte(tab7Carte,i+1,j+1,l);
-    }else if(tab7Carte[i][0] == tab7Carte[i+1][0])
+    }else if(tab7Carte[i][0] == tab7Carte[i+1][0]) //cas 9 10 10 J Q R
+    {
+        suiteMainCarte(tab7Carte,i+1,j,l);
+    }else if(tab7Carte[i][0] == 0)   //pour la quite flush (carte nulle)
+    {
         suiteMainCarte(tab7Carte,i+1,j,l);
     }else{
         suiteMainCarte(tab7Carte,i+1,0,l);
@@ -191,7 +196,7 @@ int suiteMainCarte2(const int & tab7Carte[8][2],int i,int j,int l)
 }
 
 
-int suiteMainCarte(int & tab7Carte[8][2])
+int suiteMainCarte(int tab7Carte[8][2])
 {
     //on trie le tableau en fonction du RANG (DECROISSANT)
     int temp,i,k;
@@ -213,11 +218,11 @@ int suiteMainCarte(int & tab7Carte[8][2])
 
     if(tab[0][0]!=14) //test pour savoir s'il y a un as
     {
-        return suiteMainCarte2(m,0,0,7);
+        return suiteMainCarte2(tab7Carte,0,0,7);
     }else{
         tab[7][0] = 1;//on rajoute un 1 (as) pour LA suite du type (1 2 3 4 5)
         tab[7][1] = 1;//on se fout de la couleur de l'as
-        int k = suiteMainCarte2(m,0,0,8);
+        int k = suiteMainCarte2(tab7Carte,0,0,8);
         //on enleve l'as rajoute
         tab[7][1]=0;
         tab[7][0] = 0;
@@ -229,8 +234,9 @@ int suiteMainCarte(int & tab7Carte[8][2])
 
 
 
-int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur,int quinte);
+int quinteFlushMainCarte(int tab7Carte[10][2],int couleur);
 {
+    int l =7;
     //on met a zero les cartes qui ne sont pas de la couleur dominante
     int i;
     for(i=0;i<7;i++)
@@ -245,13 +251,17 @@ int quinteFlushMainCarte(int & tab7Carte[10][2],int couleur,int quinte);
     if(tab7Carte[0][0] == 14)
     {
         tab7Carte[7][0]=1;
+        l++;
     }else if(tab7Carte[1][0] == 14)
     {
         tab7Carte[7][0]=1;
+        l++;
     }else if(tab7Carte[2][0] == 14)
         tab7Carte[7][0]=1;
+        l++;
     }
 
+    return suiteMainCarte2(tab7Carte,0,0,l);
 
 
 }
