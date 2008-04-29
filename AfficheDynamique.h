@@ -21,6 +21,19 @@
 #include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
 
 
+
+/** 	@brief
+	@param
+	@param
+	@param
+	@param 
+	@param [in] filename Une chaine de caracteres representant le nom de fichier.
+	@return Renvoie un booleen
+	@note 
+*/
+bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, char* caption)
+
+
 /** @brief Fonction permettant le chargement d'une image dans certains formats.
     @param [in] filename Une chaine de caracteres representant le nom de fichier.
     @return Renvoie un pointeur sur l'image chargée en mémoire.
