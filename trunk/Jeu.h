@@ -23,9 +23,9 @@
 	@note donne de largent a chacun des joueurs, affecte les IA, les places, le dealer....
 	@param [in, out] table une table
 	@param [in] argent montant au depart
-	@param [in] nombreJoueur le nombre de joueur total
+	@note getNJoueurTable(), setArgentJoueur()
 */
-void initialiseJeu(Table & table,int argent,int nombreJoueur);
+void initialiseJeu(Table & table,int argent);
 
 /**	@brief donne deux carte a chacun des joueurs de la table
 	@param [in, out] table une table

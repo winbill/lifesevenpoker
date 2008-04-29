@@ -31,7 +31,7 @@
 	@return Renvoie un booleen
 	@note 
 */
-bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, char* caption)
+bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, char* caption);
 
 
 /** @brief Fonction permettant le chargement d'une image dans certains formats.

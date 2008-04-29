@@ -71,24 +71,24 @@ struct Joueur
 void initJoueur(Joueur & joueur);
 
 /**	@brief Initialise un joueur.
-    @param [in,out] joueur Un joueur.
+	@param [in,out] joueur Un joueur.
 	@param [in] pseudo Nom du joueur (15 caracteres au maximum).
 */
 void initJoueur (Joueur & joueur, char* pseudo);
 
-/** @brief Cree dans le tas une variable joueur puis l'initialise.
+/** 	@brief Cree dans le tas une variable joueur puis l'initialise.
 	@note Appelle la fonction initJoueur.
 	@return Renvoie l'adresse d'un Joueur.
 */
 Joueur* creeJoueur();
 
-/** @brief Change le statut du joueur.
+/**	@brief Change le statut du joueur.
 	@param [in,out] joueur Un joueur.
 	@param [in] statut La valeur de statut qui sera attribuee au joueur.
 */
 void setStatutJoueur (Joueur & joueur, const Statut statut);
 
-/** @brief Recupere le statut du joueur.
+/** 	@brief Recupere le statut du joueur.
 	@param [in,out] joueur Un joueur.
 	@return Renvoie le valeur de statut actuelle de joueur.
 */
