@@ -113,7 +113,8 @@ int main ( /*int argc, char** argv */ )
     //srand (time (0));
     PileCarte p;
     Table t;
-
+    MainCarte m1;
+    initialisationMain(m1);
     initTable(t);
 
     initPileCarte(p);
@@ -122,18 +123,21 @@ int main ( /*int argc, char** argv */ )
     printf("rang : %d \n", getCarteRang(*carte));
     printf("couleur : %d \n", getCarteCouleur(*carte));
 
+
+
     Joueur* j1;
     Joueur* j2;
     Joueur* j3;
-    Joueur* j4;
+    Joueur j4;
     j1 = creeJoueur();
     j2 = creeJoueur();
     j3 = creeJoueur();
-    j4 = creeJoueur();
     initJoueur(*j1,"j1");
     initJoueur(*j2,"j2");
     initJoueur(*j3,"j3");
-    initJoueur(*j4,"j4");
+    initJoueur(j4,"j4");
+
+
 
 
 
@@ -148,27 +152,33 @@ int main ( /*int argc, char** argv */ )
 
     supprimeJoueurTable(t,j1);
 
-    ajoutJoueurTable(t,j4);
+    ajoutJoueurTable(t,&j4);
+
+
 
 
     afficheInfoJoueur(*j1);
     afficheInfoJoueur(*j2);
     afficheInfoJoueur(*j3);
-    afficheInfoJoueur(*j4);
+    afficheInfoJoueur(j4);
 
     afficheInfoTable(t);
+
     //distribuer2CartesJoueursJeu(t);
+    //ajouteCarte(*getMainJoueur(*getIemeJoueur(t,2)),tirerCarte(*getTablePileCarteTable(t)));
 
+    ajouteCarte(*j4.mainJoueur,carte);
 
-    afficheMainCarte(*getMainJoueur(*j4),"main de j4");
-
+    afficheMainCarte(*getMainJoueur(j4),"main de j4");
 
 
 
     joueurDetruit(j1);
     joueurDetruit(j2);
     joueurDetruit(j3);
-    joueurDetruit(j4);
+    joueurLibere(j4);
+
+    tableLibere(t);
 
 
 

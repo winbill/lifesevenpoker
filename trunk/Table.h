@@ -46,7 +46,7 @@
 struct Table
 {
 	int nJoueur;
-	Joueur* joueur[10];
+	Joueur** joueur;
 	int nMaxJoueur;
 	MainCarte* carteDecouverte;
 	PileCarte* pileCarte;

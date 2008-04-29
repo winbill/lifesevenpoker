@@ -20,7 +20,7 @@
 */
 struct MainCarte
 {
-  Carte* tabMain[5];
+  Carte** tabMain;
   int nCarte;
 };
 

@@ -21,7 +21,9 @@
 
 void initialisationMain(MainCarte & m)
 {
-    memset(m.tabMain,0,sizeof(*m.tabMain[5]));
+    m.tabMain = new Carte*[5];
+	memset(m.tabMain,0,sizeof(*m.tabMain));
+
 	m.nCarte=0;
 }
 
