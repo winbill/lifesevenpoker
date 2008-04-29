@@ -15,26 +15,27 @@
 
 /*struct MainCarte
 {
-  Carte* tabMain[5];
+  Carte* tabMain;
   int nCarte;
 }; */
 
 void initialisationMain(MainCarte & m)
 {
-	m.tabMain=new Carte* [7];
+	//m.tabMain=new (Carte*) [5];
 	m.nCarte=0;
 }
-
+/*
 Carte* getMainCarteTabMain(const MainCarte & m)
 {
 	return m.tabMain;
 }
-
+*/
 int getMainCarteNbCarte(const MainCarte & m)
 {
 	return m.nCarte;
 }
 
+/*
 void setMainCarte(MainCarte & m, const Carte* & tabMain, int nCarte)
 {
     int i;
@@ -43,26 +44,19 @@ void setMainCarte(MainCarte & m, const Carte* & tabMain, int nCarte)
 	    m.tabMain[i]=(tabMain+i*sizeof(Carte));
 	}
     m.nCarte=nCarte;
-}
+}*/
 
-void ajouteCarte(MainCarte & m, const Carte* & c)
+
+
+
+void ajouteCarte(MainCarte & m, Carte* c)
 {
-	if(m.nCarte<5)
-	{
-		Carte* temp[]=new Carte* [m.nCarte+1];
-		int i;
-		for(i=0;i<m.nCarte;i++)
-		{
-			temp[i]=m.tabMain[i];
-		}
-		temp[i+1]=c;
-	}
-	else
-	{
-		printf("Main pleine \n");
-	}
-}
+    //assert(m.nCarte <5);
+    m.tabMain[m.nCarte] = c;
+    m.nCarte++;
 
+}
+/*
 void trieMain(MainCarte & m, char option)
 {
     if(option=="couleur")
@@ -122,7 +116,8 @@ void trieMain(MainCarte & m, char option)
         //J'AI DEJA UNE PETITE IDEE DE COMMENT FAIRE EN RECYCLANT LES DEUX OPTIONS DU DESSUS ET EN DECOUPANT LE TABLEAU DE MAINCARTE.
     }
 }
-
+*/
+/*
 Main identifieMainCarte(const MainCarte & m)
 {
     trieMain(m,couleur);
@@ -132,6 +127,8 @@ Main identifieMainCarte(const MainCarte & m)
 
     //ALGO TENDU DU SLIP A FINIR
 }
+*/
+/*
 MainCarte compareMain(const MainCarte & m1, const MainCarte & m2)
 {
 	Main main1=identifierMainCarte(m1);
@@ -144,13 +141,13 @@ MainCarte compareMain(const MainCarte & m1, const MainCarte & m2)
 	else
 		return 0;
 }
-
+*/
 void MainCarteLibere(MainCarte & m)
 {
     delete [] m.tabMain;
 	m.nCarte=0;
 }
-
+/*
 int couleurMainCarte(int tab7Carte[8][2])
 {
     char[4] c;
@@ -408,4 +405,4 @@ void choixCarteMultiple(int tab7Carte[7][2],const int & tab[],int & tabResultat[
     //vous l'aurez compris (paire brelan carré...)
     //les 4 dernier elements sont le rang des cartes
 }
-
+*/

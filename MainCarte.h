@@ -20,7 +20,7 @@
 */
 struct MainCarte
 {
-  Carte* tabMain; // 2 cartes dans la main + 5 sur la table = 7 cartes au maximum.
+  Carte* tabMain[5];
   int nCarte;
 };
 
@@ -52,7 +52,7 @@ void setMainCarte(MainCarte & m, const Carte* & tabMain, const int & nCarte);
     @param Prend en entree une variable de type MainCarte et une variable de type Carte.
     @return Ajoute une valeur au tableau du champ de MainCarte tabMain.
 */
-void ajouteCarte(MainCarte & m, const Carte* & c);
+void ajouteCarte(MainCarte & m, Carte* c);
 
 /** @brief Procedure de tri de main.
     @param Prend en entree une variable de type MainCarte et une option de tri.
