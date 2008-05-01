@@ -64,9 +64,10 @@
 		<Unit filename="AfficheDynamique.h">
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="AfficheTxt.h">
-			<Option target="Release" />
+		<Unit filename="AfficheTxt.C">
+			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="AfficheTxt.h" />
 		<Unit filename="Carte.C">
 			<Option compilerVar="CC" />
 		</Unit>
