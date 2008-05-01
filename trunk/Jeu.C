@@ -37,10 +37,13 @@ void initialiseJeu(Table & table,int argent)
 void distribuer2CartesJoueursJeu(Table & table)
 {
 	int i;
-	for(i=0;i<getNJoueurTable(table);i++)
+	for(i=0;i<getMaxJoueurTable(table);i++)
 	{
-	    ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),tirerCarte(*table.pileCarte));
-        ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),tirerCarte(*table.pileCarte));
+        if(table.joueur[i] != NULL)
+        {
+            ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),tirerCarte(*table.pileCarte));
+            ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),tirerCarte(*table.pileCarte));
+        }
 	}
 }
 

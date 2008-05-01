@@ -108,14 +108,7 @@ int suiteMainCarte(int tab7Carte[8][2]);
 */
 void nombreOcurenceCarte(const int tab7Carte[10][2],int tab[]);
 
-/* LA FONCTION A DISPARU DU .C ......
-/** @brief fonction qui identifie une Quinte flush
-    @param [in,out] tab7Carte annule les cartes qui ne sont pas de couleur
-    @param [in] couleur couleur de la quinte flush s'il y en a une
-    @return 0 s'il n'y a pas de quinte flush, 14 quinte flush a l'AS, 13 au roi ..... 5
-    @todo il faut faire cette fonction, on peut imiter la fonction suiteMainCarte (a voir)
-    @warning modifie le tableau de depart
-int quinteFlushMainCarte(int tab7Carte[10][2],int couleur);*/
+
 
 
 

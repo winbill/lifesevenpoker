@@ -79,7 +79,7 @@ void tableDetruit(Table* & table)
 
 void ajoutJoueurTable (Table & table,Joueur* joueur)
 {
-//	assert(getNJoueurTable(table)  < getMaxJoueurTable);
+//	assert(getNJoueurTable(table)  < getMaxJoueurTable(table));
     int i =0;
     while(table.joueur[i] != NULL)
     {
@@ -205,30 +205,5 @@ int getJoueurSuivant(const Table & table,int i)
 int getPositionDealerTable(const Table & table)
 {
     return table.positionDealer;
-}
-
-void afficheInfoTable(const Table & t)
-{
-    printf("--Infos Table--\n");
-    //printf("Argent : %d\n",t.carteDecouverte);
-
-    for(int i=0;i<10;i++)
-    {
-        if(t.joueur[i] != NULL)
-        {
-            printf("Joueur no:%d nom:%s\n",i,getIemeJoueur(t,i)->pseudo);
-        }else{
-            printf("Joueur no:%d   INEXISTANT\n",i);
-        }
-    }
-
-    printf("nJoueur : %d\n",t.nJoueur);
-    printf("nMaxJoueur : %d\n",t.nMaxJoueur);
-    printf("petiteBlind : %d\n",t.petiteBlind);
-    printf("positionDealer : %d\n",t.positionDealer);
-
-    printf("-----FIN-----\n");
-
-
 }
 

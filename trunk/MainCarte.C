@@ -249,24 +249,3 @@ void choixCarteMultiple(int tab7Carte[7][2],const int tab[][2],int tabResultat[6
 }*/
 
 
-void afficheMainCarte(const MainCarte & m,char titre[])
-{
-    printf("--Infos MainCarte  %s--\n",titre);
-    printf("nCarte : %d\n",m.nCarte);
-    for(int i=0;i<5;i++)
-    {
-        if(m.tabMain[i] != NULL)
-        {
-            printf("Carte no:%d rg:%d couleur:%d\n",i,(*m.tabMain[i]).rang,(*m.tabMain[i]).couleur);
-        }else{
-            printf("Carte no:%d    INEXISTANT\n",i);
-        }
-    }
-
-
-
-    printf("-----FIN-----\n");
-
-
-}
-
