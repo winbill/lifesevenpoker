@@ -123,5 +123,3 @@ int getArgentJoueur(const Joueur & joueur)
 {
     return joueur.argent;
 }
-
-
