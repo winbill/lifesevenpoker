@@ -12,8 +12,8 @@
 #include "AfficheTxt.h"
 //Librairies SDL.
 #include <SDL/SDL.h>
-//#include <SDL/SDL_image.h> //Gestion des images.
-//#include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
+#include <SDL/SDL_image.h> //Gestion des images.
+#include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
 //#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
 #ifdef __cplusplus
@@ -25,7 +25,7 @@
 
 int main ( /*int argc, char** argv */ )
 {
-    printf("ETAPE 0 \n");
+    /*printf("ETAPE 0 \n");
     PileCarte p;Table t;
     initTable(t);
     initPileCarte(p);
@@ -58,7 +58,7 @@ int main ( /*int argc, char** argv */ )
     ajoutJoueurTable(t,j4);
     afficheInfoJoueur(*j4);
 
-int i=0;
+    int i=0;
     while(i<10)
     {
         printf("%d \t",t.joueur[i]);
@@ -123,6 +123,7 @@ int i=0;
 
 
 
+*/
 
 
 
@@ -130,8 +131,7 @@ int i=0;
 
 
 
-
-    /*// screen attributes
+    // screen attributes
     const int SCREEN_WIDTH = 1024;
     const int SCREEN_HEIGHT = 768;
     const int SCREEN_BPP = 32;
@@ -155,17 +155,22 @@ int i=0;
     }
 
     // load an image
-    SDL_Surface* bmp = SDL_LoadBMP("cb.bmp");
-    if (!bmp)
+    SDL_Surface* background = SDL_LoadBMP("img/bkgrd.bmp");
+    if (!background)
     {
         printf("Unable to load bitmap: %s\n", SDL_GetError());
         return 1;
     }
-
+    SDL_Surface* logo = SDL_LoadBMP("img/logo.bmp");
+    if(!logo)
+    {
+        printf("Unable to load bitmap: %s\n", SDL_GetError());
+        return 1;
+    }
     // centre the bitmap on screen
     SDL_Rect dstrect;
-    dstrect.x = (screen->w - bmp->w) / 2;
-    dstrect.y = (screen->h - bmp->h) / 2;
+    dstrect.x = (screen->w - background->w) / 2;
+    dstrect.y = (screen->h - background->h) / 2;
 
     // program main loop
     bool done = false;
@@ -215,14 +220,6 @@ int i=0;
     printf("Exited cleanly\n");
 
     */
-
-    //srand (time (0));
-
-
-
-
-    //ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),*tirerCarte(*getTablePileCarteTable(table)));
-
 
     return 0;
 }

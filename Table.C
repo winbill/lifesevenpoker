@@ -34,7 +34,6 @@ struct Table
 void initTable (Table & table)
 {
 	table.nJoueur = 0;
-	//table.joueur = new Joueur* [10];
 	setMaxJoueurTable(table,0);
 	table.joueur = new Joueur*[10];
 	int i;
