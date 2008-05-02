@@ -25,6 +25,7 @@
 
 int main ( /*int argc, char** argv */ )
 {
+    printf("ETAPE 0 \n");
     PileCarte p;Table t;
     initTable(t);
     initPileCarte(p);
@@ -32,57 +33,83 @@ int main ( /*int argc, char** argv */ )
     Joueur* j1;
     Joueur* j2;
     Joueur* j3;
-    Joueur j4;
+    Joueur* j4;
+
+    printf("ETAPE 1 \n");
 
     setMaxJoueurTable(t,6);
     j1 = creeJoueur();initJoueur(*j1,"j1");
+    afficheInfoJoueur(*j1);
     j2 = creeJoueur();initJoueur(*j2,"j2");
+    afficheInfoJoueur(*j2);
     j3 = creeJoueur();initJoueur(*j3,"j3");
-    initJoueur(j4,"j4");
+    afficheInfoJoueur(*j3);
+    j4 = creeJoueur();initJoueur(*j4,"j4");
+    afficheInfoJoueur(*j4);
 
-
+    printf("ETAPE 2 \n");
 
     ajoutJoueurTable(t,j1);
+    afficheInfoJoueur(*j1);
     ajoutJoueurTable(t,j2);
+    afficheInfoJoueur(*j2);
     ajoutJoueurTable(t,j3);
+    afficheInfoJoueur(*j3);
+    ajoutJoueurTable(t,j4);
+    afficheInfoJoueur(*j4);
 
+int i=0;
+    while(i<10)
+    {
+        printf("%d \t",t.joueur[i]);
+        i++;
+    }
+
+    printf("ETAPE 3 \n");
 
     afficheInfoTable(t);
-
     afficheInfoJoueur(*j1);
     afficheInfoJoueur(*j2);
     afficheInfoJoueur(*j3);
+    afficheInfoJoueur(*j4);
 
 
     supprimeJoueurTable(t,j1);
 
     //ajoutJoueurTable(t,&j4);
 
+    printf("ETAPE 4 \n");
 
     afficheInfoJoueur(*j1);
     afficheInfoJoueur(*j2);
     afficheInfoJoueur(*j3);
-    afficheInfoJoueur(j4);
+    afficheInfoJoueur(*j4);
 
     afficheInfoTable(t);
 
+    printf("ETAPE 5a \n");
     distribuer2CartesJoueursJeu(t);
 
-
+    printf("ETAPE 5b \n");
 
     afficheMainCarte(*getMainJoueur(*j1),"main de j1");
     afficheMainCarte(*getMainJoueur(*j2),"main de j2");
     afficheMainCarte(*getMainJoueur(*j3),"main de j3");
-    afficheMainCarte(*getMainJoueur(j4),"main de j4");
+    afficheMainCarte(*getMainJoueur(*j4),"main de j4");
+
+    printf("ETAPE 6 \n");
 
     joueurDetruit(j1);
+    supprimeJoueurTable(t,j2);
     joueurDetruit(j2);
+    supprimeJoueurTable(t,j3);
     joueurDetruit(j3);
-    joueurLibere(j4);
+    supprimeJoueurTable(t,j4);
+    joueurDetruit(j4);
 
+    afficheInfoTable(t);
 
-
-
+    printf("ETAPE 7 \n");
 
 
 
@@ -92,7 +119,7 @@ int main ( /*int argc, char** argv */ )
 
 
 
-
+    printf("ETAPE 8 \n");
 
 
 
