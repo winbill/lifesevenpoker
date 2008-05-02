@@ -101,6 +101,10 @@
 		<Unit filename="main.C">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="mainJames.C">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
