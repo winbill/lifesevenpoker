@@ -37,7 +37,12 @@ void initTable (Table & table)
 	//table.joueur = new Joueur* [10];
 	setMaxJoueurTable(table,0);
 	table.joueur = new Joueur*[10];
-	memset(table.joueur,0,sizeof(*table.joueur));
+	int i;
+	for(i=0;i<10;i++)
+	{
+	    table.joueur[i]=0;
+	}
+	//memset(table.joueur,0,sizeof(*table.joueur)); //PROVOQUAIT UNE ERREUR: la 2e case du tableau prenait une adresse aléatoire avec memset...
 
     table.carteDecouverte=new MainCarte;
     initialisationMain(*(table).carteDecouverte);
