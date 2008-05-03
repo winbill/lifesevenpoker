@@ -36,6 +36,7 @@ void initJoueur (Joueur & joueur, char* pseudo)
 }
 
 
+
 Joueur* creeJoueur()
 {
     Joueur* joueur = new Joueur;
@@ -113,7 +114,7 @@ MainCarte* getMainJoueur(const Joueur & joueur)
 }
 
 
-void setArgentJoueur(Joueur & joueur, const int & n)
+void setArgentJoueur(Joueur & joueur, int n)
 {
     joueur.argent=n;
 }
@@ -122,4 +123,56 @@ void setArgentJoueur(Joueur & joueur, const int & n)
 int getArgentJoueur(const Joueur & joueur)
 {
     return joueur.argent;
+}
+/*
+    DEF_STATUT=0,
+	SIT_OUT,1
+	SIT,2
+	CALL,3
+	CHECK,4
+	RAISE,5
+	FOLD,6
+	ALL_IN,7
+	FIN_STATUT8
+
+struct Joueur
+{
+	int argent;
+	char* pseudo;
+	int idJoueur;
+	int mise;
+	Statut statut;
+	MainCarte* mainJoueur;
+	TypeJoueur type;
+};
+*/
+
+void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
+{
+    int a;
+    switch(s)
+    {
+        case 1:
+        setStatutJoueur(j,s);
+        break;
+        case 2:
+        assert(j.statut == 1);
+        setStatutJoueur(j,s);
+        break;
+        case 3:
+        a = montant - getMiseJoueur(j);
+        assert(a > 0 && getArgentJoueur(j) > a);
+        ajoutMiseJoueur(j,a);
+        setArgentJoueur(j,getArgentJoueur(j)-a);
+        setStatutJoueur(j,s);
+        break;
+        case 4:
+        assert(montant == getMiseJoueur(j));
+        setStatutJoueur(j,s);
+        break;
+        case 5:
+        a = montant - getMiseJoueur(j);
+        assert(a >= 0 && getArgentJoueur(j) > ( a + relance));
+        break;
+    }
 }

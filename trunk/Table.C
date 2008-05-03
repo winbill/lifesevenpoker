@@ -33,16 +33,17 @@ struct Table
 
 void initTable (Table & table)
 {
+        table.nJoueur = 0;
+        setMaxJoueurTable(table,0);
+        table.joueur = new Joueur*[10];
+        memset(table.joueur,0,sizeof(*table.joueur));
 
-       table.nJoueur = 0;
-       table.joueur = new Joueur* [10];
-       setMaxJoueurTable(table,0);
-       memset(table.joueur,0,sizeof(*table.joueur)*10);
-       table.carteDecouverte=new MainCarte;
-       initialisationMain(*(table).carteDecouverte);
-       table.pileCarte = NULL;
-       table.positionDealer = 0;
-       table.petiteBlind = 0;
+        table.carteDecouverte=new MainCarte;
+        initialisationMain(*(table).carteDecouverte);
+
+        table.pileCarte = NULL;
+        table.positionDealer = 0;
+        table.petiteBlind = 0;
 
 }
 
