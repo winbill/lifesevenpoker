@@ -18,7 +18,7 @@
 #include <SDL/SDL.h>
 #include "SDL/SDL_image.h" //Gestion des images.
 #include "SDL/SDL_ttf.h" //Gestion des polices True Type Fonts.
-#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
+//#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
 
 
 
@@ -26,10 +26,10 @@
 	@param
 	@param
 	@param
-	@param 
+	@param
 	@param [in] filename Une chaine de caracteres representant le nom de fichier.
 	@return Renvoie un booleen
-	@note 
+	@note
 */
 bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, char* caption);
 
@@ -39,7 +39,7 @@ bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_he
     @return Renvoie un pointeur sur l'image chargée en mémoire.
     @note Formats supportés : BMP, GIF, JPEG, LBM, PCX, PNM, TGA, TIFF, XCF, XPM, XV et PNG.
 */
-SDL_Surface *load_image( std::string filename );
+SDL_Surface *load_image( char* filename );
 
 /** @brief Procedure qui applique une surface SDL sur une autre selon la méthode du "blitting", qui est en quelque sort un collage simple.
     @param [in] x Coordonnee en x pour le blitting de l'image.

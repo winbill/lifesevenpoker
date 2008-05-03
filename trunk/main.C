@@ -1,15 +1,16 @@
 //Librairies Life'Seven Poker
 //#include "Jeu.h"
-#include "PileCarte.h"
-#include "Table.h"
-#include "Joueur.h"
-#include "Jeu.h"
+//#include "PileCarte.h"
+//#include "Table.h"
+//#include "Joueur.h"
+//#include "Jeu.h"
 
 //Librairies Standard.
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "AfficheTxt.h"
+#include "AfficheDynamique.h"
+//#include "AfficheTxt.h"
 //Librairies SDL.
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h> //Gestion des images.
@@ -167,10 +168,21 @@ int main ( /*int argc, char** argv */ )
         printf("Unable to load bitmap: %s\n", SDL_GetError());
         return 1;
     }
+
     // centre the bitmap on screen
     SDL_Rect dstrect;
     dstrect.x = (screen->w - background->w) / 2;
     dstrect.y = (screen->h - background->h) / 2;
+
+    SDL_Rect dstlogo;
+    dstlogo.x = (screen->w - logo->w ) /2;
+    dstlogo.y = (screen->w - logo->h ) /2;
+
+    //Initialisation de SDL_TTF
+	if( TTF_Init() == -1 )
+	{
+		return false;
+	}
 
     // program main loop
     bool done = false;
@@ -195,7 +207,45 @@ int main ( /*int argc, char** argv */ )
                     if (event.key.keysym.sym == SDLK_ESCAPE)
                         done = true;
                     break;
-                }
+
+                    if (event.key.keysym.sym == SDLK_RETURN)
+                    {
+                        //La surface du message
+                        SDL_Surface *message = NULL;
+
+                        //Le Font qu'on va utiliser
+                        TTF_Font *font;
+
+                        //La couleur du Font
+                        SDL_Color textColor = { 255, 255, 255 };
+
+                        //Ouverture du Font
+                        font = TTF_OpenFont( "TlwgTypeWriter.ttf", 28 );
+                        //S'il y a une erreur dans le chargement du Font
+                        if( font == NULL )
+                        {
+                            return false;
+                        }
+
+                        //Mise en place du texte sur la surface message
+                        message = TTF_RenderText_Solid( font, "Test pour sdl_ttf", textColor );
+
+                        //S'il y a une erreur dans la mise en place du texte
+                        if( message == NULL )
+                        {
+                            return 1;
+                        }
+
+                        //Application de la surface du message
+                        apply_surface( 0, 200, message, screen );
+
+                        SDL_FreeSurface( message );
+
+                        //Fermeture des Fonts qu'on a utilisé
+                        TTF_CloseFont( font );
+
+                    } //end ENTER
+                } //end SDL_KEYDOWN
             } // end switch
         } // end of message processing
 
@@ -205,7 +255,8 @@ int main ( /*int argc, char** argv */ )
         SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
 
         // draw bitmap
-        SDL_BlitSurface(bmp, 0, screen, &dstrect);
+        SDL_BlitSurface(background, 0, screen, &dstrect);
+        SDL_BlitSurface(logo, 0, screen, &dstlogo);
 
         // DRAWING ENDS HERE
 
@@ -214,12 +265,16 @@ int main ( /*int argc, char** argv */ )
     } // end main loop
 
     // free loaded bitmap
-    SDL_FreeSurface(bmp);
+    SDL_FreeSurface(background);
+    SDL_FreeSurface(logo);
+
+
+
+	//On quitte SDL_ttf
+	TTF_Quit();
 
     // all is well ;)
     printf("Exited cleanly\n");
-
-    */
 
     return 0;
 }
