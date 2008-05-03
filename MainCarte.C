@@ -22,7 +22,7 @@
 void initialisationMain(MainCarte & m)
 {
     m.tabMain = new Carte*[5];
-	memset(m.tabMain,0,sizeof(*m.tabMain)*5);
+	memset(m.tabMain,0,sizeof(*m.tabMain));
 
 	m.nCarte=0;
 }
