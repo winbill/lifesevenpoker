@@ -17,16 +17,17 @@
 #include "Table.h"
 #include <stdlib.h>
 #include <stdio.h>
-/*
 
+/*
 struct Table
 {
-       int nJoueur;
-       Joueur* joueur[10];
-       int nMaxJoueur;
-       MainCarte* carteDecouverte;
-       PileCarte* pileCarte;
-       int positionDealer
+	int nJoueur;
+	Joueur** joueur;
+	int nMaxJoueur;
+	MainCarte* carteDecouverte;
+	PileCarte* pileCarte;
+	int positionDealer;
+	int petiteBlind;
 };
 */
 
@@ -36,7 +37,7 @@ void initTable (Table & table)
         table.nJoueur = 0;
         setMaxJoueurTable(table,0);
         table.joueur = new Joueur*[10];
-        memset(table.joueur,0,sizeof(*table.joueur));
+        memset(table.joueur,0,sizeof(*table.joueur)*10);
 
         table.carteDecouverte=new MainCarte;
         initialisationMain(*(table).carteDecouverte);

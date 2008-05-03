@@ -20,7 +20,7 @@
 #include <stdio.h>
 
 
-
+/*
 void initialiseJeu(Table & table,int argent)
 {
 	int i;
@@ -31,7 +31,7 @@ void initialiseJeu(Table & table,int argent)
 
 //etc... attend IArtificielle.h
 
-}
+}*/
 
 
 void distribuer2CartesJoueursJeu(Table & table)

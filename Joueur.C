@@ -19,7 +19,12 @@
 void initJoueur(Joueur & joueur)
 {
     joueur.argent=0;
-    joueur.pseudo="";
+
+
+    joueur.pseudo = new char[10];
+    memset(joueur.pseudo,0,sizeof(joueur.pseudo)*10);
+
+
     joueur.idJoueur=-1;
     joueur.mise=0;
     joueur.statut=DEF_STATUT;
@@ -146,7 +151,7 @@ struct Joueur
 	TypeJoueur type;
 };
 */
-
+/*
 void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
 {
     int a;
@@ -176,3 +181,4 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         break;
     }
 }
+*/
