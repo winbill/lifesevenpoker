@@ -18,10 +18,13 @@
 					<Add option="-Wall" />
 					<Add option="-ansi" />
 					<Add option="-g" />
+					<Add option="-lSDL_ttf" />
 				</Compiler>
 				<Linker>
 					<Add library="SDL" />
 					<Add library="SDLmain" />
+					<Add library="SDL_ttf" />
+					<Add library="SDL_image" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -32,7 +35,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-ansi" />
-					<Add option="`sdl-config --cflags`" />
+					<Add option="-lSDL_ttf" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -50,10 +53,13 @@
 			<Add option="-Wall" />
 			<Add option="-ansi" />
 			<Add option="-g" />
+			<Add option="-lSDL_ttf" />
 		</Compiler>
 		<Linker>
 			<Add library="SDL" />
 			<Add library="SDLmain" />
+			<Add library="SDL_ttf" />
+			<Add library="SDL_image" />
 		</Linker>
 		<Unit filename="AfficheDynamique.C">
 			<Option compilerVar="CC" />
