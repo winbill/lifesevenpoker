@@ -14,6 +14,7 @@
 #include "MainCarte.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <cassert>
 
 
 void initJoueur(Joueur & joueur)
