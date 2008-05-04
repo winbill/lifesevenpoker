@@ -106,10 +106,6 @@
 		<Unit filename="Table.h" />
 		<Unit filename="main.C">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="mainJames.C">
-			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
 			<code_completion />

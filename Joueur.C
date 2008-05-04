@@ -23,7 +23,7 @@ void initJoueur(Joueur & joueur)
 
 
     joueur.pseudo = new char[10];
-    memset(joueur.pseudo,0,sizeof(joueur.pseudo)*10);
+    memset(joueur.pseudo,0,sizeof(*joueur.pseudo)*10);
 
 
     joueur.idJoueur=-1;
