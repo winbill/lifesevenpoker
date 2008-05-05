@@ -83,7 +83,7 @@ int main ( /*int argc, char** argv */ )
 
     SDL_Rect dstlogo;
     dstlogo.x = (screen->w - logo->w ) /2;
-    dstlogo.y = (screen->w - logo->h ) /2;
+    dstlogo.y = (screen->h - logo->h ) /2;
 
     //Initialisation de SDL_TTF
     if ( TTF_Init() == -1 )
