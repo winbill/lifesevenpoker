@@ -7,16 +7,16 @@ installer les librairies Sdl pour compiler avec c::b
 
 == Details ==
 
-* ouvrir le gestionnaire de paquet synaptique
-* faire une recherche sur libsdl1.2 
-* installer les paquets suivants : libsdl1.2-dev libsdl1.2debian 
+#ouvrir le gestionnaire de paquet synaptique
+#faire une recherche sur libsdl1.2 
+#installer les paquets suivants : libsdl1.2-dev libsdl1.2debian 
 
 == installation des add-ons ==
 
-* ouvrir le gestionnaire de paquet synaptique
-* rechercher libsdl-"addon" par exemple (libsdl-image libsdl-ttf)
-* installer la librairie ainsi que sa version de dev
+#ouvrir le gestionnaire de paquet synaptique
+#rechercher libsdl-"addon" par exemple (libsdl-image libsdl-ttf)
+#installer la librairie ainsi que sa version de dev
 
 == linker la lib ==
 
-* Dans code::blocks, project -> build options -> Linker -> Link libraries -> add . Tapez le nom du module (ex : SDL_image avec un underscore et sans le préfixe "lib").
+#Dans code::blocks, project -> build options -> Linker -> Link libraries -> add . Tapez le nom du module (ex : SDL_image avec un underscore et sans le préfixe "lib").
