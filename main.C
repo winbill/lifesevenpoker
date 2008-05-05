@@ -11,35 +11,80 @@
 #include <time.h>
 #include "AfficheDynamique.h"
 //#include "AfficheTxt.h"
+
+
 //Librairies SDL.
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h> //Gestion des images.
 #include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
-//#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
+#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
-#ifdef __cplusplus
-#include <cstdlib>
-#else
-#include <stdlib.h>
-#endif
-#include <SDL/SDL.h>
 
-void apply_surface (int x,int y, SDL_Surface* source, SDL_Surface* destination)
+int main (int argc, char** argv )
 {
-    SDL_Rect offset;
-    offset.x = x;
-    offset.y = y;
-    SDL_BlitSurface (source, NULL, destination, &offset);
-    SDL_Flip(destination);
-}
+    SDL_Surface* affichage;
+    path caption="Life\'Seven Poker";
 
-int main ( /*int argc, char** argv */ )
-{
+    if(initSDL(affichage,1024,768,32,caption)!=0)
+    {
+        return 1;
+    }
+
+    atexit(SDL_Quit);
+    path backgroundP="img/bkgrd.bmp";
+    SDL_Surface* background=load_image(backgroundP);
+    apply_surface(0,0,background,affichage);
+    path logoP="img/logo.bmp";
+    SDL_Surface* menu=load_image(logoP);
+
+    bool fin=false;
+    bool menuSwitch=false;
+    bool gameOn=false;
+
+    SDL_Event event;
+
+    while(fin!=true)
+    {
+        SDL_UpdateRect(affichage, 0, 0, 0, 0);
+        SDL_WaitEvent(&event);
+
+        if(menuSwitch)
+        {
+            apply_surface(0,0,menu,affichage);
+        }
+        switch(event.type)
+        {
+            case SDL_QUIT : fin=true;
+            break;
+
+            case SDL_KEYDOWN :
+            {
+                if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==0)
+                {
+                    fin=true;
+                }
+                else if(event.key.keysym.sym != SDLK_ESCAPE and menuSwitch==0)
+                {
+                    menuSwitch=true;
+                }
+                else if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==1)
+                {
+                    menuSwitch=false;
+                    SDL_FreeSurface(menu);
+                }
+            }
+            break;
+        }
+    }
+
+
+    SDL_FreeSurface(menu);
+    SDL_FreeSurface(background);
+    SDL_FreeSurface(affichage);
 
 
 
-
-    // screen attributes
+  /*  // screen attributes
     const int SCREEN_WIDTH = 1024;
     const int SCREEN_HEIGHT = 768;
     const int SCREEN_BPP = 32;
@@ -183,6 +228,8 @@ int main ( /*int argc, char** argv */ )
     // all is well ;)
     printf("Exited cleanly\n");
 
+
+*/
     return 0;
 }
 

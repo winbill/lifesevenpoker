@@ -18,15 +18,17 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h> //Gestion des images.
 #include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
-//#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
+#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
+#include "AfficheDynamique.h"
 
-bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, char* caption)
+bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, path caption)
 {
 	//Initialisation de tous les sous-systèmes de SDL
 	if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER ) == -1 )
 	{
-		return false;
+	    printf("Impossible d\'initialiser les sous-systèmes de SDL.\n");
+		return -1;
 	}
 
 	//Mise en place de l'écran
@@ -35,23 +37,25 @@ bool init(SDL_Surface* & screen, const int & screen_width, const int & screen_he
 	//S'il y a une erreur dans la mise en place de l'écran
 	if( screen == NULL )
 	{
-		return false;
+	    printf("Echec de la mise en place de l\'ecran.\n");
+		return -1;
 	}
 
 	//Initialisation de SDL_TTF
 	if( TTF_Init() == -1 )
 	{
-		return false;
+	    printf("Echec de l\'initialisation de SDL_ttf");
+		return -1;
 	}
 
 	//Mise en place de la barre de titre de la fenetre principale (caption)
 	SDL_WM_SetCaption( caption , NULL );
 
 	//Si tout s'est bien passé
-	return true;
+	return 0;
 }
 
-SDL_Surface *load_image( char* filename )
+SDL_Surface *load_image( path filename )
 {
 	//Surface tampon qui nous servira pour charger l'image
 	SDL_Surface* loadedImage = NULL;
@@ -85,4 +89,5 @@ void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination 
 
 	//On blitte la surface
 	SDL_BlitSurface( source, NULL, destination, &offset );
+	SDL_UpdateRect(destination,0,0,0,0);
 }
