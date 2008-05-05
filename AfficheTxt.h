@@ -4,10 +4,10 @@
 
 	gere l'affichage et le debug en mode texte uniquement
 
-	@author  James
+	@author  Tristan, James
 	@file AfficheTxt.h
-	@version 1.1
-	@date 2008/04/11
+	@version 1.2
+	@date 2008/05/05
  */
 
 #ifndef AfficheTxt_H
@@ -16,6 +16,16 @@
 #include "Table.h"
 #include "Jeu.h"
 
+/**	@brief affiche les informations du joueur j en mode txt (pseudo, argent,mise, statut...)
+	@param Joueur j est celui dont on veut afficher les informations
+*/
+void afficheInfoJoueur(const Joueur & j);
+
+
+/**	@brief affiche les informations de la table t en mode txt (liste des joueur avec leur num de place, dealer, blind...)
+	@param Table t est la table dont on affiche les informations
+*/
+void afficheInfoTable(const Table & t);
 
 
 
