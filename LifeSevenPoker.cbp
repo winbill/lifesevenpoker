@@ -22,10 +22,12 @@
 				<Linker>
 					<Add library="SDL" />
 					<Add library="SDLmain" />
+					<Add library="SDL_ttf" />
+					<Add library="SDL_image" />
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/lifesevenpoker" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Life&apos;Seven Poker" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -37,6 +39,9 @@
 					<Add option="-s" />
 					<Add library="SDL" />
 					<Add library="SDLmain" />
+					<Add library="SDL_image" />
+					<Add library="SDL_ttf" />
+					<Add library="SDL_mixer" />
 				</Linker>
 			</Target>
 		</Build>
@@ -50,6 +55,8 @@
 		<Linker>
 			<Add library="SDL" />
 			<Add library="SDLmain" />
+			<Add library="SDL_ttf" />
+			<Add library="SDL_image" />
 		</Linker>
 		<Unit filename="AfficheDynamique.C">
 			<Option compilerVar="CC" />
