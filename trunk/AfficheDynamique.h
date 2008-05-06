@@ -20,6 +20,11 @@
 #include "SDL/SDL_ttf.h" //Gestion des polices True Type Fonts.
 //#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
 
+
+#include "Joueur.h"
+#include "Table.h"
+#include "AfficheTxt.h"
+
 /** @brief Type cree pour manipuler les chemins de fichier.
 
 */
@@ -41,7 +46,7 @@ SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option);
 
 void AffEffaceEcran(SDL_Surface* aff);
 
-
+int lancePartie(SDL_Surface* affichage);
 
 
 

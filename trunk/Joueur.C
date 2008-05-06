@@ -35,10 +35,10 @@ void initJoueur(Joueur & joueur)
 }
 
 
-void initJoueur (Joueur & joueur, char* pseudo)
+void initJoueur (Joueur & joueur,const char* pseudo)
 {
     initJoueur(joueur);
-    joueur.pseudo=pseudo;
+    strcpy(joueur.pseudo,pseudo);
 }
 
 

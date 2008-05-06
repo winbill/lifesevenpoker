@@ -60,7 +60,7 @@ struct Table
 	@brief initialise la variable table
 	@param [in, out] table une table
 */
-void initTable (Table & table);
+void initTable(Table & table);
 
 
 /**	@brief cree dans le tas une variable table puis l'initialise
