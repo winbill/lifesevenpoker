@@ -157,7 +157,7 @@ void AffStartUp(SDL_Surface* affichage,SDL_Surface* logo)
     SDL_Flip(affichage);
 }
 
-void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y)
+void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b)
 {
 
     //La surface où on va coller le message
@@ -166,7 +166,7 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y)
     TTF_Font *font;
 
     //La couleur du Font
-    SDL_Color textColor = { 255, 255, 255,0};
+    SDL_Color textColor = { r, g, b,0};
 
     //Ouverture du Font
     font = TTF_OpenFont( "./fonts/TlwgTypewriter.ttf", 28 );
@@ -192,24 +192,25 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y)
 
 }
 
-
 int AffMenu(SDL_Surface* affichage)
 {
 
     bool fin = false;
     SDL_Event event;
+    int colorDestination = 0;
+    int currentColor = 255;
 
 
     path menuP="img/menu.bmp";
     SDL_Surface* menu=load_image(menuP);
-    AffAfficheTexte(menu,"Nouvelle_Partie",50,240);
+    AffAfficheTexte(menu,"Nouvelle_Partie",50,240,255/10,255,255);
     SDL_Rect menuRect = AffCentrer(menu,affichage,0);
     apply_surface(menuRect.x,menuRect.y,menu,affichage);
     SDL_Flip(affichage);
 
     while(fin!=true)
     {
-        SDL_WaitEvent(&event);
+        SDL_PollEvent(&event);
 
         switch(event.type)
         {
@@ -227,7 +228,35 @@ int AffMenu(SDL_Surface* affichage)
                 if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w + menuRect.x && event.button.y >= 240+menuRect.y && event.button.y <= 268+menuRect.y)
                     return 1;
                 break;
+            case SDL_MOUSEMOTION:
+                if(event.motion.x >= menuRect.x && event.motion.x <= menu->w + menuRect.x && event.motion.y >= 240+menuRect.y && event.motion.y <= 268+menuRect.y)
+                {
+                    colorDestination = 0;
+                }else{
+                    colorDestination = 255;
+                }
+            break;
+
         }
+        if(colorDestination != currentColor)
+        {
+            if(colorDestination>currentColor)
+            {
+                currentColor+=10;
+                if(currentColor>255)
+                    currentColor=255;
+            }else{
+                currentColor-=10;
+                if(currentColor<0)
+                    currentColor=0;
+            }
+
+            AffAfficheTexte(menu,"Nouvelle_Partie",50,240,currentColor/10,currentColor,currentColor);
+            SDL_Rect menuRect = AffCentrer(menu,affichage,0);
+            apply_surface(menuRect.x,menuRect.y,menu,affichage);
+            SDL_Flip(affichage);
+        }
+
     }
     SDL_FreeSurface(menu);
     return 0;
@@ -262,7 +291,7 @@ int lancePartie(SDL_Surface* affichage)
     ajoutJoueurTable(t,player);
 
 
-
+    printf("lance jeu\n");
 
 
 
