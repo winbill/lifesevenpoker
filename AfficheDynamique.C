@@ -204,64 +204,92 @@ int AffMenu(SDL_Surface* affichage)
 
     bool fin = false;
     SDL_Event event;
-    int colorDestination = 0;
-    int currentColor = 255;
+    int colorDestination[5] = {0,0,0,0,0};
+    int currentColor[5] = {255,255,255,255,255};
+    char* listeChoix;
 
 
     path menuP="img/menu.bmp";
     SDL_Surface* menu=load_image(menuP);
     AffAfficheTexte(menu,"Nouvelle partie",50,240,255/10,255,255);
+    AffAfficheTexte(menu,"Credits",50,270,255/10,255,255);
+    AffAfficheTexte(menu,"Quitter",50,300,255/10,255,255);
     SDL_Rect menuRect = AffCentrer(menu,affichage,0);
     apply_surface(menuRect.x,menuRect.y,menu,affichage);
     SDL_Flip(affichage);
 
-    while(fin!=true)
+    while (fin!=true)
     {
         SDL_PollEvent(&event);
 
-        switch(event.type)
+        switch (event.type)
         {
-            case SDL_QUIT :
-                fin=true;
+        case SDL_QUIT :
+            fin=true;
             break;
 
-            case SDL_KEYDOWN :
-                if(event.key.keysym.sym == SDLK_ESCAPE)
+        case SDL_KEYDOWN :
+            if (event.key.keysym.sym == SDLK_ESCAPE)
+            {
+                return 0;
+            }
+            break;
+        case SDL_MOUSEBUTTONUP :
+            for (int i=0;i<3;i++)
+            {
+                if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w + menuRect.x && event.button.y >= 240+i*30+menuRect.y && event.button.y <= 268+i*30+menuRect.y)
+                    return i+1;
+            }
+            break;
+        case SDL_MOUSEMOTION:
+            for (int i=0;i<3;i++)
+            {
+                if (event.motion.x >= menuRect.x && event.motion.x <= menu->w + menuRect.x && event.motion.y >= 240+i*30+menuRect.y && event.motion.y <= 268+i*30+menuRect.y)
                 {
-                    return 0;
+                    colorDestination[i] = 0;
                 }
-                break;
-            case SDL_MOUSEBUTTONUP :
-                if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w + menuRect.x && event.button.y >= 240+menuRect.y && event.button.y <= 268+menuRect.y)
-                    return 1;
-                break;
-            case SDL_MOUSEMOTION:
-                if(event.motion.x >= menuRect.x && event.motion.x <= menu->w + menuRect.x && event.motion.y >= 240+menuRect.y && event.motion.y <= 268+menuRect.y)
+                else
                 {
-                    colorDestination = 0;
-                }else{
-                    colorDestination = 255;
+                    colorDestination[i] = 255;
                 }
+            }
             break;
 
         }
-        if(colorDestination != currentColor)
+        for (int i=0;i<3;i++)
         {
-            if(colorDestination>currentColor)
+            if (colorDestination[i] != currentColor[i])
             {
-                currentColor+=10;
-                if(currentColor>255)
-                    currentColor=255;
-            }else{
-                currentColor-=10;
-                if(currentColor<0)
-                    currentColor=0;
-            }
+                if (colorDestination[i]>currentColor[i])
+                {
+                    currentColor[i]+=10;
+                    if (currentColor[i]>255)
+                        currentColor[i]=255;
+                }
+                else
+                {
+                    currentColor[i]-=10;
+                    if (currentColor[i]<0)
+                        currentColor[i]=0;
+                }
+                switch (i)
+                {
+                case 0:
+                    listeChoix = "Nouvelle partie";
+                    break;
+                case 1:
+                    listeChoix = "Credits";
+                    break;
+                case 2:
+                    listeChoix = "Quitter";
+                    break;
+                }
 
-            AffAfficheTexte(menu,"Nouvelle partie",50,240,currentColor/10,currentColor,currentColor);
-            SDL_Rect menuRect = AffCentrer(menu,affichage,0);
-            apply_surface(menuRect.x,menuRect.y,menu,affichage);
-            SDL_Flip(affichage);
+                AffAfficheTexte(menu,listeChoix,50,240+i*30,currentColor[i]/10,currentColor[i],currentColor[i]);
+                SDL_Rect menuRect = AffCentrer(menu,affichage,0);
+                apply_surface(menuRect.x,menuRect.y,menu,affichage);
+                SDL_Flip(affichage);
+            }
         }
 
     }
