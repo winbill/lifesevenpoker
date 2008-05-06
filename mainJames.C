@@ -45,22 +45,22 @@ int main ( /*int argc, char** argv */ )
 {
 
     int tabMainTotale[8][2];
-    tabMainTotale[0][0] = 2;
+    tabMainTotale[0][0] = 13;
     tabMainTotale[0][1] = 1;
 
-    tabMainTotale[1][0] = 4;
+    tabMainTotale[1][0] = 12;
     tabMainTotale[1][1] = 2;
 
-    tabMainTotale[2][0] = 4;
+    tabMainTotale[2][0] = 11;
     tabMainTotale[2][1] = 3;
 
-    tabMainTotale[3][0] = 3;
+    tabMainTotale[3][0] = 14;
     tabMainTotale[3][1] = 4;
 
-    tabMainTotale[4][0] = 5;
+    tabMainTotale[4][0] = 10;
     tabMainTotale[4][1] = 1;
 
-    tabMainTotale[5][0] = 7;
+    tabMainTotale[5][0] = 9;
     tabMainTotale[5][1] = 2;
 
     tabMainTotale[6][0] = 6;
@@ -69,9 +69,11 @@ int main ( /*int argc, char** argv */ )
 
 trieTableauRang(tabMainTotale);
 
+printf("\n------------------------\n");
 printf("suite? : %d\n",suiteMainCarte(tabMainTotale));
+afficheTab2(tabMainTotale,9);
 
-
+printf("\n------------------------\n");
     int tabO[15];
     int tabResultat[10][2];
 
