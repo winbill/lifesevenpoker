@@ -32,7 +32,7 @@ bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen
 	}
 
 	//Mise en place de l'écran
-	screen = SDL_SetVideoMode( screen_width, screen_height, screen_bpp, SDL_SWSURFACE );
+	screen = SDL_SetVideoMode( screen_width, screen_height, screen_bpp, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
 
 	//S'il y a une erreur dans la mise en place de l'écran
 	if( screen == NULL )
@@ -95,7 +95,7 @@ void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination 
 
 	//On blitte la surface
 	SDL_BlitSurface( source, NULL, destination, &offset );
-	SDL_UpdateRect(destination,0,0,0,0);
+	//SDL_UpdateRect(destination,0,0,0,0);
 }
 
 
@@ -111,7 +111,8 @@ void AffAfficheTapis(SDL_Surface* aff)
 
 void AffActualiser(SDL_Surface* affichage)
 {
-    SDL_UpdateRect(affichage, 0, 0, 0, 0);
+    SDL_Flip(affichage);
+    //SDL_UpdateRect(affichage, 0, 0, 0, 0);
 }
 
 SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option)
@@ -136,5 +137,100 @@ SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option)
 
 void AffEffaceEcran(SDL_Surface* aff)
 {
-    SDL_FillRect(aff,NULL,SDL_MapRGB(aff->format,0,0,0));
+    AffAfficheTapis(aff);
+}
+
+
+
+void AffStartUp(SDL_Surface* affichage,SDL_Surface* logo)
+{
+    AffAfficheTapis(affichage);
+    SDL_Rect logoRect=AffCentrer(logo,affichage,0);
+    apply_surface(logoRect.x,logoRect.y,logo,affichage);
+    SDL_Delay(500);
+    SDL_Flip(affichage);
+}
+
+void AffAfficheTexte(SDL_Surface* destination,char* message)
+{
+    printf("aa\n");
+
+    //La surface où on va coller le message
+    SDL_Surface* texte;
+    //Le Font qu'on va utiliser
+    TTF_Font *font;
+
+    //La couleur du Font
+    SDL_Color textColor = { 255, 255, 255,0};
+
+    //Ouverture du Font
+    font = TTF_OpenFont( "./fonts/TlwgTypewriter.ttf", 28 );
+
+
+    //S'il y a une erreur dans le chargement du Font
+    if ( font == NULL )
+    {
+        printf("Erreur de chargement de la font\n");
+    }
+
+    //Mise en place du texte sur la surface message
+    texte = TTF_RenderText_Solid(font,message,textColor);
+
+    //S'il y a une erreur dans la mise en place du texte
+    if ( texte == NULL )
+    {
+        printf("Erreur de chargement du message\n");
+    }
+
+    //Application de la surface du message
+    apply_surface(0,0,texte,destination);
+
+}
+
+
+void AffMenu(SDL_Surface* enCours)
+{
+    bool fin = false;
+
+
+    ReAffCentrer(menu,enCours,0);
+    apply_surface(0,0,menu,enCours);
+
+
+
+
+    while(fin!=true)
+    {
+        SDL_WaitEvent(&event);
+
+        switch(event.type)
+        {
+            case SDL_QUIT :
+                fin=true;
+            break;
+
+            case SDL_KEYDOWN :
+                if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==0)
+                {
+                    fin=true;
+                }
+                else if(event.key.keysym.sym != SDLK_ESCAPE and menuSwitch==0)
+                {
+                    AffAfficheTapis(affichage);
+                    apply_surface(0,0,menu,affichage);
+                    AffActualiser(affichage);
+                    menuSwitch=true;
+                }
+                else if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==1)
+                {
+                    AffEffaceEcran(affichage);
+                    AffAfficheTapis(affichage);
+                    AffActualiser(affichage);
+                    menuSwitch=false;
+                }
+            break;
+        }
+        }
+
+
 }
