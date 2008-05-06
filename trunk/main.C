@@ -17,7 +17,7 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h> //Gestion des images.
 #include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
-#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
+//#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
 
 int main (int argc, char** argv )
@@ -34,8 +34,8 @@ int main (int argc, char** argv )
     path backgroundP="img/bkgrd.bmp";
     SDL_Surface* background=load_image(backgroundP);
     apply_surface(0,0,background,affichage);
-    path logoP="img/logo.bmp";
-    SDL_Surface* menu=load_image(logoP);
+    path menuP="img/menu.bmp";
+    SDL_Surface* menu=load_image(menuP);
 
     bool fin=false;
     bool menuSwitch=false;
