@@ -145,7 +145,55 @@ int suiteMainCarte(int tab7Carte[8][2])
 }
 
 
+int quinteFlushMainCarte(int tab7Carte[8][2],int couleur)
+{
+    int k=7;// variable qui indique le nombre de carte
 
+    //s'il y a un (ou plus) AS on le rajoute a la fin
+    for(int i=0;i<3;i++)
+    {
+        if (tab7Carte[i][0] == 14 && tab7Carte[i][1] == couleur)
+        {
+            k = 8;
+            tab7Carte[7][0] = 1;
+            tab7Carte[7][1] = tab7Carte[i][1];
+        }
+    }
+
+    int nCarteConsecutive = 0;
+    int compteurCarte = 0;
+    while (nCarteConsecutive != 4 && compteurCarte < (k-1))
+    {
+        //test si les deux cartes se suivent
+        if (tab7Carte[compteurCarte][0] == tab7Carte[compteurCarte+1][0]+1)
+        {
+            if(tab7Carte[compteurCarte][1] == couleur)
+            {
+                nCarteConsecutive++;
+            }else{
+                nCarteConsecutive =0;
+            }
+            //si elle sont egales on ne fait rien
+        }
+        else if (tab7Carte[compteurCarte][0] == tab7Carte[compteurCarte+1][0])
+        {
+        }
+        //si elle sont differentes on remet le compteur a 0
+        else
+        {
+            nCarteConsecutive=0;
+            if (k-compteurCarte<6) //on test sil est encore possible de faire une suite
+                return 0;
+        }
+        compteurCarte++;
+    }
+
+    if (nCarteConsecutive>=4)
+    {
+        return tab7Carte[compteurCarte][0]+4;//si suite on renvoit le rang de la meilleure carte de la suite
+    }
+    return 0;
+}
 
 
 
