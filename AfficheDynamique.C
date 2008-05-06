@@ -203,7 +203,7 @@ int AffMenu(SDL_Surface* affichage)
 
     path menuP="img/menu.bmp";
     SDL_Surface* menu=load_image(menuP);
-    AffAfficheTexte(menu,"Nouvelle_Partie",50,240,255/10,255,255);
+    AffAfficheTexte(menu,"Nouvelle partie",50,240,255/10,255,255);
     SDL_Rect menuRect = AffCentrer(menu,affichage,0);
     apply_surface(menuRect.x,menuRect.y,menu,affichage);
     SDL_Flip(affichage);
@@ -251,7 +251,7 @@ int AffMenu(SDL_Surface* affichage)
                     currentColor=0;
             }
 
-            AffAfficheTexte(menu,"Nouvelle_Partie",50,240,currentColor/10,currentColor,currentColor);
+            AffAfficheTexte(menu,"Nouvelle partie",50,240,currentColor/10,currentColor,currentColor);
             SDL_Rect menuRect = AffCentrer(menu,affichage,0);
             apply_surface(menuRect.x,menuRect.y,menu,affichage);
             SDL_Flip(affichage);
