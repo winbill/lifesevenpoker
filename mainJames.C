@@ -44,8 +44,8 @@ void afficheTab(int tab[],int x)
 int main ( /*int argc, char** argv */ )
 {
 
-    int tabMainTotale[7][2];
-    tabMainTotale[0][0] = 3;
+    int tabMainTotale[8][2];
+    tabMainTotale[0][0] = 2;
     tabMainTotale[0][1] = 1;
 
     tabMainTotale[1][0] = 4;
@@ -54,18 +54,22 @@ int main ( /*int argc, char** argv */ )
     tabMainTotale[2][0] = 4;
     tabMainTotale[2][1] = 3;
 
-    tabMainTotale[3][0] = 4;
+    tabMainTotale[3][0] = 3;
     tabMainTotale[3][1] = 4;
 
     tabMainTotale[4][0] = 5;
     tabMainTotale[4][1] = 1;
 
-    tabMainTotale[5][0] = 5;
+    tabMainTotale[5][0] = 7;
     tabMainTotale[5][1] = 2;
 
-    tabMainTotale[6][0] = 13;
+    tabMainTotale[6][0] = 6;
     tabMainTotale[6][1] = 1;
 
+
+trieTableauRang(tabMainTotale);
+
+printf("suite? : %d\n",suiteMainCarte(tabMainTotale));
 
 
     int tabO[15];
@@ -73,7 +77,7 @@ int main ( /*int argc, char** argv */ )
 
     nombreOcurenceCarte(tabMainTotale,tabO);
 
-    afficheTab(tabO,7);
+
 
 
     choixCarteMultiple(tabMainTotale,tabO,tabResultat);
