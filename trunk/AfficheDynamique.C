@@ -352,6 +352,12 @@ int lancePartie(SDL_Surface* affichage)
     {
         AffEffaceEcran(affichage);
         AffAfficheJoueur(affichage,*joueurs[0],50,50);
+        AffAfficheJoueur(affichage,*joueurs[1],358,50);
+        AffAfficheJoueur(affichage,*joueurs[2],666,50);
+        AffAfficheJoueur(affichage,*joueurs[3],50,200);
+        AffAfficheJoueur(affichage,*joueurs[4],50,350);
+        AffAfficheJoueur(affichage,*joueurs[5],666,200);
+        AffAfficheJoueur(affichage,*joueurs[6],666,350);
         SDL_Flip(affichage);
 
         SDL_PollEvent(&event);
