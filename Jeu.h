@@ -53,7 +53,7 @@ void distribuer1CarteDecouverteJeu(Table & table,int n);
     @note la fonction appel toutes les autres fonctions de test de forme
     @author James
 */
-int codageScoreMain(const MainCarte &m, int tabResultat[6], const Table & table);
+int codageScoreMain(const MainCarte &m, int  tabResultat[6][2],const Table & table);
 
 
 #endif
