@@ -109,7 +109,7 @@ int suiteMainCarte(int tab7Carte[8][2]);
 void nombreOcurenceCarte(const int tab7Carte[10][2],int tab[]);
 
 
-
+int quinteFlushMainCarte(int tab7Carte[8][2],int couleur);
 
 
 /** @brief fonction directement lié a nombreOcurenceCarte, et permet de faire le choix des cartes

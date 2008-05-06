@@ -45,33 +45,36 @@ int main ( /*int argc, char** argv */ )
 {
 
     int tabMainTotale[8][2];
-    tabMainTotale[0][0] = 13;
-    tabMainTotale[0][1] = 1;
+    tabMainTotale[0][0] = 14;
+    tabMainTotale[0][1] = 2;
 
     tabMainTotale[1][0] = 12;
-    tabMainTotale[1][1] = 1;
+    tabMainTotale[1][1] = 3;
 
-    tabMainTotale[2][0] = 11;
-    tabMainTotale[2][1] = 1;
+    tabMainTotale[2][0] = 13;
+    tabMainTotale[2][1] = 3;
 
-    tabMainTotale[3][0] = 14;
-    tabMainTotale[3][1] = 1;
+    tabMainTotale[3][0] = 11;
+    tabMainTotale[3][1] = 3;
 
     tabMainTotale[4][0] = 10;
-    tabMainTotale[4][1] = 1;
+    tabMainTotale[4][1] = 3;
 
-    tabMainTotale[5][0] = 9;
-    tabMainTotale[5][1] = 2;
+    tabMainTotale[5][0] = 8;
+    tabMainTotale[5][1] = 3;
 
-    tabMainTotale[6][0] = 6;
-    tabMainTotale[6][1] = 1;
+    tabMainTotale[6][0] = 9;
+    tabMainTotale[6][1] = 3;
 
 
     trieTableauRang(tabMainTotale);
     printf("------------------------\n");
-    printf("couleur? : %d\n",couleurMainCarte(tabMainTotale));
+    int couleur = couleurMainCarte(tabMainTotale);
+    printf("couleur? : %d\n",couleur);
     printf("------------------------\n");
     printf("suite? : %d\n",suiteMainCarte(tabMainTotale));
+    printf("------------------------\n");
+    printf("quinte flush? : %d\n",quinteFlushMainCarte(tabMainTotale,couleur));
     printf("------Tab main trie-----\n");
     afficheTab2(tabMainTotale,9);
 
