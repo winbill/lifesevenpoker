@@ -39,8 +39,7 @@ int main (/*int argc, char** argv */)
     path backgroundP="img/bkgrd.jpg";
     SDL_Surface* background=load_image(backgroundP);
 
-    path logoP="img/logo.png";
-    SDL_Surface* logo=load_image(logoP);
+
 
 
 
@@ -50,7 +49,7 @@ int main (/*int argc, char** argv */)
 
 
 
-    AffStartUp(affichage,logo);
+    AffStartUp(affichage);
     AffEffaceEcran(affichage);
     SDL_Flip(affichage);
 
