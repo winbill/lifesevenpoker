@@ -30,78 +30,78 @@
 
 bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, path caption)
 {
-	//Initialisation de tous les sous-systèmes de SDL
-	if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER ) == -1 )
-	{
-	    printf("Impossible d\'initialiser les sous-systèmes de SDL.\n");
-		return -1;
-	}
+    //Initialisation de tous les sous-systèmes de SDL
+    if ( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER ) == -1 )
+    {
+        printf("Impossible d\'initialiser les sous-systèmes de SDL.\n");
+        return -1;
+    }
 
-	//Mise en place de l'écran
-	screen = SDL_SetVideoMode( screen_width, screen_height, screen_bpp, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
+    //Mise en place de l'écran
+    screen = SDL_SetVideoMode( screen_width, screen_height, screen_bpp, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
 
-	//S'il y a une erreur dans la mise en place de l'écran
-	if( screen == NULL )
-	{
-	    printf("Echec de la mise en place de l\'ecran.\n");
-		return -1;
-	}
+    //S'il y a une erreur dans la mise en place de l'écran
+    if ( screen == NULL )
+    {
+        printf("Echec de la mise en place de l\'ecran.\n");
+        return -1;
+    }
 
-	//Initialisation de SDL_TTF
-	if( TTF_Init() == -1 )
-	{
-	    printf("Echec de l\'initialisation de SDL_ttf");
-		return -1;
-	}
+    //Initialisation de SDL_TTF
+    if ( TTF_Init() == -1 )
+    {
+        printf("Echec de l\'initialisation de SDL_ttf");
+        return -1;
+    }
 
-	//Mise en place de la barre de titre de la fenetre principale (caption)
-	SDL_WM_SetCaption( caption , NULL );
+    //Mise en place de la barre de titre de la fenetre principale (caption)
+    SDL_WM_SetCaption( caption , NULL );
 
-	//Si tout s'est bien passé
-	return 0;
+    //Si tout s'est bien passé
+    return 0;
 }
 
 SDL_Surface *load_image( path filename )
 {
-	//Surface tampon qui nous servira pour charger l'image
-	SDL_Surface* loadedImage = NULL;
+    //Surface tampon qui nous servira pour charger l'image
+    SDL_Surface* loadedImage = NULL;
 
-	//L'image optimisée qu'on va utiliser
-	SDL_Surface* optimizedImage = NULL;
+    //L'image optimisée qu'on va utiliser
+    SDL_Surface* optimizedImage = NULL;
 
-	//Chargement de l'image
-	if((loadedImage = IMG_Load(filename)) == 0)
-	{
-	    printf("Impossible de charger l\'image.\n");
-	}
+    //Chargement de l'image
+    if ((loadedImage = IMG_Load(filename)) == 0)
+    {
+        printf("Impossible de charger l\'image.\n");
+    }
 
-	//Si le chargement se passe bien
-	if( loadedImage != NULL )
-	{
-		//Création de l'image optimisée
-		if((optimizedImage = SDL_DisplayFormatAlpha( loadedImage )) == 0)
-		{
-		    printf("Impossible d'optimiser l\'image.\n");
-		}
+    //Si le chargement se passe bien
+    if ( loadedImage != NULL )
+    {
+        //Création de l'image optimisée
+        if ((optimizedImage = SDL_DisplayFormatAlpha( loadedImage )) == 0)
+        {
+            printf("Impossible d'optimiser l\'image.\n");
+        }
 
-		//Libération de l'ancienne image
-		SDL_FreeSurface( loadedImage );
-	}
+        //Libération de l'ancienne image
+        SDL_FreeSurface( loadedImage );
+    }
 
-	//On retourne l'image optimisée
-	return optimizedImage;
+    //On retourne l'image optimisée
+    return optimizedImage;
 }
 
 void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination )
 {
-	SDL_Rect offset;
+    SDL_Rect offset;
 
-	offset.x = x;
-	offset.y = y;
+    offset.x = x;
+    offset.y = y;
 
-	//On blitte la surface
-	SDL_BlitSurface( source, NULL, destination, &offset );
-	//SDL_UpdateRect(destination,0,0,0,0);
+    //On blitte la surface
+    SDL_BlitSurface( source, NULL, destination, &offset );
+    //SDL_UpdateRect(destination,0,0,0,0);
 }
 
 
@@ -124,17 +124,17 @@ void AffActualiser(SDL_Surface* affichage)
 SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option)
 {
     SDL_Rect imageRect;
-    switch(option)
+    switch (option)
     {
-        case 0 :
-            imageRect.x = (destination->w - source->w) / 2;
-            imageRect.y = (destination->h - source->h) / 2;
+    case 0 :
+        imageRect.x = (destination->w - source->w) / 2;
+        imageRect.y = (destination->h - source->h) / 2;
         break;
-        case 1 :
-            imageRect.x = (destination->w - source->w) / 2;
+    case 1 :
+        imageRect.x = (destination->w - source->w) / 2;
         break;
-        case 2 :
-            imageRect.y = (destination->h - source->h) / 2;
+    case 2 :
+        imageRect.y = (destination->h - source->h) / 2;
         break;
     }
     return imageRect;
@@ -206,15 +206,11 @@ int AffMenu(SDL_Surface* affichage)
     SDL_Event event;
     int colorDestination = 0;
     int currentColor = 255;
-    int choixMenu=0;
-    printf("%d \n",choixMenu);
 
 
     path menuP="img/menu.bmp";
     SDL_Surface* menu=load_image(menuP);
     AffAfficheTexte(menu,"Nouvelle partie",50,240,255/10,255,255);
-    AffAfficheTexte(menu,"Credits",50,270,255/10,255,255);
-    AffAfficheTexte(menu,"Quitter",50,300,255/10,255,255);
     SDL_Rect menuRect = AffCentrer(menu,affichage,0);
     apply_surface(menuRect.x,menuRect.y,menu,affichage);
     SDL_Flip(affichage);
@@ -236,31 +232,14 @@ int AffMenu(SDL_Surface* affichage)
                 }
                 break;
             case SDL_MOUSEBUTTONUP :
-                if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w+menuRect.x && event.button.y >= 240+menuRect.y && event.button.y <= 268+menuRect.y)
+                if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w + menuRect.x && event.button.y >= 240+menuRect.y && event.button.y <= 268+menuRect.y)
                     return 1;
-                else if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <=menu->w+menuRect.x && event.button.y >= 270+menuRect.y && event.button.y <= 298+menuRect.y)
-                    return 2;
-                else if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <=menu->w+menuRect.x && event.button.y >= 300+menuRect.y && event.button.y <= 328+menuRect.y)
-                    return 3;
                 break;
             case SDL_MOUSEMOTION:
-                if(event.motion.x >= menuRect.x && event.motion.x <= menu->w+menuRect.x && event.motion.y >= 240+menuRect.y && event.motion.y <= 268+menuRect.y)
+                if(event.motion.x >= menuRect.x && event.motion.x <= menu->w + menuRect.x && event.motion.y >= 240+menuRect.y && event.motion.y <= 268+menuRect.y)
                 {
                     colorDestination = 0;
-                    choixMenu=1;
-                }
-                else if(event.motion.x >= menuRect.x && event.motion.x <= menu->w+menuRect.x && event.motion.y >= 270+menuRect.y && event.motion.y <= 298+menuRect.y)
-                {
-                    colorDestination = 0;
-                    choixMenu = 2;
-                }
-                else if(event.motion.x >= menuRect.x && event.motion.x <= menu->w+menuRect.x && event.motion.y >= 300+menuRect.y && event.motion.y <= 328+menuRect.y)
-                {
-                    colorDestination = 0;
-                    choixMenu = 3;
-                }
-                else
-                {
+                }else{
                     colorDestination = 255;
                 }
             break;
@@ -279,22 +258,7 @@ int AffMenu(SDL_Surface* affichage)
                     currentColor=0;
             }
 
-            if(choixMenu == 1)
-            {
-                AffAfficheTexte(menu,"Nouvelle partie",50,240,currentColor/10,currentColor,currentColor);
-                choixMenu=0;
-            }
-            if(choixMenu == 2)
-            {
-                AffAfficheTexte(menu,"Credits",50,270,currentColor/10,currentColor,currentColor);
-                choixMenu=0;
-            }
-            if(choixMenu ==3)
-            {
-                AffAfficheTexte(menu,"Quitter",50,300,currentColor/10,currentColor,currentColor);
-                choixMenu=0;
-            }
-
+            AffAfficheTexte(menu,"Nouvelle partie",50,240,currentColor/10,currentColor,currentColor);
             SDL_Rect menuRect = AffCentrer(menu,affichage,0);
             apply_surface(menuRect.x,menuRect.y,menu,affichage);
             SDL_Flip(affichage);
@@ -304,6 +268,9 @@ int AffMenu(SDL_Surface* affichage)
     SDL_FreeSurface(menu);
     return 0;
 }
+
+
+
 
 void AffAfficheJoueur(SDL_Surface* affichage, Joueur j, int posx, int posy)
 {
@@ -331,7 +298,7 @@ int lancePartie(SDL_Surface* affichage)
     Joueur* player;
     Joueur* joueurs[10];
 
-    for(int i=0;i<nombreJoueurPC;i++)
+    for (int i=0;i<nombreJoueurPC;i++)
     {
         sprintf(nom,"%s%d","Ordinateur",i);
         joueurs[i]=creeJoueur();
@@ -348,7 +315,7 @@ int lancePartie(SDL_Surface* affichage)
     bool gameOn=true;
     printf("lance jeu\n");
 
-    while(gameOn)
+    while (gameOn)
     {
         AffEffaceEcran(affichage);
         AffAfficheJoueur(affichage,*joueurs[0],50,50);
@@ -362,14 +329,14 @@ int lancePartie(SDL_Surface* affichage)
 
         SDL_PollEvent(&event);
 
-        switch(event.type)
+        switch (event.type)
         {
-            case SDL_KEYDOWN :
-                if(event.key.keysym.sym == SDLK_ESCAPE)
-                {
-                    return 0;
-                }
-                break;
+        case SDL_KEYDOWN :
+            if (event.key.keysym.sym == SDLK_ESCAPE)
+            {
+                return 0;
+            }
+            break;
         }
     }
 
@@ -397,7 +364,7 @@ int lancePartie(SDL_Surface* affichage)
 
 
 
-    for(int i=0;i<nombreJoueurPC;i++)
+    for (int i=0;i<nombreJoueurPC;i++)
     {
         joueurDetruit(joueurs[i]);
         joueurs[i]=NULL;
