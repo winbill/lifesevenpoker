@@ -31,13 +31,19 @@ int main (int argc, char** argv )
     }
 
     atexit(SDL_Quit);
+
+    //Chargement des fichiers
     path backgroundP="img/bkgrd.bmp";
     SDL_Surface* background=load_image(backgroundP);
-    apply_surface(0,0,background,affichage);
+
     path menuP="img/menu.bmp";
     SDL_Surface* menu=load_image(menuP);
 
+    path logoP="img/logo.png";
+    SDL_Surface* logo=load_image(logoP);
+
     bool fin=false;
+    bool startUp=true;
     bool menuSwitch=false;
     bool gameOn=false;
 
@@ -45,7 +51,18 @@ int main (int argc, char** argv )
 
     while(fin!=true)
     {
-        SDL_UpdateRect(affichage, 0, 0, 0, 0);
+        AffActualiser(affichage);
+        AffAfficheTapis(affichage);
+
+        if(startUp)
+        {
+            SDL_Rect logoRect=AffCentrer(logo,affichage,0);
+            apply_surface(logoRect.x,logoRect.y,logo,affichage);
+            SDL_Delay(3000);
+            startUp=false;
+            AffEffaceEcran(affichage);
+        }
+
         SDL_WaitEvent(&event);
 
         if(menuSwitch)
@@ -70,7 +87,6 @@ int main (int argc, char** argv )
                 else if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==1)
                 {
                     menuSwitch=false;
-                    SDL_FreeSurface(menu);
                 }
             }
             break;
