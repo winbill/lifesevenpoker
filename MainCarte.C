@@ -73,6 +73,7 @@ int couleurMainCarte(int tab7Carte[8][2])
     {
         if (c[i] >= 5)
             return i+1; //s'il y a une couleur presente 5 fois on renvoit son code
+        i++;
     }
     return 0;
 }

@@ -76,7 +76,7 @@ void MainCarteLibere(MainCarte & m);
     @return 0 si pas de couleur puis 1,2,3,4 pour TREFLE,CARREAU,COEUR,PIQUE
     @author James
 */
-int couleurMainCarte(const int tab7Carte[8][2]);
+int couleurMainCarte(int tab7Carte[8][2]);
 
 /**	@brief Procedure de tri de main.
 	@param Prend en entree le tableau des 7 cartes du joueur
