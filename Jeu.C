@@ -98,7 +98,10 @@ int codageScoreMain(const MainCarte &m, int & tabResultat[6][2],const Table & ta
     //s'il y a qu'une couleure c'est la meillleur possibilité
     if (couleur != 0)
     {
+        int c;
         tabResultat[0][0] = 5;
+        //c=0;
+        //mainCarteTrouveCouleur(tabMainTotale,int rang,int & i)
         //on doit prendre les 5 meilleurs cartes de la couleur correspondante
         tabResultat[1][0] = ; //TROUVER UNE METHODE POUR RENVOYER LES 5 MEILLEURES CARTES DE LA COULEUR
         tabResultat[2] = k-1;
