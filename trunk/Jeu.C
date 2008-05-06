@@ -61,15 +61,15 @@ int codageScoreMain(const MainCarte &m, int & tabResultat[6][2],const Table & ta
     int i;
     for (i=0;i<5;i++)
     {
-        tabMainTotale[i+2][0]=getCarteRang((*(table.carteDecouverte[i])))
-                              tabMainTotale[i+2][1]=getCarteCouleur((*(table.carteDecouverte[i])))
-                                                }
+        tabMainTotale[i+2][0]=getCarteRang((*(table.carteDecouverte[i])));
+        tabMainTotale[i+2][1]=getCarteCouleur((*(table.carteDecouverte[i])));
+    }
 
 
-                                                //regle : si on a une couleur on a au mieux une quinte flush
-                                                //regle : si on a une quinte on a au mieux une quinte flush ou une couleure ou au pire une quinte
-                                                //on test la suite
-                                                int couleur=0;
+    //regle : si on a une couleur on a au mieux une quinte flush
+    //regle : si on a une quinte on a au mieux une quinte flush ou une couleure ou au pire une quinte
+    //on test la suite
+    int couleur=0;
     int quinte=0;
     int k=0;
 
@@ -121,29 +121,30 @@ int codageScoreMain(const MainCarte &m, int & tabResultat[6][2],const Table & ta
         int i=1;
         while (i<=5) ////
         {
-            if (tabMainTotale[k][0]==
-                    tabResultat[1][0] = tabMainTotale[][];
-                    tabResultat[2] =quinte-1;
-                    tabResultat[3] =quinte-2;
-                    tabResultat[4] =quinte-3;
-                    tabResultat[5] =quinte-4;
-                    return 1;//on renvoit 1 pour quitter la fonction
-                }
+            if (tabMainTotale[k][0]==)
+            {
+                tabResultat[1][0] = tabMainTotale[][];
+                tabResultat[2] =quinte-1;
+                tabResultat[3] =quinte-2;
+                tabResultat[4] =quinte-3;
+                tabResultat[5] =quinte-4;
+                return 1;//on renvoit 1 pour quitter la fonction
+            }
             //s'il a ni couleur ni quinte on regarde le reste
 
             int tabOccurence[15];       //on cree le tableau d'occurence
-        nombreOcurenceCarte(tabMainTotale,tabOccurence);    //on met dans un tableau le nombre d'occurence de chaque carte
-        choixCarteMultiple(tabMainTotale,tabOccurence,tabResultat);     //on obtient directement le code dans tabResultat
-        if (tabResultat[0] >= 0)
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
+            nombreOcurenceCarte(tabMainTotale,tabOccurence);    //on met dans un tableau le nombre d'occurence de chaque carte
+            choixCarteMultiple(tabMainTotale,tabOccurence,tabResultat);     //on obtient directement le code dans tabResultat
+            if (tabResultat[0] >= 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
 
-    }
-    */
+        }
+        */
 
 

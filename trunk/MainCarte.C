@@ -133,12 +133,12 @@ int suiteMainCarte(int tab7Carte[8][2])
             if (k-compteurCarte<6) //on test sil est encore possible de faire une suite
                 return 0;
         }
-        k++;
+        compteurCarte++;
     }
 
     if (nCarteConsecutive>=4)
     {
-        return tab7Carte[compteurCarte][0]+3;//si suite on renvoit le rang de la meilleure carte de la suite
+        return tab7Carte[compteurCarte][0]+4;//si suite on renvoit le rang de la meilleure carte de la suite
     }
     return 0;
 }
