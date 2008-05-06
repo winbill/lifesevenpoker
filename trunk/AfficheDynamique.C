@@ -235,7 +235,7 @@ int AffMenu(SDL_Surface* affichage)
 
 int lancePartie(SDL_Surface* affichage)
 {
-    const int nombreJoueurPC = 1;
+    const int nombreJoueurPC = 7;
     Table t;
     PileCarte p;
 
@@ -243,19 +243,16 @@ int lancePartie(SDL_Surface* affichage)
     initPileCarte(p);
 
     t.pileCarte = &p;
-    char nom[10];
+    char nom[20];
 
     Joueur* player;
-
-
     Joueur* joueurs[10];
 
     for(int i=0;i<nombreJoueurPC;i++)
     {
-        printf("i:%d\n",i);
-        sprintf(nom,"%s%d","Ordinateur ",i);
+        sprintf(nom,"%s%d","Ordinateur",i);
         joueurs[i]=creeJoueur();
-        initJoueur(*joueurs[i],"pc");
+        initJoueur(*joueurs[i],nom);
         ajoutJoueurTable(t,joueurs[i]);
     }
 
@@ -266,10 +263,6 @@ int lancePartie(SDL_Surface* affichage)
 
 
 
-    afficheInfoTable(t);
-
-    //afficheInfoJoueur(*joueurs[0]);
-    //printf("addd2:%d\n",(int)joueurs[0]);
 
 
 
@@ -289,14 +282,18 @@ int lancePartie(SDL_Surface* affichage)
 
 
 
-/*
+
+
+
+
+
     for(int i=0;i<nombreJoueurPC;i++)
     {
-        Joueur* j= joueurs[i];
         joueurDetruit(joueurs[i]);
-    }*/
+        joueurs[i]=NULL;
+    }
 
-    joueurDetruit(joueurs[0]);
+
     joueurDetruit(player);
 
     pileCarteLibere(p);
