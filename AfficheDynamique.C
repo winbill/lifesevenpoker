@@ -159,7 +159,7 @@ void AffStartUp(SDL_Surface* affichage)
     SDL_SetAlpha(logo, SDL_SRCALPHA, 128);
     apply_surface(logoRect.x,logoRect.y,logo,affichage);
     SDL_Flip(affichage);
-    SDL_Delay(500);
+    SDL_Delay(200);
     SDL_FreeSurface(logo);
 
 }
@@ -311,6 +311,80 @@ void AffAfficheJoueur(SDL_Surface* affichage, Joueur j, int posx, int posy)
     AffAfficheTexte(affichage,message,posx,posy+30*2,255,255,255);
 }
 
+void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t)
+{
+    const int LARGEUR=200;
+
+    int i;
+    int a =getMaxJoueurTable(t)-1;
+    int g=0;
+    int h=0;
+    int d=0;
+
+    switch (a)
+    {
+    case 1:
+        h=1;
+        break;
+    case 2:
+        h=2;
+        break;
+    case 3:
+        h=1;
+        d=1;
+        g=1;
+        break;
+    case 4:
+        h=2;
+        d=1;
+        g=1;
+        break;
+    case 5:
+        h=3;
+        d=1;
+        g=1;
+        break;
+    case 6:
+        h=2;
+        d=2;
+        g=2;
+        break;
+    case 7:
+        h=3;
+        d=2;
+        g=2;
+        break;
+    }
+
+
+
+
+    int bordure = 12;
+    int separation;
+    if(h!=1)
+    {
+        separation = (int)(((1024-h*LARGEUR)/(h+1)));
+    }else{
+        separation = (int)(1024-LARGEUR)/2;
+    }
+
+    for (i=0;i<d;i++)
+    {
+        AffAfficheJoueur(affichage,*t.joueur[i],bordure,200+200*i);
+    }
+    for (i=d;i<h+d;i++)
+    {
+        AffAfficheJoueur(affichage,*t.joueur[i],separation*(i-d+1)+LARGEUR*(i-d),bordure);
+    }
+    for (i=h+d;i<g+h+d;i++)
+    {
+        AffAfficheJoueur(affichage,*t.joueur[i],812,200+200*(i-h-d));
+    }
+}
+
+
+
+
 int lancePartie(SDL_Surface* affichage)
 {
     const int nombreJoueurPC = 7;
@@ -319,6 +393,8 @@ int lancePartie(SDL_Surface* affichage)
 
     initTable(t);
     initPileCarte(p);
+
+    setMaxJoueurTable(t,nombreJoueurPC+1);
 
     t.pileCarte = &p;
     char nom[20];
@@ -346,13 +422,7 @@ int lancePartie(SDL_Surface* affichage)
     while (gameOn)
     {
         AffEffaceEcran(affichage);
-        AffAfficheJoueur(affichage,*joueurs[0],50,50);
-        AffAfficheJoueur(affichage,*joueurs[1],358,50);
-        AffAfficheJoueur(affichage,*joueurs[2],666,50);
-        AffAfficheJoueur(affichage,*joueurs[3],50,200);
-        AffAfficheJoueur(affichage,*joueurs[4],50,350);
-        AffAfficheJoueur(affichage,*joueurs[5],666,200);
-        AffAfficheJoueur(affichage,*joueurs[6],666,350);
+        AffAffichageInfosJoueurs(affichage,t);
         SDL_Flip(affichage);
 
         SDL_PollEvent(&event);
@@ -403,6 +473,7 @@ int lancePartie(SDL_Surface* affichage)
 
     pileCarteLibere(p);
     tableLibere(t);
+
 
     return 0;
 
