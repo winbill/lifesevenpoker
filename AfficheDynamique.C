@@ -166,6 +166,11 @@ void AffStartUp(SDL_Surface* affichage)
 
 void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b)
 {
+    AffAfficheTexte(destination,message,x,y,r,g,b,TTF_STYLE_NORMAL,28);
+}
+
+void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b,int style,int size)
+{
 
     //La surface où on va coller le message
     SDL_Surface* texte;
@@ -176,7 +181,8 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,in
     SDL_Color textColor = { r, g, b,0};
 
     //Ouverture du Font
-    font = TTF_OpenFont( "./fonts/AUBREY1__.TTF", 28 );
+    font = TTF_OpenFont( "./fonts/Qlassik_TB.otf", size );
+    TTF_SetFontStyle(font,style);
 
 
     //S'il y a une erreur dans le chargement du Font
@@ -198,16 +204,18 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,in
     apply_surface(x,y,texte,destination);
 
     TTF_CloseFont(font);
-      SDL_FreeSurface(texte);
+    SDL_FreeSurface(texte);
 
 }
+
+
 
 int AffMenu(SDL_Surface* affichage)
 {
 
     bool fin = false;
     SDL_Event event;
-    int colorDestination[5] = {0,0,0,0,0};
+    int colorDestination[5] = {255,255,255,255,255};
     int currentColor[5] = {255,255,255,255,255};
     char* listeChoix;
 
@@ -234,6 +242,7 @@ int AffMenu(SDL_Surface* affichage)
         case SDL_KEYDOWN :
             if (event.key.keysym.sym == SDLK_ESCAPE)
             {
+                SDL_FreeSurface(menu);
                 return 0;
             }
             break;
@@ -241,7 +250,10 @@ int AffMenu(SDL_Surface* affichage)
             for (int i=0;i<3;i++)
             {
                 if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w + menuRect.x && event.button.y >= 240+i*30+menuRect.y && event.button.y <= 268+i*30+menuRect.y)
+                {
+                    SDL_FreeSurface(menu);
                     return i+1;
+                }
             }
             break;
         case SDL_MOUSEMOTION:
@@ -249,6 +261,7 @@ int AffMenu(SDL_Surface* affichage)
             {
                 if (event.motion.x >= menuRect.x && event.motion.x <= menu->w + menuRect.x && event.motion.y >= 240+i*30+menuRect.y && event.motion.y <= 268+i*30+menuRect.y)
                 {
+                    printf("aaa");
                     colorDestination[i] = 0;
                 }
                 else
@@ -265,13 +278,13 @@ int AffMenu(SDL_Surface* affichage)
             {
                 if (colorDestination[i]>currentColor[i])
                 {
-                    currentColor[i]+=10;
+                    currentColor[i]+=20;
                     if (currentColor[i]>255)
                         currentColor[i]=255;
                 }
                 else
                 {
-                    currentColor[i]-=10;
+                    currentColor[i]-=20;
                     if (currentColor[i]<0)
                         currentColor[i]=0;
                 }
@@ -307,11 +320,11 @@ void AffAfficheJoueur(SDL_Surface* affichage, Joueur j, int posx, int posy)
 {
     char message[20];
     sprintf(message,"%s",j.pseudo);
-    AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255);
+    AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_UNDERLINE,24);
     sprintf(message,"Argent: %d",j.argent);
-    AffAfficheTexte(affichage,message,posx,posy+30*1,255,255,255);
+    AffAfficheTexte(affichage,message,posx,posy+30*1,255,255,255,TTF_STYLE_NORMAL,18);
     sprintf(message,"Mise actuelle: %d",j.mise);
-    AffAfficheTexte(affichage,message,posx,posy+30*2,255,255,255);
+    AffAfficheTexte(affichage,message,posx,posy+30*2,255,255,255,TTF_STYLE_NORMAL,18);
 }
 
 void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t)
@@ -364,10 +377,12 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t)
 
     int bordure = 12;
     int separation;
-    if(h!=1)
+    if (h!=1)
     {
         separation = (int)(((1024-h*LARGEUR)/(h+1)));
-    }else{
+    }
+    else
+    {
         separation = (int)(1024-LARGEUR)/2;
     }
 
@@ -421,49 +436,53 @@ int lancePartie(SDL_Surface* affichage)
     SDL_Event event;
     bool gameOn=true;
     printf("lance jeu\n");
-
+    AffEffaceEcran(affichage);
+    AffAffichageInfosJoueurs(affichage,t);
+    SDL_Flip(affichage);
+    int renvoyer=0;
     while (gameOn)
     {
-        AffEffaceEcran(affichage);
-        AffAffichageInfosJoueurs(affichage,t);
-        SDL_Flip(affichage);
+
 
         SDL_PollEvent(&event);
 
         switch (event.type)
         {
+        case SDL_QUIT:
+            gameOn = false;
+            renvoyer=3;
+            break;
         case SDL_KEYDOWN :
-            if (event.key.keysym.sym == SDLK_ESCAPE)
+            switch (event.key.keysym.sym)
             {
-                return 0;
+            case SDLK_ESCAPE:
+                gameOn = false;
+                renvoyer=3;
+                break;
+            case SDLK_m:
+                switch (AffMenu(affichage))
+                {
+                case 1:
+                    gameOn = false;
+                    renvoyer=1;
+                    break;
+                case 3:
+                    gameOn = false;
+                    renvoyer=3;
+                    break;
+                case 0:
+                    AffEffaceEcran(affichage);
+                    AffAffichageInfosJoueurs(affichage,t);
+                    SDL_Flip(affichage);
+                    break;
+                }
+                break;
+            default:
+                break;
             }
             break;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     for (int i=0;i<nombreJoueurPC;i++)
     {
@@ -478,7 +497,7 @@ int lancePartie(SDL_Surface* affichage)
     tableLibere(t);
 
 
-    return 0;
+    return renvoyer;
 
 }
 

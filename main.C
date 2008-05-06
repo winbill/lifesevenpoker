@@ -52,14 +52,21 @@ int main (/*int argc, char** argv */)
     AffStartUp(affichage);
     AffEffaceEcran(affichage);
     SDL_Flip(affichage);
+    int nouvellePartie=1;
+    int v;
 
     if(AffMenu(affichage)==1)
     {
-        AffEffaceEcran(affichage);
-        SDL_Flip(affichage);
 
-        lancePartie(affichage);
-
+        while(nouvellePartie)
+        {
+            AffEffaceEcran(affichage);
+            SDL_Flip(affichage);
+            nouvellePartie = 0;
+            v =lancePartie(affichage);
+            if(v==1)
+                nouvellePartie=1;
+        }
 
     }
     else if(AffMenu(affichage)==2)
@@ -67,10 +74,7 @@ int main (/*int argc, char** argv */)
         //AFFICHER CREDITS
         printf("AFFICHER CREDITS");
     }
-    else if(AffMenu(affichage)==3)
-    {
-        SDL_Quit();
-    }
+
 
 
 
@@ -86,6 +90,7 @@ int main (/*int argc, char** argv */)
 
     SDL_FreeSurface(background);
     SDL_FreeSurface(affichage);
+    SDL_Quit();
 
     return 0;
 }

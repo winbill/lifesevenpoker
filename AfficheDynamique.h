@@ -32,9 +32,11 @@ typedef char path[100];
 
 int AffMenu(SDL_Surface* affichage);
 
+int AffMenu(SDL_Surface* affichage);
 
+void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b);
 
-void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y);
+void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b,int style,int size);
 
 void AffStartUp(SDL_Surface* affichage);
 
