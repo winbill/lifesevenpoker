@@ -37,16 +37,10 @@ int main (/*int argc, char** argv */)
     path backgroundP="img/bkgrd.jpg";
     SDL_Surface* background=load_image(backgroundP);
 
-    path menuP="img/menu.bmp";
-    SDL_Surface* menu=load_image(menuP);
-
     path logoP="img/logo.png";
     SDL_Surface* logo=load_image(logoP);
 
-    bool fin=false;
-    bool menuSwitch=false;
-
-
+    int a;
 
 
     SDL_Event event;
@@ -58,195 +52,35 @@ int main (/*int argc, char** argv */)
     AffEffaceEcran(affichage);
     SDL_Flip(affichage);
 
-    while(fin!=true)
+    if(AffMenu(affichage)==1)
     {
+        AffEffaceEcran(affichage);
+        SDL_Flip(affichage);
 
-        SDL_WaitEvent(&event);
 
 
-        switch(event.type)
-        {
-            case SDL_QUIT :
-                fin=true;
-            break;
 
-            case SDL_KEYDOWN :
-                if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==0)
-                {
-                    fin=true;
-                }
-                else if(event.key.keysym.sym != SDLK_ESCAPE and menuSwitch==0)
-                {
-                    AffAfficheTexte(menu,"Nouvelle%20a");
-                    apply_surface(0,0,menu,affichage);
-                    SDL_Flip(affichage);
-                    menuSwitch=true;
-                }
-                else if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==1)
-                {
-                    AffEffaceEcran(affichage);
-                    SDL_Flip(affichage);
-                    menuSwitch=false;
-                }
-            break;
-        }
     }
 
 
-    SDL_FreeSurface(menu);
+
+
+
+
+
+
+
+
+
+
+
     SDL_FreeSurface(background);
     SDL_FreeSurface(affichage);
 
-
-
-  /*  // screen attributes
-    const int SCREEN_WIDTH = 1024;
-    const int SCREEN_HEIGHT = 768;
-    const int SCREEN_BPP = 32;
-
-    // initialize SDL video
-    if ( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER ) < 0 )
-    {
-        printf( "Unable to init SDL: %s\n", SDL_GetError() );
-        return 1;
-    }
-
-    // make sure SDL cleans up before exit
-    atexit(SDL_Quit);
-
-    // create a new window
-    SDL_Surface* screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_HWSURFACE|SDL_DOUBLEBUF);
-    if ( !screen )
-    {
-        printf("Unable to set %d x %d video: %s\n", SCREEN_WIDTH , SCREEN_HEIGHT , SDL_GetError());
-        return 1;
-    }
-
-    // load an image
-    SDL_Surface* background = SDL_LoadBMP("img/bkgrd.bmp");
-    if (!background)
-    {
-        printf("Unable to load bitmap: %s\n", SDL_GetError());
-        return 1;
-    }
-    SDL_Surface* logo = SDL_LoadBMP("img/logo.bmp");
-    if (!logo)
-    {
-        printf("Unable to load bitmap: %s\n", SDL_GetError());
-        return 1;
-    }
-
-    // centre the bitmap on screen
-    SDL_Rect dstrect;
-    dstrect.x = (screen->w - background->w) / 2;
-    dstrect.y = (screen->h - background->h) / 2;
-
-    SDL_Rect dstlogo;
-    dstlogo.x = (screen->w - logo->w ) /2;
-    dstlogo.y = (screen->h - logo->h ) /2;
-
-    //Initialisation de SDL_TTF
-    if ( TTF_Init() == -1 )
-    {
-        return false;
-    }
-
-    // program main loop
-    bool done = false;
-    while (!done)
-    {
-        // message processing loop
-        SDL_Event event;
-        while (SDL_PollEvent(&event))
-        {
-            // check for messages
-            switch (event.type)
-            {
-                // exit if the window is closed
-            case SDL_QUIT:
-                done = true;
-                break;
-
-                // check for keypresses
-            case SDL_KEYDOWN:
-                // exit if ESCAPE is pressed
-                if (event.key.keysym.sym == SDLK_ESCAPE)
-                    done = true;
-
-                if (event.key.keysym.sym == SDLK_LEFT)
-                {
-                    //La surface du message
-                    SDL_Surface *message = NULL;
-
-                    //Le Font qu'on va utiliser
-                    TTF_Font *font;
-
-                    //La couleur du Font
-                    SDL_Color textColor = { 255, 255, 255,0};
-
-                    //Ouverture du Font
-                    font = TTF_OpenFont( "./fonts/TlwgTypeWriter.ttf", 28 ); //attention mettre le dossier fonts DANS bin ou obj
-                    //S'il y a une erreur dans le chargement du Font
-                    if ( font == NULL )
-                    {
-                        printf("font == null\n");
-                        return false;
-                    }
-
-                    //Mise en place du texte sur la surface message
-                    message = TTF_RenderText_Solid( font, "Test pour sdl_ttf", textColor );
-
-                    //S'il y a une erreur dans la mise en place du texte
-                    if ( message == NULL )
-                    {
-                        printf("message == null\n");
-                        return 1;
-                    }
-
-                    //Application de la surface du message
-                    apply_surface( 0, 200, message, screen );
-
-                    SDL_FreeSurface( message );
-
-                    //Fermeture des Fonts qu'on a utilisé
-                    TTF_CloseFont( font );
-
-                } //end ENTER
-                break;
-            } // end switch
-        } // end of message processing
-
-        // DRAWING STARTS HERE
-
-        // clear screen
-        SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
-
-        // draw bitmap
-        SDL_BlitSurface(background, 0, screen, &dstrect);
-        SDL_BlitSurface(logo, 0, screen, &dstlogo);
-
-        // DRAWING ENDS HERE
-
-        // finally, update the screen :)
-        SDL_Flip(screen);
-    } // end main loop
-
-    // free loaded bitmap
-    SDL_FreeSurface(background);
-    SDL_FreeSurface(logo);
-
-
-
-    //On quitte SDL_ttf
-    TTF_Quit();
-
-    // all is well ;)
-    printf("Exited cleanly\n");
-
-
-*/
     return 0;
 }
+*/
+
 
 // INITIALISATION DE L'AFFICHAGE, DU SON & DES PERIPHERIQUES DE CONTROLE
 

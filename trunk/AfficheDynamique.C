@@ -151,9 +151,8 @@ void AffStartUp(SDL_Surface* affichage,SDL_Surface* logo)
     SDL_Flip(affichage);
 }
 
-void AffAfficheTexte(SDL_Surface* destination,char* message)
+void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y)
 {
-    printf("aa\n");
 
     //La surface où on va coller le message
     SDL_Surface* texte;
@@ -183,18 +182,24 @@ void AffAfficheTexte(SDL_Surface* destination,char* message)
     }
 
     //Application de la surface du message
-    apply_surface(0,0,texte,destination);
+    apply_surface(x,y,texte,destination);
 
 }
 
 
-void AffMenu(SDL_Surface* enCours)
+int AffMenu(SDL_Surface* affichage)
 {
+
     bool fin = false;
+    SDL_Event event;
 
 
-    ReAffCentrer(menu,enCours,0);
-    apply_surface(0,0,menu,enCours);
+    path menuP="img/menu.bmp";
+    SDL_Surface* menu=load_image(menuP);
+    AffAfficheTexte(menu,"Nouvelle_Partie",50,240);
+    SDL_Rect menuRect = AffCentrer(menu,affichage,0);
+    apply_surface(menuRect.x,menuRect.y,menu,affichage);
+    SDL_Flip(affichage);
 
 
 
@@ -210,27 +215,20 @@ void AffMenu(SDL_Surface* enCours)
             break;
 
             case SDL_KEYDOWN :
-                if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==0)
+                if(event.key.keysym.sym == SDLK_ESCAPE)
                 {
-                    fin=true;
+                    return 0;
                 }
-                else if(event.key.keysym.sym != SDLK_ESCAPE and menuSwitch==0)
-                {
-                    AffAfficheTapis(affichage);
-                    apply_surface(0,0,menu,affichage);
-                    AffActualiser(affichage);
-                    menuSwitch=true;
-                }
-                else if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==1)
-                {
-                    AffEffaceEcran(affichage);
-                    AffAfficheTapis(affichage);
-                    AffActualiser(affichage);
-                    menuSwitch=false;
-                }
-            break;
+                break;
+            case SDL_MOUSEBUTTONUP :
+                if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w + menuRect.x && event.button.y >= 240+menuRect.y && event.button.y <= 268+menuRect.y)
+                    return 1;
+                break;
         }
-        }
+    }
 
 
+    SDL_FreeSurface(menu);
+    return 0;
 }
+
