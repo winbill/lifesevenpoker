@@ -148,11 +148,13 @@ int suiteMainCarte(int tab7Carte[8][2])
 
 
 
-void nombreOcurenceCarte(const int tab7Carte[10][2],int tab[])
+void nombreOcurenceCarte(const int tab7Carte[][2],int tab[])
 {
     int i;
+
     for (i=0;i<15;i++)
         tab[i] = 0;
+
     for (i=0;i<7;i++)
     {
         tab[tab7Carte[i][0]]++;
@@ -166,15 +168,31 @@ int mainCarteTrouveCouleur(const int tab7Carte[7][2],int rang,int & i)
     {
         i++;
     }
-    return i;
+    return tab7Carte[i][1];
 
+}
+
+void initTableau(int tab[],int taille)
+{
+    for (int i=0;i<taille;i++)
+    {
+        tab[i]=0;
+    }
+}
+
+void initTableau2(int tab[][2],int taille)
+{
+    for (int i=0;i<taille;i++)
+    {
+        tab[i][0]=0;
+        tab[i][1]=0;
+    }
 }
 
 
 
 
-
-void choixCarteMultiple(int tab7Carte[7][2],const int tabO[],int tabResultat[6][2])
+void choixCarteMultiple(int tab7Carte[][2],const int tabO[],int tabResultat[][2])
 {
     //double triage du tableau tab
     //on trie dabord en fonction de tab[i] puis en fonction de i dans un tableau a 2d tab[x][y]
@@ -191,12 +209,12 @@ void choixCarteMultiple(int tab7Carte[7][2],const int tabO[],int tabResultat[6][
     int c=4;
     int d=0;
     int tab[7][2];
-
-    while(i!=7)
+    initTableau2(tab,7);
+    while (i!=7)
     {
-        for(k=14;k>0;k--)
+        for (k=14;k>0;k--)
         {
-            if(tabO[k]==c)
+            if (tabO[k]==c)
             {
                 tab[d][0]=c;
                 tab[d][1]=k;
@@ -256,6 +274,7 @@ void choixCarteMultiple(int tab7Carte[7][2],const int tabO[],int tabResultat[6][
         {
             tabResultat[i+1][0] =tab[0][1];
             tabResultat[i+1][1] =mainCarteTrouveCouleur(tab7Carte,tab[0][1],c);
+            c++;
         }
 
         if (tab[1][0] >=2)
@@ -264,6 +283,8 @@ void choixCarteMultiple(int tab7Carte[7][2],const int tabO[],int tabResultat[6][
             c=0;
             tabResultat[4][0] = tab[1][1];
             tabResultat[4][1] = mainCarteTrouveCouleur(tab7Carte,tab[1][1],c);
+
+            c++;
             tabResultat[5][0] = tab[1][1];
             tabResultat[5][1] = mainCarteTrouveCouleur(tab7Carte,tab[1][1],c);
         }
@@ -286,22 +307,22 @@ void choixCarteMultiple(int tab7Carte[7][2],const int tabO[],int tabResultat[6][
         tabResultat[1][0] =tab[0][1];
         tabResultat[1][1] =mainCarteTrouveCouleur(tab7Carte,tab[0][1],c);
 
-
+        c++;
         tabResultat[2][0] =tab[0][1];
         tabResultat[2][1] =mainCarteTrouveCouleur(tab7Carte,tab[0][1],c);
 
         if (tab[1][0] ==2)
         {
 
-
             tabResultat[0][0]=2;
             c=0;
             tabResultat[3][0] =tab[1][1];
-            tabResultat[3][1] =mainCarteTrouveCouleur(tab7Carte,tab[1][1],c);
+            tabResultat[3][1] = mainCarteTrouveCouleur(tab7Carte,tab[1][1],c);
 
-
+            c++;
             tabResultat[4][0] =tab[1][1];
             tabResultat[4][1] =mainCarteTrouveCouleur(tab7Carte,tab[1][1],c);
+
 
             i=1;
             k=0;

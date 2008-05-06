@@ -121,7 +121,7 @@ void nombreOcurenceCarte(const int tab7Carte[10][2],int tab[]);
     @todo fonction qui trie le tableau en fonction des 2 dimensions (voir commentaires de MainCarte.C)
 
 */
-void choixCarteMultiple(const int tab[],int tabResultat[6]);
+void choixCarteMultiple(int tab7Carte[][2],const int tabO[],int tabResultat[][2]);
 
 void afficheMainCarte(const MainCarte & m,char titre[]);
 
