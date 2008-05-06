@@ -74,7 +74,7 @@ void initJoueur(Joueur & joueur);
 	@param [in,out] joueur Un joueur.
 	@param [in] pseudo Nom du joueur (15 caracteres au maximum).
 */
-void initJoueur (Joueur & joueur, char* pseudo);
+void initJoueur (Joueur & joueur,const char* pseudo);
 
 /** 	@brief Cree dans le tas une variable joueur puis l'initialise.
 	@note Appelle la fonction initJoueur.

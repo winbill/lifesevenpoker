@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <time.h>
 #include "AfficheDynamique.h"
+#include "Joueur.h"
+#include "Table.h"
 //#include "AfficheTxt.h"
 
 
@@ -57,7 +59,7 @@ int main (/*int argc, char** argv */)
         AffEffaceEcran(affichage);
         SDL_Flip(affichage);
 
-        //lanceJeu
+        lancePartie(affichage);
 
 
 

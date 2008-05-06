@@ -9,6 +9,12 @@
 	@version 1.2
 	@date 2008/04/21
  */
+
+#include "AfficheDynamique.h"
+#include "Joueur.h"
+#include "Table.h"
+
+
 //Librairies Standard.
 #include <stdlib.h>
 #include <stdio.h>
@@ -20,7 +26,7 @@
 #include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
 //#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
-#include "AfficheDynamique.h"
+
 
 bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, path caption)
 {
@@ -229,21 +235,30 @@ int AffMenu(SDL_Surface* affichage)
 
 int lancePartie(SDL_Surface* affichage)
 {
+    const int nombreJoueurPC = 4;
     Table t;
     initTable(t);
     PileCarte p;
     initPileCarte(p);
     t.pileCarte = &p;
+    char nom[10];
 
+    Joueur* player;
     Joueur* joueurs[10];
 
-    for(int i=0;i<=4;i++)
+    for(int i=0;i<nombreJoueurPC;i++)
     {
+        sprintf(nom,"%s%d","Ordinateur ",i);
         joueurs[i]=creeJoueur();
-        initJoueur(*joueurs[i]);
-        sprintf(carte->nomFichier,"%s%d%s","cards/",(j-2)+13*(i-1),".png"););
+        initJoueur(*joueurs[i],nom);
+        ajoutJoueurTable(t,joueurs[i]);
     }
 
+    player=creeJoueur();
+    initJoueur(*player,"moi");
+    ajoutJoueurTable(t,player);
+
+    afficheInfoTable(t);
 
 
 
@@ -262,6 +277,18 @@ int lancePartie(SDL_Surface* affichage)
 
 
 
+
+
+
+
+
+    for(int i=0;i<nombreJoueurPC;i++)
+    {
+        joueurDetruit(joueurs[i]);
+    }
+    joueurDetruit(player);
+    pileCarteLibere(p);
+    tableLibere(t);
 
 }
 
