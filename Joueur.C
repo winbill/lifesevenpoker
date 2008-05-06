@@ -67,12 +67,14 @@ Statut getStatutJoueur (Joueur & joueur)
 void joueurLibere(Joueur & joueur)
 {
     MainCarteLibere(*joueur.mainJoueur);
+   delete[] joueur.pseudo;
     delete joueur.mainJoueur;
 }
 
 
 void joueurDetruit(Joueur* & joueur)
 {
+    joueurLibere(*joueur);
     delete joueur;
 }
 
