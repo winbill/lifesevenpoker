@@ -49,13 +49,13 @@ int main ( /*int argc, char** argv */ )
     tabMainTotale[0][1] = 1;
 
     tabMainTotale[1][0] = 12;
-    tabMainTotale[1][1] = 2;
+    tabMainTotale[1][1] = 1;
 
     tabMainTotale[2][0] = 11;
-    tabMainTotale[2][1] = 3;
+    tabMainTotale[2][1] = 1;
 
     tabMainTotale[3][0] = 14;
-    tabMainTotale[3][1] = 4;
+    tabMainTotale[3][1] = 1;
 
     tabMainTotale[4][0] = 10;
     tabMainTotale[4][1] = 1;
@@ -67,13 +67,15 @@ int main ( /*int argc, char** argv */ )
     tabMainTotale[6][1] = 1;
 
 
-trieTableauRang(tabMainTotale);
+    trieTableauRang(tabMainTotale);
+    printf("------------------------\n");
+    printf("couleur? : %d\n",couleurMainCarte(tabMainTotale));
+    printf("------------------------\n");
+    printf("suite? : %d\n",suiteMainCarte(tabMainTotale));
+    printf("------Tab main trie-----\n");
+    afficheTab2(tabMainTotale,9);
 
-printf("\n------------------------\n");
-printf("suite? : %d\n",suiteMainCarte(tabMainTotale));
-afficheTab2(tabMainTotale,9);
 
-printf("\n------------------------\n");
     int tabO[15];
     int tabResultat[10][2];
 
@@ -83,8 +85,7 @@ printf("\n------------------------\n");
 
 
     choixCarteMultiple(tabMainTotale,tabO,tabResultat);
-
-
+    printf("-----Tableau Resultat----\n");
 
     afficheTab2(tabResultat,6);
 
