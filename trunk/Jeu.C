@@ -20,18 +20,10 @@
 #include <stdio.h>
 
 
-/*
-void initialiseJeu(Table & table,int argent)
-{
-	int i;
-	for(i=0;i<getNJoueurTable(table);i++);
-	{
-		setArgentJoueur(*getIemeJoueur(table,i),argent);
-	}
 
-//etc... attend IArtificielle.h
 
-}*/
+
+
 
 
 void distribuer2CartesJoueursJeu(Table & table)

@@ -201,9 +201,6 @@ int AffMenu(SDL_Surface* affichage)
     apply_surface(menuRect.x,menuRect.y,menu,affichage);
     SDL_Flip(affichage);
 
-
-
-
     while(fin!=true)
     {
         SDL_WaitEvent(&event);
@@ -226,9 +223,45 @@ int AffMenu(SDL_Surface* affichage)
                 break;
         }
     }
-
-
     SDL_FreeSurface(menu);
     return 0;
+}
+
+int lancePartie(SDL_Surface* affichage)
+{
+    Table t;
+    initTable(t);
+    PileCarte p;
+    initPileCarte(p);
+    t.pileCarte = &p;
+
+    Joueur* joueurs[10];
+
+    for(int i=0;i<=4;i++)
+    {
+        joueurs[i]=creeJoueur();
+        initJoueur(*joueurs[i]);
+        sprintf(carte->nomFichier,"%s%d%s","cards/",(j-2)+13*(i-1),".png"););
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
