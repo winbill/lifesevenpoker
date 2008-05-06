@@ -22,8 +22,8 @@ void initJoueur(Joueur & joueur)
     joueur.argent=0;
 
 
-    joueur.pseudo = new char[10];
-    memset(joueur.pseudo,0,sizeof(*joueur.pseudo)*10);
+    joueur.pseudo = new char[20];
+    memset(joueur.pseudo,0,sizeof(*joueur.pseudo)*20);
 
 
     joueur.idJoueur=-1;
