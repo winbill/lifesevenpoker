@@ -20,8 +20,9 @@
 //#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
 
-int main (int argc, char** argv )
+int main (/*int argc, char** argv */)
 {
+
     SDL_Surface* affichage;
     path caption="Life\'Seven Poker";
 
@@ -33,7 +34,7 @@ int main (int argc, char** argv )
     atexit(SDL_Quit);
 
     //Chargement des fichiers
-    path backgroundP="img/bkgrd.bmp";
+    path backgroundP="img/bkgrd.jpg";
     SDL_Surface* background=load_image(backgroundP);
 
     path menuP="img/menu.bmp";
@@ -43,52 +44,50 @@ int main (int argc, char** argv )
     SDL_Surface* logo=load_image(logoP);
 
     bool fin=false;
-    bool startUp=true;
     bool menuSwitch=false;
-    bool gameOn=false;
+
+
+
 
     SDL_Event event;
 
+
+
+
+    AffStartUp(affichage,logo);
+    AffEffaceEcran(affichage);
+    SDL_Flip(affichage);
+
     while(fin!=true)
     {
-        AffActualiser(affichage);
-        AffAfficheTapis(affichage);
-
-        if(startUp)
-        {
-            SDL_Rect logoRect=AffCentrer(logo,affichage,0);
-            apply_surface(logoRect.x,logoRect.y,logo,affichage);
-            SDL_Delay(3000);
-            startUp=false;
-            AffEffaceEcran(affichage);
-        }
 
         SDL_WaitEvent(&event);
 
-        if(menuSwitch)
-        {
-            apply_surface(0,0,menu,affichage);
-        }
+
         switch(event.type)
         {
-            case SDL_QUIT : fin=true;
+            case SDL_QUIT :
+                fin=true;
             break;
 
             case SDL_KEYDOWN :
-            {
                 if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==0)
                 {
                     fin=true;
                 }
                 else if(event.key.keysym.sym != SDLK_ESCAPE and menuSwitch==0)
                 {
+                    AffAfficheTexte(menu,"Nouvelle%20a");
+                    apply_surface(0,0,menu,affichage);
+                    SDL_Flip(affichage);
                     menuSwitch=true;
                 }
                 else if(event.key.keysym.sym == SDLK_ESCAPE and menuSwitch==1)
                 {
+                    AffEffaceEcran(affichage);
+                    SDL_Flip(affichage);
                     menuSwitch=false;
                 }
-            }
             break;
         }
     }

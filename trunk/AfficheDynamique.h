@@ -20,6 +20,18 @@
 #include "SDL/SDL_ttf.h" //Gestion des polices True Type Fonts.
 //#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
 
+/** @brief Type cree pour manipuler les chemins de fichier.
+
+*/
+typedef char path[100];
+
+
+
+
+
+void AffAfficheTexte(SDL_Surface* destination,path message);
+
+void AffStartUp(SDL_Surface* affichage,SDL_Surface* logo);
 
 void AffAfficheTapis(SDL_Surface* aff);
 
@@ -43,10 +55,7 @@ void AffEffaceEcran(SDL_Surface* aff);
 
 
 
-/** @brief Type cree pour manipuler les chemins de fichier.
 
-*/
-typedef char path[100];
 
 /** @brief Fonction qui initialise SDL et ses sous-systemes.
 	@param [in,out] screen La surface principale de SDL.
