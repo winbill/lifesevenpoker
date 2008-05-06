@@ -64,12 +64,18 @@
 		<Unit filename="AfficheDynamique.h" />
 		<Unit filename="AfficheTxt.C">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="AfficheTxt.h" />
+		<Unit filename="AfficheTxt.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Carte.C">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Carte.h" />
+		<Unit filename="Carte.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Controles.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -78,24 +84,39 @@
 		</Unit>
 		<Unit filename="Jeu.C">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Jeu.h" />
+		<Unit filename="Jeu.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Joueur.C">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Joueur.h" />
+		<Unit filename="Joueur.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="MainCarte.C">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="MainCarte.h" />
+		<Unit filename="MainCarte.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="PileCarte.C">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="PileCarte.h" />
+		<Unit filename="PileCarte.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Table.C">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Table.h" />
+		<Unit filename="Table.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="main.C">
 			<Option compilerVar="CC" />
 		</Unit>
