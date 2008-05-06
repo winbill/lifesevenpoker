@@ -148,13 +148,20 @@ void AffEffaceEcran(SDL_Surface* aff)
 
 
 
-void AffStartUp(SDL_Surface* affichage,SDL_Surface* logo)
+
+
+void AffStartUp(SDL_Surface* affichage)
 {
+    path logoP="img/logo.png";
+    SDL_Surface* logo=load_image(logoP);
     AffAfficheTapis(affichage);
     SDL_Rect logoRect=AffCentrer(logo,affichage,0);
+    SDL_SetAlpha(logo, SDL_SRCALPHA, 128);
     apply_surface(logoRect.x,logoRect.y,logo,affichage);
-    SDL_Delay(500);
     SDL_Flip(affichage);
+    SDL_Delay(500);
+    SDL_FreeSurface(logo);
+
 }
 
 void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b)
