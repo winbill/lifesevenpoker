@@ -40,10 +40,10 @@ int main (/*int argc, char** argv */)
     path logoP="img/logo.png";
     SDL_Surface* logo=load_image(logoP);
 
-    int a;
 
 
-    SDL_Event event;
+
+//    SDL_Event event;
 
 
 
@@ -56,6 +56,8 @@ int main (/*int argc, char** argv */)
     {
         AffEffaceEcran(affichage);
         SDL_Flip(affichage);
+
+        //lanceJeu
 
 
 
@@ -79,7 +81,7 @@ int main (/*int argc, char** argv */)
 
     return 0;
 }
-*/
+
 
 
 // INITIALISATION DE L'AFFICHAGE, DU SON & DES PERIPHERIQUES DE CONTROLE
