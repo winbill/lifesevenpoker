@@ -174,7 +174,7 @@ int mainCarteTrouveCouleur(const int tab7Carte[7][2],int rang,int & i)
 
 
 
-void choixCarteMultiple(int tab7Carte[7][2],const int tab[][2],int tabResultat[6][2])
+void choixCarteMultiple(int tab7Carte[7][2],const int tabO[],int tabResultat[6][2])
 {
     //double triage du tableau tab
     //on trie dabord en fonction de tab[i] puis en fonction de i dans un tableau a 2d tab[x][y]
@@ -186,12 +186,37 @@ void choixCarteMultiple(int tab7Carte[7][2],const int tab[][2],int tabResultat[6
 
 
     //rajoute dune nelle colonne :
+    int i=0;
+    int k=0;
+    int c=4;
+    int d=0;
+    int tab[7][2];
+
+    while(i!=7)
+    {
+        for(k=14;k>0;k--)
+        {
+            if(tabO[k]==c)
+            {
+                tab[d][0]=c;
+                tab[d][1]=k;
+                i+=c;
+                d++;
+            }
+        }
+        c--;
+    }
 
 
 
-    int i;
-    int k;
-    int c;
+
+
+
+
+
+    i=0;
+    k=0;
+    c=0;
     //a lissue de la boucle on a toutes les informations pour donner un nom et des valeurs a la main:
     switch (tab[0][0])
     {

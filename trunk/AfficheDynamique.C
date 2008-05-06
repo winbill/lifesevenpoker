@@ -197,6 +197,9 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,in
     //Application de la surface du message
     apply_surface(x,y,texte,destination);
 
+    TTF_CloseFont(font);
+      SDL_FreeSurface(texte);
+
 }
 
 int AffMenu(SDL_Surface* affichage)
