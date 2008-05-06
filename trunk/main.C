@@ -61,8 +61,15 @@ int main (/*int argc, char** argv */)
         lancePartie(affichage);
 
 
-
-
+    }
+    else if(AffMenu(affichage)==2)
+    {
+        //AFFICHER CREDITS
+        printf("AFFICHER CREDITS");
+    }
+    else if(AffMenu(affichage)==3)
+    {
+        SDL_Quit();
     }
 
 

@@ -206,11 +206,15 @@ int AffMenu(SDL_Surface* affichage)
     SDL_Event event;
     int colorDestination = 0;
     int currentColor = 255;
+    int choixMenu=0;
+    printf("%d \n",choixMenu);
 
 
     path menuP="img/menu.bmp";
     SDL_Surface* menu=load_image(menuP);
     AffAfficheTexte(menu,"Nouvelle partie",50,240,255/10,255,255);
+    AffAfficheTexte(menu,"Credits",50,270,255/10,255,255);
+    AffAfficheTexte(menu,"Quitter",50,300,255/10,255,255);
     SDL_Rect menuRect = AffCentrer(menu,affichage,0);
     apply_surface(menuRect.x,menuRect.y,menu,affichage);
     SDL_Flip(affichage);
@@ -232,14 +236,31 @@ int AffMenu(SDL_Surface* affichage)
                 }
                 break;
             case SDL_MOUSEBUTTONUP :
-                if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w + menuRect.x && event.button.y >= 240+menuRect.y && event.button.y <= 268+menuRect.y)
+                if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w+menuRect.x && event.button.y >= 240+menuRect.y && event.button.y <= 268+menuRect.y)
                     return 1;
+                else if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <=menu->w+menuRect.x && event.button.y >= 270+menuRect.y && event.button.y <= 298+menuRect.y)
+                    return 2;
+                else if(event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <=menu->w+menuRect.x && event.button.y >= 300+menuRect.y && event.button.y <= 328+menuRect.y)
+                    return 3;
                 break;
             case SDL_MOUSEMOTION:
-                if(event.motion.x >= menuRect.x && event.motion.x <= menu->w + menuRect.x && event.motion.y >= 240+menuRect.y && event.motion.y <= 268+menuRect.y)
+                if(event.motion.x >= menuRect.x && event.motion.x <= menu->w+menuRect.x && event.motion.y >= 240+menuRect.y && event.motion.y <= 268+menuRect.y)
                 {
                     colorDestination = 0;
-                }else{
+                    choixMenu=1;
+                }
+                else if(event.motion.x >= menuRect.x && event.motion.x <= menu->w+menuRect.x && event.motion.y >= 270+menuRect.y && event.motion.y <= 298+menuRect.y)
+                {
+                    colorDestination = 0;
+                    choixMenu = 2;
+                }
+                else if(event.motion.x >= menuRect.x && event.motion.x <= menu->w+menuRect.x && event.motion.y >= 300+menuRect.y && event.motion.y <= 328+menuRect.y)
+                {
+                    colorDestination = 0;
+                    choixMenu = 3;
+                }
+                else
+                {
                     colorDestination = 255;
                 }
             break;
@@ -258,7 +279,22 @@ int AffMenu(SDL_Surface* affichage)
                     currentColor=0;
             }
 
-            AffAfficheTexte(menu,"Nouvelle partie",50,240,currentColor/10,currentColor,currentColor);
+            if(choixMenu == 1)
+            {
+                AffAfficheTexte(menu,"Nouvelle partie",50,240,currentColor/10,currentColor,currentColor);
+                choixMenu=0;
+            }
+            if(choixMenu == 2)
+            {
+                AffAfficheTexte(menu,"Credits",50,270,currentColor/10,currentColor,currentColor);
+                choixMenu=0;
+            }
+            if(choixMenu ==3)
+            {
+                AffAfficheTexte(menu,"Quitter",50,300,currentColor/10,currentColor,currentColor);
+                choixMenu=0;
+            }
+
             SDL_Rect menuRect = AffCentrer(menu,affichage,0);
             apply_surface(menuRect.x,menuRect.y,menu,affichage);
             SDL_Flip(affichage);
@@ -267,6 +303,17 @@ int AffMenu(SDL_Surface* affichage)
     }
     SDL_FreeSurface(menu);
     return 0;
+}
+
+void AffAfficheJoueur(SDL_Surface* affichage, Joueur j, int posx, int posy)
+{
+    char message[20];
+    sprintf(message,"%s",j.pseudo);
+    AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255);
+    sprintf(message,"Argent: %d",j.argent);
+    AffAfficheTexte(affichage,message,posx,posy+30*1,255,255,255);
+    sprintf(message,"Mise actuelle: %d",j.mise);
+    AffAfficheTexte(affichage,message,posx,posy+30*2,255,255,255);
 }
 
 int lancePartie(SDL_Surface* affichage)
@@ -297,8 +344,29 @@ int lancePartie(SDL_Surface* affichage)
     initJoueur(*player,"moi");
     ajoutJoueurTable(t,player);
 
-
+    SDL_Event event;
+    bool gameOn=true;
     printf("lance jeu\n");
+
+    while(gameOn)
+    {
+        AffEffaceEcran(affichage);
+        AffAfficheJoueur(affichage,*joueurs[0],50,50);
+        SDL_Flip(affichage);
+
+        SDL_PollEvent(&event);
+
+        switch(event.type)
+        {
+            case SDL_KEYDOWN :
+                if(event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    return 0;
+                }
+                break;
+        }
+    }
+
 
 
 
@@ -334,6 +402,8 @@ int lancePartie(SDL_Surface* affichage)
 
     pileCarteLibere(p);
     tableLibere(t);
+
+    return 0;
 
 }
 
