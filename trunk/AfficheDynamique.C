@@ -64,13 +64,19 @@ SDL_Surface *load_image( path filename )
 	SDL_Surface* optimizedImage = NULL;
 
 	//Chargement de l'image
-	loadedImage = IMG_Load( filename );
+	if((loadedImage = IMG_Load(filename)) == 0)
+	{
+	    printf("Impossible de charger l\'image.\n");
+	}
 
 	//Si le chargement se passe bien
 	if( loadedImage != NULL )
 	{
 		//Création de l'image optimisée
-		optimizedImage = SDL_DisplayFormat( loadedImage );
+		if((optimizedImage = SDL_DisplayFormatAlpha( loadedImage )) == 0)
+		{
+		    printf("Impossible d'optimiser l\'image.\n");
+		}
 
 		//Libération de l'ancienne image
 		SDL_FreeSurface( loadedImage );
@@ -90,4 +96,45 @@ void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination 
 	//On blitte la surface
 	SDL_BlitSurface( source, NULL, destination, &offset );
 	SDL_UpdateRect(destination,0,0,0,0);
+}
+
+
+
+void AffAfficheTapis(SDL_Surface* aff)
+{
+    path tapisP = "img/bkgrd.jpg";
+
+    SDL_Surface* tapis = load_image(tapisP);
+
+    apply_surface(0,0,tapis,aff);
+}
+
+void AffActualiser(SDL_Surface* affichage)
+{
+    SDL_UpdateRect(affichage, 0, 0, 0, 0);
+}
+
+SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option)
+{
+    SDL_Rect imageRect;
+    switch(option)
+    {
+        case 0 :
+            imageRect.x = (destination->w - source->w) / 2;
+            imageRect.y = (destination->h - source->h) / 2;
+        break;
+        case 1 :
+            imageRect.x = (destination->w - source->w) / 2;
+        break;
+        case 2 :
+            imageRect.y = (destination->h - source->h) / 2;
+        break;
+    }
+    return imageRect;
+
+}
+
+void AffEffaceEcran(SDL_Surface* aff)
+{
+    SDL_FillRect(aff,NULL,SDL_MapRGB(aff->format,0,0,0));
 }

@@ -20,6 +20,29 @@
 #include "SDL/SDL_ttf.h" //Gestion des polices True Type Fonts.
 //#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
 
+
+void AffAfficheTapis(SDL_Surface* aff);
+
+void AffActualiser(SDL_Surface* affichage);
+
+SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option);
+
+void AffEffaceEcran(SDL_Surface* aff);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** @brief Type cree pour manipuler les chemins de fichier.
 
 */
