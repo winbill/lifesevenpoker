@@ -225,12 +225,7 @@ void choixCarteMultiple(int tab7Carte[][2],const int tabO[],int tabResultat[][2]
         c--;
     }
 
-
-
-
-
-
-
+    tabResultat[0][1]=0;
 
     i=0;
     k=0;
@@ -359,11 +354,11 @@ void choixCarteMultiple(int tab7Carte[][2],const int tabO[],int tabResultat[][2]
         tabResultat[0][0]=0;
 
 
-        for(i=1;i<5;i++)
+        for(i=1;i<6;i++)
         {
             c=0;
             tabResultat[i][0] =tab[i-1][1];
-            tabResultat[i][1] =mainCarteTrouveCouleur(tab7Carte,tab[i][1],c);
+            tabResultat[i][1] =mainCarteTrouveCouleur(tab7Carte,tab[i-1][1],c);
         }
         break;
     }
