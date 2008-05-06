@@ -176,7 +176,7 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,in
     SDL_Color textColor = { r, g, b,0};
 
     //Ouverture du Font
-    font = TTF_OpenFont( "./fonts/TlwgTypewriter.ttf", 28 );
+    font = TTF_OpenFont( "./fonts/AUBREY1__.TTF", 28 );
 
 
     //S'il y a une erreur dans le chargement du Font
@@ -186,7 +186,7 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,in
     }
 
     //Mise en place du texte sur la surface message
-    texte = TTF_RenderText_Solid(font,message,textColor);
+    texte = TTF_RenderText_Blended(font,message,textColor);
 
     //S'il y a une erreur dans la mise en place du texte
     if ( texte == NULL )
