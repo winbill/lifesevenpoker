@@ -498,7 +498,7 @@ int lancePartie(SDL_Surface* affichage)
                     break;
                 case 2:
                     gameOn = true;
-                    renvoyer=1;
+                    renvoyer=2;
                     break;
                 case 3:
                     gameOn = false;

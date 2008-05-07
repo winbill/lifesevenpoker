@@ -63,10 +63,11 @@ int main (/*int argc, char** argv */)
             AffEffaceEcran(affichage);
             SDL_Flip(affichage);
             nouvellePartie = 0;
-            v =lancePartie(affichage);
+            v=lancePartie(affichage);
             if(v==1)
                 nouvellePartie=1;
             if(v==2)
+                nouvellePartie=0;
                 AffAfficheCredits(affichage);
         }
 
