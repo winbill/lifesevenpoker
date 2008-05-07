@@ -78,6 +78,8 @@ int couleurMainCarte(int tab7Carte[8][2])
     return 0;
 }
 
+
+
 void trieTableauRang(int tab7Carte[7][2])
 {
     int i,k,temp;
@@ -368,7 +370,7 @@ void choixCarteMultiple(int tab7Carte[][2],const int tabO[],int tabResultat[][2]
             tabResultat[4][1] =mainCarteTrouveCouleur(tab7Carte,tab[1][1],c);
 
 
-            i=1;
+            i=2;
             k=0;
             while (tab[i][0] != 0)
             {
@@ -412,12 +414,23 @@ void choixCarteMultiple(int tab7Carte[][2],const int tabO[],int tabResultat[][2]
         break;
     }
 
-    //codage dans un tableau d'entier (faudrait faire un tableau de quadret parce que
-    //stoquer des nombres qui ne depasse pas 14 sur 32bits c'est gros
-    //le premier indice du tableau correspond au code de la forme
-    //vous l'aurez compris (paire brelan carrÃ©...)
-    //les 5 dernier elements sont le rang des cartes et la couleur
 }
 
+int compareMain(int tabResultat1[6][2],int tabResultat2[6][2])
+{
+    int i;
+    for(i=0;i<6;i++)
+    {
+        if(tabResultat1[i][0] >tabResultat2[i][0])
+        {
+            return 1;
+        }else if(tabResultat1[i][0] < tabResultat2[i][0])
+        {
+            return 2;
+        }
 
+    }
+
+    return 0;
+}
 

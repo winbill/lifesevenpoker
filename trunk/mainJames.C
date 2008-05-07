@@ -1,15 +1,16 @@
 //Librairies Life'Seven Poker
-//#include "Jeu.h"
 #include "PileCarte.h"
 #include "Table.h"
 #include "Joueur.h"
 #include "Jeu.h"
+#include "AfficheTxt.h"
 
 //Librairies Standard.
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "AfficheTxt.h"
+#include <cassert>
+
 //Librairies SDL.
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h> //Gestion des images.
@@ -73,7 +74,7 @@ int main ( /*int argc, char** argv */ )
 
     int  tabResultat[6][2];
 
-    codageScoreMain(*getMainJoueur(*j1), tabResultat,t);
+    assert(codageScoreMain(*getMainJoueur(*j1), tabResultat,t));
 
     afficheTab2(tabResultat,6);
 
@@ -86,33 +87,29 @@ int main ( /*int argc, char** argv */ )
     tableLibere(t);
 
 
-    return 0;
-}
+
 /*
-
-
-
     int tabMainTotale[8][2];
-    tabMainTotale[0][0] = 14;
-    tabMainTotale[0][1] = 2;
+    tabMainTotale[0][0] = 9;
+    tabMainTotale[0][1] = 3;
 
     tabMainTotale[1][0] = 12;
-    tabMainTotale[1][1] = 3;
+    tabMainTotale[1][1] = 1;
 
     tabMainTotale[2][0] = 13;
-    tabMainTotale[2][1] = 3;
+    tabMainTotale[2][1] = 1;
 
-    tabMainTotale[3][0] = 11;
-    tabMainTotale[3][1] = 3;
+    tabMainTotale[3][0] = 10;
+    tabMainTotale[3][1] = 1;
 
-    tabMainTotale[4][0] = 10;
+    tabMainTotale[4][0] = 12;
     tabMainTotale[4][1] = 3;
 
-    tabMainTotale[5][0] = 8;
-    tabMainTotale[5][1] = 3;
+    tabMainTotale[5][0] = 2;
+    tabMainTotale[5][1] = 1;
 
-    tabMainTotale[6][0] = 9;
-    tabMainTotale[6][1] = 3;
+    tabMainTotale[6][0] = 3;
+    tabMainTotale[6][1] = 1;
 
 
     trieTableauRang(tabMainTotale);
@@ -139,6 +136,16 @@ int main ( /*int argc, char** argv */ )
     printf("-----Tableau Resultat----\n");
 
     afficheTab2(tabResultat,6);
+*/
+        return 0;
+
+
+
+}
+/*
+
+
+
 
 
 
