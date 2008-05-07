@@ -14,6 +14,7 @@
 #define Jeu_H
 #include "Table.h"
 
+void trieTab3d(int tabResultat[10][6][2]);
 //#include "AfficheDynamique.h"
 void intitialiseTab3d(int tabResultat[10][6][2]);
 

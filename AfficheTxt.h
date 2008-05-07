@@ -16,6 +16,7 @@
 #include "Table.h"
 #include "Jeu.h"
 
+void afficheTab3(int tab[][6][2],int x);
 
 void afficheTab2(int tab[][2],int x);
 

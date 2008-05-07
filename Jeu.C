@@ -54,7 +54,7 @@ void intitialiseTab3d(int tabResultat[10][6][2])
     int i,j,k;
     for (i=0;i<10;i++)
     {
-        for (j=0;j<2;j++)
+        for (j=0;j<6;j++)
         {
             for (k=0;k<2;k++)
             {
@@ -73,7 +73,7 @@ void jeuDetermineVainqueur(const Table & t,int tabResultat[10][6][2])
     {
         if (t.joueur[i] != NULL)
         {
-            if (getStatutJoueur((*getIemeJoueur(t,i)))==(0 or 1 or 2 or 6 or 8))
+            if (getStatutJoueur((*getIemeJoueur(t,i)))!=(0 && 1 && 2 && 6 && 8))
             {
                 codageScoreMain(*getMainJoueur(*getIemeJoueur(t,i)),tabResultat[i],t);
             }
@@ -84,38 +84,46 @@ void jeuDetermineVainqueur(const Table & t,int tabResultat[10][6][2])
 
 void trieTab3d(int tabResultat[10][6][2])
 {
-    int i,k,temp;
+    int i,k,temp,l;
     int j=0;
     int plusGrand=0;
-    for (k=0;k<6;k++)
+    for (k=0;k<10;k++)
     {
-        for(i=0;i<7;i++)
+        for (i=0;i<9;i++)
         {
-            while(plusGrand==0)
+            while (plusGrand==0 && j<6)
             {
-                if(tabResultat[i][j][0] < tab7Carte[i+1][j][0])
+                if (tabResultat[i][j][0] < tabResultat[i+1][j][0])
+                {
+                    for (l=0;l<6;l++)
+                    {
+                        temp = tabResultat[i][l][0];
+                        tabResultat[i][l][0] = tabResultat[i+1][l][0];
+                        tabResultat[i+1][l][0] = temp;
+
+                        temp = tabResultat[i][l][1];
+                        tabResultat[i][l][1] = tabResultat[i+1][l][1];
+                        tabResultat[i+1][l][1] = temp;
+                    }
+                    plusGrand = 1;
+                }
+                else if (tabResultat[i][j][0] > tabResultat[i+1][j][0])
                 {
                     plusGrand = 1;
-
-
                 }
                 j++;
-
             }
             j=0;
             plusGrand = 0;
-
         }
     }
-
-
 }
 void trieTableauRang(int tab7Carte[7][2])
 {
     int i,k,temp;
     for (k=0;k<7;k++)
     {
-        for (i=0;i<7;i++)
+        for (i=0;i<6;i++)   // MODIFF : James ne serait ce pas 6 et non 7 ?? tristan ?
         {
             if (tab7Carte[i][0]<tab7Carte[i+1][0])
             {
