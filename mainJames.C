@@ -23,26 +23,74 @@
 #endif
 #include <SDL/SDL.h>
 
-void afficheTab2(int tab[][2],int x)
-{
-    for (int i=0;i<x;i++)
-    {
-        printf("i:%d    :%d      :%d\n",i,tab[i][0],tab[i][1]);
-    }
-}
 
-void afficheTab(int tab[],int x)
-{
-    for (int i=0;i<x;i++)
-    {
-        printf("i:%d    :%d\n",i,tab[i]);
-    }
-}
 
 
 
 int main ( /*int argc, char** argv */ )
 {
+    PileCarte p;
+    Table t;
+    initTable(t);
+    initPileCarte(p);
+    t.pileCarte = &p;
+    Joueur* j1;
+    Joueur* j2;
+    Joueur* j3;
+    Joueur j4;
+
+    setMaxJoueurTable(t,6);
+    j1 = creeJoueur();
+    initJoueur(*j1,"j1");
+    j2 = creeJoueur();
+    initJoueur(*j2,"j2");
+    j3 = creeJoueur();
+    initJoueur(*j3,"j3");
+    initJoueur(j4,"j4");
+
+
+
+    ajoutJoueurTable(t,j1);
+    ajoutJoueurTable(t,j2);
+    ajoutJoueurTable(t,j3);
+    ajoutJoueurTable(t,&j4);
+
+
+
+    afficheInfoTable(t);
+
+
+    distribuer2CartesJoueursJeu(t);
+    distribuer1CarteDecouverteJeu(t,5);
+
+
+    afficheMainCarte(*t.carteDecouverte,"table");
+    afficheMainCarte(*getMainJoueur(*j1),"main de j1");
+    //afficheMainCarte(*getMainJoueur(*j2),"main de j2");
+    //afficheMainCarte(*getMainJoueur(*j3),"main de j3");
+    //afficheMainCarte(*getMainJoueur(j4),"main de j4");
+
+
+    int  tabResultat[6][2];
+
+    codageScoreMain(*getMainJoueur(*j1), tabResultat,t);
+
+    afficheTab2(tabResultat,6);
+
+    joueurDetruit(j1);
+    joueurDetruit(j2);
+    joueurDetruit(j3);
+    joueurLibere(j4);
+
+    pileCarteLibere(p);
+    tableLibere(t);
+
+
+    return 0;
+}
+/*
+
+
 
     int tabMainTotale[8][2];
     tabMainTotale[0][0] = 14;
@@ -95,69 +143,4 @@ int main ( /*int argc, char** argv */ )
 
 
 
-
-    return 0;
-}
-/*  PileCarte p;Table t;
-    initTable(t);
-    initPileCarte(p);
-    t.pileCarte = &p;
-    Joueur* j1;
-    Joueur* j2;
-    Joueur* j3;
-    Joueur j4;
-
-    setMaxJoueurTable(t,6);
-    j1 = creeJoueur();initJoueur(*j1,"j1");
-    j2 = creeJoueur();initJoueur(*j2,"j2");
-    j3 = creeJoueur();initJoueur(*j3,"j3");
-    initJoueur(j4,"j4");
-
-
-
-    ajoutJoueurTable(t,j1);
-    ajoutJoueurTable(t,j2);
-    ajoutJoueurTable(t,j3);
-
-
-    afficheInfoTable(t);
-
-    afficheInfoJoueur(*j1);
-    afficheInfoJoueur(*j2);
-    afficheInfoJoueur(*j3);
-
-
-    supprimeJoueurTable(t,j1);
-
-    //ajoutJoueurTable(t,&j4);
-
-
-    afficheInfoJoueur(*j1);
-    afficheInfoJoueur(*j2);
-    afficheInfoJoueur(*j3);
-    afficheInfoJoueur(j4);
-
-    afficheInfoTable(t);
-
-    distribuer2CartesJoueursJeu(t);
-
-
-
-    afficheMainCarte(*getMainJoueur(*j1),"main de j1");
-    afficheMainCarte(*getMainJoueur(*j2),"main de j2");
-    afficheMainCarte(*getMainJoueur(*j3),"main de j3");
-    afficheMainCarte(*getMainJoueur(j4),"main de j4");
-
-    joueurDetruit(j1);
-    joueurDetruit(j2);
-    joueurDetruit(j3);
-    joueurLibere(j4);
-
-
-
-
-
-
-
-    pileCarteLibere(p);
-    tableLibere(t);*/
+    */
