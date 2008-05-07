@@ -76,6 +76,7 @@ void jeuDetermineVainqueur(const Table & t,int tabResultat[10][6][2])
             if (getStatutJoueur((*getIemeJoueur(t,i)))!=(0 && 1 && 2 && 6 && 8))
             {
                 codageScoreMain(*getMainJoueur(*getIemeJoueur(t,i)),tabResultat[i],t);
+                tabResultat[i][0][1]=i;
             }
 
         }
@@ -118,6 +119,16 @@ void trieTab3d(int tabResultat[10][6][2])
         }
     }
 }
+
+
+void fonctionGlobaleDetrminationVainqueur(const table & t,int tabResultat[10][6][2])
+{
+    intitialiseTab3d(tabResultat);
+    jeuDetermineVainqueur(t,tabResultat);
+    trieTab3d(tabResultat);
+}
+
+
 void trieTableauRang(int tab7Carte[7][2])
 {
     int i,k,temp;
