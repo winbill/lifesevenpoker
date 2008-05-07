@@ -16,6 +16,7 @@
 #include "MainCarte.h"
 #include "Joueur.h"
 #include "Table.h"
+#include "AfficheTxt.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -67,6 +68,10 @@ int codageScoreMain(const MainCarte &m, int  tabResultat[6][2],const Table & tab
         tabMainTotale[i+2][0]=getCarteRang(*((*(table.carteDecouverte)).tabMain[i]));
         tabMainTotale[i+2][1]=getCarteCouleur(*((*(table.carteDecouverte)).tabMain[i]));
     }
+    tabMainTotale[7][0]=0;
+    tabMainTotale[7][1]=0;
+
+    afficheTab2(tabMainTotale,8);
 
     tabResultat[0][1] = 0;
     //regle : si on a une couleur on a au mieux une quinte flush

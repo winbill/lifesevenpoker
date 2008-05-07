@@ -87,7 +87,12 @@ void nouvellePileCarte(PileCarte & pileCarte)
 
 int hasard(int x,int y)
 {
-
+    static int first=0;
+    if(first == 0)
+    {
+        srand (time (NULL));
+        first = 1;
+    }
     assert(x<y and x>=0 and y<52);
 
     return rand() % (y - x) +x;

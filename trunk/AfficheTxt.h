@@ -16,6 +16,11 @@
 #include "Table.h"
 #include "Jeu.h"
 
+
+void afficheTab2(int tab[][2],int x);
+
+void afficheTab(int tab[],int x);
+
 /**	@brief affiche les informations du joueur j en mode txt (pseudo, argent,mise, statut...)
 	@param Joueur j est celui dont on veut afficher les informations
 */

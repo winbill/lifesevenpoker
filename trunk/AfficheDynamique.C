@@ -261,7 +261,6 @@ int AffMenu(SDL_Surface* affichage)
             {
                 if (event.motion.x >= menuRect.x && event.motion.x <= menu->w + menuRect.x && event.motion.y >= 240+i*30+menuRect.y && event.motion.y <= 268+i*30+menuRect.y)
                 {
-                    printf("aaa");
                     colorDestination[i] = 0;
                 }
                 else

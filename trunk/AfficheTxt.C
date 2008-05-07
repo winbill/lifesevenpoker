@@ -18,6 +18,25 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void afficheTab2(int tab[][2],int x)
+{
+    printf("-----Tableau[%d][2]----\n",x);
+    for (int i=0;i<x;i++)
+    {
+        printf("i:%d    :%d      :%d\n",i,tab[i][0],tab[i][1]);
+    }
+    printf("\n");
+}
+
+void afficheTab(int tab[],int x)
+{
+    printf("-----Tableau[%d]----\n",x);
+    for (int i=0;i<x;i++)
+    {
+        printf("i:%d    :%d\n",i,tab[i]);
+    }
+    printf("\n");
+}
 
 void afficheInfoJoueur(const Joueur & j)
 {
