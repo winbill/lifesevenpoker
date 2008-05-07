@@ -39,6 +39,9 @@ enum Main
     QUINTE_FLUSH_ROYALE=10
 };
 
+
+int compareMain(int tabResultat1[6][2],int tabResultat2[6][2]);
+
 /**	@brief Procedure initialisant une main de cartes.
 	@param Prend en entree une variable de type MainCarte correctement cree.
 	@return Initialise la variable de type MainCarte.

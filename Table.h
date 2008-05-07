@@ -56,6 +56,7 @@ struct Table
 
 
 
+
 /**
 	@brief initialise la variable table
 	@param [in, out] table une table

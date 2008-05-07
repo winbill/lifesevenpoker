@@ -15,7 +15,9 @@
 #include "Table.h"
 
 //#include "AfficheDynamique.h"
+void intitialiseTab3d(int tabResultat[10][6][2]);
 
+void jeuDetermineVainqueur(const Table & t,int tabResultat[10][6][2]);
 
 
 

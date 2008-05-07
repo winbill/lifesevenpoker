@@ -49,8 +49,89 @@ void distribuer1CarteDecouverteJeu(Table & table,int n)
     }
 }
 
+void intitialiseTab3d(int tabResultat[10][6][2])
+{
+    int i,j,k;
+    for (i=0;i<10;i++)
+    {
+        for (j=0;j<2;j++)
+        {
+            for (k=0;k<2;k++)
+            {
+                tabResultat[i][j][k] = 0;
+            }
+        }
+    }
+}
 
-int codageScoreMain(const MainCarte &m, int  tabResultat[6][2],const Table & table)
+
+void jeuDetermineVainqueur(const Table & t,int tabResultat[10][6][2])
+{
+    int i;
+
+    for (i=0;i<getMaxJoueurTable(t);i++)
+    {
+        if (t.joueur[i] != NULL)
+        {
+            if (getStatutJoueur((*getIemeJoueur(t,i)))==(0 or 1 or 2 or 6 or 8))
+            {
+                codageScoreMain(*getMainJoueur(*getIemeJoueur(t,i)),tabResultat[i],t);
+            }
+
+        }
+    }
+}
+
+void trieTab3d(int tabResultat[10][6][2])
+{
+    int i,k,temp;
+    int j=0;
+    int plusGrand=0;
+    for (k=0;k<6;k++)
+    {
+        for(i=0;i<7;i++)
+        {
+            while(plusGrand==0)
+            {
+                if(tabResultat[i][j][0] < tab7Carte[i+1][j][0])
+                {
+                    plusGrand = 1;
+
+
+                }
+                j++;
+
+            }
+            j=0;
+            plusGrand = 0;
+
+        }
+    }
+
+
+}
+void trieTableauRang(int tab7Carte[7][2])
+{
+    int i,k,temp;
+    for (k=0;k<7;k++)
+    {
+        for (i=0;i<7;i++)
+        {
+            if (tab7Carte[i][0]<tab7Carte[i+1][0])
+            {
+                temp=tab7Carte[i][0]; //temp du rang
+                tab7Carte[i][0]=tab7Carte[i+1][0];
+                tab7Carte[i+1][0]=temp;
+                temp=tab7Carte[i][1]; //temp de la couleur
+                tab7Carte[i][1]=tab7Carte[i+1][1];
+                tab7Carte[i+1][1]=temp;
+            }
+        }
+    }
+}
+
+
+int codageScoreMain(const MainCarte &m, int tabResultat[6][2],const Table & table)
 {
     //on utilise un tableau a 2 dimensions representant les 7 cartes (8 car l'as peut etre rajouter une deuxieme fois)
     int tabMainTotale[8][2];
@@ -140,11 +221,12 @@ int codageScoreMain(const MainCarte &m, int  tabResultat[6][2],const Table & tab
             {
                 tabResultat[i+1][0] = tabMainTotale[k][0];
                 tabResultat[i+1][1] = tabMainTotale[k][1];
-
-                return 1;//on renvoit 1 pour quitter la fonction
+                i++;
             }
+            k++;
             //s'il a ni couleur ni quinte on regarde le reste
         }
+        return 1;//on renvoit 1 pour quitter la fonction
     }
     else
     {
