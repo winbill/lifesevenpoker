@@ -57,6 +57,16 @@ int main ( /*int argc, char** argv */ )
     ajoutJoueurTable(t,&j4);
 
 
+    j1->statut=RAISE;
+    j2->statut=RAISE;
+    j3->statut=RAISE;
+    j4.statut=RAISE;
+
+
+/*    afficheInfoJoueur(*j1);
+    afficheInfoJoueur(*j2);
+    afficheInfoJoueur(*j3);
+    afficheInfoJoueur(j4);*/
 
     afficheInfoTable(t);
 
@@ -65,18 +75,31 @@ int main ( /*int argc, char** argv */ )
     distribuer1CarteDecouverteJeu(t,5);
 
 
-    afficheMainCarte(*t.carteDecouverte,"table");
-    afficheMainCarte(*getMainJoueur(*j1),"main de j1");
+    //afficheMainCarte(*t.carteDecouverte,"table");
+    //afficheMainCarte(*getMainJoueur(*j1),"main de j1");
     //afficheMainCarte(*getMainJoueur(*j2),"main de j2");
     //afficheMainCarte(*getMainJoueur(*j3),"main de j3");
     //afficheMainCarte(*getMainJoueur(j4),"main de j4");
 
 
+/*
     int  tabResultat[6][2];
-
     assert(codageScoreMain(*getMainJoueur(*j1), tabResultat,t));
-
     afficheTab2(tabResultat,6);
+*/
+
+
+    int tabResultat[10][6][2];
+
+
+
+
+    intitialiseTab3d(tabResultat);
+    jeuDetermineVainqueur(t,tabResultat);
+    trieTab3d(tabResultat);
+    afficheTab3(tabResultat,10);
+
+
 
     joueurDetruit(j1);
     joueurDetruit(j2);
@@ -85,8 +108,6 @@ int main ( /*int argc, char** argv */ )
 
     pileCarteLibere(p);
     tableLibere(t);
-
-
 
 /*
     int tabMainTotale[8][2];

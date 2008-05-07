@@ -80,25 +80,7 @@ int couleurMainCarte(int tab7Carte[8][2])
 
 
 
-void trieTableauRang(int tab7Carte[7][2])
-{
-    int i,k,temp;
-    for (k=0;k<7;k++)
-    {
-        for (i=0;i<7;i++)
-        {
-            if (tab7Carte[i][0]<tab7Carte[i+1][0])
-            {
-                temp=tab7Carte[i][0]; //temp du rang
-                tab7Carte[i][0]=tab7Carte[i+1][0];
-                tab7Carte[i+1][0]=temp;
-                temp=tab7Carte[i][1]; //temp de la couleur
-                tab7Carte[i][1]=tab7Carte[i+1][1];
-                tab7Carte[i+1][1]=temp;
-            }
-        }
-    }
-}
+
 
 
 
