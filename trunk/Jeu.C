@@ -121,7 +121,7 @@ void trieTab3d(int tabResultat[10][6][2])
 }
 
 
-void fonctionGlobaleDetrminationVainqueur(const table & t,int tabResultat[10][6][2])
+void fonctionGlobaleDetrminationVainqueur(const Table & t,int tabResultat[10][6][2])
 {
     intitialiseTab3d(tabResultat);
     jeuDetermineVainqueur(t,tabResultat);

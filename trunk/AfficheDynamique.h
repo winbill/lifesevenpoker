@@ -50,6 +50,7 @@ void AffEffaceEcran(SDL_Surface* aff);
 
 int lancePartie(SDL_Surface* affichage);
 
+void AffAfficheCredits(SDL_Surface* affichage);
 
 
 

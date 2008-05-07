@@ -312,12 +312,43 @@ int AffMenu(SDL_Surface* affichage)
     return 0;
 }
 
+void AffAfficheCredits(SDL_Surface* affichage)
+{
+    bool fin=false;
+    SDL_Event event;
+
+    AffEffaceEcran(affichage);
+
+    path creditsP="img/credits.jpg";
+    SDL_Surface* credits = load_image(creditsP);
+    SDL_Rect creditsRect = AffCentrer(credits,affichage,0);
+    apply_surface(creditsRect.x,creditsRect.y,credits,affichage);
+    SDL_Flip(affichage);
+
+
+    while(!fin)
+    {
+        SDL_PollEvent(&event);
+
+        if(event.type == SDL_KEYDOWN)
+        {
+            if(event.key.keysym.sym == SDLK_m)
+            {
+                AffMenu(affichage);
+                fin=true;
+            }
+        }
+    }
+
+    SDL_FreeSurface(credits);
+}
+
 
 
 
 void AffAfficheJoueur(SDL_Surface* affichage, Joueur j, int posx, int posy)
 {
-    char message[20];
+    char message[30];
     sprintf(message,"%s",j.pseudo);
     AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_UNDERLINE,24);
     sprintf(message,"Argent: %d",j.argent);
@@ -404,7 +435,7 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t)
 
 int lancePartie(SDL_Surface* affichage)
 {
-    const int nombreJoueurPC = 7;
+    const int nombreJoueurPC = 5;
     Table t;
     PileCarte p;
 
@@ -463,6 +494,10 @@ int lancePartie(SDL_Surface* affichage)
                 {
                 case 1:
                     gameOn = false;
+                    renvoyer=1;
+                    break;
+                case 2:
+                    gameOn = true;
                     renvoyer=1;
                     break;
                 case 3:

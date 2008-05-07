@@ -66,6 +66,8 @@ int main (/*int argc, char** argv */)
             v =lancePartie(affichage);
             if(v==1)
                 nouvellePartie=1;
+            if(v==2)
+                AffAfficheCredits(affichage);
         }
 
     }
@@ -73,6 +75,7 @@ int main (/*int argc, char** argv */)
     {
         //AFFICHER CREDITS
         printf("AFFICHER CREDITS");
+        AffAfficheCredits(affichage);
     }
 
 
