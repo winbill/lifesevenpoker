@@ -58,9 +58,17 @@ struct Joueur
 	Statut statut;
 	MainCarte* mainJoueur;
 	TypeJoueur type;
+	int posX;
+	int posY;
 };
 
+int getPositionJoueurX(const Joueur & j);
 
+int getPositionJoueurY(const Joueur & j);
+
+void setPositionJoueurX(Joueur & j,int x);
+
+void setPositionJoueurY(Joueur & j,int y);
 
 
 

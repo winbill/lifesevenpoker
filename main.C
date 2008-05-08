@@ -19,6 +19,7 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h> //Gestion des images.
 #include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
+#include <SDL/SDL_rotozoom.h> //traitement de surface
 //#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
 
 
@@ -66,9 +67,6 @@ int main (/*int argc, char** argv */)
             v=lancePartie(affichage);
             if(v==1)
                 nouvellePartie=1;
-            if(v==2)
-                nouvellePartie=0;
-                AffAfficheCredits(affichage);
         }
 
     }
@@ -76,7 +74,6 @@ int main (/*int argc, char** argv */)
     {
         //AFFICHER CREDITS
         printf("AFFICHER CREDITS");
-        AffAfficheCredits(affichage);
     }
 
 
