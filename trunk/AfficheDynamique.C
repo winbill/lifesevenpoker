@@ -208,12 +208,9 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,in
     SDL_FreeSurface(texte);
 
 }
-int AffMenu(SDL_Surface* affichage)
-{
-    return AffMenu(affichage,NULL,0);
-}
 
-int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant)
+
+int AffMenu(SDL_Surface* affichage)
 {
 
     bool fin = false;
@@ -232,15 +229,6 @@ int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant)
     apply_surface(menuRect.x,menuRect.y,menu,affichage);
     SDL_Flip(affichage);
 
-//on precharge
-
-    AffEffaceEcran(affichage);
-    if(t !=NULL)
-    {   AffEffaceEcran(affichage);
-        AffCartesJoueursJeu(affichage,*t);
-        AffCarteDecouvertes(*t,affichage);
-        AffAffichageInfosJoueurs(affichage,*t,joueurJouant);
-    }
 
 
 
@@ -258,7 +246,6 @@ int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant)
             if (event.key.keysym.sym == SDLK_ESCAPE)
             {
                 SDL_FreeSurface(menu);
-                printf("%d\n",0);
                 return 0;
             }
             break;
@@ -328,7 +315,7 @@ int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant)
     return 0;
 }
 
-/*
+
 void AffAfficheCredits(SDL_Surface* affichage)
 {
     bool fin=false;
@@ -359,7 +346,7 @@ void AffAfficheCredits(SDL_Surface* affichage)
 
     SDL_FreeSurface(credits);
 }
-*/
+
 
 void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom)
 {
@@ -395,20 +382,27 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
 
     switch (j.statut)
     {
-    case 1:
+    case SIT:
         sprintf(message,"assis");
-    case 2:
+        break;
+    case CALL:
         sprintf(message,"mise");
-    case 3:
+        break;
+    case CHECK:
         sprintf(message,"check");
-    case 4:
+        break;
+    case RAISE:
         sprintf(message,"relance");
-    case 5:
+        break;
+    case FOLD:
         sprintf(message,"couché");
-    case 6:
+        break;
+    case ALL_IN:
         sprintf(message,"tapis");
+        break;
     default:
         sprintf(message,"aa");
+        break;
     }
 
     AffAfficheTexte(affichage,message,posx,posy+20*1,255,255,255,TTF_STYLE_NORMAL,18);
@@ -574,23 +568,30 @@ void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
 
     AffAfficheTexte(affichage,message,620,530+20*0,255,255,255,TTF_STYLE_UNDERLINE,22);
 
-
+    printf("%d\n",(int)j.statut);
     switch (j.statut)
     {
     case SIT:
         sprintf(message,"assis");
+        break;
     case CALL:
         sprintf(message,"mise");
+        break;
     case CHECK:
         sprintf(message,"check");
+        break;
     case RAISE:
         sprintf(message,"relance");
+        break;
     case FOLD:
         sprintf(message,"couché");
+        break;
     case ALL_IN:
         sprintf(message,"tapis");
+        break;
     default:
         sprintf(message,"aa");
+        break;
     }
 
     AffAfficheTexte(affichage,message,620,530+20*1,255,255,255,TTF_STYLE_NORMAL,18);
@@ -698,7 +699,7 @@ int lancePartie(SDL_Surface* affichage)
                 renvoyer=3;
                 break;
             case SDLK_m:
-                switch (AffMenu(affichage,&t,joueurJouant))
+                switch (AffMenu(affichage))
                 {
                 case 1:
                     gameOn = false;
@@ -709,12 +710,12 @@ int lancePartie(SDL_Surface* affichage)
                     renvoyer=3;
                     break;
                 case 0:
-                        AffEffaceEcran(affichage);
-                        AffCartesJoueursJeu(affichage,t);
-                        AffCarteDecouvertes(t,affichage);
-                        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-                        AffInfosJoueur(affichage,*player,t);
-                        SDL_Flip(affichage);
+                    AffEffaceEcran(affichage);
+                    AffCartesJoueursJeu(affichage,t);
+                    AffCarteDecouvertes(t,affichage);
+                    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                    AffInfosJoueur(affichage,*player,t);
+                    SDL_Flip(affichage);
                     break;
                 }
                 break;
