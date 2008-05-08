@@ -377,11 +377,11 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
 
     if (getIdJoueur(j) != joueurJouant)
     {
-        AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_UNDERLINE,22);
+        AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_NORMAL,22);
     }
     else
     {
-        AffAfficheTexte(affichage,message,posx,posy+30*0,255,0,0,TTF_STYLE_UNDERLINE,22);
+        AffAfficheTexte(affichage,message,posx,posy+30*0,255,0,0,TTF_STYLE_NORMAL,22);
     }
 
 
@@ -545,8 +545,8 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
             for (j=0;j<2;j++)
             {
                 int ecart =-30;
-                x = (affichage->w - 2*largeurCarte -ecart)/2+j*(largeurCarte+ecart)-100;
-                y = affichage->h - hauteurCarte - ecart;
+                x = (1024 - 2*largeurCarte -ecart)/2+j*(largeurCarte+ecart)-100;
+                y = 768 - hauteurCarte - ecart;
                 AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x,y+15,0.8);
             }
         }
@@ -639,6 +639,7 @@ int lancePartie(SDL_Surface* affichage)
     Table t;
     PileCarte p;
 
+
     initTable(t);
     initPileCarte(p);
 
@@ -652,7 +653,7 @@ int lancePartie(SDL_Surface* affichage)
 
     for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
     {
-        sprintf(nom,"%s%d","Ordinhn,n,n,ateur",i);
+        sprintf(nom,"%s%d%s","Ordinateur",i,"  ");
         joueurs[i]=creeJoueur();
         initJoueur(*joueurs[i],nom);
         ajoutJoueurTable(t,joueurs[i]);
@@ -669,9 +670,6 @@ int lancePartie(SDL_Surface* affichage)
     setArgentJoueur(*player,ARGENT_DEPART);
     ajoutJoueurTable(t,player);
 
-
-
-    afficheInfoTable(t);
 
 
     SDL_Event event;
@@ -706,16 +704,19 @@ int lancePartie(SDL_Surface* affichage)
             gameOn = false;
             renvoyer=3;
             break;
-            /*
-            case SDL_VIDEORESIZE:
-                affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
-                AffEffaceEcran(affichage);
-                AffCartesJoueursJeu(affichage,t);
-                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-                apply_surface(0,0,rotozoomSurface(affichage,0,(double)event.resize.w/1024,0),affichage);
-                SDL_Flip(affichage);
-                break;
-            */
+        case SDL_VIDEORESIZE:
+
+
+
+            affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
+            AffEffaceEcran(affichage);
+            AffCartesJoueursJeu(affichage,t);
+            AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+            apply_surface(0,0,rotozoomSurface(affichage,0,(double)event.resize.w/1024,0),affichage);
+            SDL_Flip(affichage);
+            break;
+
+
         case SDL_KEYDOWN :
             switch (event.key.keysym.sym)
             {

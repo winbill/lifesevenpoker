@@ -13,6 +13,7 @@
 //Librairies Standard.
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 //Librairies SDL.
 #include <SDL/SDL.h>
