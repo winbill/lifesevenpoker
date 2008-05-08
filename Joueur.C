@@ -73,6 +73,7 @@ Joueur* creeJoueur()
 
 void setStatutJoueur (Joueur & joueur, const Statut statut)
 {
+
     joueur.statut=statut;
 }
 
