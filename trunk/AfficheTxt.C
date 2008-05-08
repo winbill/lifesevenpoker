@@ -66,7 +66,7 @@ void afficheInfoJoueur(const Joueur & j)
     printf("pseudo : %s\n",j.pseudo);
     printf("idJoueur : %d\n",j.idJoueur);
     printf("mise : %d\n",j.mise);
-    printf("statut : %d\n",j.statut);
+    printf("statut : %d\n",(int)j.statut);
     printf("type : %d\n",j.type);
     printf("-----FIN-----\n");
 

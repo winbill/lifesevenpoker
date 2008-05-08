@@ -13,6 +13,14 @@
 #include "IArtificielle.h"
 #include "MainCarte.h"
 
+
+
+
+
+
+
+
+
 /** 	@brief Statut du joueur
 */
 enum Statut
@@ -172,7 +180,7 @@ MainCarte* getMainJoueur(const Joueur & joueur);
 	@param [in] n Un entier.
 	@param [in,out] joueur Un joueur.
 */
-void setArgentJoueur(Joueur & joueur, const int & n);
+void setArgentJoueur(Joueur & joueur, int n);
 
 /**	@brief Recupere le montant que possede un joueur.
 	@param [in,out] joueur Un joueur.
@@ -184,7 +192,6 @@ int getArgentJoueur(const Joueur & joueur);
     @note fonction debug
 */
 void afficheInfoJoueur(const Joueur & j);
-
 
 
 

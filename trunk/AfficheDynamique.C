@@ -173,6 +173,7 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,in
 void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b,int style,int size)
 {
 
+
     //La surface où on va coller le message
     SDL_Surface* texte;
     //Le Font qu'on va utiliser
@@ -367,8 +368,12 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     int posx = getPositionJoueurX(j);
     int posy = getPositionJoueurY(j);
     char message[30];
-    sprintf(message,"%s",j.pseudo);
+    TTF_Font *font;
+    int h,w1,w2,w3;
 
+    sprintf(message,"%s",j.pseudo);
+    font = TTF_OpenFont( "./fonts/Qlassik_TB.otf", 22 );
+    TTF_SizeText(font,message,&w1,&h);
 
     if (getIdJoueur(j) != joueurJouant)
     {
@@ -405,14 +410,27 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
         break;
     }
 
+
+    font = TTF_OpenFont( "./fonts/Qlassik_TB.otf", 18 );
+
+
+
     AffAfficheTexte(affichage,message,posx,posy+20*1,255,255,255,TTF_STYLE_NORMAL,18);
 
     sprintf(message,"%d",j.argent);
-    AffAfficheTexte(affichage,message,posx+50,posy+20*1,255,255,255,TTF_STYLE_NORMAL,18);
+    TTF_SizeText(font,message,&w2,&h);
+
+    AffAfficheTexte(affichage,message,posx+w1-w2,posy+20*1,255,255,255,TTF_STYLE_NORMAL,18);
 
 
-    sprintf(message,"Mise actuelle: %d",j.mise);
+    sprintf(message,"Mise :");
     AffAfficheTexte(affichage,message,posx,posy+20*2+91,255,255,255,TTF_STYLE_NORMAL,18);
+
+    sprintf(message,"%d",j.mise);
+    TTF_SizeText(font,message,&w3,&h);
+
+
+    AffAfficheTexte(affichage,message,posx+w1-w3,posy+20*2+91,255,255,255,TTF_STYLE_NORMAL,18);
 
 
     if (j.idJoueur == getPositionDealerTable(table))
@@ -518,6 +536,7 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
     {
         const int largeurCarte = 189;
         const int hauteurCarte = 260;
+
         int x;
         int y;
         int j;
@@ -525,10 +544,10 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
         {
             for (j=0;j<2;j++)
             {
-                int ecart =0;
+                int ecart =-30;
                 x = (affichage->w - 2*largeurCarte -ecart)/2+j*(largeurCarte+ecart)-100;
                 y = affichage->h - hauteurCarte - ecart;
-                AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x,y,0.8);
+                AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x,y+15,0.8);
             }
         }
         else
@@ -540,7 +559,7 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
                 x= getPositionJoueurX(*t.joueur[i]);
                 y= getPositionJoueurY(*t.joueur[i]);
 
-                AffAfficheCarte(affichage, NULL,x+j*20+10,y+40,0.35);
+                AffAfficheCarte(affichage, NULL,x+j*20+3,y+40,0.35);
             }
         }
 
@@ -568,7 +587,7 @@ void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
 
     AffAfficheTexte(affichage,message,620,530+20*0,255,255,255,TTF_STYLE_UNDERLINE,22);
 
-    printf("%d\n",(int)j.statut);
+
     switch (j.statut)
     {
     case SIT:
@@ -611,16 +630,19 @@ void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
 
 }
 
+
+
 int lancePartie(SDL_Surface* affichage)
 {
-    const int nombreJoueurPC = 4;
+    const int NOMBRE_JOUEUR_PC = 4;
+    const int ARGENT_DEPART = 1000;
     Table t;
     PileCarte p;
 
     initTable(t);
     initPileCarte(p);
 
-    setMaxJoueurTable(t,nombreJoueurPC+1);
+    setMaxJoueurTable(t,NOMBRE_JOUEUR_PC+1);
 
     t.pileCarte = &p;
     char nom[20];
@@ -628,14 +650,14 @@ int lancePartie(SDL_Surface* affichage)
     Joueur* player;
     Joueur* joueurs[10];
 
-    for (int i=0;i<nombreJoueurPC;i++)
+    for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
     {
-        sprintf(nom,"%s%d","Ordinateur",i);
+        sprintf(nom,"%s%d","Ordinhn,n,n,ateur",i);
         joueurs[i]=creeJoueur();
         initJoueur(*joueurs[i],nom);
         ajoutJoueurTable(t,joueurs[i]);
-        setStatutJoueur(*joueurs[i],SIT);
         setTypeJoueur(*joueurs[i],IA);
+        setArgentJoueur(*joueurs[i],ARGENT_DEPART);
 
     }
 
@@ -644,7 +666,10 @@ int lancePartie(SDL_Surface* affichage)
     initJoueur(*player,"moi");
     setStatutJoueur(*player,SIT);
     setTypeJoueur(*player,JoueurLocal);
+    setArgentJoueur(*player,ARGENT_DEPART);
     ajoutJoueurTable(t,player);
+
+
 
     afficheInfoTable(t);
 
@@ -726,7 +751,7 @@ int lancePartie(SDL_Surface* affichage)
         }
     }
 
-    for (int i=0;i<nombreJoueurPC;i++)
+    for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
     {
         joueurDetruit(joueurs[i]);
         joueurs[i]=NULL;
