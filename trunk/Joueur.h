@@ -94,6 +94,19 @@ void setStatutJoueur (Joueur & joueur, const Statut statut);
 */
 Statut getStatutJoueur (Joueur & joueur);
 
+
+
+
+
+
+void setTypeJoueur(Joueur & joueur, const TypeJoueur typejoueur);
+
+TypeJoueur getTypeJoueur(Joueur & joueur);
+
+
+
+
+
 /**	@brief Libere les allocations memoire internes a la structure joueur.
 	@param [in,out] joueur Un joueur.
 */

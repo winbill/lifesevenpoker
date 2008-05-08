@@ -32,7 +32,10 @@ int getMainCarteNbCarte(const MainCarte & m)
     return m.nCarte;
 }
 
-
+Carte* getMainCarteIemeCarte(const MainCarte & m, int i)
+{
+    return m.tabMain[i];
+}
 
 
 
