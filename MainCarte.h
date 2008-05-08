@@ -56,6 +56,16 @@ void initialisationMain(MainCarte & m);
 int getMainCarteNbCarte(const MainCarte & m);
 
 
+
+
+
+Carte* getMainCarteIemeCarte(const MainCarte & m, int i)
+
+
+
+
+
+
 /** @brief Procedure ajoutant une carte dans la main.
     @param Prend en entree une variable de type MainCarte et une variable de type Carte.
     @return Ajoute une valeur au tableau du champ de MainCarte tabMain.

@@ -344,7 +344,58 @@ void AffAfficheCredits(SDL_Surface* affichage)
 }
 
 
+void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y)
+{
+    if(c!=NULL)
+    {
+        path carteP = c->nomFichier;
+        SDL_Surface carte = load_image(carteP);
 
+        apply_surface(x,y,carteP,affichage);
+
+        SDL_FreeSurface(carte);
+    }
+    else
+    {
+        path carteP = "img/doscarte.jpg";
+        SDL_Surface carte = load_image(carteP);
+
+        apply_surface(x,y,carteP,affichage);
+
+        SDL_FreeSurface(carte);
+    }
+}
+
+void AffDistribuer2CartesJoueursJeu(SDL_Surface* affichage, Table t)
+{
+    distribuer2CartesJoueursJeu(t);
+
+    int i = 0;
+    while( getIemeJoueur(t,i) != NULL)
+    {
+        if( getTypeJoueur( *getIemeJoueur(t,i)) == JoueurLocal)
+        {
+            int j; const int largeurCarte = 189; const int hauteurCarte = 260;
+            for(j=0;j<2;j++)
+            {
+                Carte* carte= getMainCarteIemeCarte( *getMainJoueur( *getIemeJoueur(t,i) ) , j );
+                AffAfficheCarte(affichage, carte, int(((affichage->w - largeurCarte) /2)+ (j+1)*(largeurCarte / 5)), int( affichage->h - hauteurCarte));
+            }
+        }
+        else
+        {
+            assert(getTypeJoueur( *getIemeJoueur(t,i)) != DEF_TYPE_JOUEUR);
+
+            int j; const int largeurCarte = 189; const int hauteurCarte = 260;
+            for(j=0;j<2;j++)
+            {
+                AffAfficheCarte(affichage, NULL, /*POSITION JOUEUR ??? */ , /* IDEM */);
+            }
+        }
+
+        i++;
+    }
+}
 
 void AffAfficheJoueur(SDL_Surface* affichage, Joueur j, int posx, int posy)
 {

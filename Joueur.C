@@ -63,6 +63,15 @@ Statut getStatutJoueur (Joueur & joueur)
     return joueur.statut;
 }
 
+void setTypeJoueur(Joueur & joueur, const TypeJoueur typejoueur)
+{
+    joueur.type = typejoueur;
+}
+
+TypeJoueur getTypeJoueur(Joueur & joueur)
+{
+    return joueur.type;
+}
 
 void joueurLibere(Joueur & joueur)
 {
