@@ -87,7 +87,7 @@ void nouvellePileCarte(PileCarte & pileCarte)
 
 int hasard(int x,int y)
 {
-    static int first=1;
+    static int first=0;
     if(first == 0)
     {
         srand (time (NULL));
