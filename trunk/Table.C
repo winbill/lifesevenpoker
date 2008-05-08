@@ -88,6 +88,7 @@ void ajoutJoueurTable (Table & table,Joueur* joueur)
        table.joueur[i] = joueur;
        setNJoueurTable(table,getNJoueurTable(table)+1);
        setIdJoueur(*joueur,i);
+       setStatutJoueur(*joueur,SIT);
 }
 
 
@@ -97,6 +98,7 @@ void supprimeJoueurTable (Table & table,Joueur* joueur)
        setNJoueurTable(table,getNJoueurTable(table)-1);
        table.joueur[joueur->idJoueur]=NULL;
        setIdJoueur(*joueur,-1);
+        setStatutJoueur(*joueur,SIT_OUT);
 }
 
 

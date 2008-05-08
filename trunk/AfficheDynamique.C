@@ -13,6 +13,7 @@
 #include "AfficheDynamique.h"
 #include "Joueur.h"
 #include "Table.h"
+#include "AfficheTxt.h"
 
 
 //Librairies Standard.
@@ -207,9 +208,12 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,in
     SDL_FreeSurface(texte);
 
 }
-
-
 int AffMenu(SDL_Surface* affichage)
+{
+    return AffMenu(affichage,NULL,0);
+}
+
+int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant)
 {
 
     bool fin = false;
@@ -228,6 +232,18 @@ int AffMenu(SDL_Surface* affichage)
     apply_surface(menuRect.x,menuRect.y,menu,affichage);
     SDL_Flip(affichage);
 
+//on precharge
+
+    AffEffaceEcran(affichage);
+    if(t !=NULL)
+    {   AffEffaceEcran(affichage);
+        AffCartesJoueursJeu(affichage,*t);
+        AffCarteDecouvertes(*t,affichage);
+        AffAffichageInfosJoueurs(affichage,*t,joueurJouant);
+    }
+
+
+
     while (fin!=true)
     {
         SDL_PollEvent(&event);
@@ -242,6 +258,7 @@ int AffMenu(SDL_Surface* affichage)
             if (event.key.keysym.sym == SDLK_ESCAPE)
             {
                 SDL_FreeSurface(menu);
+                printf("%d\n",0);
                 return 0;
             }
             break;
@@ -311,7 +328,7 @@ int AffMenu(SDL_Surface* affichage)
     return 0;
 }
 
-
+/*
 void AffAfficheCredits(SDL_Surface* affichage)
 {
     bool fin=false;
@@ -342,42 +359,76 @@ void AffAfficheCredits(SDL_Surface* affichage)
 
     SDL_FreeSurface(credits);
 }
-
+*/
 
 void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom)
 {
+    SDL_Surface* carte;
     if (c== NULL)
-    {
-        SDL_Surface* carte=load_image("img/doscarte.jpg");
-        //SDL_Surface *rotozoomSurface(SDL_Surface * src, double angle, double zoom, int smooth);
-        apply_surface(x,y,rotozoomSurface(carte, 0, zoom, 0),affichage);
-        SDL_FreeSurface(carte);
-    }
+        carte=load_image("img/doscarte.jpg");
     else
-    {
-        SDL_Surface* carte=load_image(c->nomFichier);
-        //SDL_Surface *rotozoomSurface(SDL_Surface * src, double angle, double zoom, int smooth);
-        apply_surface(x,y,rotozoomSurface(carte, 0, zoom, 0),affichage);
-        SDL_FreeSurface(carte);
-    }
+        carte=load_image(c->nomFichier);
+
+    apply_surface(x,y,rotozoomSurface(carte, 0, zoom, 1),affichage);
+    SDL_FreeSurface(carte);
 }
 
 
 
-void AffAfficheJoueur(SDL_Surface* affichage, Joueur j)
+void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & table,int joueurJouant)
 {
     int posx = getPositionJoueurX(j);
     int posy = getPositionJoueurY(j);
     char message[30];
     sprintf(message,"%s",j.pseudo);
-    AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_UNDERLINE,24);
-    sprintf(message,"Argent: %d",j.argent);
-    AffAfficheTexte(affichage,message,posx,posy+30*1,255,255,255,TTF_STYLE_NORMAL,18);
+
+
+    if (getIdJoueur(j) != joueurJouant)
+    {
+        AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_UNDERLINE,22);
+    }
+    else
+    {
+        AffAfficheTexte(affichage,message,posx,posy+30*0,255,0,0,TTF_STYLE_UNDERLINE,22);
+    }
+
+
+    switch (j.statut)
+    {
+    case 1:
+        sprintf(message,"assis");
+    case 2:
+        sprintf(message,"mise");
+    case 3:
+        sprintf(message,"check");
+    case 4:
+        sprintf(message,"relance");
+    case 5:
+        sprintf(message,"couché");
+    case 6:
+        sprintf(message,"tapis");
+    default:
+        sprintf(message,"aa");
+    }
+
+    AffAfficheTexte(affichage,message,posx,posy+20*1,255,255,255,TTF_STYLE_NORMAL,18);
+
+    sprintf(message,"%d",j.argent);
+    AffAfficheTexte(affichage,message,posx+50,posy+20*1,255,255,255,TTF_STYLE_NORMAL,18);
+
+
     sprintf(message,"Mise actuelle: %d",j.mise);
-    AffAfficheTexte(affichage,message,posx,posy+30*2,255,255,255,TTF_STYLE_NORMAL,18);
+    AffAfficheTexte(affichage,message,posx,posy+20*2+91,255,255,255,TTF_STYLE_NORMAL,18);
+
+
+    if (j.idJoueur == getPositionDealerTable(table))
+    {
+        sprintf(message,"Dealer");
+        AffAfficheTexte(affichage,message,posx,posy+91+20*3,255,0,0,TTF_STYLE_BOLD,20);
+    }
 }
 
-void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t)
+void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJouant)
 {
     const int LARGEUR=200;
 
@@ -434,21 +485,21 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t)
 
     for (i=0;i<d;i++)
     {
-        setPositionJoueurX(*t.joueur[i],bordure);
-        setPositionJoueurY(*t.joueur[i],200+200*i);
-        AffAfficheJoueur(affichage,*t.joueur[i]);
+        setPositionJoueurX(*t.joueur[(d-1)-i],bordure);
+        setPositionJoueurY(*t.joueur[(d-1)-i],200+200*i);
+        AffAfficheJoueur(affichage,*t.joueur[(d-1)-i],t,joueurJouant);
     }
     for (i=d;i<h+d;i++)
     {
-        setPositionJoueurX(*t.joueur[i],separation*(i-d+1)+LARGEUR*(i-d));
+        setPositionJoueurX(*t.joueur[i],bordure+separation*(i-d+1)+LARGEUR*(i-d));
         setPositionJoueurY(*t.joueur[i],bordure);
-        AffAfficheJoueur(affichage,*t.joueur[i]);
+        AffAfficheJoueur(affichage,*t.joueur[i],t,joueurJouant);
     }
     for (i=h+d;i<g+h+d;i++)
     {
-        setPositionJoueurX(*t.joueur[i],812);
+        setPositionJoueurX(*t.joueur[i],862);
         setPositionJoueurY(*t.joueur[i],200+200*(i-h-d));
-        AffAfficheJoueur(affichage,*t.joueur[i]);
+        AffAfficheJoueur(affichage,*t.joueur[i],t,joueurJouant);
     }
 }
 
@@ -465,9 +516,8 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t)
 */
 
 
-void AffDistribuer2CartesJoueursJeu(SDL_Surface* affichage, Table t)
+void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
 {
-    distribuer2CartesJoueursJeu(t);
 
     int i = 0;
     while ( getIemeJoueur(t,i) != NULL)
@@ -481,11 +531,10 @@ void AffDistribuer2CartesJoueursJeu(SDL_Surface* affichage, Table t)
         {
             for (j=0;j<2;j++)
             {
-                Carte* carte= getMainCarteIemeCarte( *getMainJoueur( *getIemeJoueur(t,i) ) , j );
-                int ecart = 20;
-                x = (affichage->w - 2*largeurCarte -ecart)/2+j*(largeurCarte+ecart);
+                int ecart =0;
+                x = (affichage->w - 2*largeurCarte -ecart)/2+j*(largeurCarte+ecart)-100;
                 y = affichage->h - hauteurCarte - ecart;
-                AffAfficheCarte(affichage, carte,x,y,1);
+                AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x,y,0.8);
             }
         }
         else
@@ -497,16 +546,73 @@ void AffDistribuer2CartesJoueursJeu(SDL_Surface* affichage, Table t)
                 x= getPositionJoueurX(*t.joueur[i]);
                 y= getPositionJoueurY(*t.joueur[i]);
 
-                AffAfficheCarte(affichage, NULL,x+j*20,y+90,0.35);
+                AffAfficheCarte(affichage, NULL,x+j*20+10,y+40,0.35);
             }
         }
 
         i++;
     }
 }
+
+void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage)
+{
+    int i;
+    for (i=0;i<getMainCarteNbCarte(*(t.carteDecouverte));i++)
+    {
+        AffAfficheCarte(affichage,getMainCarteIemeCarte(*(t.carteDecouverte),i),(113+5)*(i)+210,250,0.6);
+    }
+
+
+
+}
+
+void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
+{
+    char message[30];
+    sprintf(message,"%s",j.pseudo);
+
+
+    AffAfficheTexte(affichage,message,620,530+20*0,255,255,255,TTF_STYLE_UNDERLINE,22);
+
+
+    switch (j.statut)
+    {
+    case SIT:
+        sprintf(message,"assis");
+    case CALL:
+        sprintf(message,"mise");
+    case CHECK:
+        sprintf(message,"check");
+    case RAISE:
+        sprintf(message,"relance");
+    case FOLD:
+        sprintf(message,"couché");
+    case ALL_IN:
+        sprintf(message,"tapis");
+    default:
+        sprintf(message,"aa");
+    }
+
+    AffAfficheTexte(affichage,message,620,530+20*1,255,255,255,TTF_STYLE_NORMAL,18);
+
+    sprintf(message,"%d",j.argent);
+    AffAfficheTexte(affichage,message,620+50,530+20*1,255,255,255,TTF_STYLE_NORMAL,18);
+
+
+    sprintf(message,"Mise actuelle: %d",j.mise);
+    AffAfficheTexte(affichage,message,620,530+20*2,255,255,255,TTF_STYLE_NORMAL,18);
+
+    if (j.idJoueur == getPositionDealerTable(table))
+    {
+        sprintf(message,"Dealer");
+        AffAfficheTexte(affichage,message,620,530+20*3,255,0,0,TTF_STYLE_BOLD,20);
+    }
+
+}
+
 int lancePartie(SDL_Surface* affichage)
 {
-    const int nombreJoueurPC = 7;
+    const int nombreJoueurPC = 4;
     Table t;
     PileCarte p;
 
@@ -539,14 +645,28 @@ int lancePartie(SDL_Surface* affichage)
     setTypeJoueur(*player,JoueurLocal);
     ajoutJoueurTable(t,player);
 
+    afficheInfoTable(t);
+
+
     SDL_Event event;
     bool gameOn=true;
     printf("lance jeu\n");
-    AffEffaceEcran(affichage);
-    AffAffichageInfosJoueurs(affichage,t);
-    SDL_Flip(affichage);
     int renvoyer=0;
-    AffDistribuer2CartesJoueursJeu(affichage, t);
+    int joueurJouant = 0;
+
+
+    distribuer2CartesJoueursJeu(t);
+    distribuer1CarteDecouverteJeu(t,5);
+
+    AffEffaceEcran(affichage);
+    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+
+    AffCarteDecouvertes(t,affichage);
+    AffCartesJoueursJeu(affichage,t);
+    AffInfosJoueur(affichage,*player,t);
+    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+
+
     SDL_Flip(affichage);
     while (gameOn)
     {
@@ -560,6 +680,16 @@ int lancePartie(SDL_Surface* affichage)
             gameOn = false;
             renvoyer=3;
             break;
+            /*
+            case SDL_VIDEORESIZE:
+                affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
+                AffEffaceEcran(affichage);
+                AffCartesJoueursJeu(affichage,t);
+                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                apply_surface(0,0,rotozoomSurface(affichage,0,(double)event.resize.w/1024,0),affichage);
+                SDL_Flip(affichage);
+                break;
+            */
         case SDL_KEYDOWN :
             switch (event.key.keysym.sym)
             {
@@ -568,7 +698,7 @@ int lancePartie(SDL_Surface* affichage)
                 renvoyer=3;
                 break;
             case SDLK_m:
-                switch (AffMenu(affichage))
+                switch (AffMenu(affichage,&t,joueurJouant))
                 {
                 case 1:
                     gameOn = false;
@@ -579,9 +709,12 @@ int lancePartie(SDL_Surface* affichage)
                     renvoyer=3;
                     break;
                 case 0:
-                    AffEffaceEcran(affichage);
-                    AffAffichageInfosJoueurs(affichage,t);
-                    SDL_Flip(affichage);
+                        AffEffaceEcran(affichage);
+                        AffCartesJoueursJeu(affichage,t);
+                        AffCarteDecouvertes(t,affichage);
+                        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                        AffInfosJoueur(affichage,*player,t);
+                        SDL_Flip(affichage);
                     break;
                 }
                 break;

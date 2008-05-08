@@ -31,8 +31,8 @@
 */
 typedef char path[100];
 
-int AffMenu(SDL_Surface* affichage);
 
+int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant);
 int AffMenu(SDL_Surface* affichage);
 
 void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b);
@@ -53,16 +53,16 @@ int lancePartie(SDL_Surface* affichage);
 
 void AffAfficheCredits(SDL_Surface* affichage);
 
+void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t);
 
 
+void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage);
 
+void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom);
 
+void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & table,int joueurJouant);
 
-
-
-
-
-
+void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJouant);
 
 
 
