@@ -638,7 +638,7 @@ int lancePartie(SDL_Surface* affichage)
     const int ARGENT_DEPART = 1000;
     Table t;
     PileCarte p;
-
+    double zoom = 1;
 
     initTable(t);
     initPileCarte(p);
@@ -707,12 +707,12 @@ int lancePartie(SDL_Surface* affichage)
         case SDL_VIDEORESIZE:
 
 
-
+            zoom = (double)event.resize.w/1024;
             affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
             AffEffaceEcran(affichage);
             AffCartesJoueursJeu(affichage,t);
             AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-            apply_surface(0,0,rotozoomSurface(affichage,0,(double)event.resize.w/1024,0),affichage);
+            apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
             SDL_Flip(affichage);
             break;
 
@@ -736,12 +736,17 @@ int lancePartie(SDL_Surface* affichage)
                     renvoyer=3;
                     break;
                 case 0:
+
                     AffEffaceEcran(affichage);
                     AffCartesJoueursJeu(affichage,t);
                     AffCarteDecouvertes(t,affichage);
                     AffAffichageInfosJoueurs(affichage,t,joueurJouant);
                     AffInfosJoueur(affichage,*player,t);
-                    SDL_Flip(affichage);
+                    if (zoom != 1)
+                    {
+                        apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
+                                  }
+                                  SDL_Flip(affichage);
                     break;
                 }
                 break;
