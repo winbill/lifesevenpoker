@@ -25,6 +25,7 @@
 					<Add library="SDLmain" />
 					<Add library="SDL_ttf" />
 					<Add library="SDL_image" />
+					<Add library="SDL_gfx" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -42,6 +43,7 @@
 					<Add library="SDLmain" />
 					<Add library="SDL_image" />
 					<Add library="SDL_ttf" />
+					<Add library="SDL_gfx" />
 				</Linker>
 			</Target>
 		</Build>
@@ -57,6 +59,7 @@
 			<Add library="SDLmain" />
 			<Add library="SDL_ttf" />
 			<Add library="SDL_image" />
+			<Add library="SDL_gfx" />
 		</Linker>
 		<Unit filename="AfficheDynamique.C">
 			<Option compilerVar="CC" />
