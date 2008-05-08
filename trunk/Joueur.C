@@ -24,7 +24,8 @@ void initJoueur(Joueur & joueur)
 
     joueur.pseudo = new char[20];
     memset(joueur.pseudo,0,sizeof(*joueur.pseudo)*20);
-
+    joueur.posX=0;
+    joueur.posY =0;
 
     joueur.idJoueur=-1;
     joueur.mise=0;
@@ -32,6 +33,24 @@ void initJoueur(Joueur & joueur)
     joueur.mainJoueur=new MainCarte;
     initialisationMain(*(joueur).mainJoueur);
     joueur.type=DEF_TYPE_JOUEUR;
+}
+
+
+int getPositionJoueurX(const Joueur & j)
+{
+    return j.posX;
+}
+int getPositionJoueurY(const Joueur & j)
+{
+    return j.posY;
+}
+void setPositionJoueurX(Joueur & j,int x)
+{
+    j.posX=x;
+}
+void setPositionJoueurY(Joueur & j,int y)
+{
+    j.posY=y;
 }
 
 

@@ -59,7 +59,7 @@ int getMainCarteNbCarte(const MainCarte & m);
 
 
 
-Carte* getMainCarteIemeCarte(const MainCarte & m, int i)
+Carte* getMainCarteIemeCarte(const MainCarte & m, int i);
 
 
 
