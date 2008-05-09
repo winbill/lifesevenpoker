@@ -27,6 +27,8 @@
 int main (/*int argc, char** argv */)
 {
 
+
+
     SDL_Surface* affichage;
     path caption="Life\'Seven Poker";
 
@@ -39,7 +41,7 @@ int main (/*int argc, char** argv */)
 
     //Chargement des fichiers
     path backgroundP="img/bkgrd.jpg";
-    SDL_Surface* background=load_image(backgroundP);
+    SDL_Surface* tapis=load_image(backgroundP);
 
 
 
@@ -51,8 +53,8 @@ int main (/*int argc, char** argv */)
 
 
 
-    AffStartUp(affichage);
-    AffEffaceEcran(affichage);
+    AffStartUp(affichage,tapis);
+    AffAfficheTapis(affichage,tapis);
     SDL_Flip(affichage);
     int nouvellePartie=1;
     int v;
@@ -62,10 +64,10 @@ int main (/*int argc, char** argv */)
 
         while(nouvellePartie)
         {
-            AffEffaceEcran(affichage);
+            AffAfficheTapis(affichage,tapis);
             SDL_Flip(affichage);
             nouvellePartie = 0;
-            v=lancePartie(affichage);
+            v=lancePartie(affichage,tapis);
             if(v==1)
                 nouvellePartie=1;
         }
@@ -89,8 +91,7 @@ int main (/*int argc, char** argv */)
 
 
 
-
-    SDL_FreeSurface(background);
+    SDL_FreeSurface(tapis);
     SDL_FreeSurface(affichage);
     SDL_Quit();
 

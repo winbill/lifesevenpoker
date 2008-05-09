@@ -42,9 +42,9 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,in
 
 void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b);
 void AffActualiser(SDL_Surface* affichage);
-void AffEffaceEcran(SDL_Surface* aff);
 
-void AffAfficheTapis(SDL_Surface* aff);
+
+void AffAfficheTapis(SDL_Surface* aff,SDL_Surface* tapis);
 
 
 

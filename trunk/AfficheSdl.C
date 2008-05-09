@@ -150,18 +150,13 @@ void AffActualiser(SDL_Surface* affichage)
     SDL_Flip(affichage);
     //SDL_UpdateRect(affichage, 0, 0, 0, 0);
 }
-void AffEffaceEcran(SDL_Surface* aff)
-{
-    AffAfficheTapis(aff);
-}
 
 
-void AffAfficheTapis(SDL_Surface* aff)
+
+void AffAfficheTapis(SDL_Surface* aff,SDL_Surface* tapis)
 {
-    path tapisP = "img/bkgrd.jpg";
-    SDL_Surface* tapis = load_image(tapisP);
     apply_surface(0,0,tapis,aff);
-    SDL_FreeSurface(tapis);
+
 }
 
 
