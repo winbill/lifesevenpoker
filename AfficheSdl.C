@@ -93,8 +93,11 @@ void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom
     else
         carte=load_image(c->nomFichier);
 
-    apply_surface(x,y,rotozoomSurface(carte, 0, zoom, 1),affichage);
+    SDL_Surface* surfaceZoom = rotozoomSurface(carte, 0, zoom, 1);
     SDL_FreeSurface(carte);
+    apply_surface(x,y,surfaceZoom,affichage);
+    SDL_FreeSurface(surfaceZoom);
+
 }
 
 
