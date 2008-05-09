@@ -70,6 +70,8 @@ struct Joueur
 	int posY;
 };
 
+void actionJoueur(Joueur & j,Statut s,int & montant,int relance);
+
 int getPositionJoueurX(const Joueur & j);
 
 int getPositionJoueurY(const Joueur & j);
@@ -194,7 +196,7 @@ int getArgentJoueur(const Joueur & joueur);
 void afficheInfoJoueur(const Joueur & j);
 
 
-void actionJoueur(Joueur & j,Statut s,int & montant,int relance);
+
 
 #endif
 

@@ -28,8 +28,11 @@
 
 #ifndef Table_H
 #define Table_H
+
 #include "MainCarte.h"
 #include "Joueur.h"
+
+
 
 /**
 	@struct Table
