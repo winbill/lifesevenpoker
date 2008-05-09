@@ -610,6 +610,7 @@ int lancePartie(SDL_Surface* affichage)
     int joueurRestant =0;
     int relance = 0;
     int a;
+    int montant;
     Statut statut;
     joueurRestant++;
 
@@ -633,6 +634,7 @@ int lancePartie(SDL_Surface* affichage)
         joueurJouant =getJoueurSuivant(t,joueurJouant);
         joueurGrosseBlind(t,*t.joueur[joueurJouant]);
         joueurJouant =getJoueurSuivant(t,joueurJouant);
+        montant = getPetiteBlindTable(t)*2;
 
 
         AffEffaceEcran(affichage);
@@ -645,6 +647,8 @@ int lancePartie(SDL_Surface* affichage)
 
         while (finTour && gameOn)
         {
+
+
             while (retour)
             {
                 a = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut);
@@ -657,13 +661,15 @@ int lancePartie(SDL_Surface* affichage)
                 else if (a==0)
                 {
                     //affichageMenu
-                }else{
-
+                }
+                else
+                {
+                    actionJoueur(*t.joueur[joueurJouant],statut,montant,relance);
                     retour=false;
                 }
             }
             retour = true;
-            joueurJouant =getJoueurSuivant(t,joueurJouant);
+
 
 
             SDL_PollEvent(&event);
@@ -719,6 +725,15 @@ int lancePartie(SDL_Surface* affichage)
                 }
                 break;
             }
+
+            joueurJouant =getJoueurSuivant(t,joueurJouant);
+            AffEffaceEcran(affichage);
+            AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+            AffCarteDecouvertes(t,affichage);
+            AffCartesJoueursJeu(affichage,t);
+            AffInfosJoueur(affichage,*player,t);
+            AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+            SDL_Flip(affichage);
         }
     }
 

@@ -30,6 +30,7 @@
 #include "Table.h"
 #include "AfficheTxt.h"
 #include "AfficheSdl.h"
+#include "Jeu.h"
 
 /** @brief Type cree pour manipuler les chemins de fichier.
 

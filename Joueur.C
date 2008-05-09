@@ -95,7 +95,7 @@ TypeJoueur getTypeJoueur(Joueur & joueur)
 void joueurLibere(Joueur & joueur)
 {
     MainCarteLibere(*joueur.mainJoueur);
-   delete[] joueur.pseudo;
+    delete[] joueur.pseudo;
     delete joueur.mainJoueur;
 }
 
@@ -182,34 +182,52 @@ struct Joueur
 	TypeJoueur type;
 };
 */
-/*
+
 void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
 {
     int a;
-    switch(s)
+    switch (s)
     {
-        case 1:
+    case SIT_OUT:
         setStatutJoueur(j,s);
         break;
-        case 2:
-        assert(j.statut == 1);
+    case SIT:
+        assert(j.statut == SIT_OUT);
         setStatutJoueur(j,s);
         break;
-        case 3:
+    case CALL:
         a = montant - getMiseJoueur(j);
+        printf("a:%d argent:%d\n",a,getArgentJoueur(j));
         assert(a > 0 && getArgentJoueur(j) > a);
         ajoutMiseJoueur(j,a);
         setArgentJoueur(j,getArgentJoueur(j)-a);
         setStatutJoueur(j,s);
         break;
-        case 4:
+    case CHECK:
         assert(montant == getMiseJoueur(j));
         setStatutJoueur(j,s);
         break;
-        case 5:
-        a = montant - getMiseJoueur(j);
+    case RAISE:
         assert(a >= 0 && getArgentJoueur(j) > ( a + relance));
+        ajoutMiseJoueur(j,a+relance);
+        setArgentJoueur(j,getArgentJoueur(j)-a-relance);
+        setStatutJoueur(j,s);
+        montant = a+relance;
         break;
+    case FOLD:
+        setStatutJoueur(j,s);
+        break;
+    case ALL_IN:
+        a = montant - getMiseJoueur(j);
+        assert(getArgentJoueur(j)+getMiseJoueur(j) >= montant );
+        ajoutMiseJoueur(j,getArgentJoueur(j));
+        setStatutJoueur(j,s);
+        montant = a+getArgentJoueur(j);
+        setArgentJoueur(j,0);
+    default:
+        break;
+
+
     }
 }
-*/
+
