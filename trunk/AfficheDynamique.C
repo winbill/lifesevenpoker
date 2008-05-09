@@ -500,6 +500,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s)
         case SDL_KEYDOWN :
             if (event.key.keysym.sym == SDLK_m)
             {
+                SDL_FreeSurface(bouton);
                 return 0;
             }
             break;
@@ -520,8 +521,9 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s)
                         s=RAISE;
                         relance = 50;
                         break;
-                        SDL_FreeSurface(bouton);
+
                     }
+                    SDL_FreeSurface(bouton);
                     return 1;
                 }
             }
@@ -538,9 +540,9 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s)
         }
 
 
-        SDL_FreeSurface(bouton);
-        return 0;
+
     }
+    SDL_FreeSurface(bouton);
     return 0;
 }
 
@@ -637,15 +639,17 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         AffCartesJoueursJeu(affichage,t);
         AffInfosJoueur(affichage,*player,t);
         AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+        if (zoom != 1)
+            apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
         SDL_Flip(affichage);
-/*
+
         while (finTour && gameOn)
         {
 
 
             while (retour)
             {
-                / = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut);
+                a = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut);
                 if (a==-1)
                 {
                     gameOn = false;
@@ -662,7 +666,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     retour=false;
                 }
             }
-            retour = true;*/
+            retour = true;
 
 
 
@@ -727,6 +731,8 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             AffCartesJoueursJeu(affichage,t);
             AffInfosJoueur(affichage,*player,t);
             AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+            if (zoom != 1)
+                apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
             SDL_Flip(affichage);
         }
     }
