@@ -17,7 +17,7 @@
 
 
 
-Statut atendsActionJoueur(SDL_Surface* aff,const Joueur & j,int & relance);
+int atendsActionJoueur(SDL_Surface* aff,const Joueur & j,int & relance,Statut & statut);
 
 void joueurPetiteBlind(Table & t,Joueur & j);
 void joueurGrosseBlind(Table & t,Joueur & j);
