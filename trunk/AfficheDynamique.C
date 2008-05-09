@@ -638,14 +638,14 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         AffInfosJoueur(affichage,*player,t);
         AffAffichageInfosJoueurs(affichage,t,joueurJouant);
         SDL_Flip(affichage);
-
+/*
         while (finTour && gameOn)
         {
 
 
             while (retour)
             {
-                a = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut);
+                / = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut);
                 if (a==-1)
                 {
                     gameOn = false;
@@ -662,7 +662,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     retour=false;
                 }
             }
-            retour = true;
+            retour = true;*/
 
 
 
@@ -754,3 +754,4 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     return renvoyer;
 
 }
+
