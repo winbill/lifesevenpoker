@@ -200,9 +200,9 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     int posy = getPositionJoueurY(j);
     char message[30];
     TTF_Font *font;
-    int h,w1,w2,w3;
+    int h,w1;
 
-    sprintf(message,"%s",j.pseudo);
+    sprintf(message,"%s:%d",j.pseudo,j.argent);
     font = TTF_OpenFont( "./fonts/Qlassik_TB.otf", 22 );
     TTF_SizeText(font,message,&w1,&h);
 
@@ -218,56 +218,37 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
 
     switch (j.statut)
     {
-    case SIT:
-        sprintf(message,"assis");
-        break;
     case CALL:
-        sprintf(message,"mise");
+        sprintf(message,"mise : %d",j.mise);
         break;
     case CHECK:
         sprintf(message,"check");
         break;
     case RAISE:
-        sprintf(message,"relance");
+        sprintf(message,"relance : %d",j.mise);
         break;
     case FOLD:
-        sprintf(message,"couché");
+        sprintf(message,"couche");
         break;
     case ALL_IN:
-        sprintf(message,"tapis");
+        sprintf(message,"tapis : %d",j.mise);
         break;
     default:
-        sprintf(message,"aa");
+        sprintf(message," ");
         break;
     }
 
 
-    font = TTF_OpenFont( "./fonts/Qlassik_TB.otf", 18 );
+
+    AffAfficheTexte(affichage,message,posx,posy+20*1+91,255,255,255,TTF_STYLE_NORMAL,18);
 
 
-
-    AffAfficheTexte(affichage,message,posx,posy+20*1,255,255,255,TTF_STYLE_NORMAL,18);
-
-    sprintf(message,"%d",j.argent);
-    TTF_SizeText(font,message,&w2,&h);
-
-    AffAfficheTexte(affichage,message,posx+w1-w2,posy+20*1,255,255,255,TTF_STYLE_NORMAL,18);
-
-
-    sprintf(message,"Mise :");
-    AffAfficheTexte(affichage,message,posx,posy+20*2+91,255,255,255,TTF_STYLE_NORMAL,18);
-
-    sprintf(message,"%d",j.mise);
-    TTF_SizeText(font,message,&w3,&h);
-
-
-    AffAfficheTexte(affichage,message,posx+w1-w3,posy+20*2+91,255,255,255,TTF_STYLE_NORMAL,18);
 
 
     if (j.idJoueur == getPositionDealerTable(table))
     {
         sprintf(message,"Dealer");
-        AffAfficheTexte(affichage,message,posx,posy+91+20*3,255,0,0,TTF_STYLE_BOLD,20);
+        AffAfficheTexte(affichage,message,posx,posy+91+20*2,255,0,0,TTF_STYLE_BOLD,20);
     }
 }
 
@@ -385,12 +366,15 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
         {
             assert(getTypeJoueur( *getIemeJoueur(t,i)) != 1);
 
-            for (j=0;j<2;j++)
+            if (getStatutJoueur(*getIemeJoueur(t,i)) != FOLD and getStatutJoueur(*getIemeJoueur(t,i)) !=SIT_OUT)
             {
-                x= getPositionJoueurX(*t.joueur[i]);
-                y= getPositionJoueurY(*t.joueur[i]);
+                for (j=0;j<2;j++)
+                {
+                    x= getPositionJoueurX(*t.joueur[i]);
+                    y= getPositionJoueurY(*t.joueur[i]);
 
-                AffAfficheCarte(affichage, NULL,x+j*20+3,y+40,0.35);
+                    AffAfficheCarte(affichage, NULL,x+j*20+3,y+20,0.35);
+                }
             }
         }
 
@@ -646,7 +630,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         while (finTour && gameOn)
         {
 
-
+/*
             while (retour)
             {
                 a = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut);
@@ -666,7 +650,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     retour=false;
                 }
             }
-            retour = true;
+            retour = true;*/
 
 
 
@@ -678,7 +662,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 gameOn = false;
                 renvoyer=3;
                 break;
-            case SDL_VIDEORESIZE:
+            case SDL_VIDEORESIZE:/*
                 zoom = (double)event.resize.w/1024;
                 affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
                 AffAfficheTapis(affichage,tapis);
@@ -687,7 +671,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 AffAffichageInfosJoueurs(affichage,t,joueurJouant);
                 apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
                 SDL_Flip(affichage);
-                break;
+                break;*/
             case SDL_KEYDOWN :
                 switch (event.key.keysym.sym)
                 {
