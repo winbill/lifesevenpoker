@@ -462,29 +462,23 @@ void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
 }
 int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s)
 {
-
     bool fin = false;
     SDL_Event event;
 
     path boutonP="img/bouton.png";
     SDL_Surface* bouton;
     s=CALL;
-
     relance=0;
 
     bouton=load_image(boutonP);
     AffAfficheTexte(bouton,"Suivre",10,10,255,0,0,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4,bouton,affichage);
-
-
     bouton=load_image(boutonP);
     AffAfficheTexte(bouton,"Couche",10,10,255,0,0,TTF_STYLE_NORMAL,18);
-    apply_surface(620,530+20*5,bouton,affichage);
-
-
+    apply_surface(620,530+20*4+50,bouton,affichage);
     bouton=load_image(boutonP);
     AffAfficheTexte(bouton,"Relance",10,10,255,0,0,TTF_STYLE_NORMAL,18);
-    apply_surface(620,530+20*6,bouton,affichage);
+    apply_surface(620,530+20*4+100,bouton,affichage);
 
     SDL_Flip(affichage);
 
@@ -498,33 +492,70 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s)
         switch (event.type)
         {
         case SDL_QUIT :
-            fin=true;
+            SDL_FreeSurface(bouton);
+            return -1;
             break;
 
         case SDL_KEYDOWN :
-            if (event.key.keysym.sym == SDLK_ESCAPE)
+            if (event.key.keysym.sym == SDLK_m)
             {
-                SDL_FreeSurface(bouton);
                 return 0;
             }
             break;
         case SDL_MOUSEBUTTONUP :
             for (int i=0;i<3;i++)
             {
-                if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 620 && event.button.x <= 640 && event.button.y >= 530+i*20 && event.button.y <= 510+i*20)
+                if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 620 && event.button.x <= 820 && event.button.y >= 610+i*50 && event.button.y <= 610+i*50+50)
                 {
                     SDL_FreeSurface(bouton);
                     return i+1;
                 }
             }
             break;
+        case SDL_MOUSEMOTION:
+            for (int i=0;i<3;i++)
+            {
+                if (event.motion.x >= 620 && event.motion.x <= 820 && event.motion.y >=610+i*50 && event.motion.y <=610+i*50+50)
+                {
+                    printf("dessus\n");
+                }
+                break;
+            }
         }
+
+
+        SDL_FreeSurface(bouton);
+        return 0;
     }
-
-
-    SDL_FreeSurface(bouton);
     return 0;
 }
+
+void returnMenu(SDL_Surface* affichage,const Table & t,double zoom,bool & gameOn,Joueur* player,int joueurJouant,int & renvoyer)
+{
+    switch (AffMenu(affichage))
+    {
+    case 1:
+        gameOn = false;
+        renvoyer=1;
+        break;
+    case 0:
+        AffEffaceEcran(affichage);
+        AffCartesJoueursJeu(affichage,t);
+        AffCarteDecouvertes(t,affichage);
+        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+        AffInfosJoueur(affichage,*player,t);
+        if (zoom != 1)
+            apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
+        SDL_Flip(affichage);
+        break;
+    case 3:
+        gameOn = false;
+        renvoyer=3;
+        break;
+    }
+}
+
+
 
 
 int lancePartie(SDL_Surface* affichage)
@@ -572,13 +603,15 @@ int lancePartie(SDL_Surface* affichage)
     SDL_Event event;
     bool gameOn=true;
     bool finTour=true;
+    bool retour = true;
     printf("lance jeu\n");
     int renvoyer=0;
     int joueurJouant = getPositionDealerTable(t);
     int joueurRestant =0;
     int relance = 0;
+    int a;
     Statut statut;
-
+    joueurRestant++;
 
     distribuer2CartesJoueursJeu(t);
     distribuer1CarteDecouverteJeu(t,5);
@@ -612,8 +645,25 @@ int lancePartie(SDL_Surface* affichage)
 
         while (finTour && gameOn)
         {
-            statut= atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance);
-            printf("aaa");
+            while (retour)
+            {
+                a = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut);
+                if (a==-1)
+                {
+                    gameOn = false;
+                    renvoyer=3;
+                    break;
+                }
+                else if (a==0)
+                {
+                    //affichageMenu
+                }else{
+
+                    retour=false;
+                }
+            }
+            retour = true;
+            joueurJouant =getJoueurSuivant(t,joueurJouant);
 
 
             SDL_PollEvent(&event);

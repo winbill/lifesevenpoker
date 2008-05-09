@@ -38,7 +38,7 @@ typedef char path[100];
 
 
 
-int scanActionJoueur(SDL_Surface* affichage,int & relance);
+int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & statut);
 
 int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant,SDL_Surface* sortie);
 int AffMenu(SDL_Surface* affichage);
