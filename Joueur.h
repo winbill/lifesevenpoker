@@ -10,7 +10,7 @@
 */
 #ifndef Joueur_H
 #define Joueur_H
-#include "IArtificielle.h"
+//#include "IArtificielle.h"
 #include "MainCarte.h"
 
 
