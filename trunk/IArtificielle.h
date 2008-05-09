@@ -13,7 +13,7 @@
 #define IArtificielle_H
 
 #include "Joueur.h"
-//#include "Table.h"
+#include "Table.h"
 
 //Librairies Standard.
 #include <stdlib.h>
