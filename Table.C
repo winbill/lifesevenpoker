@@ -34,17 +34,17 @@ struct Table
 
 void initTable (Table & table)
 {
-        table.nJoueur = 0;
-        setMaxJoueurTable(table,0);
-        table.joueur = new Joueur*[10];
-        memset(table.joueur,0,sizeof(*table.joueur)*10);
+    table.nJoueur = 0;
+    setMaxJoueurTable(table,0);
+    table.joueur = new Joueur*[10];
+    memset(table.joueur,0,sizeof(*table.joueur)*10);
 
-        table.carteDecouverte=new MainCarte;
-        initialisationMain(*(table).carteDecouverte);
+    table.carteDecouverte=new MainCarte;
+    initialisationMain(*(table).carteDecouverte);
 
-        table.pileCarte = NULL;
-        table.positionDealer = 0;
-        table.petiteBlind = 0;
+    table.pileCarte = NULL;
+    table.positionDealer = 0;
+    table.petiteBlind = 0;
 
 }
 
@@ -53,109 +53,109 @@ void initTable (Table & table)
 
 Table* creeTable()
 {
-       Table* t = new Table;
-       initTable(*t);
-       return t;
+    Table* t = new Table;
+    initTable(*t);
+    return t;
 }
 
 
 void tableLibere(Table & table)
 {
-       delete[] table.joueur;
+    delete[] table.joueur;
 //      table.joueur = NULL;
-       delete table.carteDecouverte;
-       table.carteDecouverte = NULL;
-       table.pileCarte = NULL;
+    delete table.carteDecouverte;
+    table.carteDecouverte = NULL;
+    table.pileCarte = NULL;
 }
 
 
 void tableDetruit(Table* & table)
 {
-       tableLibere(*table);
-       delete table;
-       table = NULL;
+    tableLibere(*table);
+    delete table;
+    table = NULL;
 }
 
 
 void ajoutJoueurTable (Table & table,Joueur* joueur)
 {
 //      assert(getNJoueurTable(table)  < getMaxJoueurTable(table));
-   int i =0;
-   while(table.joueur[i] != NULL)
-   {
-       i++;
-   }
-       table.joueur[i] = joueur;
-       setNJoueurTable(table,getNJoueurTable(table)+1);
-       setIdJoueur(*joueur,i);
-       setStatutJoueur(*joueur,SIT);
+    int i =0;
+    while (table.joueur[i] != NULL)
+    {
+        i++;
+    }
+    table.joueur[i] = joueur;
+    setNJoueurTable(table,getNJoueurTable(table)+1);
+    setIdJoueur(*joueur,i);
+    setStatutJoueur(*joueur,SIT);
 }
 
 
 void supprimeJoueurTable (Table & table,Joueur* joueur)
 {
 
-       setNJoueurTable(table,getNJoueurTable(table)-1);
-       table.joueur[joueur->idJoueur]=NULL;
-       setIdJoueur(*joueur,-1);
-        setStatutJoueur(*joueur,SIT_OUT);
+    setNJoueurTable(table,getNJoueurTable(table)-1);
+    table.joueur[joueur->idJoueur]=NULL;
+    setIdJoueur(*joueur,-1);
+    setStatutJoueur(*joueur,SIT_OUT);
 }
 
 
 void setMaxJoueurTable (Table & table, int n)
 {
 //      assert(n<=10&&n>0&&n>table.nJoueur);
-       table.nMaxJoueur = n;
+    table.nMaxJoueur = n;
 }
 
 
 int getMaxJoueurTable (const Table & table)
 {
-       return table.nMaxJoueur;
+    return table.nMaxJoueur;
 }
 
 
 PileCarte* getTablePileCarteTable(const Table & table)
 {
-       return table.pileCarte;
+    return table.pileCarte;
 }
 
 void setNJoueurTable (Table & table, int n)
 {
 //      assert(n<=10 && n>=0 && n <= getMaxJoueur(table));
-       table.nJoueur=n;
+    table.nJoueur=n;
 }
 
 
 int getNJoueurTable (const Table & table)
 {
-       return table.nJoueur;
+    return table.nJoueur;
 }
 
 int placeVide (const Table & table)
 {
-   int i=0;
-   for(i=0;i<table.nJoueur;i++)
-   {
-       if(table.joueur[i] != 0)
-           return i;
-   }
-   return -1;
+    int i=0;
+    for (i=0;i<table.nJoueur;i++)
+    {
+        if (table.joueur[i] != 0)
+            return i;
+    }
+    return -1;
 
 }
 
 
 void changeDealerTable(Table & table)
 {
-       table.positionDealer++;
-   if(table.positionDealer >= getNJoueurTable(table))
-       table.positionDealer =0;
-       while(table.joueur[table.positionDealer] == 0)
-       {
-               table.positionDealer++;
-       if(table.positionDealer >= getNJoueurTable(table))
-           table.positionDealer =0;
-       }
+    table.positionDealer++;
+    if (table.positionDealer >= getNJoueurTable(table))
+        table.positionDealer =0;
+    while (table.joueur[table.positionDealer] == 0)
+    {
+        table.positionDealer++;
+        if (table.positionDealer >= getNJoueurTable(table))
+            table.positionDealer =0;
+    }
 
 
 }
@@ -163,49 +163,48 @@ void changeDealerTable(Table & table)
 
 Joueur* getIemeJoueur(const Table & table,int n)
 {
-       return table.joueur [n];
+    return table.joueur [n];
 }
 
 
 MainCarte* getMainCarteTable (const Table & table)
 {
-   return table.carteDecouverte;
+    return table.carteDecouverte;
 }
 
 
 void setPetiteBlindTable (Table & table, int n)
 {
 //    assert(n>0 && n<99999);
-   table.petiteBlind = n;
+    table.petiteBlind = n;
 }
 
 
 
 int getPetiteBlindTable (const Table & table)
 {
-   return table.petiteBlind;
+    return table.petiteBlind;
 }
 
 
 
 int getJoueurSuivant(const Table & table,int i)
 {
-   int k=table.positionDealer;
-   i++;
-   if(i >= getNJoueurTable(table))
-           i =0;
-       while(table.joueur[i] == 0)
-       {
-               i++;
-       if(k >= getNJoueurTable(table))
-           k =0;
-       }
-   return i;
+    i++;
+    if (i >= getMaxJoueurTable(table))
+        i =0;
+    while (table.joueur[i] == NULL && (*table.joueur[i]).statut == (SIT || CALL || CHECK ||RAISE||FOLD||ALL_IN))
+    {
+        i++;
+        if (i >= getMaxJoueurTable(table))
+            i =0;
+    }
+    return i;
 }
 
 
 
 int getPositionDealerTable(const Table & table)
 {
-   return table.positionDealer;
+    return table.positionDealer;
 }

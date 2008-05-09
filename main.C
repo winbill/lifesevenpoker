@@ -15,6 +15,7 @@
 //#include "AfficheTxt.h"
 
 
+
 //Librairies SDL.
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h> //Gestion des images.
