@@ -507,226 +507,149 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s)
             {
                 if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 620 && event.button.x <= 820 && event.button.y >= 610+i*50 && event.button.y <= 610+i*50+50)
                 {
-                    SDL_FreeSurface(bouton);
-                    return i+1;
-                }
-            }
-            break;
-        case SDL_MOUSEMOTION:
-            for (int i=0;i<3;i++)
-            {
-                if (event.motion.x >= 620 && event.motion.x <= 820 && event.motion.y >=610+i*50 && event.motion.y <=610+i*50+50)
-                {
-                    printf("dessus\n");
+                    switch (i)
+                    {
+                    case 0:
+                        s=CALL;
+                        break;
+                    case 1:
+                        s=FOLD;
+                        break;
+                    case 2:
+                        s=RAISE;
+                        relance = 50;
+                        break;
+                        SDL_FreeSurface(bouton);
+                    }
+                        return 1;
+                    }
                 }
                 break;
+            case SDL_MOUSEMOTION:
+                for (int i=0;i<3;i++)
+                {
+                    if (event.motion.x >= 620 && event.motion.x <= 820 && event.motion.y >=610+i*50 && event.motion.y <=610+i*50+50)
+                    {
+                        printf("dessus\n");
+                    }
+                    break;
+                }
             }
+
+
+            SDL_FreeSurface(bouton);
+            return 0;
+        }
+        return 0;
+    }
+
+    void returnMenu(SDL_Surface* affichage,const Table & t,double zoom,bool & gameOn,Joueur* player,int joueurJouant,int & renvoyer)
+    {
+        switch (AffMenu(affichage))
+        {
+        case 1:
+            gameOn = false;
+            renvoyer=1;
+            break;
+        case 0:
+            AffEffaceEcran(affichage);
+            AffCartesJoueursJeu(affichage,t);
+            AffCarteDecouvertes(t,affichage);
+            AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+            AffInfosJoueur(affichage,*player,t);
+            if (zoom != 1)
+                apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
+            SDL_Flip(affichage);
+            break;
+        case 3:
+            gameOn = false;
+            renvoyer=3;
+            break;
+        }
+    }
+
+
+
+
+    int lancePartie(SDL_Surface* affichage)
+    {
+        const int NOMBRE_JOUEUR_PC = 4;
+        const int ARGENT_DEPART = 1000;
+        Table t;
+        PileCarte p;
+        double zoom = 1;
+
+        initTable(t);
+        initPileCarte(p);
+
+        setPetiteBlindTable (t,10);
+        setMaxJoueurTable(t,NOMBRE_JOUEUR_PC+1);
+        t.positionDealer=1;
+
+        t.pileCarte = &p;
+        char nom[20];
+
+        Joueur* player;
+        Joueur* joueurs[10];
+
+        for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
+        {
+            sprintf(nom,"%s%d%s","Ordinateur",i,"  ");
+            joueurs[i]=creeJoueur();
+            initJoueur(*joueurs[i],nom);
+            ajoutJoueurTable(t,joueurs[i]);
+            setTypeJoueur(*joueurs[i],IA);
+            setArgentJoueur(*joueurs[i],ARGENT_DEPART);
+
         }
 
 
-        SDL_FreeSurface(bouton);
-        return 0;
-    }
-    return 0;
-}
-
-void returnMenu(SDL_Surface* affichage,const Table & t,double zoom,bool & gameOn,Joueur* player,int joueurJouant,int & renvoyer)
-{
-    switch (AffMenu(affichage))
-    {
-    case 1:
-        gameOn = false;
-        renvoyer=1;
-        break;
-    case 0:
-        AffEffaceEcran(affichage);
-        AffCartesJoueursJeu(affichage,t);
-        AffCarteDecouvertes(t,affichage);
-        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-        AffInfosJoueur(affichage,*player,t);
-        if (zoom != 1)
-            apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
-        SDL_Flip(affichage);
-        break;
-    case 3:
-        gameOn = false;
-        renvoyer=3;
-        break;
-    }
-}
+        player=creeJoueur();
+        initJoueur(*player,"moi");
+        setStatutJoueur(*player,SIT);
+        setTypeJoueur(*player,JoueurLocal);
+        setArgentJoueur(*player,ARGENT_DEPART);
+        ajoutJoueurTable(t,player);
 
 
 
+        SDL_Event event;
+        bool gameOn=true;
+        bool finTour=true;
+        bool retour = true;
+        printf("lance jeu\n");
+        int renvoyer=0;
+        int joueurJouant = getPositionDealerTable(t);
+        int joueurRestant =0;
+        int relance = 0;
+        int a;
+        int montant;
+        Statut statut;
+        joueurRestant++;
 
-int lancePartie(SDL_Surface* affichage)
-{
-    const int NOMBRE_JOUEUR_PC = 4;
-    const int ARGENT_DEPART = 1000;
-    Table t;
-    PileCarte p;
-    double zoom = 1;
-
-    initTable(t);
-    initPileCarte(p);
-
-    setPetiteBlindTable (t,10);
-    setMaxJoueurTable(t,NOMBRE_JOUEUR_PC+1);
-    t.positionDealer=1;
-
-    t.pileCarte = &p;
-    char nom[20];
-
-    Joueur* player;
-    Joueur* joueurs[10];
-
-    for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
-    {
-        sprintf(nom,"%s%d%s","Ordinateur",i,"  ");
-        joueurs[i]=creeJoueur();
-        initJoueur(*joueurs[i],nom);
-        ajoutJoueurTable(t,joueurs[i]);
-        setTypeJoueur(*joueurs[i],IA);
-        setArgentJoueur(*joueurs[i],ARGENT_DEPART);
-
-    }
-
-
-    player=creeJoueur();
-    initJoueur(*player,"moi");
-    setStatutJoueur(*player,SIT);
-    setTypeJoueur(*player,JoueurLocal);
-    setArgentJoueur(*player,ARGENT_DEPART);
-    ajoutJoueurTable(t,player);
-
-
-
-    SDL_Event event;
-    bool gameOn=true;
-    bool finTour=true;
-    bool retour = true;
-    printf("lance jeu\n");
-    int renvoyer=0;
-    int joueurJouant = getPositionDealerTable(t);
-    int joueurRestant =0;
-    int relance = 0;
-    int a;
-    int montant;
-    Statut statut;
-    joueurRestant++;
-
-    distribuer2CartesJoueursJeu(t);
-    distribuer1CarteDecouverteJeu(t,5);
-
-    AffEffaceEcran(affichage);
-    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-
-    AffCarteDecouvertes(t,affichage);
-    AffCartesJoueursJeu(affichage,t);
-    AffInfosJoueur(affichage,*player,t);
-    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-
-
-    SDL_Flip(affichage);
-    while (gameOn)
-    {
-        joueurJouant =getJoueurSuivant(t,joueurJouant);
-        joueurPetiteBlind(t,*t.joueur[joueurJouant]);
-        joueurJouant =getJoueurSuivant(t,joueurJouant);
-        joueurGrosseBlind(t,*t.joueur[joueurJouant]);
-        joueurJouant =getJoueurSuivant(t,joueurJouant);
-        montant = getPetiteBlindTable(t)*2;
-
+        distribuer2CartesJoueursJeu(t);
+        distribuer1CarteDecouverteJeu(t,5);
 
         AffEffaceEcran(affichage);
         AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+
         AffCarteDecouvertes(t,affichage);
         AffCartesJoueursJeu(affichage,t);
         AffInfosJoueur(affichage,*player,t);
         AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-        SDL_Flip(affichage);
 
-        while (finTour && gameOn)
+
+        SDL_Flip(affichage);
+        while (gameOn)
         {
-
-
-            while (retour)
-            {
-                a = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut);
-                if (a==-1)
-                {
-                    gameOn = false;
-                    renvoyer=3;
-                    break;
-                }
-                else if (a==0)
-                {
-                    //affichageMenu
-                }
-                else
-                {
-                    actionJoueur(*t.joueur[joueurJouant],statut,montant,relance);
-                    retour=false;
-                }
-            }
-            retour = true;
-
-
-
-            SDL_PollEvent(&event);
-
-            switch (event.type)
-            {
-            case SDL_QUIT:
-                gameOn = false;
-                renvoyer=3;
-                break;
-            case SDL_VIDEORESIZE:
-                zoom = (double)event.resize.w/1024;
-                affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
-                AffEffaceEcran(affichage);
-                AffCartesJoueursJeu(affichage,t);
-                AffCarteDecouvertes(t,affichage);
-                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-                apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
-                SDL_Flip(affichage);
-                break;
-            case SDL_KEYDOWN :
-                switch (event.key.keysym.sym)
-                {
-                case SDLK_ESCAPE:
-                    gameOn = false;
-                    renvoyer=3;
-                    break;
-                case SDLK_m:
-                    switch (AffMenu(affichage))
-                    {
-                    case 1:
-                        gameOn = false;
-                        renvoyer=1;
-                        break;
-                    case 3:
-                        gameOn = false;
-                        renvoyer=3;
-                        break;
-                    case 0:
-                        AffEffaceEcran(affichage);
-                        AffCartesJoueursJeu(affichage,t);
-                        AffCarteDecouvertes(t,affichage);
-                        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-                        AffInfosJoueur(affichage,*player,t);
-                        if (zoom != 1)
-                            apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
-                        SDL_Flip(affichage);
-                        break;
-                    }
-                    break;
-                default:
-                    break;
-                }
-                break;
-            }
-
             joueurJouant =getJoueurSuivant(t,joueurJouant);
+            joueurPetiteBlind(t,*t.joueur[joueurJouant]);
+            joueurJouant =getJoueurSuivant(t,joueurJouant);
+            joueurGrosseBlind(t,*t.joueur[joueurJouant]);
+            joueurJouant =getJoueurSuivant(t,joueurJouant);
+            montant = getPetiteBlindTable(t)*2;
+
+
             AffEffaceEcran(affichage);
             AffAffichageInfosJoueurs(affichage,t,joueurJouant);
             AffCarteDecouvertes(t,affichage);
@@ -734,29 +657,119 @@ int lancePartie(SDL_Surface* affichage)
             AffInfosJoueur(affichage,*player,t);
             AffAffichageInfosJoueurs(affichage,t,joueurJouant);
             SDL_Flip(affichage);
+
+            while (finTour && gameOn)
+            {
+
+
+                while (retour)
+                {
+                    a = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut);
+                    if (a==-1)
+                    {
+                        gameOn = false;
+                        renvoyer=3;
+                        break;
+                    }
+                    else if (a==0)
+                    {
+                        //affichageMenu
+                    }
+                    else
+                    {
+                        actionJoueur(*t.joueur[joueurJouant],statut,montant,relance);
+                        retour=false;
+                    }
+                }
+                retour = true;
+
+
+
+                SDL_PollEvent(&event);
+
+                switch (event.type)
+                {
+                case SDL_QUIT:
+                    gameOn = false;
+                    renvoyer=3;
+                    break;
+                case SDL_VIDEORESIZE:
+                    zoom = (double)event.resize.w/1024;
+                    affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
+                    AffEffaceEcran(affichage);
+                    AffCartesJoueursJeu(affichage,t);
+                    AffCarteDecouvertes(t,affichage);
+                    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                    apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
+                    SDL_Flip(affichage);
+                    break;
+                case SDL_KEYDOWN :
+                    switch (event.key.keysym.sym)
+                    {
+                    case SDLK_ESCAPE:
+                        gameOn = false;
+                        renvoyer=3;
+                        break;
+                    case SDLK_m:
+                        switch (AffMenu(affichage))
+                        {
+                        case 1:
+                            gameOn = false;
+                            renvoyer=1;
+                            break;
+                        case 3:
+                            gameOn = false;
+                            renvoyer=3;
+                            break;
+                        case 0:
+                            AffEffaceEcran(affichage);
+                            AffCartesJoueursJeu(affichage,t);
+                            AffCarteDecouvertes(t,affichage);
+                            AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                            AffInfosJoueur(affichage,*player,t);
+                            if (zoom != 1)
+                                apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
+                            SDL_Flip(affichage);
+                            break;
+                        }
+                        break;
+                    default:
+                        break;
+                    }
+                    break;
+                }
+
+                joueurJouant =getJoueurSuivant(t,joueurJouant);
+                AffEffaceEcran(affichage);
+                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                AffCarteDecouvertes(t,affichage);
+                AffCartesJoueursJeu(affichage,t);
+                AffInfosJoueur(affichage,*player,t);
+                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                SDL_Flip(affichage);
+            }
         }
+
+
+
+
+
+
+
+
+
+        for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
+        {
+            joueurDetruit(joueurs[i]);
+            joueurs[i]=NULL;
+        }
+
+        joueurDetruit(player);
+
+        pileCarteLibere(p);
+        tableLibere(t);
+
+
+        return renvoyer;
+
     }
-
-
-
-
-
-
-
-
-
-    for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
-    {
-        joueurDetruit(joueurs[i]);
-        joueurs[i]=NULL;
-    }
-
-    joueurDetruit(player);
-
-    pileCarteLibere(p);
-    tableLibere(t);
-
-
-    return renvoyer;
-
-}

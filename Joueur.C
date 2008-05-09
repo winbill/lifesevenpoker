@@ -197,7 +197,6 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         break;
     case CALL:
         a = montant - getMiseJoueur(j);
-        printf("a:%d argent:%d\n",a,getArgentJoueur(j));
         assert(a > 0 && getArgentJoueur(j) > a);
         ajoutMiseJoueur(j,a);
         setArgentJoueur(j,getArgentJoueur(j)-a);
@@ -208,6 +207,7 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         setStatutJoueur(j,s);
         break;
     case RAISE:
+        a = montant - getMiseJoueur(j);
         assert(a >= 0 && getArgentJoueur(j) > ( a + relance));
         ajoutMiseJoueur(j,a+relance);
         setArgentJoueur(j,getArgentJoueur(j)-a-relance);
