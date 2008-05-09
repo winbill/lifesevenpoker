@@ -626,10 +626,12 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         if (zoom != 1)
             apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
         SDL_Flip(affichage);
-
+        a=0;
         while (finTour && gameOn)
         {
-
+            if( a=10)
+                gameOn =false;
+            a++;
 /*
             while (retour)
             {
