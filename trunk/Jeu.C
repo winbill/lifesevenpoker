@@ -26,7 +26,9 @@ int atendsActionJoueur(SDL_Surface* aff,const Joueur & j,int & relance,Statut & 
 {
     if (j.type == IA)
     {
-        return s;
+        s = FOLD;
+        SDL_Delay(3000);
+        return 1;
     }
     else if (j.type == JoueurLocal)
     {
@@ -34,7 +36,7 @@ int atendsActionJoueur(SDL_Surface* aff,const Joueur & j,int & relance,Statut & 
     }
     else
     {
-        return s;//mode multijoueurs
+        return 1;//mode multijoueurs
     }
     return CALL;
 }

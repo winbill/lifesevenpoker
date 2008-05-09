@@ -194,7 +194,7 @@ int getArgentJoueur(const Joueur & joueur);
 void afficheInfoJoueur(const Joueur & j);
 
 
-
+void actionJoueur(Joueur & j,Statut s,int & montant,int relance);
 
 #endif
 
