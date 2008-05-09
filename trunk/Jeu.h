@@ -13,6 +13,16 @@
 #ifndef Jeu_H
 #define Jeu_H
 #include "Table.h"
+#include "AfficheDynamique.h"
+
+
+
+Statut atendsActionJoueur(SDL_Surface* aff,const Joueur & j,int & relance);
+
+void joueurPetiteBlind(Table & t,Joueur & j);
+void joueurGrosseBlind(Table & t,Joueur & j);
+
+
 
 void trieTab3d(int tabResultat[10][6][2]);
 //#include "AfficheDynamique.h"

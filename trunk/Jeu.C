@@ -22,9 +22,33 @@
 
 
 
+int atendsActionJoueur(SDL_Surface* aff,const Joueur & j,int & relance,Statut & s)
+{
+    if (j.type == IA)
+    {
+        return s;
+    }
+    else if (j.type == JoueurLocal)
+    {
+        return scanActionJoueur(aff,relance,s);
+    }
+    else
+    {
+        return s;//mode multijoueurs
+    }
+    return CALL;
+}
 
-
-
+void joueurPetiteBlind(Table & t,Joueur & j)
+{
+    setArgentJoueur(j, getArgentJoueur(j)-getPetiteBlindTable(t));
+    ajoutMiseJoueur(j,getPetiteBlindTable(t));
+}
+void joueurGrosseBlind(Table & t,Joueur & j)
+{
+    setArgentJoueur(j, getArgentJoueur(j)-getPetiteBlindTable(t)*2);
+    ajoutMiseJoueur(j,getPetiteBlindTable(t)*2);
+}
 
 
 void distribuer2CartesJoueursJeu(Table & table)

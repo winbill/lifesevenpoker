@@ -10,117 +10,10 @@
 	@date 2008/04/21
  */
 
+
 #include "AfficheDynamique.h"
-#include "Joueur.h"
-#include "Table.h"
-#include "AfficheTxt.h"
 
 
-//Librairies Standard.
-#include <stdlib.h>
-#include <stdio.h>
-#include <cassert>
-
-//Librairies SDL.
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h> //Gestion des images.
-#include <SDL/SDL_ttf.h> //Gestion des polices True Type Fonts.
-//#include <SDL/SDL_mixer.h> //Gestion du multi channeling audio.
-
-
-
-bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, path caption)
-{
-    //Initialisation de tous les sous-systèmes de SDL
-    if ( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER ) == -1 )
-    {
-        printf("Impossible d\'initialiser les sous-systèmes de SDL.\n");
-        return -1;
-    }
-
-    //Mise en place de l'écran
-    screen = SDL_SetVideoMode( screen_width, screen_height, screen_bpp, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
-
-    //S'il y a une erreur dans la mise en place de l'écran
-    if ( screen == NULL )
-    {
-        printf("Echec de la mise en place de l\'ecran.\n");
-        return -1;
-    }
-
-    //Initialisation de SDL_TTF
-    if ( TTF_Init() == -1 )
-    {
-        printf("Echec de l\'initialisation de SDL_ttf");
-        return -1;
-    }
-
-    //Mise en place de la barre de titre de la fenetre principale (caption)
-    SDL_WM_SetCaption( caption , NULL );
-
-    //Si tout s'est bien passé
-    return 0;
-}
-
-SDL_Surface *load_image( path filename )
-{
-    //Surface tampon qui nous servira pour charger l'image
-    SDL_Surface* loadedImage = NULL;
-
-    //L'image optimisée qu'on va utiliser
-    SDL_Surface* optimizedImage = NULL;
-
-    //Chargement de l'image
-    if ((loadedImage = IMG_Load(filename)) == 0)
-    {
-        printf("Impossible de charger l\'image.\n");
-    }
-
-    //Si le chargement se passe bien
-    if ( loadedImage != NULL )
-    {
-        //Création de l'image optimisée
-        if ((optimizedImage = SDL_DisplayFormatAlpha( loadedImage )) == 0)
-        {
-            printf("Impossible d'optimiser l\'image.\n");
-        }
-
-        //Libération de l'ancienne image
-        SDL_FreeSurface( loadedImage );
-    }
-
-    //On retourne l'image optimisée
-    return optimizedImage;
-}
-
-void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination )
-{
-    SDL_Rect offset;
-
-    offset.x = x;
-    offset.y = y;
-
-    //On blitte la surface
-    SDL_BlitSurface( source, NULL, destination, &offset );
-    //SDL_UpdateRect(destination,0,0,0,0);
-}
-
-
-
-void AffAfficheTapis(SDL_Surface* aff)
-{
-    path tapisP = "img/bkgrd.jpg";
-
-    SDL_Surface* tapis = load_image(tapisP);
-
-    apply_surface(0,0,tapis,aff);
-}
-
-void AffActualiser(SDL_Surface* affichage)
-{
-    SDL_Flip(affichage);
-    //SDL_UpdateRect(affichage, 0, 0, 0, 0);
-}
 
 SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option)
 {
@@ -142,12 +35,6 @@ SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option)
 
 }
 
-void AffEffaceEcran(SDL_Surface* aff)
-{
-    AffAfficheTapis(aff);
-}
-
-
 
 
 
@@ -164,52 +51,6 @@ void AffStartUp(SDL_Surface* affichage)
     SDL_FreeSurface(logo);
 
 }
-
-void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b)
-{
-    AffAfficheTexte(destination,message,x,y,r,g,b,TTF_STYLE_NORMAL,28);
-}
-
-void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b,int style,int size)
-{
-
-
-    //La surface où on va coller le message
-    SDL_Surface* texte;
-    //Le Font qu'on va utiliser
-    TTF_Font *font;
-
-    //La couleur du Font
-    SDL_Color textColor = { r, g, b,0};
-
-    //Ouverture du Font
-    font = TTF_OpenFont( "./fonts/Qlassik_TB.otf", size );
-    TTF_SetFontStyle(font,style);
-
-
-    //S'il y a une erreur dans le chargement du Font
-    if ( font == NULL )
-    {
-        printf("Erreur de chargement de la font\n");
-    }
-
-    //Mise en place du texte sur la surface message
-    texte = TTF_RenderText_Blended(font,message,textColor);
-
-    //S'il y a une erreur dans la mise en place du texte
-    if ( texte == NULL )
-    {
-        printf("Erreur de chargement du message\n");
-    }
-
-    //Application de la surface du message
-    apply_surface(x,y,texte,destination);
-
-    TTF_CloseFont(font);
-    SDL_FreeSurface(texte);
-
-}
-
 
 int AffMenu(SDL_Surface* affichage)
 {
@@ -349,17 +190,7 @@ void AffAfficheCredits(SDL_Surface* affichage)
 }
 
 
-void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom)
-{
-    SDL_Surface* carte;
-    if (c== NULL)
-        carte=load_image("img/doscarte.jpg");
-    else
-        carte=load_image(c->nomFichier);
 
-    apply_surface(x,y,rotozoomSurface(carte, 0, zoom, 1),affichage);
-    SDL_FreeSurface(carte);
-}
 
 
 
@@ -629,7 +460,71 @@ void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
     }
 
 }
+int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s)
+{
 
+    bool fin = false;
+    SDL_Event event;
+
+    path boutonP="img/bouton.png";
+    SDL_Surface* bouton;
+    s=CALL;
+
+    relance=0;
+
+    bouton=load_image(boutonP);
+    AffAfficheTexte(bouton,"Suivre",10,10,255,0,0,TTF_STYLE_NORMAL,18);
+    apply_surface(620,530+20*4,bouton,affichage);
+
+
+    bouton=load_image(boutonP);
+    AffAfficheTexte(bouton,"Couche",10,10,255,0,0,TTF_STYLE_NORMAL,18);
+    apply_surface(620,530+20*5,bouton,affichage);
+
+
+    bouton=load_image(boutonP);
+    AffAfficheTexte(bouton,"Relance",10,10,255,0,0,TTF_STYLE_NORMAL,18);
+    apply_surface(620,530+20*6,bouton,affichage);
+
+    SDL_Flip(affichage);
+
+
+
+
+    while (fin!=true)
+    {
+        SDL_PollEvent(&event);
+
+        switch (event.type)
+        {
+        case SDL_QUIT :
+            fin=true;
+            break;
+
+        case SDL_KEYDOWN :
+            if (event.key.keysym.sym == SDLK_ESCAPE)
+            {
+                SDL_FreeSurface(bouton);
+                return 0;
+            }
+            break;
+        case SDL_MOUSEBUTTONUP :
+            for (int i=0;i<3;i++)
+            {
+                if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 620 && event.button.x <= 640 && event.button.y >= 530+i*20 && event.button.y <= 510+i*20)
+                {
+                    SDL_FreeSurface(bouton);
+                    return i+1;
+                }
+            }
+            break;
+        }
+    }
+
+
+    SDL_FreeSurface(bouton);
+    return 0;
+}
 
 
 int lancePartie(SDL_Surface* affichage)
@@ -643,7 +538,9 @@ int lancePartie(SDL_Surface* affichage)
     initTable(t);
     initPileCarte(p);
 
+    setPetiteBlindTable (t,10);
     setMaxJoueurTable(t,NOMBRE_JOUEUR_PC+1);
+    t.positionDealer=1;
 
     t.pileCarte = &p;
     char nom[20];
@@ -674,9 +571,13 @@ int lancePartie(SDL_Surface* affichage)
 
     SDL_Event event;
     bool gameOn=true;
+    bool finTour=true;
     printf("lance jeu\n");
     int renvoyer=0;
-    int joueurJouant = 0;
+    int joueurJouant = getPositionDealerTable(t);
+    int joueurRestant =0;
+    int relance = 0;
+    Statut statut;
 
 
     distribuer2CartesJoueursJeu(t);
@@ -694,75 +595,96 @@ int lancePartie(SDL_Surface* affichage)
     SDL_Flip(affichage);
     while (gameOn)
     {
+        joueurJouant =getJoueurSuivant(t,joueurJouant);
+        joueurPetiteBlind(t,*t.joueur[joueurJouant]);
+        joueurJouant =getJoueurSuivant(t,joueurJouant);
+        joueurGrosseBlind(t,*t.joueur[joueurJouant]);
+        joueurJouant =getJoueurSuivant(t,joueurJouant);
 
 
-        SDL_PollEvent(&event);
+        AffEffaceEcran(affichage);
+        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+        AffCarteDecouvertes(t,affichage);
+        AffCartesJoueursJeu(affichage,t);
+        AffInfosJoueur(affichage,*player,t);
+        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+        SDL_Flip(affichage);
 
-        switch (event.type)
+        while (finTour && gameOn)
         {
-        case SDL_QUIT:
-            gameOn = false;
-            renvoyer=3;
-            break;
-        case SDL_VIDEORESIZE:
+            statut= atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance);
+            printf("aaa");
 
 
-            zoom = (double)event.resize.w/1024;
-            affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
-            AffEffaceEcran(affichage);
-            AffCartesJoueursJeu(affichage,t);
-            AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-            apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
-            SDL_Flip(affichage);
-            break;
+            SDL_PollEvent(&event);
 
-
-        case SDL_KEYDOWN :
-            switch (event.key.keysym.sym)
+            switch (event.type)
             {
-            case SDLK_ESCAPE:
+            case SDL_QUIT:
                 gameOn = false;
                 renvoyer=3;
                 break;
-            case SDLK_m:
-                switch (AffMenu(affichage))
+            case SDL_VIDEORESIZE:
+                zoom = (double)event.resize.w/1024;
+                affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
+                AffEffaceEcran(affichage);
+                AffCartesJoueursJeu(affichage,t);
+                AffCarteDecouvertes(t,affichage);
+                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
+                SDL_Flip(affichage);
+                break;
+            case SDL_KEYDOWN :
+                switch (event.key.keysym.sym)
                 {
-                case 1:
-                    gameOn = false;
-                    renvoyer=1;
-                    break;
-                case 3:
+                case SDLK_ESCAPE:
                     gameOn = false;
                     renvoyer=3;
                     break;
-                case 0:
-
-                    AffEffaceEcran(affichage);
-                    AffCartesJoueursJeu(affichage,t);
-                    AffCarteDecouvertes(t,affichage);
-                    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-                    AffInfosJoueur(affichage,*player,t);
-                    if (zoom != 1)
+                case SDLK_m:
+                    switch (AffMenu(affichage))
                     {
-                        apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
-                                  }
-                                  SDL_Flip(affichage);
+                    case 1:
+                        gameOn = false;
+                        renvoyer=1;
+                        break;
+                    case 3:
+                        gameOn = false;
+                        renvoyer=3;
+                        break;
+                    case 0:
+                        AffEffaceEcran(affichage);
+                        AffCartesJoueursJeu(affichage,t);
+                        AffCarteDecouvertes(t,affichage);
+                        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                        AffInfosJoueur(affichage,*player,t);
+                        if (zoom != 1)
+                            apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
+                        SDL_Flip(affichage);
+                        break;
+                    }
+                    break;
+                default:
                     break;
                 }
                 break;
-            default:
-                break;
             }
-            break;
         }
     }
+
+
+
+
+
+
+
+
 
     for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
     {
         joueurDetruit(joueurs[i]);
         joueurs[i]=NULL;
     }
-
 
     joueurDetruit(player);
 
