@@ -105,6 +105,7 @@ void supprimeJoueurTable (Table & table,Joueur* joueur)
 void setMaxJoueurTable (Table & table, int n)
 {
 //      assert(n<=10&&n>0&&n>table.nJoueur);
+
     table.nMaxJoueur = n;
 }
 

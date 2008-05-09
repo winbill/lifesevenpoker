@@ -46,14 +46,14 @@ int AffMenu(SDL_Surface* affichage);
 
 
 
-void AffStartUp(SDL_Surface* affichage);
+void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis);
 
 
 SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option);
 
 
 
-int lancePartie(SDL_Surface* affichage);
+int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis);
 
 void AffAfficheCredits(SDL_Surface* affichage);
 
