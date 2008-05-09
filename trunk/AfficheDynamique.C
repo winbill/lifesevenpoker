@@ -250,6 +250,7 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
         sprintf(message,"Dealer");
         AffAfficheTexte(affichage,message,posx,posy+91+20*2,255,0,0,TTF_STYLE_BOLD,20);
     }
+    TTF_CloseFont(font);
 }
 
 void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJouant)
@@ -629,7 +630,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         a=0;
         while (finTour && gameOn)
         {
-            if( a=10)
+            if( a==10)
                 gameOn =false;
             a++;
 /*
