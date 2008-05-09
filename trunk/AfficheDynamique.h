@@ -31,6 +31,7 @@
 #include "AfficheTxt.h"
 #include "AfficheSdl.h"
 #include "Jeu.h"
+#include "IArtificielle.h"
 
 /** @brief Type cree pour manipuler les chemins de fichier.
 
@@ -39,7 +40,7 @@ typedef char path[100];
 
 
 
-int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & statut);
+int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant);
 
 int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant,SDL_Surface* sortie);
 int AffMenu(SDL_Surface* affichage);

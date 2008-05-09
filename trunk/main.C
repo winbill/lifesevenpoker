@@ -12,6 +12,7 @@
 #include "AfficheDynamique.h"
 #include "Joueur.h"
 #include "Table.h"
+#include "IArtificielle.h"
 //#include "AfficheTxt.h"
 
 

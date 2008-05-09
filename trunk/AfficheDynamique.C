@@ -445,7 +445,7 @@ void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
     }
 
 }
-int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s)
+int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant)
 {
 
     bool fin = false;
@@ -627,16 +627,13 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         if (zoom != 1)
             apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
         SDL_Flip(affichage);
-        a=0;
         while (finTour && gameOn)
         {
-            if( a==10)
-                gameOn =false;
-            a++;
-/*
+
+
             while (retour)
             {
-                a = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut);
+                a = atendsActionJoueur(affichage,*t.joueur[joueurJouant],relance,statut,montant);
                 if (a==-1)
                 {
                     gameOn = false;
@@ -653,7 +650,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     retour=false;
                 }
             }
-            retour = true;*/
+            retour = true;
 
 
 
