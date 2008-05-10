@@ -38,6 +38,7 @@
 */
 typedef char path[100];
 
+void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache);
 
 
 int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant);

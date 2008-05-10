@@ -14,6 +14,16 @@
 #include "AfficheDynamique.h"
 
 
+void affAffichageVainqueur(SDL_Surface* affichage,const
+
+
+
+
+
+
+
+
+
 
 SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option)
 {
@@ -199,12 +209,10 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     int posx = getPositionJoueurX(j);
     int posy = getPositionJoueurY(j);
     char message[30];
-    TTF_Font *font;
-    int h,w1;
+
 
     sprintf(message,"%s:%d",j.pseudo,j.argent);
-    font = TTF_OpenFont( "./fonts/Qlassik_TB.otf", 22 );
-    TTF_SizeText(font,message,&w1,&h);
+
 
     if (getIdJoueur(j) != joueurJouant)
     {
@@ -219,19 +227,19 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     switch (j.statut)
     {
     case CALL:
-        sprintf(message,"mise : %d",j.mise);
+        sprintf(message,"mise : %d",getMiseJoueur(j));
         break;
     case CHECK:
         sprintf(message,"check");
         break;
     case RAISE:
-        sprintf(message,"relance : %d",j.mise);
+        sprintf(message,"relance : %d",getMiseJoueur(j));
         break;
     case FOLD:
-        sprintf(message,"couche");
+        sprintf(message,"se couche");
         break;
     case ALL_IN:
-        sprintf(message,"tapis : %d",j.mise);
+        sprintf(message,"tapis : %d",getTapisJoueur(j));
         break;
     default:
         sprintf(message," ");
@@ -250,7 +258,7 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
         sprintf(message,"Dealer");
         AffAfficheTexte(affichage,message,posx,posy+91+20*2,255,0,0,TTF_STYLE_BOLD,20);
     }
-    TTF_CloseFont(font);
+
 }
 
 void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJouant)
@@ -340,8 +348,13 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
 
 */
 
-
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
+{
+    AffCartesJoueursJeu(affichage,t,true);
+}
+
+
+void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
 {
 
     int i = 0;
@@ -373,8 +386,14 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
                 {
                     x= getPositionJoueurX(*t.joueur[i]);
                     y= getPositionJoueurY(*t.joueur[i]);
-
-                    AffAfficheCarte(affichage, NULL,x+j*20+3,y+20,0.35);
+                    if (cache)
+                    {
+                        AffAfficheCarte(affichage, NULL,x+j*20+3,y+20,0.35);
+                    }
+                    else
+                    {
+                        AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x+j*20+3,y+20,0.35);
+                    }
                 }
             }
         }
@@ -398,50 +417,44 @@ void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage)
 void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
 {
     char message[30];
-    sprintf(message,"%s",j.pseudo);
+    sprintf(message,"%s : %d",j.pseudo,j.argent);
 
 
-    AffAfficheTexte(affichage,message,620,530+20*0,255,255,255,TTF_STYLE_UNDERLINE,22);
+    AffAfficheTexte(affichage,message,620,530+20*0,255,255,255,TTF_STYLE_NORMAL,22);
 
 
     switch (j.statut)
     {
-    case SIT:
-        sprintf(message,"assis");
-        break;
     case CALL:
-        sprintf(message,"mise");
+        sprintf(message,"mise : %d",getMiseJoueur(j));
         break;
     case CHECK:
         sprintf(message,"check");
         break;
     case RAISE:
-        sprintf(message,"relance");
+        sprintf(message,"relance : %d",getMiseJoueur(j));
         break;
     case FOLD:
         sprintf(message,"se couche");
         break;
     case ALL_IN:
-        sprintf(message,"tapis");
+        sprintf(message,"tapis : %d",getTapisJoueur(j));
         break;
     default:
-        sprintf(message,"aa");
+        sprintf(message," ");
         break;
     }
 
+
     AffAfficheTexte(affichage,message,620,530+20*1,255,255,255,TTF_STYLE_NORMAL,18);
 
-    sprintf(message,"%d",j.argent);
-    AffAfficheTexte(affichage,message,620+50,530+20*1,255,255,255,TTF_STYLE_NORMAL,18);
 
 
-    sprintf(message,"Mise actuelle: %d",j.mise);
-    AffAfficheTexte(affichage,message,620,530+20*2,255,255,255,TTF_STYLE_NORMAL,18);
 
     if (j.idJoueur == getPositionDealerTable(table))
     {
         sprintf(message,"Dealer");
-        AffAfficheTexte(affichage,message,620,530+20*3,255,0,0,TTF_STYLE_BOLD,20);
+        AffAfficheTexte(affichage,message,620,530+20*2,255,0,0,TTF_STYLE_BOLD,20);
     }
 
 }
@@ -457,7 +470,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
     relance=0;
 
     bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Suivre",10,10,255,0,0,TTF_STYLE_NORMAL,18);
+    AffAfficheTexte(bouton,"Suivre / Check",10,10,255,0,0,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4,bouton,affichage);
     bouton=load_image(boutonP);
     AffAfficheTexte(bouton,"Couche",10,10,255,0,0,TTF_STYLE_NORMAL,18);
@@ -524,7 +537,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
             {
                 if (event.motion.x >= 620 && event.motion.x <= 820 && event.motion.y >=610+i*50 && event.motion.y <=610+i*50+50)
                 {
-                    printf("dessus\n");
+
                 }
                 break;
             }
@@ -552,6 +565,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     Table t;
     PileCarte p;
     double zoom = 1;
+    int tabResultat[10][6][2];
 
     initTable(t);
     initPileCarte(p);
@@ -600,6 +614,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     int a;
     int montant;
     int boucleJeu=0;
+    int pot=0;
     Statut statut;
     joueurRestant++;
 
@@ -644,7 +659,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
             if (t.joueur[joueurJouant]!=NULL)
             {
-                if ( getStatutJoueur(*t.joueur[joueurJouant]) != SIT_OUT && getStatutJoueur(*t.joueur[joueurJouant]) != FOLD)
+                if ( getStatutJoueur(*t.joueur[joueurJouant]) != SIT_OUT && getStatutJoueur(*t.joueur[joueurJouant]) != FOLD && getStatutJoueur(*t.joueur[joueurJouant]) != ALL_IN)
                 {
 
                     while (retour)
@@ -702,7 +717,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 }
                 else
                 {
-                    finTour=getNJoueurTable(t);
+                    finTour=getNJoueurTable(t)-1;
                 }
             }
             printf("fintour:  %d\n",finTour);
@@ -780,12 +795,37 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             }
             SDL_Flip(affichage);
         }
+        //si tout le monde s'est couché
+        int i=0;
+        int j=0;
+
+        while (i<=1)
+        {
+            if (t.joueur[j]!=NULL && (getStatutJoueur(*t.joueur[j]) != FOLD && getStatutJoueur(*t.joueur[j]) != SIT_OUT))
+                i++;
+            j++;
+
+        }
+        //if(i==1)
+        //tout le monde sest couche
+
+
         finTour=getNJoueurTable(t);
         joueurJouant=getPositionDealerTable(t);
         boucleJeu++;
         if (boucleJeu==1)
         {
-            distribuer1CarteDecouverteJeu(t,3);
+
+            distribuer1CarteDecouverteJeu(t,1);
+            AffCarteDecouvertes(t,affichage);
+            SDL_Flip(affichage);
+            SDL_Delay(200);
+            distribuer1CarteDecouverteJeu(t,1);
+            AffCarteDecouvertes(t,affichage);
+            SDL_Flip(affichage);
+            SDL_Delay(200);
+            distribuer1CarteDecouverteJeu(t,1);
+            AffCarteDecouvertes(t,affichage);
         }
         else if (boucleJeu<4)
         {
@@ -793,6 +833,51 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         }
         else
         {
+            if (fonctionGlobaleDetrminationVainqueur(t,tabResultat)==0)
+            {
+                char message[30];
+                AffCartesJoueursJeu(affichage,t,false);
+                SDL_Flip(affichage);
+                printf("vainqueur:%s\n",(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo);
+                switch (tabResultat[0][0][0])
+                {
+                case 0:
+                    sprintf(message,"Carte haute");
+                    break;
+                case 1:
+                    sprintf(message,"Paire");
+                    break;
+                case 2:
+                    sprintf(message,"Double paire");
+                    break;
+                case 3:
+                    sprintf(message,"Brelan");
+                    break;
+                case 4:
+                    sprintf(message,"Quinte");
+                    break;
+                case 5:
+                    sprintf(message,"Couleur");
+                    break;
+                case 6:
+                    sprintf(message,"Full");
+                    break;
+                case 7:
+                    sprintf(message,"Carre");
+                    break;
+                case 8:
+                    sprintf(message,"Quinte Flush");
+                    break;
+                default:
+                    sprintf(message,"ERREUR DETERMINATION FORME MAIN");
+                    break;
+
+                }
+                printf("Forme:%s\n",message);
+
+
+                SDL_Delay(400000);
+            }
             printf("determine_vainqueur_redistribue_retourner_carte\n");
             blindAMettre=true;
         }

@@ -68,7 +68,11 @@ struct Joueur
 	TypeJoueur type;
 	int posX;
 	int posY;
+	int tapis;
 };
+int getTapisJoueur(const Joueur & j);
+
+void setTapisJoueur(Joueur & j,int n);
 
 void reinitialisationMainJoueur(Joueur & j);
 

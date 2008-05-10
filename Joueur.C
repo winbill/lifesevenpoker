@@ -17,10 +17,19 @@
 #include <cassert>
 
 
+int getTapisJoueur(const Joueur & j)
+{
+    return j.tapis;
+}
+void setTapisJoueur(Joueur & j,int n)
+{
+    j.tapis=n;
+}
+
 void initJoueur(Joueur & joueur)
 {
     joueur.argent=0;
-
+    joueur.tapis=0;
 
     joueur.pseudo = new char[20];
     memset(joueur.pseudo,0,sizeof(*joueur.pseudo)*20);
@@ -226,12 +235,11 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         setStatutJoueur(j,s);
         break;
     case ALL_IN:
-        a = montant - getMiseJoueur(j);
-        assert(getArgentJoueur(j)+getMiseJoueur(j) >= montant );
         ajoutMiseJoueur(j,getArgentJoueur(j));
         setStatutJoueur(j,s);
-        montant = a+getArgentJoueur(j);
+        montant = getMiseJoueur(j);
         setArgentJoueur(j,0);
+        setTapisJoueur(j,montant);
     default:
         break;
 
