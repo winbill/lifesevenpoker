@@ -16,8 +16,8 @@
 #include "AfficheDynamique.h"
 
 
+int atendsActionJoueur(SDL_Surface* aff,const Table&t,const Joueur & j,int & relance,Statut & s,int & montant);
 
-int atendsActionJoueur(SDL_Surface* aff,const Joueur & j,int & relance,Statut & s,int & montant);
 
 void joueurPetiteBlind(Table & t,Joueur & j);
 void joueurGrosseBlind(Table & t,Joueur & j);

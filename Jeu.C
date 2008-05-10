@@ -22,12 +22,12 @@
 
 
 
-int atendsActionJoueur(SDL_Surface* aff,const Joueur & j,int & relance,Statut & s,int & montant)
+int atendsActionJoueur(SDL_Surface* aff,const Table&t,const Joueur & j,int & relance,Statut & s,int & montant)
 {
     if (j.type == IA)
     {
-//        s = calculIA;
-        SDL_Delay(3000);
+        s = calculIA(t,j,relance,montant);
+        SDL_Delay(1000);
         return 1;
     }
     else if (j.type == JoueurLocal)
