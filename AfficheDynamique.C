@@ -23,7 +23,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,const Table & t)
         char message[30];
         AffCartesJoueursJeu(affichage,t,false);
         AffCarteDecouvertes(t,affichage,true,tabResultat[0]);
-
+        AffCartesJoueursJeuFinale(affichage,t,tabResultat[0],tabResultat[0][0][1]);
 
 
         SDL_Flip(affichage);
@@ -490,8 +490,74 @@ void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage,bool evidence,in
                 }
                 j++;
             }
-            if(a==0)
+            if (a==0)
                 AffAfficheCarte(affichage,getMainCarteIemeCarte(*(t.carteDecouverte),i),(113+5)*(i)+210,250,0.6,false);
+        }
+    }
+
+
+}
+
+
+void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabResultat[6][2],int i)
+{
+
+
+    const int largeurCarte = 189;
+    const int hauteurCarte = 260;
+
+    int x;
+    int y;
+    int j;
+    if ( getTypeJoueur( *getIemeJoueur(t,i)) == JoueurLocal)
+    {
+        for (j=0;j<2;j++)
+        {
+            int ecart =-30;
+            x = (1024 - 2*largeurCarte -ecart)/2+j*(largeurCarte+ecart)-100;
+            y = 768 - hauteurCarte - ecart;
+            int k=1;
+            int a=0;
+            while (a==0 && k<6)
+            {
+                if (tabResultat[k][0]==getCarteRang(*getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j)) && tabResultat[k][1]==getCarteCouleur(*getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j)))
+                {
+                    a=1;
+                    AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x,y+15,0.8,true);
+                }
+                k++;
+            }
+            if (a==0)
+                AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x,y+15,0.8,false);
+
+        }
+    }
+    else
+    {
+        assert(getTypeJoueur( *getIemeJoueur(t,i)) != 1);
+
+        if (getStatutJoueur(*getIemeJoueur(t,i)) != FOLD and getStatutJoueur(*getIemeJoueur(t,i)) !=SIT_OUT)
+        {
+            for (j=0;j<2;j++)
+            {
+                x= getPositionJoueurX(*t.joueur[i]);
+                y= getPositionJoueurY(*t.joueur[i]);
+                int k=1;
+                int a=0;
+                while (a==0 && k<6)
+                {
+                    if (tabResultat[k][0]==getCarteRang(*getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j)) && tabResultat[k][1]==getCarteCouleur(*getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j)))
+                    {
+                        a=1;
+                        AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x+j*20+3,y+20,0.35,true);
+                    }
+                    k++;
+                }
+                if (a==0)
+                    AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x+j*20+3,y+20,0.35,false);
+
+
+            }
         }
     }
 
@@ -649,7 +715,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     Table t;
     PileCarte p;
     double zoom = 1;
-    int tabResultat[10][6][2];
+
 
     initTable(t);
     initPileCarte(p);
