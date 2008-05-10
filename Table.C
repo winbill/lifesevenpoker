@@ -32,6 +32,18 @@ struct Table
 */
 
 
+void reinitialisationMainJoueurTable(Table & t)
+{
+    for (int i=0;i<getMaxJoueurTable(t);i++)
+    {
+        if (t.joueur[i]!=NULL)
+        {
+            reinitialisationMainJoueur(*getIemeJoueur(t,i));
+        }
+    }
+
+}
+
 void initTable (Table & table)
 {
     table.nJoueur = 0;

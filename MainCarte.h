@@ -39,6 +39,7 @@ enum Main
     QUINTE_FLUSH_ROYALE=10
 };
 
+void reinitialisationMain(MainCarte & m);
 
 int compareMain(int tabResultat1[6][2],int tabResultat2[6][2]);
 

@@ -43,11 +43,13 @@ int atendsActionJoueur(SDL_Surface* aff,const Table&t,const Joueur & j,int & rel
 
 void joueurPetiteBlind(Table & t,Joueur & j)
 {
+    setStatutJoueur(j,CALL);
     setArgentJoueur(j, getArgentJoueur(j)-getPetiteBlindTable(t));
     ajoutMiseJoueur(j,getPetiteBlindTable(t));
 }
 void joueurGrosseBlind(Table & t,Joueur & j)
 {
+    setStatutJoueur(j,CALL);
     setArgentJoueur(j, getArgentJoueur(j)-getPetiteBlindTable(t)*2);
     ajoutMiseJoueur(j,getPetiteBlindTable(t)*2);
 }
