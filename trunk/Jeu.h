@@ -17,14 +17,15 @@
 
 
 int atendsActionJoueur(SDL_Surface* aff,const Table&t,const Joueur & j,int & relance,Statut & s,int & montant);
-
+int trieTab3d(int tabResultat[10][6][2]);
+int fonctionGlobaleDetrminationVainqueur(const Table & t,int tabResultat[10][6][2]);
 
 void joueurPetiteBlind(Table & t,Joueur & j);
 void joueurGrosseBlind(Table & t,Joueur & j);
 
 
 
-void trieTab3d(int tabResultat[10][6][2]);
+
 //#include "AfficheDynamique.h"
 void intitialiseTab3d(int tabResultat[10][6][2]);
 

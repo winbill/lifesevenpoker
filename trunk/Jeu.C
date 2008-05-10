@@ -32,7 +32,13 @@ int atendsActionJoueur(SDL_Surface* aff,const Table&t,const Joueur & j,int & rel
     }
     else if (j.type == JoueurLocal)
     {
-        return scanActionJoueur(aff,relance,s,montant);
+        int a = scanActionJoueur(aff,relance,s,montant);
+        if(s==CALL)
+        {
+            if(j.mise==montant)
+                s=CHECK;
+        }
+        return a;
     }
     else
     {
@@ -111,8 +117,9 @@ void jeuDetermineVainqueur(const Table & t,int tabResultat[10][6][2])
     }
 }
 
-void trieTab3d(int tabResultat[10][6][2])
+int trieTab3d(int tabResultat[10][6][2])
 {
+    int egalite=0;
     int i,k,temp,l;
     int j=0;
     int plusGrand=0;
@@ -142,18 +149,21 @@ void trieTab3d(int tabResultat[10][6][2])
                 }
                 j++;
             }
+            if(j==7 && plusGrand==0)
+                egalite++;
             j=0;
             plusGrand = 0;
         }
     }
+    return egalite;
 }
 
 
-void fonctionGlobaleDetrminationVainqueur(const Table & t,int tabResultat[10][6][2])
+int fonctionGlobaleDetrminationVainqueur(const Table & t,int tabResultat[10][6][2])
 {
     intitialiseTab3d(tabResultat);
     jeuDetermineVainqueur(t,tabResultat);
-    trieTab3d(tabResultat);
+    return trieTab3d(tabResultat);
 }
 
 
