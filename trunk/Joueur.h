@@ -70,6 +70,8 @@ struct Joueur
 	int posY;
 };
 
+void reinitialisationMainJoueur(Joueur & j);
+
 void actionJoueur(Joueur & j,Statut s,int & montant,int relance);
 
 int getPositionJoueurX(const Joueur & j);

@@ -589,6 +589,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
     SDL_Event event;
     bool gameOn=true;
+    bool blindAMettre=true;
     int finTour=getNJoueurTable(t);
     bool retour = true;
     printf("lance jeu\n");
@@ -602,28 +603,26 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     Statut statut;
     joueurRestant++;
 
-    distribuer2CartesJoueursJeu(t);
 
 
-    AffAfficheTapis(affichage,tapis);
-    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
 
-    AffCarteDecouvertes(t,affichage);
-    AffCartesJoueursJeu(affichage,t);
-    AffInfosJoueur(affichage,*player,t);
-    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-
-
-    SDL_Flip(affichage);
     while (gameOn)
     {
+        joueurJouant = getPositionDealerTable(t);
         joueurJouant =getJoueurSuivant(t,joueurJouant);
-        joueurPetiteBlind(t,*t.joueur[joueurJouant]);
-        joueurJouant =getJoueurSuivant(t,joueurJouant);
-        joueurGrosseBlind(t,*t.joueur[joueurJouant]);
-        joueurJouant =getJoueurSuivant(t,joueurJouant);
-        montant = getPetiteBlindTable(t)*2;
-
+        if (blindAMettre==true)
+        {
+            reinitialisationMainJoueurTable(t);
+            reinitialisationMain(*getMainCarteTable(t));
+            nouvellePileCarte(p);
+            distribuer2CartesJoueursJeu(t);
+            joueurPetiteBlind(t,*t.joueur[joueurJouant]);
+            joueurJouant =getJoueurSuivant(t,joueurJouant);
+            joueurGrosseBlind(t,*t.joueur[joueurJouant]);
+            joueurJouant =getJoueurSuivant(t,joueurJouant);
+            montant = getPetiteBlindTable(t)*2;
+            blindAMettre=false;
+        }
 
         AffAfficheTapis(affichage,tapis);
         AffAffichageInfosJoueurs(affichage,t,joueurJouant);
@@ -641,11 +640,13 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
         while (finTour!=0 && gameOn)
         {
+            printf("joueurJouant:%d\n",joueurJouant);
 
             if (t.joueur[joueurJouant]!=NULL)
             {
                 if ( getStatutJoueur(*t.joueur[joueurJouant]) != SIT_OUT && getStatutJoueur(*t.joueur[joueurJouant]) != FOLD)
                 {
+
                     while (retour)
                     {
                         relance=0;
@@ -792,7 +793,8 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         }
         else
         {
-            gameOn=false;
+            printf("determine_vainqueur_redistribue_retourner_carte\n");
+            blindAMettre=true;
         }
     }
 

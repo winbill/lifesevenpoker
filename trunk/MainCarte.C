@@ -27,6 +27,16 @@ void initialisationMain(MainCarte & m)
     m.nCarte=0;
 }
 
+
+void reinitialisationMain(MainCarte & m)
+{
+    for(int i=0;i<5;i++)
+    {
+        m.tabMain[i]=0;
+    }
+    m.nCarte=0;
+}
+
 int getMainCarteNbCarte(const MainCarte & m)
 {
     return m.nCarte;

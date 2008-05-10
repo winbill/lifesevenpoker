@@ -58,7 +58,7 @@ struct Table
 };
 
 
-
+void reinitialisationMainJoueurTable(Table & t);
 
 /**
 	@brief initialise la variable table

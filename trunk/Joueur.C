@@ -183,6 +183,11 @@ struct Joueur
 };
 */
 
+void reinitialisationMainJoueur(Joueur & j)
+{
+    reinitialisationMain(*getMainJoueur(j));
+}
+
 void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
 {
     int a;
@@ -196,6 +201,7 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         setStatutJoueur(j,s);
         break;
     case CALL:
+        //printf("call:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
         a = montant - getMiseJoueur(j);
         assert(a > 0 && getArgentJoueur(j) > a);
         ajoutMiseJoueur(j,a);
@@ -203,16 +209,18 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         setStatutJoueur(j,s);
         break;
     case CHECK:
+        //printf("check:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
         assert(montant == getMiseJoueur(j));
         setStatutJoueur(j,s);
         break;
     case RAISE:
+        //printf("raise:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
         a = montant - getMiseJoueur(j);
         assert(a >= 0 && getArgentJoueur(j) > ( a + relance));
         ajoutMiseJoueur(j,a+relance);
         setArgentJoueur(j,getArgentJoueur(j)-a-relance);
         setStatutJoueur(j,s);
-        montant = a+relance;
+        montant = montant+relance;
         break;
     case FOLD:
         setStatutJoueur(j,s);
