@@ -57,10 +57,18 @@ void initTable (Table & table)
     table.pileCarte = NULL;
     table.positionDealer = 0;
     table.petiteBlind = 0;
+    table.pot=0;
 
 }
 
-
+int getTablePot(const Table & t)
+{
+        return t.pot;
+}
+void setTablePot(Table & t,int n)
+{
+        t.pot=n;
+}
 
 
 Table* creeTable()

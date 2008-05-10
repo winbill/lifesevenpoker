@@ -118,6 +118,14 @@ void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis)
 
 }
 
+void AffAffichePot(SDL_Surface* affichage,const Table & t)
+{
+    char message[30];
+    sprintf(message,"Pot:%d",getTablePot(t));
+    AffAfficheTexte(affichage,message,900,600,255,255,255,TTF_STYLE_NORMAL,22);
+
+}
+
 int AffMenu(SDL_Surface* affichage)
 {
 
@@ -621,12 +629,15 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
 
     bouton=load_image(boutonP);
     AffAfficheTexte(bouton,"Suivre / Check",10,10,255,0,0,TTF_STYLE_NORMAL,18);
-    apply_surface(620,530+20*4,bouton,affichage);
+    apply_surface(620,530+20*4-50,bouton,affichage);
     bouton=load_image(boutonP);
     AffAfficheTexte(bouton,"Couche",10,10,255,0,0,TTF_STYLE_NORMAL,18);
-    apply_surface(620,530+20*4+50,bouton,affichage);
+    apply_surface(620,530+20*4,bouton,affichage);
     bouton=load_image(boutonP);
     AffAfficheTexte(bouton,"Relance",10,10,255,0,0,TTF_STYLE_NORMAL,18);
+    apply_surface(620,530+20*4+50,bouton,affichage);
+    bouton=load_image(boutonP);
+    AffAfficheTexte(bouton,"Tapis",10,10,255,0,0,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4+100,bouton,affichage);
 
     SDL_Flip(affichage);
@@ -659,24 +670,28 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
             }
             break;
         case SDL_MOUSEBUTTONUP :
-            for (int i=0;i<3;i++)
+            for (int i=-1;i<3;i++)
             {
                 if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 620 && event.button.x <= 820 && event.button.y >= 610+i*50 && event.button.y <= 610+i*50+50)
                 {
                     switch (i)
                     {
-                    case 0:
+                    case -1:
                         s=CALL;
                         break;
-                    case 1:
+                    case 0:
                         s=FOLD;
                         break;
-                    case 2:
+                    case 1:
                         s=RAISE;
                         relance = 50;
                         break;
+                    case 2:
+                        s=ALL_IN;
+                        break;
 
                     }
+                    printf("statut::%d\n",i);
                     SDL_FreeSurface(bouton);
                     return 1;
                 }
@@ -700,15 +715,26 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
     return 0;
 }
 
-
+void miseDansPot(Table & t)
+{
+    //on_met_toute_les_mises_dans_le_pot
+    for (int h=0;h<=getMaxJoueurTable(t);h++)
+    {
+        if (getIemeJoueur(t,h)!=NULL)
+        {
+            if (getMiseJoueur(*getIemeJoueur(t,h))!=0)
+            {
+                setTablePot(t,getTablePot(t)+getMiseJoueur(*getIemeJoueur(t,h)));
+                setMiseJoueur(*getIemeJoueur(t,h),0);
+            }
+        }
+    }
+}
 
 
 
 int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 {
-
-
-
 
     const int NOMBRE_JOUEUR_PC = 4;
     const int ARGENT_DEPART = 1000;
@@ -764,7 +790,6 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     int a;
     int montant;
     int boucleJeu=0;
-    int pot=0;
     Statut statut;
     joueurRestant++;
 
@@ -795,6 +820,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         AffCartesJoueursJeu(affichage,t);
         AffInfosJoueur(affichage,*player,t);
         AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+        AffAffichePot(affichage,t);
         if (zoom != 1)
         {
             SDL_Surface* surfaceZoom = rotozoomSurface(affichage,0,zoom,0);
@@ -843,6 +869,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                                 AffCarteDecouvertes(t,affichage);
                                 AffAffichageInfosJoueurs(affichage,t,joueurJouant);
                                 AffInfosJoueur(affichage,*player,t);
+                                AffAffichePot(affichage,t);
                                 if (zoom != 1)
                                 {
                                     SDL_Surface* surfaceZoom = rotozoomSurface(affichage,0,zoom,0);
@@ -914,6 +941,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                         AffCarteDecouvertes(t,affichage);
                         AffAffichageInfosJoueurs(affichage,t,joueurJouant);
                         AffInfosJoueur(affichage,*player,t);
+                        AffAffichePot(affichage,t);
                         if (zoom != 1)
                         {
                             SDL_Surface* surfaceZoom = rotozoomSurface(affichage,0,zoom,0);
@@ -937,6 +965,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             AffCartesJoueursJeu(affichage,t);
             AffInfosJoueur(affichage,*player,t);
             AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+            AffAffichePot(affichage,t);
             if (zoom != 1)
             {
                 SDL_Surface* surfaceZoom = rotozoomSurface(affichage,0,zoom,0);
@@ -945,47 +974,56 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             }
             SDL_Flip(affichage);
         }
-        //si tout le monde s'est couché
-        int i=0;
-        int j=0;
-
-        while (i<=1)
+        if (gameOn)
         {
-            if (t.joueur[j]!=NULL && (getStatutJoueur(*t.joueur[j]) != FOLD && getStatutJoueur(*t.joueur[j]) != SIT_OUT))
-                i++;
-            j++;
+            //si tout le monde s'est couché
+            int i=0;
+            int j=0;
+            int k=0;
 
-        }
-        //if(i==1)
-        //tout le monde sest couche
+            while (i<=1)
+            {
+                if (t.joueur[j]!=NULL && (getStatutJoueur(*t.joueur[j]) != FOLD && getStatutJoueur(*t.joueur[j]) != SIT_OUT))
+                {
+                    i++;
+                    k=j;
+                }
+                j++;
+
+            }
+            //if(i==1)
+            //tout le monde sest couche sauf k
 
 
-        finTour=getNJoueurTable(t);
-        joueurJouant=getPositionDealerTable(t);
-        boucleJeu++;
-        if (boucleJeu==1)
-        {
-
-            distribuer1CarteDecouverteJeu(t,1);
-            AffCarteDecouvertes(t,affichage);
-            SDL_Flip(affichage);
-            SDL_Delay(200);
-            distribuer1CarteDecouverteJeu(t,1);
-            AffCarteDecouvertes(t,affichage);
-            SDL_Flip(affichage);
-            SDL_Delay(200);
-            distribuer1CarteDecouverteJeu(t,1);
-            AffCarteDecouvertes(t,affichage);
-        }
-        else if (boucleJeu<4)
-        {
-            distribuer1CarteDecouverteJeu(t,1);
-        }
-        else
-        {
-            affAffichageVainqueur(affichage,t);
-            printf("determine_vainqueur_redistribue_retourner_carte\n");
-            blindAMettre=true;
+            finTour=getNJoueurTable(t);
+            joueurJouant=getPositionDealerTable(t);
+            boucleJeu++;
+            if (boucleJeu==1)
+            {
+                miseDansPot(t);
+                distribuer1CarteDecouverteJeu(t,1);
+                AffCarteDecouvertes(t,affichage);
+                SDL_Flip(affichage);
+                SDL_Delay(200);
+                distribuer1CarteDecouverteJeu(t,1);
+                AffCarteDecouvertes(t,affichage);
+                SDL_Flip(affichage);
+                SDL_Delay(200);
+                distribuer1CarteDecouverteJeu(t,1);
+                AffCarteDecouvertes(t,affichage);
+            }
+            else if (boucleJeu<4)
+            {
+                miseDansPot(t);
+                distribuer1CarteDecouverteJeu(t,1);
+            }
+            else
+            {
+                miseDansPot(t);
+                affAffichageVainqueur(affichage,t);
+                printf("determine_vainqueur_donne_mise_redistribue_retourner_carte\n");
+                blindAMettre=true;
+            }
         }
     }
 

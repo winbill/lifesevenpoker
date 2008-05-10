@@ -66,7 +66,8 @@ void AffAfficheCredits(SDL_Surface* affichage);
 void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage);
 void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage,bool evidence,int tabResultat[6][2]);
 
-
+void AffAffichePot(SDL_Surface* affichage,const Table & t);
+void miseDansPot(Table & t);
 
 
 
