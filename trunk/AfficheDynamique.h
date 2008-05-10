@@ -42,6 +42,7 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t);
 
 void affAffichageVainqueur(SDL_Surface* affichage,const Table & t);
 
+void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabResultat[6][2],int i);
 
 int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant);
 
