@@ -37,8 +37,10 @@
 
 */
 typedef char path[100];
-
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache);
+void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t);
+
+void affAffichageVainqueur(SDL_Surface* affichage,const Table & t);
 
 
 int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant);
@@ -59,10 +61,11 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis);
 
 void AffAfficheCredits(SDL_Surface* affichage);
 
-void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t);
-
 
 void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage);
+void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage,bool evidence,int tabResultat[6][2]);
+
+
 
 
 

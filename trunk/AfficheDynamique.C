@@ -14,7 +14,63 @@
 #include "AfficheDynamique.h"
 
 
-void affAffichageVainqueur(SDL_Surface* affichage,const
+void affAffichageVainqueur(SDL_Surface* affichage,const Table & t)
+{
+    int tabResultat[10][6][2];
+
+    if (fonctionGlobaleDetrminationVainqueur(t,tabResultat)==0)
+    {
+        char message[30];
+        AffCartesJoueursJeu(affichage,t,false);
+        AffCarteDecouvertes(t,affichage,true,tabResultat[0]);
+
+
+
+        SDL_Flip(affichage);
+        printf("vainqueur:%s\n",(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo);
+
+
+
+        switch (tabResultat[0][0][0])
+        {
+        case 0:
+            sprintf(message,"Carte haute");
+            break;
+        case 1:
+            sprintf(message,"Paire");
+            break;
+        case 2:
+            sprintf(message,"Double paire");
+            break;
+        case 3:
+            sprintf(message,"Brelan");
+            break;
+        case 4:
+            sprintf(message,"Quinte");
+            break;
+        case 5:
+            sprintf(message,"Couleur");
+            break;
+        case 6:
+            sprintf(message,"Full");
+            break;
+        case 7:
+            sprintf(message,"Carre");
+            break;
+        case 8:
+            sprintf(message,"Quinte Flush");
+            break;
+        default:
+            sprintf(message,"ERREUR DETERMINATION FORME MAIN");
+            break;
+
+        }
+        printf("Forme:%s\n",message);
+        SDL_Delay(400000);
+    }
+
+
+}
 
 
 
@@ -350,9 +406,9 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
 
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
 {
-    AffCartesJoueursJeu(affichage,t,true);
-}
 
+    AffCartesJoueursJeu( affichage,t,true);
+}
 
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
 {
@@ -374,6 +430,7 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
                 x = (1024 - 2*largeurCarte -ecart)/2+j*(largeurCarte+ecart)-100;
                 y = 768 - hauteurCarte - ecart;
                 AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x,y+15,0.8);
+
             }
         }
         else
@@ -388,7 +445,7 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
                     y= getPositionJoueurY(*t.joueur[i]);
                     if (cache)
                     {
-                        AffAfficheCarte(affichage, NULL,x+j*20+3,y+20,0.35);
+                        AffAfficheCarte(affichage,NULL,x+j*20+3,y+20,0.35);
                     }
                     else
                     {
@@ -404,12 +461,39 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
 
 void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage)
 {
-    int i;
-    for (i=0;i<getMainCarteNbCarte(*(t.carteDecouverte));i++)
-    {
-        AffAfficheCarte(affichage,getMainCarteIemeCarte(*(t.carteDecouverte),i),(113+5)*(i)+210,250,0.6);
-    }
+    int tabResultat[6][2];
+    AffCarteDecouvertes(t,affichage,false,tabResultat);
+}
 
+void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage,bool evidence,int tabResultat[6][2])
+{
+    int i;
+    if (!evidence)
+    {
+        for (i=0;i<getMainCarteNbCarte(*(t.carteDecouverte));i++)
+        {
+            AffAfficheCarte(affichage,getMainCarteIemeCarte(*(t.carteDecouverte),i),(113+5)*(i)+210,250,0.6,evidence);
+        }
+    }
+    else
+    {
+        for (i=0;i<getMainCarteNbCarte(*(t.carteDecouverte));i++)
+        {
+            int j=1;
+            int a=0;
+            while (a==0 && j<6)
+            {
+                if (tabResultat[j][0]==getCarteRang(*getMainCarteIemeCarte(*(t.carteDecouverte),i)) && tabResultat[j][1]==getCarteCouleur(*getMainCarteIemeCarte(*(t.carteDecouverte),i)))
+                {
+                    a=1;
+                    AffAfficheCarte(affichage,getMainCarteIemeCarte(*(t.carteDecouverte),i),(113+5)*(i)+210,250,0.6,evidence);
+                }
+                j++;
+            }
+            if(a==0)
+                AffAfficheCarte(affichage,getMainCarteIemeCarte(*(t.carteDecouverte),i),(113+5)*(i)+210,250,0.6,false);
+        }
+    }
 
 
 }
@@ -833,51 +917,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         }
         else
         {
-            if (fonctionGlobaleDetrminationVainqueur(t,tabResultat)==0)
-            {
-                char message[30];
-                AffCartesJoueursJeu(affichage,t,false);
-                SDL_Flip(affichage);
-                printf("vainqueur:%s\n",(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo);
-                switch (tabResultat[0][0][0])
-                {
-                case 0:
-                    sprintf(message,"Carte haute");
-                    break;
-                case 1:
-                    sprintf(message,"Paire");
-                    break;
-                case 2:
-                    sprintf(message,"Double paire");
-                    break;
-                case 3:
-                    sprintf(message,"Brelan");
-                    break;
-                case 4:
-                    sprintf(message,"Quinte");
-                    break;
-                case 5:
-                    sprintf(message,"Couleur");
-                    break;
-                case 6:
-                    sprintf(message,"Full");
-                    break;
-                case 7:
-                    sprintf(message,"Carre");
-                    break;
-                case 8:
-                    sprintf(message,"Quinte Flush");
-                    break;
-                default:
-                    sprintf(message,"ERREUR DETERMINATION FORME MAIN");
-                    break;
-
-                }
-                printf("Forme:%s\n",message);
-
-
-                SDL_Delay(400000);
-            }
+            affAffichageVainqueur(affichage,t);
             printf("determine_vainqueur_redistribue_retourner_carte\n");
             blindAMettre=true;
         }
