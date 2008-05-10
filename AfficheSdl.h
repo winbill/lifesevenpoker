@@ -2,6 +2,10 @@
 #define AfficheSdl_H
 
 #include "AfficheDynamique.h"
+void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom);
+
+
+void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom,bool evidence);
 
 
 typedef char path[100];

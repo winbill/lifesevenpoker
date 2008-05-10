@@ -84,19 +84,48 @@ void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination 
 }
 
 
-
-void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom)
+void affichageOmbreCarte(SDL_Surface* affichage,int x,int y,double zoom)
 {
     SDL_Surface* carte;
-    if (c== NULL)
-        carte=load_image("img/doscarte.jpg");
+    carte=load_image("cards/black.png");
+
+    SDL_Surface* surfaceZoom = rotozoomSurface(carte, 0, zoom, 1);
+    SDL_FreeSurface(carte);
+
+    apply_surface(x,y,surfaceZoom,affichage);
+    SDL_FreeSurface(surfaceZoom);
+
+
+}
+void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom)
+{
+    AffAfficheCarte(affichage,c, x, y, zoom,false);
+}
+
+
+void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom,bool evidence)
+{
+    SDL_Surface* carte;
+    if (!evidence)
+    {
+        if (c== NULL)
+            carte=load_image("img/doscarte.jpg");
+        else
+            carte=load_image(c->nomFichier);
+    }
     else
-        carte=load_image(c->nomFichier);
+    {
+        carte=load_image("img/white.png");
+    }
 
     SDL_Surface* surfaceZoom = rotozoomSurface(carte, 0, zoom, 1);
     SDL_FreeSurface(carte);
     apply_surface(x,y,surfaceZoom,affichage);
     SDL_FreeSurface(surfaceZoom);
+
+
+
+
 
 }
 
