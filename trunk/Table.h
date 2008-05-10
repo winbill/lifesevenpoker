@@ -55,8 +55,10 @@ struct Table
 	PileCarte* pileCarte;
 	int positionDealer;
 	int petiteBlind;
+	int pot;
 };
-
+int getTablePot(const Table & t);
+void setTablePot(Table & t,int n);
 
 void reinitialisationMainJoueurTable(Table & t);
 

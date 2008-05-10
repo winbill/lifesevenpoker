@@ -80,6 +80,9 @@
 		<Unit filename="Controles.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="IArtificielle.C">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="IArtificielle.h">
 			<Option target="Debug" />
 		</Unit>
