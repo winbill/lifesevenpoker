@@ -66,7 +66,7 @@ void MainCarteLibere(MainCarte & m)
 
 
 
-int couleurMainCarte(int tab7Carte[8][2])
+int couleurMainCarte(int tab7Carte[7][2])
 {
     char c[4];
     int i;
@@ -75,7 +75,7 @@ int couleurMainCarte(int tab7Carte[8][2])
         c[i] = 0;    //tableau qui va contenir le nombre de carte de chaque couleur
     }
     //on compte le nombre de carte de chaque couleur
-    for (i=0;i<=7;i++)
+    for (i=0;i<7;i++)
     {
         c[tab7Carte[i][1]-1] ++; //on incremente chaque celulle correspondant a la couleur
         //du tableau de un
@@ -88,6 +88,8 @@ int couleurMainCarte(int tab7Carte[8][2])
             return i+1; //s'il y a une couleur presente 5 fois on renvoit son code
         i++;
     }
+
+
     return 0;
 }
 
