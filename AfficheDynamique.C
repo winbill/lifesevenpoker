@@ -14,59 +14,86 @@
 #include "AfficheDynamique.h"
 
 
-void affAffichageVainqueur(SDL_Surface* affichage,const Table & t)
+void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 {
+    //on alloue
     int tabResultat[10][6][2];
 
     if (fonctionGlobaleDetrminationVainqueur(t,tabResultat)==0)
     {
+        char message2[30];
         char message[30];
         AffCartesJoueursJeu(affichage,t,false);
         AffCarteDecouvertes(t,affichage,true,tabResultat[0]);
         AffCartesJoueursJeuFinale(affichage,t,tabResultat[0],tabResultat[0][0][1]);
 
 
-        SDL_Flip(affichage);
-        printf("vainqueur:%s\n",(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo);
-
-
 
         switch (tabResultat[0][0][0])
         {
         case 0:
-            sprintf(message,"Carte haute");
+            sprintf(message2,"une carte haute");
             break;
         case 1:
-            sprintf(message,"Paire");
+            sprintf(message2,"une paire");
             break;
         case 2:
-            sprintf(message,"Double paire");
+            sprintf(message2,"une double paire");
             break;
         case 3:
-            sprintf(message,"Brelan");
+            sprintf(message2,"un brelan");
             break;
         case 4:
-            sprintf(message,"Quinte");
+            sprintf(message2,"une quinte");
             break;
         case 5:
-            sprintf(message,"Couleur");
+            sprintf(message2,"une couleur");
             break;
         case 6:
-            sprintf(message,"Full");
+            sprintf(message2,"un full");
             break;
         case 7:
-            sprintf(message,"Carre");
+            sprintf(message2,"un carre");
             break;
         case 8:
-            sprintf(message,"Quinte Flush");
+            sprintf(message2,"une quinte flush");
             break;
         default:
-            sprintf(message,"ERREUR DETERMINATION FORME MAIN");
+            sprintf(message2,"ERREUR DETERMINATION FORME MAIN");
             break;
 
         }
-        printf("Forme:%s\n",message);
-        SDL_Delay(400000);
+        sprintf(message,"vainqueur:%s avec %s\n",(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,message2);
+        AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
+        SDL_Flip(affichage);
+
+        if (getStatutJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))!=ALL_IN)
+        {
+            setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
+            setTablePot(t,0);
+        }
+        else
+        {
+            for (int i=0;i<getMaxJoueurTable(t);i++)
+            {
+                if (tabResultat[0][0][1]!=i)
+                {
+                    if (getGainTapisJoueur(*getIemeJoueur(t,i))>getTapisJoueur(*getIemeJoueur(t,tabResultat[0][0][1])))
+                    {
+
+                    }
+                    else
+                    {
+                    }
+                }
+
+
+            }
+
+
+        }
+
+        SDL_Delay(3000);
     }
 
 
