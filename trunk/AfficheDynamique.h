@@ -37,17 +37,49 @@
 
 */
 typedef char path[100];
+
+
+/**	@brief
+	@param
+	@param
+*/
+
+/**	@brief affiche les cartes des joueurs
+	@param [in,out] affichage
+	@param [in] t
+	@param [in] cache si vraie affiche les cartes des autres joueurs face cachee
+	@note utilise AffAfficheCarte
+*/
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache);
+
+/**	@brief affiche les cartes des joueurs face cachée (sauf les siennes)
+	@param [in,out] affichage
+	@param [in] t
+	@note utilise AffAfficheCarte
+*/
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t);
 
+/**	@brief détermine le ou les vainqueurs et fait l'affichage en fonction
+	@param [in,out] affichage
+	@param [in] t
+*/
 void affAffichageVainqueur(SDL_Surface* affichage,Table & t);
 
+/**	@brief affiche les cartes des joueurs face cachée (sauf les siennes)
+	@param [in,out] affichage
+	@param [in] t
+*/
 void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabResultat[6][2],int i);
+
 
 int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant);
 
+
 int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant,SDL_Surface* sortie);
+
 int AffMenu(SDL_Surface* affichage);
+
+
 
 
 
@@ -64,9 +96,13 @@ void AffAfficheCredits(SDL_Surface* affichage);
 
 
 void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage);
+
+
 void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage,bool evidence,int tabResultat[6][2]);
 
 void AffAffichePot(SDL_Surface* affichage,const Table & t);
+
+
 void miseDansPot(Table & t);
 
 
