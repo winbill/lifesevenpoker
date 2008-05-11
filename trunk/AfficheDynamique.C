@@ -12,6 +12,8 @@
 
 
 #include "AfficheDynamique.h"
+#include "Language.h"
+
 
 
 void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
@@ -25,12 +27,12 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
     {
         char message2[30];
         char message[30];
-	//on affiche les cartes des joueurs faces découvertes
+        //on affiche les cartes des joueurs faces découvertes
         AffCartesJoueursJeu(affichage,t,false);
-	//on rajoute une image transaparente sur les images qui permettent d'avoir la forme
-	//sur les cartes decouvertes
+        //on rajoute une image transaparente sur les images qui permettent d'avoir la forme
+        //sur les cartes decouvertes
         AffCarteDecouvertes(t,affichage,true,tabResultat[0]);
-	    //et sur les cartes du joueur concerné
+        //et sur les cartes du joueur concerné
         AffCartesJoueursJeuFinale(affichage,t,tabResultat[0],tabResultat[0][0][1]);
 
 
@@ -69,7 +71,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
             break;
 
         }
-	//affichage en texte du vainqueur et de la forme
+        //affichage en texte du vainqueur et de la forme
         sprintf(message,"vainqueur:%s avec %s\n",(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,message2);
         AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
         SDL_Flip(affichage);
@@ -155,7 +157,7 @@ void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis)
 
 void AffAffichePot(SDL_Surface* affichage,const Table & t)
 {
-	//affiche le contenu du pot
+    //affiche le contenu du pot
     char message[30];
     sprintf(message,"Pot:%d",getTablePot(t));
     AffAfficheTexte(affichage,message,900,600,255,255,255,TTF_STYLE_NORMAL,22);
@@ -771,6 +773,8 @@ void miseDansPot(Table & t)
 
 int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 {
+    char** tabLanguage=creeTableauLanguage("languages/french");
+
 
     //nombre d'IA:
     const int NOMBRE_JOUEUR_PC = 4;
@@ -833,7 +837,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     int debug=0;
     /*
     void afficheInfoJoueur(const Joueur & j)
-void afficheMainCarte(const MainCarte & m,char titre[])*/
+    void afficheMainCarte(const MainCarte & m,char titre[])*/
 
     AffAffichageInfosJoueurs(affichage,t,joueurJouant); //on lance l'affichage, pour initialiser les positins des joueurs
 
@@ -1096,7 +1100,7 @@ void afficheMainCarte(const MainCarte & m,char titre[])*/
                 blindAMettre=true;
                 boucleJeu = 0;
             }
-                    }
+        }
     }
 
 
@@ -1118,7 +1122,7 @@ void afficheMainCarte(const MainCarte & m,char titre[])*/
     pileCarteLibere(p);
     tableLibere(t);
 
-
+    detruitTableauLanguage(tabLanguage);
     return renvoyer;
 
 }
