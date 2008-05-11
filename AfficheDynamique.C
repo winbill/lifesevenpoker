@@ -16,15 +16,21 @@
 
 void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 {
-    //on alloue
+    //on alloue le tableau qui va contenir le resultat de la partie
     int tabResultat[10][6][2];
 
+
+    //s'il n'y a pas d'égalité
     if (fonctionGlobaleDetrminationVainqueur(t,tabResultat)==0)
     {
         char message2[30];
         char message[30];
+	//on affiche les cartes des joueurs faces découvertes
         AffCartesJoueursJeu(affichage,t,false);
+	//on rajoute une image transaparente sur les images qui permettent d'avoir la forme
+	//sur les cartes decouvertes
         AffCarteDecouvertes(t,affichage,true,tabResultat[0]);
+	    //et sur les cartes du joueur concerné
         AffCartesJoueursJeuFinale(affichage,t,tabResultat[0],tabResultat[0][0][1]);
 
 
@@ -63,6 +69,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
             break;
 
         }
+	//affichage en texte du vainqueur et de la forme
         sprintf(message,"vainqueur:%s avec %s\n",(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,message2);
         AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
         SDL_Flip(affichage);
@@ -145,8 +152,10 @@ void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis)
 
 }
 
+
 void AffAffichePot(SDL_Surface* affichage,const Table & t)
 {
+	//affiche le contenu du pot
     char message[30];
     sprintf(message,"Pot:%d",getTablePot(t));
     AffAfficheTexte(affichage,message,900,600,255,255,255,TTF_STYLE_NORMAL,22);
@@ -161,7 +170,6 @@ int AffMenu(SDL_Surface* affichage)
     int colorDestination[5] = {255,255,255,255,255};
     int currentColor[5] = {255,255,255,255,255};
     char* listeChoix;
-
 
     path menuP="img/menu.bmp";
     SDL_Surface* menu=load_image(menuP);
@@ -297,14 +305,15 @@ void AffAfficheCredits(SDL_Surface* affichage)
 
 void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & table,int joueurJouant)
 {
+//recuperation des coordonnés ou il doit etre placé
     int posx = getPositionJoueurX(j);
     int posy = getPositionJoueurY(j);
     char message[30];
 
-
+//affichage de son pseudo
     sprintf(message,"%s:%d",j.pseudo,j.argent);
 
-
+//si c'est le joueur qui est en train de jouer on change ca couleur
     if (getIdJoueur(j) != joueurJouant)
     {
         AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_NORMAL,22);
@@ -338,12 +347,12 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     }
 
 
-
+//affichage du statut
     AffAfficheTexte(affichage,message,posx,posy+20*1+91,255,255,255,TTF_STYLE_NORMAL,18);
 
 
 
-
+//si c'est le dealer : on le marque
     if (j.idJoueur == getPositionDealerTable(table))
     {
         sprintf(message,"Dealer");
