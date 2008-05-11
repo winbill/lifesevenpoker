@@ -40,7 +40,7 @@ typedef char path[100];
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache);
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t);
 
-void affAffichageVainqueur(SDL_Surface* affichage,const Table & t);
+void affAffichageVainqueur(SDL_Surface* affichage,Table & t);
 
 void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabResultat[6][2],int i);
 
