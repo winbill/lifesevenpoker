@@ -451,7 +451,7 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
 {
 
-    AffCartesJoueursJeu( affichage,t,true);
+    AffCartesJoueursJeu( affichage,t,false);
 }
 
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
@@ -772,6 +772,7 @@ void miseDansPot(Table & t)
 int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 {
 
+    //nombre d'IA:
     const int NOMBRE_JOUEUR_PC = 4;
     const int ARGENT_DEPART = 1000;
     Table t;
@@ -782,9 +783,11 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     initTable(t);
     initPileCarte(p);
 
+    //petite blind a 10
     setPetiteBlindTable (t,10);
     setMaxJoueurTable(t,NOMBRE_JOUEUR_PC+1);
     t.positionDealer=1;
+
 
     t.pileCarte = &p;
     char nom[20];
@@ -792,6 +795,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     Joueur* player;
     Joueur* joueurs[10];
 
+    //intitialisation et creation des joueurs artificiels
     for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
     {
         sprintf(nom,"%s%d%s","Ordinateur",i,"  ");
@@ -803,7 +807,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
     }
 
-
+    //initialisation du joueur humain
     player=creeJoueur();
     initJoueur(*player,"moi");
     setStatutJoueur(*player,SIT);
@@ -814,77 +818,98 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
 
     SDL_Event event;
-    bool gameOn=true;
+    bool gameOn=true;//variable conditionnel de boucle
     bool blindAMettre=true;
-    int finTour=getNJoueurTable(t);
-    bool retour = true;
+    int finTour=getNJoueurTable(t);//nombre de joueur qui reste a ineroger
+    bool retour = true;//variable pour l'interraction entre l'ordinateur et l'humain
     printf("lance jeu\n");
-    int renvoyer=0;
-    int joueurJouant = getPositionDealerTable(t);
-    int joueurRestant =0;
-    int relance = 0;
+    int renvoyer=0;//valuer que l'on renvoit
+    int joueurJouant;//indice du joueur qui joue
     int a;
-    int montant;
-    int boucleJeu=0;
-    Statut statut;
-    joueurRestant++;
+    int montant;//variable qui memorise la mise a mettre en cours
+    int boucleJeu=0;//compte le nombre de tour (au total 4)
+    Statut statut;//permet de memoriser le nouveau statu du joueur
+    int relance = 0; //variable pour memoriser la relance d'un joueur
+    int debug=0;
+    /*
+    void afficheInfoJoueur(const Joueur & j)
+void afficheMainCarte(const MainCarte & m,char titre[])*/
 
-
+    AffAffichageInfosJoueurs(affichage,t,joueurJouant); //on lance l'affichage, pour initialiser les positins des joueurs
 
 
     while (gameOn)
     {
+        //joueurJouant = personne apres le dealer
         joueurJouant = getPositionDealerTable(t);
         joueurJouant =getJoueurSuivant(t,joueurJouant);
+
         if (blindAMettre==true)
         {
+
+            //nouveau lancement de 4 tour
+            //on met a zero les carte des joueurs et de la table
             reinitialisationMainJoueurTable(t);
             reinitialisationMain(*getMainCarteTable(t));
-            nouvellePileCarte(p);
+            nouvellePileCarte(p);//la pile de carte contient de nouveau 52carte
             distribuer2CartesJoueursJeu(t);
+
+            //les joueurs mettent les petites blind et grosses blind
             joueurPetiteBlind(t,*t.joueur[joueurJouant]);
             joueurJouant =getJoueurSuivant(t,joueurJouant);
             joueurGrosseBlind(t,*t.joueur[joueurJouant]);
             joueurJouant =getJoueurSuivant(t,joueurJouant);
+
+            //la mise minimale a mettre est la grosse blind
             montant = getPetiteBlindTable(t)*2;
-            blindAMettre=false;
+            blindAMettre=false;//au prochain tour il n'est plus nécessaire de faire ces opérations
         }
 
-        AffAfficheTapis(affichage,tapis);
-        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-        AffCarteDecouvertes(t,affichage);
-        AffCartesJoueursJeu(affichage,t);
-        AffInfosJoueur(affichage,*player,t);
-        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-        AffAffichePot(affichage,t);
-        if (zoom != 1)
+
+
+
+
+
+        AffAfficheTapis(affichage,tapis);//affiche l'arrie plan : le tapis
+        AffCarteDecouvertes(t,affichage);//affiche les cartes découvertes
+        AffCartesJoueursJeu(affichage,t);//affiche les cartes de tous les joueurs
+        AffInfosJoueur(affichage,*player,t);//affiche les informations personelles du joueur humain
+        AffAffichageInfosJoueurs(affichage,t,joueurJouant);//affiche les informations personelles des ordinateurs
+        AffAffichePot(affichage,t);//affiche l'etat du pot
+
+
+        if (zoom != 1)//le zoom sert lors du redimensionnement
         {
             SDL_Surface* surfaceZoom = rotozoomSurface(affichage,0,zoom,0);
             apply_surface(0,0,surfaceZoom,affichage);
             SDL_FreeSurface(surfaceZoom);
         }
-        SDL_Flip(affichage);
+        SDL_Flip(affichage);//actualisation de l'affichage
 
         while (finTour!=0 && gameOn)
         {
-            printf("joueurJouant:%d\n",joueurJouant);
+            printf("Debug:%d\n",debug);
+            debug++;
+
+
 
             if (t.joueur[joueurJouant]!=NULL)
             {
                 if ( getStatutJoueur(*t.joueur[joueurJouant]) != SIT_OUT && getStatutJoueur(*t.joueur[joueurJouant]) != FOLD && getStatutJoueur(*t.joueur[joueurJouant]) != ALL_IN)
                 {
-
+                    //le joueur existe et il peut jouer
                     while (retour)
                     {
+                        //on attends ce qu'il a choisit de faire
                         relance=0;
                         a = atendsActionJoueur(affichage,t,*t.joueur[joueurJouant],relance,statut,montant);
-                        if (a==-1)//onquitte
+                        if (a==-1)//le joueur a choisit de quitter
                         {
                             gameOn = false;
                             renvoyer=3;
                             break;
                         }
-                        else if (a==2)//menu
+                        else if (a==2)// d'afficher le menu
                         {
 
                             switch (AffMenu(affichage))
@@ -918,18 +943,21 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                         }
                         else
                         {
+                            //il n'as pas cliqué sur des options de menu donc il continue a jouer avec son action pris en compte
                             actionJoueur(*t.joueur[joueurJouant],statut,montant,relance);
-                            retour=false;
+                            retour=false;//inutile de reattendre son action
                         }
                     }
                     retour = true;
                 }
                 if (relance==0)
                 {
+                    //si il ne relance pas, alors il reste un joueur en moins a faire jouer
                     finTour--;
                 }
                 else
                 {
+                    //sil relance il faut demander a tout les joueurs sauf lui sil veule suivre
                     finTour=getNJoueurTable(t)-1;
                 }
             }
@@ -994,7 +1022,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 break;
             }
 
-            joueurJouant =getJoueurSuivant(t,joueurJouant);
+
+            joueurJouant =getJoueurSuivant(t,joueurJouant);//on passe au joueur suivant
+            //on reaffiche tout
             AffAfficheTapis(affichage,tapis);
             AffAffichageInfosJoueurs(affichage,t,joueurJouant);
             AffCarteDecouvertes(t,affichage);
@@ -1009,10 +1039,14 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 SDL_FreeSurface(surfaceZoom);
             }
             SDL_Flip(affichage);
+
+
+
+
         }
         if (gameOn)
         {
-            //si tout le monde s'est couchÃ©
+            //si tout le monde s'est couchees
             int i=0;
             int j=0;
             int k=0;
@@ -1034,6 +1068,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             finTour=getNJoueurTable(t);
             joueurJouant=getPositionDealerTable(t);
             boucleJeu++;
+            printf("boucleJeu:%d\n",boucleJeu);
             if (boucleJeu==1)
             {
                 miseDansPot(t);
@@ -1059,8 +1094,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 affAffichageVainqueur(affichage,t);
                 printf("determine_vainqueur_donne_mise_redistribue_retourner_carte\n");
                 blindAMettre=true;
+                boucleJeu = 0;
             }
-        }
+                    }
     }
 
 

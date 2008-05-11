@@ -96,6 +96,7 @@ void afficheInfoTable(const Table & t)
     printf("-----FIN-----\n");
 
 }
+
 void afficheMainCarte(const MainCarte & m,char titre[])
 {
     printf("--Infos MainCarte  %s--\n",titre);
