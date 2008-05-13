@@ -71,6 +71,9 @@ struct Joueur
 	int tapis;
 	int gainTapis;
 };
+
+void ajoutArgentJoueur(Joueur & joueur, int n);
+
 void  ajouteGainTapisJoueur(Joueur & j,int n);
 int getGainTapisJoueur(const Joueur & j);
 void setGainTapisJoueur(Joueur & j,int n);

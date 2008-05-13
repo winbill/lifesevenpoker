@@ -93,6 +93,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 
 }
 
+
 void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
 {
     int i=0;
@@ -109,19 +110,7 @@ void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
 }
 
 
-void calulVainqueurTapis(Table & t,tabResultat[][6][2])
-{
-    int i=0;
-    while (getTablePot>0)
-    {
-        ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
-        setTablePot(t,getTablePot(t)-getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
-        setGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
-        i++;
 
-    }
-
-}
 
 
 
@@ -1156,6 +1145,10 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     }
                 }
                 changeDealerTable(t);
+
+
+
+
 
             }
         }
