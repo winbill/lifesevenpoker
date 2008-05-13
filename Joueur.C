@@ -46,6 +46,7 @@ void initJoueur(Joueur & joueur)
 {
     joueur.argent=0;
     joueur.tapis=0;
+    joueur.gainTapis=0;
 
     joueur.pseudo = new char[20];
     memset(joueur.pseudo,0,sizeof(*joueur.pseudo)*20);
@@ -185,6 +186,13 @@ int getArgentJoueur(const Joueur & joueur)
 {
     return joueur.argent;
 }
+void ajoutArgentJoueur(Joueur & joueur, int n)
+{
+    setArgentJoueur(joueur,getArgentJoueur(joueur)+n);
+}
+
+
+
 /*
     DEF_STATUT=0,
 	SIT_OUT,1
@@ -258,6 +266,9 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         montant = getMiseJoueur(j);
         setArgentJoueur(j,0);
         setTapisJoueur(j,montant);
+
+
+
         ajouteGainTapisJoueur(j,getArgentJoueur(j));
     default:
         break;
