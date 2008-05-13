@@ -88,7 +88,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
         }
         else
         {
-
+            printf("lancement fonction pour le tapis ---- \n");
             calulVainqueurTapis(t,tabResultat);
 
         }
@@ -105,8 +105,18 @@ void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
     int i=0;
     while (getTablePot(t)>0)
     {
-        ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
-        setTablePot(t,getTablePot(t)-getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+        printf("Le pot:%d  --  i:%d -- gainTapis:%d\n",getTablePot(t),i,getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+
+        if (getTablePot(t)>=getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])))
+        {
+            ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+            setTablePot(t,getTablePot(t)-getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+        }
+        else
+        {
+            ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getTablePot(t));
+            setTablePot(t,0);
+        }
         setGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
         setTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
         i++;
@@ -273,33 +283,33 @@ int AffMenu(SDL_Surface* affichage)
 /*
 void AffAfficheCredits(SDL_Surface* affichage)
 {
-    bool fin=false;
-    SDL_Event event;
+bool fin=false;
+SDL_Event event;
 
-    AffEffaceEcran(affichage);
+AffEffaceEcran(affichage);
 
-    path creditsP="img/credits.jpg";
-    SDL_Surface* credits = load_image(creditsP);
-    SDL_Rect creditsRect = AffCentrer(credits,affichage,0);
-    apply_surface(creditsRect.x,creditsRect.y,credits,affichage);
-    SDL_Flip(affichage);
+path creditsP="img/credits.jpg";
+SDL_Surface* credits = load_image(creditsP);
+SDL_Rect creditsRect = AffCentrer(credits,affichage,0);
+apply_surface(creditsRect.x,creditsRect.y,credits,affichage);
+SDL_Flip(affichage);
 
 
-    while (!fin)
-    {
-        SDL_PollEvent(&event);
+while (!fin)
+{
+SDL_PollEvent(&event);
 
-        if (event.type == SDL_KEYDOWN)
-        {
-            if (event.key.keysym.sym == SDLK_m)
-            {
-                AffMenu(affichage);
-                fin=true;
-            }
-        }
-    }
+if (event.type == SDL_KEYDOWN)
+{
+if (event.key.keysym.sym == SDLK_m)
+{
+AffMenu(affichage);
+fin=true;
+}
+}
+}
 
-    SDL_FreeSurface(credits);
+SDL_FreeSurface(credits);
 }
 
 */
@@ -309,15 +319,15 @@ void AffAfficheCredits(SDL_Surface* affichage)
 
 void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & table,int joueurJouant)
 {
-//recuperation des coordonnés ou il doit etre placé
+    //recuperation des coordonnés ou il doit etre placé
     int posx = getPositionJoueurX(j);
     int posy = getPositionJoueurY(j);
     char message[30];
 
-//affichage de son pseudo
+    //affichage de son pseudo
     sprintf(message,"%s:%d",j.pseudo,j.argent);
 
-//si c'est le joueur qui est en train de jouer on change ca couleur
+    //si c'est le joueur qui est en train de jouer on change ca couleur
     if (getIdJoueur(j) != joueurJouant)
     {
         AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_NORMAL,22);
@@ -351,12 +361,12 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     }
 
 
-//affichage du statut
+    //affichage du statut
     AffAfficheTexte(affichage,message,posx,posy+20*1+91,255,255,255,TTF_STYLE_NORMAL,18);
 
 
 
-//si c'est le dealer : on le marque
+    //si c'est le dealer : on le marque
     if (j.idJoueur == getPositionDealerTable(table))
     {
         sprintf(message,"Dealer");
@@ -442,13 +452,13 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
 
 /*
 
-      1  SIT_OUT
-      2  SIT,
-      3  CALL,
-      4  CHECK,
-      5  RAISE,
-      6  FOLD,
-      7  ALL_IN,
+1  SIT_OUT
+2  SIT,
+3  CALL,
+4  CHECK,
+5  RAISE,
+6  FOLD,
+7  ALL_IN,
 
 */
 
@@ -805,7 +815,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
 
     //nombre d'IA:
-    const int NOMBRE_JOUEUR_PC = 4;
+    const int NOMBRE_JOUEUR_PC = 2;
     const int ARGENT_DEPART = 1000;
     Table t;
     PileCarte p;
@@ -1004,15 +1014,15 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 renvoyer=3;
                 break;
             case SDL_VIDEORESIZE:/*
-                zoom = (double)event.resize.w/1024;
-                affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
-                AffAfficheTapis(affichage,tapis);
-                AffCartesJoueursJeu(affichage,t);
-                AffCarteDecouvertes(t,affichage);
-                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-                apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
-                SDL_Flip(affichage);
-                break;*/
+               zoom = (double)event.resize.w/1024;
+               affichage = SDL_SetVideoMode( event.resize.w, event.resize.h, 32, SDL_HWSURFACE|SDL_RESIZABLE|SDL_DOUBLEBUF );
+               AffAfficheTapis(affichage,tapis);
+               AffCartesJoueursJeu(affichage,t);
+               AffCarteDecouvertes(t,affichage);
+               AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+               apply_surface(0,0,rotozoomSurface(affichage,0,zoom,0),affichage);
+               SDL_Flip(affichage);
+               break;*/
             case SDL_KEYDOWN :
                 switch (event.key.keysym.sym)
                 {
