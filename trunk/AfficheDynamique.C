@@ -787,10 +787,10 @@ void calculGainTapisJoueur(Table & t)
     {
         if (getIemeJoueur(t,i)!=NULL && getStatutJoueur(*getIemeJoueur(t,i))==ALL_IN && getGainTapisJoueur(*getIemeJoueur(t,i))==0)
         {
+            ajouteGainTapisJoueur(*getIemeJoueur(t,i),getTablePot(t));
             for (int j=0;j<getMaxJoueurTable(t);j++)
             {
-                if (j!=i)
-                {
+
                     if (getMiseJoueur(*getIemeJoueur(t,j))>=getTapisJoueur(*getIemeJoueur(t,i)))
                     {
                         ajouteGainTapisJoueur(*getIemeJoueur(t,i),getTapisJoueur(*getIemeJoueur(t,i)));
@@ -799,7 +799,7 @@ void calculGainTapisJoueur(Table & t)
                     {
                         ajouteGainTapisJoueur(*getIemeJoueur(t,i),getMiseJoueur(*getIemeJoueur(t,i)));
                     }
-                }
+
             }
         }
     }

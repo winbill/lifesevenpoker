@@ -214,7 +214,7 @@ int getJoueurSuivant(const Table & table,int i)
     i++;
     if (i >= getMaxJoueurTable(table))
         i =0;
-    while (table.joueur[i] == NULL && (*table.joueur[i]).statut == (SIT || CALL || CHECK ||RAISE||FOLD||ALL_IN))
+    while (table.joueur[i] == NULL && (*table.joueur[i]).statut != SIT_OUT)
     {
         i++;
         if (i >= getMaxJoueurTable(table))
