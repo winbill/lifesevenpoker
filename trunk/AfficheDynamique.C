@@ -83,23 +83,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
         }
         else
         {
-            for (int i=0;i<getMaxJoueurTable(t);i++)
-            {
-                if (tabResultat[0][0][1]!=i)
-                {
-                    if (getGainTapisJoueur(*getIemeJoueur(t,i))>getTapisJoueur(*getIemeJoueur(t,tabResultat[0][0][1])))
-                    {
-
-                    }
-                    else
-                    {
-                    }
-                }
-
-
-            }
-
-
+            calulVainqueurTapis(t,tabResultat);
         }
 
         SDL_Delay(3000);
@@ -109,7 +93,19 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 }
 
 
+void calulVainqueurTapis(Table & t,tabResultat[][6][2])
+{
+    int i=0;
+    while (getTablePot>0)
+    {
+        ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+        setTablePot(t,getTablePot(t)-getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+        setGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
+        i++;
 
+    }
+
+}
 
 
 
@@ -769,6 +765,32 @@ void miseDansPot(Table & t)
     }
 }
 
+void calculGainTapisJoueur(Table & t)
+{
+    for (int i=0;i<getMaxJoueurTable(t);i++)
+    {
+        if (getIemeJoueur(t,i)!=NULL && getStatutJoueur(*getIemeJoueur(t,i))==ALL_IN && getGainTapisJoueur(*getIemeJoueur(t,i))==0)
+        {
+            for (int j=0;j<getMaxJoueurTable(t);j++)
+            {
+                if (j!=i)
+                {
+                    if (getMiseJoueur(*getIemeJoueur(t,j))>=getTapisJoueur(*getIemeJoueur(t,i)))
+                    {
+                        ajouteGainTapisJoueur(*getIemeJoueur(t,i),getTapisJoueur(*getIemeJoueur(t,i)));
+                    }
+                    else
+                    {
+                        ajouteGainTapisJoueur(*getIemeJoueur(t,i),getMiseJoueur(*getIemeJoueur(t,i)));
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 
 
 int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
@@ -1075,6 +1097,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             printf("boucleJeu:%d\n",boucleJeu);
             if (boucleJeu==1)
             {
+
+
+                calculGainTapisJoueur(t);
                 miseDansPot(t);
                 distribuer1CarteDecouverteJeu(t,1);
                 AffCarteDecouvertes(t,affichage);
@@ -1089,16 +1114,40 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             }
             else if (boucleJeu<4)
             {
+                calculGainTapisJoueur(t);
                 miseDansPot(t);
                 distribuer1CarteDecouverteJeu(t,1);
             }
             else
             {
+                calculGainTapisJoueur(t);
                 miseDansPot(t);
                 affAffichageVainqueur(affichage,t);
                 printf("determine_vainqueur_donne_mise_redistribue_retourner_carte\n");
                 blindAMettre=true;
                 boucleJeu = 0;
+                /*
+                for (int i=0;i<getMaxJoueurTable(t);i++)
+                {
+                    if (getIemeJoueur(t,i)!=NULL)
+                    {
+                        if (getArgentJoueur(*getIemeJoueur(t,i))>0)
+                        {
+                            setStatutJoueur(*getIemeJoueur(t,i),SIT);
+                        }
+                        else
+                        {
+                            setStatutJoueur(*getIemeJoueur(t,i),SIT_OUT);
+                            printf("SIT_OUT");
+                        }
+                    }
+                }*/
+                changeDealerTable(t);
+
+
+
+
+
             }
         }
     }

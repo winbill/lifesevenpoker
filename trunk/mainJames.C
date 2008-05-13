@@ -75,11 +75,12 @@ int main ( /*int argc, char** argv */ )
     distribuer1CarteDecouverteJeu(t,5);
 
 
-    //afficheMainCarte(*t.carteDecouverte,"table");
-    //afficheMainCarte(*getMainJoueur(*j1),"main de j1");
-    //afficheMainCarte(*getMainJoueur(*j2),"main de j2");
+    afficheMainCarte(*t.carteDecouverte,"table");
+    afficheMainCarte(*getMainJoueur(*j1),"main de j1");
+    afficheMainCarte(*getMainJoueur(*j2),"main de j2");
     //afficheMainCarte(*getMainJoueur(*j3),"main de j3");
     //afficheMainCarte(*getMainJoueur(j4),"main de j4");
+    //setCarte(getMainCarteIemeCarte(*getMainJoueur(j),0),12,3)
 
 
 /*

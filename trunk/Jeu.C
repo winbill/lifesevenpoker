@@ -209,7 +209,7 @@ int codageScoreMain(const MainCarte &m, int tabResultat[6][2],const Table & tabl
     tabMainTotale[7][0]=0;
     tabMainTotale[7][1]=0;
 
-    afficheTab2(tabMainTotale,8);
+
 
     tabResultat[0][1] = 0;
     //regle : si on a une couleur on a au mieux une quinte flush
