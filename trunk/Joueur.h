@@ -16,7 +16,7 @@
 
 
 
-void ajoutArgentJoueur(Joueur & joueur, int n);
+
 
 
 
