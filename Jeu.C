@@ -66,7 +66,7 @@ void distribuer2CartesJoueursJeu(Table & table)
     int i;
     for (i=0;i<getMaxJoueurTable(table);i++)
     {
-        if (table.joueur[i] != NULL)
+        if (table.joueur[i] != NULL && getStatutJoueur(*getIemeJoueur(table,i))!=SIT_OUT)
         {
             ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),tirerCarte(*table.pileCarte));
             ajouteCarte(*getMainJoueur(*getIemeJoueur(table,i)),tirerCarte(*table.pileCarte));
@@ -107,7 +107,7 @@ void jeuDetermineVainqueur(const Table & t,int tabResultat[10][6][2])
     {
         if (t.joueur[i] != NULL)
         {
-            if (getStatutJoueur((*getIemeJoueur(t,i)))!=(0 && 1 && 2 && 6 && 8))
+            if (getStatutJoueur((*getIemeJoueur(t,i)))!=SIT_OUT && getStatutJoueur((*getIemeJoueur(t,i)))!=SIT && getStatutJoueur((*getIemeJoueur(t,i)))!=FOLD)
             {
                 codageScoreMain(*getMainJoueur(*getIemeJoueur(t,i)),tabResultat[i],t);
                 tabResultat[i][0][1]=i;

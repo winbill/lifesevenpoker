@@ -33,10 +33,17 @@
 #include "Jeu.h"
 #include "IArtificielle.h"
 
+<<<<<<< .mine
+
+
+void calulVainqueurTapis(Table & t,int tabResultat[][6][2]);
+
+=======
 
 
 void calulVainqueurTapis(Table & t,tabResultat[][6][2])
 
+>>>>>>> .r308
 /** @brief Type cree pour manipuler les chemins de fichier.
 
 */
