@@ -72,6 +72,8 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
             break;
 
         }
+
+
         //affichage en texte du vainqueur et de la forme
         sprintf(message,"vainqueur:%s avec %s\n",(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,message2);
         AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
@@ -79,12 +81,16 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 
         if (getStatutJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))!=ALL_IN)
         {
+
             setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
             setTablePot(t,0);
+
         }
         else
         {
+
             calulVainqueurTapis(t,tabResultat);
+
         }
 
         SDL_WaitEvent(&event);
@@ -97,16 +103,14 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
 {
     int i=0;
-    while (getTablePot>0)
+    while (getTablePot(t)>0)
     {
         ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
         setTablePot(t,getTablePot(t)-getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
         setGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
         setTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
         i++;
-
     }
-
 }
 
 
@@ -1122,6 +1126,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             }
             else
             {
+
                 calculGainTapisJoueur(t);
                 miseDansPot(t);
                 affAffichageVainqueur(affichage,t);
@@ -1145,21 +1150,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     }
                 }
                 changeDealerTable(t);
-
-
-
-
-
             }
         }
     }
-
-
-
-
-
-
-
 
 
     for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
