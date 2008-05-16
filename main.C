@@ -33,7 +33,7 @@ int main (/*int argc, char** argv */)
     SDL_Surface* affichage;
     path caption="Life\'Seven Poker";
 
-    if(initSDL(affichage,1024,768,32,caption)!=0)
+    if (initSDL(affichage,1024,768,32,caption)!=0)
     {
         return 1;
     }
@@ -57,35 +57,43 @@ int main (/*int argc, char** argv */)
     AffStartUp(affichage,tapis);
     AffAfficheTapis(affichage,tapis);
     SDL_Flip(affichage);
-    int nouvellePartie=1;
+    bool nouvellePartie=true;
     int v;
+    bool finPartie=true;
 
-    if(AffMenu(affichage)==1)
+    while (finPartie)
     {
-
-        while(nouvellePartie)
+        finPartie=false;
+        nouvellePartie=true;
+        if (AffMenu(affichage)==1)
         {
-            AffAfficheTapis(affichage,tapis);
-            SDL_Flip(affichage);
-            nouvellePartie = 0;
-            v=lancePartie(affichage,tapis);
-            if(v==1)
-                nouvellePartie=1;
+
+            while (nouvellePartie)
+            {
+                AffAfficheTapis(affichage,tapis);
+                SDL_Flip(affichage);
+                nouvellePartie = 0;
+                v=lancePartie(affichage,tapis);
+                if (v==1)
+                {
+                    nouvellePartie=false;
+                }
+                else if (v==2)
+                {
+                    nouvellePartie=false;
+                    finPartie=true;
+                }
+            }
+
+        }
+
+        else if (AffMenu(affichage)==2)
+        {
+            //AFFICHER CREDITS
+            printf("AFFICHER CREDITS");
         }
 
     }
-    else if(AffMenu(affichage)==2)
-    {
-        //AFFICHER CREDITS
-        printf("AFFICHER CREDITS");
-    }
-
-
-
-
-
-
-
 
 
 

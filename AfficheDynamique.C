@@ -88,12 +88,17 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
         }
         else
         {
-            printf("lancement fonction pour le tapis ---- \n");
+
             calulVainqueurTapis(t,tabResultat);
 
         }
 
         SDL_WaitEvent(&event);
+    }
+    else
+    {
+        //test pr savoir qui a les mme mains que le gagnant
+        printf("--------egalite----------\n");
     }
 
 
@@ -103,10 +108,14 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
 {
     int i=0;
+    for (int j=0;j<getMaxJoueurTable(t);j++)
+    {
+        printf("Joueur : %d  Le pot:%d  --  i:%d -- gainTapis:%d\n",j,getTablePot(t),i,getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+    }
     while (getTablePot(t)>0)
     {
-        printf("Le pot:%d  --  i:%d -- gainTapis:%d\n",getTablePot(t),i,getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
 
+        printf("Le pot:%d  --  i:%d -- gainTapis:%d\n",getTablePot(t),i,getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
         if (getTablePot(t)>=getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])))
         {
             ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
@@ -742,7 +751,6 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                         break;
 
                     }
-                    printf("statut::%d\n",i);
                     SDL_FreeSurface(bouton);
                     return 1;
                 }
@@ -786,9 +794,12 @@ void calculGainTapisJoueur(Table & t)
 {
     for (int i=0;i<getMaxJoueurTable(t);i++)
     {
+        printf("--------gainb joueur ds fct :%d\n",getGainTapisJoueur(*getIemeJoueur(t,i)));
         if (getIemeJoueur(t,i)!=NULL && getStatutJoueur(*getIemeJoueur(t,i))==ALL_IN && getGainTapisJoueur(*getIemeJoueur(t,i))==0)
         {
+            printf("liaison\n");
             ajouteGainTapisJoueur(*getIemeJoueur(t,i),getTablePot(t));
+
             for (int j=0;j<getMaxJoueurTable(t);j++)
             {
 
@@ -798,7 +809,7 @@ void calculGainTapisJoueur(Table & t)
                 }
                 else
                 {
-                    ajouteGainTapisJoueur(*getIemeJoueur(t,i),getMiseJoueur(*getIemeJoueur(t,i)));
+                    ajouteGainTapisJoueur(*getIemeJoueur(t,i),getMiseJoueur(*getIemeJoueur(t,j)));
                 }
 
             }
@@ -868,12 +879,12 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     printf("lance jeu\n");
     int renvoyer=0;//valuer que l'on renvoit
     int joueurJouant=0;//indice du joueur qui joue
-    int a;
+    int a;//variable diverse : utiliser pr attendre l'action d'un joueur, ou encore compteur le nombre de joueur restant
     int montant;//variable qui memorise la mise a mettre en cours
     int boucleJeu=0;//compte le nombre de tour (au total 4)
     Statut statut;//permet de memoriser le nouveau statu du joueur
     int relance = 0; //variable pour memoriser la relance d'un joueur
-    int debug=0;
+
     /*
     void afficheInfoJoueur(const Joueur & j)
     void afficheMainCarte(const MainCarte & m,char titre[])*/
@@ -931,8 +942,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
         while (finTour!=0 && gameOn)
         {
-            printf("Debug:%d\n",debug);
-            debug++;
+
 
 
 
@@ -989,6 +999,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                             //il n'as pas cliqué sur des options de menu donc il continue a jouer avec son action pris en compte
                             actionJoueur(*t.joueur[joueurJouant],statut,montant,relance);
                             retour=false;//inutile de reattendre son action
+
                         }
                     }
                     retour = true;
@@ -1004,7 +1015,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     finTour=getNJoueurTable(t)-1;
                 }
             }
-            printf("fintour:  %d\n",finTour);
+
 
             SDL_PollEvent(&event);
 
@@ -1087,6 +1098,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
 
         }
+        SDL_Delay(2000);
         if (gameOn)
         {
             //si tout le monde s'est couchees
@@ -1111,7 +1123,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             finTour=getNJoueurTable(t);
             joueurJouant=getPositionDealerTable(t);
             boucleJeu++;
-            printf("boucleJeu:%d\n",boucleJeu);
+
             if (boucleJeu==1)
             {
 
@@ -1137,7 +1149,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             }
             else
             {
-
+                a=0;
                 calculGainTapisJoueur(t);
                 miseDansPot(t);
 
@@ -1163,13 +1175,21 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                         if (getArgentJoueur(*getIemeJoueur(t,i))>0)
                         {
                             setStatutJoueur(*getIemeJoueur(t,i),SIT);
+                            a++;
                         }
                         else
                         {
                             setStatutJoueur(*getIemeJoueur(t,i),SIT_OUT);
-                            printf("SIT_OUT");
+
                         }
                     }
+                }
+                if(a==1)
+                {
+                    renvoyer=2;
+                    printf("\n\tgagner ou perdu \n\n\n");
+                    gameOn=false;
+
                 }
                 changeDealerTable(t);
             }
