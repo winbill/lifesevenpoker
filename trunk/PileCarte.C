@@ -94,8 +94,8 @@ int hasard(int x,int y)
 {
 
     static int first=1;
-    first++;
-    return x+1+first*2;
+    /*first++;
+    return x+1+first*2;*/
     if (first == 0)
     {
         srand (time (NULL));

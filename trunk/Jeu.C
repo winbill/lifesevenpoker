@@ -154,14 +154,8 @@ int trieTab3d(int tabResultat[10][6][2])
                 j++;
             }
             if (j==6 && plusGrand==0 && tabResultat[i][0][1]!=0)
-            {
-                printf("---------egalite---------\n");
-                afficheTab2(tabResultat[i],6);
-                afficheTab2(tabResultat[i+1],6);
                 egalite++;
 
-
-            }
             j=0;
             plusGrand = 0;
         }
