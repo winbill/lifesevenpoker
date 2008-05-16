@@ -33,9 +33,9 @@ int atendsActionJoueur(SDL_Surface* aff,const Table&t,const Joueur & j,int & rel
     else if (j.type == JoueurLocal)
     {
         int a = scanActionJoueur(aff,relance,s,montant);
-        if(s==CALL)
+        if (s==CALL)
         {
-            if(j.mise==montant)
+            if (j.mise==montant)
                 s=CHECK;
         }
         return a;
@@ -73,6 +73,8 @@ void distribuer2CartesJoueursJeu(Table & table)
         }
     }
 }
+
+
 
 
 void distribuer1CarteDecouverteJeu(Table & table,int n)
@@ -149,7 +151,7 @@ int trieTab3d(int tabResultat[10][6][2])
                 }
                 j++;
             }
-            if(j==7 && plusGrand==0)
+            if (j==7 && plusGrand==0)
                 egalite++;
             j=0;
             plusGrand = 0;
@@ -250,12 +252,13 @@ int codageScoreMain(const MainCarte &m, int tabResultat[6][2],const Table & tabl
         //on doit prendre les 5 meilleurs cartes de la couleur correspondante
         i=0;
         k=0;
-        while (k!=5)
+        while (k<5)
         {
-            if (tabResultat[1+i][1] == couleur)
+            assert(i<7);
+            if (tabMainTotale[i][1] == couleur)
             {
-                tabResultat[1+i][0] = tabMainTotale[i][0]; //TROUVER UNE METHODE POUR RENVOYER LES 5 MEILLEURES CARTES DE LA COULEUR
-                tabResultat[1+i][1] = tabMainTotale[i][1]; //TROUVER UNE METHODE POUR RENVOYER LES 5 MEILLEURES CARTES DE LA COULEUR
+                tabResultat[1+k][0] = tabMainTotale[i][0];
+                tabResultat[1+k][1] = tabMainTotale[i][1];
                 k++;
             }
             i++;
@@ -272,15 +275,16 @@ int codageScoreMain(const MainCarte &m, int tabResultat[6][2],const Table & tabl
         // cas 10 9 9 8 7 6 2 1 -> 10 9 8 7 6 et non 10 9 9 8 7
         i=0;
         k =0;
-        while (k!=5)
+        while (k<5)
         {
-            if (tabMainTotale[k][0]==quinte -i)
+            assert(i<7);
+            if (tabMainTotale[i][0]==quinte -k)
             {
-                tabResultat[i+1][0] = tabMainTotale[k][0];
-                tabResultat[i+1][1] = tabMainTotale[k][1];
-                i++;
+                tabResultat[k+1][0] = tabMainTotale[i][0];
+                tabResultat[k+1][1] = tabMainTotale[i][1];
+                k++;
             }
-            k++;
+            i++;
             //s'il a ni couleur ni quinte on regarde le reste
         }
         return 1;//on renvoit 1 pour quitter la fonction
