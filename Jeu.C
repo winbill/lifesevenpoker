@@ -125,8 +125,10 @@ int trieTab3d(int tabResultat[10][6][2])
     int i,k,temp,l;
     int j=0;
     int plusGrand=0;
+    //k parcours tous les joueurs
     for (k=0;k<10;k++)
     {
+        //i parcours une 2e fois tous les joueurs
         for (i=0;i<9;i++)
         {
             while (plusGrand==0 && j<6)
@@ -151,8 +153,15 @@ int trieTab3d(int tabResultat[10][6][2])
                 }
                 j++;
             }
-            if (j==7 && plusGrand==0)
+            if (j==6 && plusGrand==0 && tabResultat[i][0][1]!=0)
+            {
+                printf("---------egalite---------\n");
+                afficheTab2(tabResultat[i],6);
+                afficheTab2(tabResultat[i+1],6);
                 egalite++;
+
+
+            }
             j=0;
             plusGrand = 0;
         }

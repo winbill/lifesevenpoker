@@ -816,7 +816,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
 
     //nombre d'IA:
-    const int NOMBRE_JOUEUR_PC = 7;
+    const int NOMBRE_JOUEUR_PC = 2;
     const int ARGENT_DEPART = 1000;
     Table t;
     PileCarte p;
