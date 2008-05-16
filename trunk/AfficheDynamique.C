@@ -183,7 +183,7 @@ int AffMenu(SDL_Surface* affichage)
     SDL_Event event;
     int colorDestination[5] = {255,255,255,255,255};
     int currentColor[5] = {255,255,255,255,255};
-    char* listeChoix;
+    char* listeChoix = "";
 
     path menuP="img/menu.bmp";
     SDL_Surface* menu=load_image(menuP);
@@ -662,7 +662,7 @@ void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
     if (j.idJoueur == getPositionDealerTable(table))
     {
         sprintf(message,"Dealer");
-        AffAfficheTexte(affichage,message,620,530+20*2,255,0,0,TTF_STYLE_BOLD,20);
+        AffAfficheTexte(affichage,message,750,530+2,255,0,0,TTF_STYLE_BOLD,20);
     }
 
 }
@@ -671,6 +671,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
 
     bool fin = false;
     SDL_Event event;
+    montant=montant;
 
     path boutonP="img/bouton.png";
     SDL_Surface* bouton;
@@ -678,16 +679,16 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
     relance=0;
 
     bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Suivre / Check",10,10,255,0,0,TTF_STYLE_NORMAL,18);
+    AffAfficheTexte(bouton,"Suivre / Check",10,10,255,255,255,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4-50,bouton,affichage);
     bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Couche",10,10,255,0,0,TTF_STYLE_NORMAL,18);
+    AffAfficheTexte(bouton,"Couche",10,10,255,255,255,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4,bouton,affichage);
     bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Relance",10,10,255,0,0,TTF_STYLE_NORMAL,18);
+    AffAfficheTexte(bouton,"Relance",10,10,255,255,255,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4+50,bouton,affichage);
     bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Tapis",10,10,255,0,0,TTF_STYLE_NORMAL,18);
+    AffAfficheTexte(bouton,"Tapis",10,10,255,255,255,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4+100,bouton,affichage);
 
     SDL_Flip(affichage);
@@ -828,7 +829,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     //petite blind a 10
     setPetiteBlindTable (t,10);
     setMaxJoueurTable(t,NOMBRE_JOUEUR_PC+1);
-    t.positionDealer=1;
+    t.positionDealer=7;
 
 
     t.pileCarte = &p;
@@ -866,7 +867,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     bool retour = true;//variable pour l'interraction entre l'ordinateur et l'humain
     printf("lance jeu\n");
     int renvoyer=0;//valuer que l'on renvoit
-    int joueurJouant;//indice du joueur qui joue
+    int joueurJouant=0;//indice du joueur qui joue
     int a;
     int montant;//variable qui memorise la mise a mettre en cours
     int boucleJeu=0;//compte le nombre de tour (au total 4)
