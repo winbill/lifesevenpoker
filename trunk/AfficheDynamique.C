@@ -791,14 +791,14 @@ void calculGainTapisJoueur(Table & t)
             for (int j=0;j<getMaxJoueurTable(t);j++)
             {
 
-                    if (getMiseJoueur(*getIemeJoueur(t,j))>=getTapisJoueur(*getIemeJoueur(t,i)))
-                    {
-                        ajouteGainTapisJoueur(*getIemeJoueur(t,i),getTapisJoueur(*getIemeJoueur(t,i)));
-                    }
-                    else
-                    {
-                        ajouteGainTapisJoueur(*getIemeJoueur(t,i),getMiseJoueur(*getIemeJoueur(t,i)));
-                    }
+                if (getMiseJoueur(*getIemeJoueur(t,j))>=getTapisJoueur(*getIemeJoueur(t,i)))
+                {
+                    ajouteGainTapisJoueur(*getIemeJoueur(t,i),getTapisJoueur(*getIemeJoueur(t,i)));
+                }
+                else
+                {
+                    ajouteGainTapisJoueur(*getIemeJoueur(t,i),getMiseJoueur(*getIemeJoueur(t,i)));
+                }
 
             }
         }
@@ -815,7 +815,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
 
     //nombre d'IA:
-    const int NOMBRE_JOUEUR_PC = 2;
+    const int NOMBRE_JOUEUR_PC = 7;
     const int ARGENT_DEPART = 1000;
     Table t;
     PileCarte p;
@@ -1139,7 +1139,18 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
                 calculGainTapisJoueur(t);
                 miseDansPot(t);
+
+                AffAfficheTapis(affichage,tapis);
+                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                AffCarteDecouvertes(t,affichage);
+                AffCartesJoueursJeu(affichage,t);
+                AffInfosJoueur(affichage,*player,t);
+                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                AffAffichePot(affichage,t);
+                SDL_Flip(affichage);
+
                 affAffichageVainqueur(affichage,t);
+
                 printf("determine_vainqueur_donne_mise_redistribue_retourner_carte\n");
                 blindAMettre=true;
                 boucleJeu = 0;
