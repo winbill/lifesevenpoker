@@ -35,13 +35,6 @@
 
 void calulVainqueurTapis(Table & t,int tabResultat[][6][2]);
 
-
-/** @brief Type cree pour manipuler les chemins de fichier.
-
-*/
-typedef char path[100];
-
-
 /**	@brief
 	@param
 	@param

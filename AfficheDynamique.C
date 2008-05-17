@@ -165,7 +165,7 @@ SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option)
 
 void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis)
 {
-    path logoP="img/logo.png";
+    const char* logoP="img/logo.png";
     SDL_Surface* logo=load_image(logoP);
     AffAfficheTapis(affichage,tapis);
     SDL_Rect logoRect=AffCentrer(logo,affichage,0);
@@ -196,7 +196,7 @@ int AffMenu(SDL_Surface* affichage)
     int currentColor[5] = {255,255,255,255,255};
     const char* listeChoix = "";
 
-    path menuP="img/menu.bmp";
+    const char* menuP="img/menu.bmp";
     SDL_Surface* menu=load_image(menuP);
     AffAfficheTexte(menu,"Nouvelle partie",50,240,255/10,255,255);
     AffAfficheTexte(menu,"Credits",50,270,255/10,255,255);
@@ -299,7 +299,7 @@ SDL_Event event;
 
 AffEffaceEcran(affichage);
 
-path creditsP="img/credits.jpg";
+const char* creditsP="img/credits.jpg";
 SDL_Surface* credits = load_image(creditsP);
 SDL_Rect creditsRect = AffCentrer(credits,affichage,0);
 apply_surface(creditsRect.x,creditsRect.y,credits,affichage);
@@ -684,7 +684,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
     SDL_Event event;
     montant=montant;
 
-    path boutonP="img/bouton.png";
+    const char* boutonP="img/bouton.png";
     SDL_Surface* bouton;
     s=CALL;
     relance=0;

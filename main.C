@@ -31,7 +31,7 @@ int main (/*int argc, char** argv */)
 
 
     SDL_Surface* affichage;
-    path caption="Life\'Seven Poker";
+    const char* caption="Life\'Seven Poker";
 
     if (initSDL(affichage,1024,768,32,caption)!=0)
     {
@@ -41,7 +41,7 @@ int main (/*int argc, char** argv */)
     atexit(SDL_Quit);
 
     //Chargement des fichiers
-    path backgroundP="img/bkgrd.jpg";
+    const char* backgroundP="img/bkgrd.jpg";
     SDL_Surface* tapis=load_image(backgroundP);
 
 
