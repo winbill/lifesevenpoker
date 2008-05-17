@@ -16,6 +16,8 @@
 
 
 
+
+
 void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 {
     SDL_Event event;
