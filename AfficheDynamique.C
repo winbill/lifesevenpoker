@@ -194,7 +194,7 @@ int AffMenu(SDL_Surface* affichage)
     SDL_Event event;
     int colorDestination[5] = {255,255,255,255,255};
     int currentColor[5] = {255,255,255,255,255};
-    char* listeChoix = "";
+    const char* listeChoix = "";
 
     path menuP="img/menu.bmp";
     SDL_Surface* menu=load_image(menuP);

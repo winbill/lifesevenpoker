@@ -132,7 +132,7 @@ void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom
 
 
 
-void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b,int style,int size)
+void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,int r,int g,int b,int style,int size)
 {
 
 
@@ -172,7 +172,7 @@ void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,in
 
 }
 
-void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b)
+void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,int r,int g,int b)
 {
     AffAfficheTexte(destination,message,x,y,r,g,b,TTF_STYLE_NORMAL,28);
 }
