@@ -3,7 +3,7 @@
 
 
 
-char** creeTableauLanguage(char* fichier);
+char** creeTableauLanguage(const char* fichier);
 void detruitTableauLanguage(char** tab);
 
 

@@ -42,9 +42,9 @@ void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination 
 void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom);
 
 
-void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b,int style,int size);
+void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,int r,int g,int b,int style,int size);
 
-void AffAfficheTexte(SDL_Surface* destination,char* message,int x,int y,int r,int g,int b);
+void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,int r,int g,int b);
 void AffActualiser(SDL_Surface* affichage);
 
 

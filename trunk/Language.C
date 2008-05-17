@@ -4,7 +4,7 @@
 
 using namespace std;
 
-char** creeTableauLanguage(char* fichier)
+char** creeTableauLanguage(const char* fichier)
 {
     FILE * f;
     //f=fopen ("menuFrancais.txt" , "r");
