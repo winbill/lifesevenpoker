@@ -4,7 +4,7 @@
 
 
 
-bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, path caption)
+bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, const char* caption)
 {
     //Initialisation de tous les sous-systèmes de SDL
     if ( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER ) == -1 )
@@ -37,7 +37,7 @@ bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen
     return 0;
 }
 
-SDL_Surface *load_image( path filename )
+SDL_Surface *load_image( const char* filename )
 {
     //Surface tampon qui nous servira pour charger l'image
     SDL_Surface* loadedImage = NULL;
