@@ -90,7 +90,7 @@ int main (/*int argc, char** argv */)
         else if (AffMenu(affichage)==2)
         {
             //AFFICHER CREDITS
-            printf("AFFICHER CREDITS");
+            printf("Devellopé par:\nJames DAVIS\nBenjamin GUILLON\nTristan Trollet\nOlivier Delys\n");
         }
 
     }

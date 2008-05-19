@@ -21,7 +21,18 @@
 
 
 
+void afficheTxtGainTapis(const Table & t,char titre[])
+{
+    printf("----------%s--------\n",titre);
+    for(int i=0;i<getMaxJoueurTable(t);i++)
+    {
+        if(getIemeJoueur(t,i)!=NULL)
+        {
+            printf("Gain Tapis joueur n°%d : %d\n",i,getGainTapisJoueur(*getIemeJoueur(t,i)));
+        }
+    }
 
+}
 
 
 

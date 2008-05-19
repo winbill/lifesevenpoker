@@ -22,7 +22,7 @@
 
 
 
-int atendsActionJoueur(SDL_Surface* aff,const Table&t,const Joueur & j,int & relance,Statut & s,int & montant)
+int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant)
 {
     if (j.type == IA)
     {
@@ -32,7 +32,7 @@ int atendsActionJoueur(SDL_Surface* aff,const Table&t,const Joueur & j,int & rel
     }
     else if (j.type == JoueurLocal)
     {
-        int a = scanActionJoueur(aff,relance,s,montant);
+        int a = scanActionJoueur(aff,relance,s,montant,j,t);
         if (s==CALL)
         {
             if (j.mise==montant)

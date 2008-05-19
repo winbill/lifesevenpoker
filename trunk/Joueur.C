@@ -261,12 +261,13 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         setStatutJoueur(j,s);
         break;
     case ALL_IN:
+
         ajoutMiseJoueur(j,getArgentJoueur(j));
         setStatutJoueur(j,s);
         montant = getMiseJoueur(j);
         setArgentJoueur(j,0);
         setTapisJoueur(j,montant);
-        ajouteGainTapisJoueur(j,getArgentJoueur(j));
+        //ajouteGainTapisJoueur(j,getArgentJoueur(j));
         break;
     default:
         break;

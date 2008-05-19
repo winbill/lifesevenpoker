@@ -90,12 +90,14 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
         }
         else
         {
-
             calulVainqueurTapis(t,tabResultat);
-
         }
 
-        SDL_WaitEvent(&event);
+
+        while (event.button.button != SDL_BUTTON_LEFT)
+        {
+            SDL_WaitEvent(&event);
+        }
     }
     else
     {
@@ -110,14 +112,11 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
 {
     int i=0;
-    for (int j=0;j<getMaxJoueurTable(t);j++)
-    {
-        printf("Joueur : %d  Le pot:%d  --  i:%d -- gainTapis:%d\n",j,getTablePot(t),i,getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
-    }
+
     while (getTablePot(t)>0)
     {
 
-        printf("Le pot:%d  --  i:%d -- gainTapis:%d\n",getTablePot(t),i,getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+
         if (getTablePot(t)>=getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])))
         {
             ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
@@ -131,6 +130,15 @@ void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
         setGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
         setTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
         i++;
+    }
+    for (int j=0;j<getMaxJoueurTable(t);j++)
+    {
+        if (getIemeJoueur(t,j)!=NULL)
+        {
+            setGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
+            setTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
+        }
+
     }
 }
 
@@ -178,6 +186,10 @@ void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis)
 }
 
 
+
+
+
+
 void AffAffichePot(SDL_Surface* affichage,const Table & t)
 {
     //affiche le contenu du pot
@@ -196,7 +208,7 @@ int AffMenu(SDL_Surface* affichage)
     int currentColor[5] = {255,255,255,255,255};
     const char* listeChoix = "";
 
-    const char* menuP="img/menu.bmp";
+    const char* menuP="img/menu.png";
     SDL_Surface* menu=load_image(menuP);
     AffAfficheTexte(menu,"Nouvelle partie",50,240,255/10,255,255);
     AffAfficheTexte(menu,"Credits",50,270,255/10,255,255);
@@ -677,7 +689,50 @@ void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
     }
 
 }
-int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant)
+
+
+
+void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus)
+{
+    SDL_Surface* bouton;
+    char boutonP[50];
+    if (relance==0)
+    {
+        if (dessus)
+        {
+            sprintf(boutonP,"img/boutonDessus.png");
+        }
+        else
+        {
+            sprintf(boutonP,"img/bouton.png");
+        }
+        bouton=load_image(boutonP);
+        AffAfficheTexte(bouton,"Suivre / Check",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+        apply_surface(620,530+20*4+50,bouton,affichage);
+    }
+    else
+    {
+        if (dessus)
+        {
+            sprintf(boutonP,"img/boutonDessus.png");
+        }
+        else
+        {
+            sprintf(boutonP,"img/bouton.png");
+        }
+        char relanceAff[10];
+        sprintf(relanceAff,"%d",relance);
+        bouton=load_image(boutonP);
+        AffAfficheTexte(bouton,"Relance : ",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+        AffAfficheTexte(bouton,relanceAff,70,16,255,255,255,TTF_STYLE_NORMAL,18);
+        apply_surface(620,530+20*4+50,bouton,affichage);
+    }
+
+
+    SDL_FreeSurface(bouton);
+
+}
+int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant,const Joueur & j,const Table & t)
 {
 
     bool fin = false;
@@ -685,22 +740,33 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
     montant=montant;
 
     const char* boutonP="img/bouton.png";
+    const char* boutonDessus="img/boutonDessus.png";
+    const char* boutonUp="img/boutonUp.png";
+    const char* boutonUpDessus="img/boutonUpDessus.png";
+    const char* boutonDown="img/boutonDown.png";
+    const char* boutonDownDessus="img/boutonDownDessus.png";
+
     SDL_Surface* bouton;
     s=CALL;
     relance=0;
 
     bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Suivre / Check",10,10,255,255,255,TTF_STYLE_NORMAL,18);
-    apply_surface(620,530+20*4-50,bouton,affichage);
-    bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Couche",10,10,255,255,255,TTF_STYLE_NORMAL,18);
+    AffAfficheTexte(bouton,"Couche",10,16,255,255,255,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4,bouton,affichage);
+
+    AffAfficheBoutonRelance(affichage,relance,false);
+
+
     bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Relance",10,10,255,255,255,TTF_STYLE_NORMAL,18);
-    apply_surface(620,530+20*4+50,bouton,affichage);
-    bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Tapis",10,10,255,255,255,TTF_STYLE_NORMAL,18);
+    AffAfficheTexte(bouton,"Tapis",10,16,255,255,255,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4+100,bouton,affichage);
+
+
+    bouton=load_image(boutonDown);
+    apply_surface(830,530+20*4+50,bouton,affichage);
+
+    bouton=load_image(boutonUp);
+    apply_surface(900,530+20*4+50,bouton,affichage);
 
     SDL_Flip(affichage);
 
@@ -732,23 +798,28 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
             }
             break;
         case SDL_MOUSEBUTTONUP :
-            for (int i=-1;i<3;i++)
+            for (int i=0;i<3;i++)
             {
                 if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 620 && event.button.x <= 820 && event.button.y >= 610+i*50 && event.button.y <= 610+i*50+50)
                 {
                     switch (i)
                     {
-                    case -1:
-                        s=CALL;
-                        break;
                     case 0:
                         s=FOLD;
                         break;
                     case 1:
                         s=RAISE;
-                        relance = 50;
+                        if (relance==getArgentJoueur(j))
+                        {
+                            s=ALL_IN;
+                        }
+                        else if (relance==0)
+                        {
+                            s=CALL;
+                        }
                         break;
                     case 2:
+                        relance = getArgentJoueur(j) - montant;
                         s=ALL_IN;
                         break;
 
@@ -756,19 +827,116 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                     SDL_FreeSurface(bouton);
                     return 1;
                 }
+                if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 900 && event.button.x <= 963 && event.button.y >=660 && event.button.y <= 710)
+                {
+                    relance += getPetiteBlindTable(t)*2;
+                    if (relance>getArgentJoueur(j))
+                        relance = getArgentJoueur(j);
+
+                    AffAfficheBoutonRelance(affichage,relance,false);
+                    SDL_Flip(affichage);
+                    event.button.x =0;
+                    event.button.y =0;
+
+                }
+                else if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 830 && event.button.x <= 893 && event.button.y >=660 && event.button.y <= 710)
+                {
+                    relance -= getPetiteBlindTable(t)*2;
+                    if (relance<0)
+                        relance = 0;
+                    AffAfficheBoutonRelance(affichage,relance,false);
+                    SDL_Flip(affichage);
+                    event.button.x =0;
+                    event.button.y =0;
+                }
             }
             break;
         case SDL_MOUSEMOTION:
+            if (event.motion.x >= 900 && event.motion.x <= 963 && event.motion.y >=660 && event.motion.y <= 710)
+            {
+                bouton=load_image(boutonUpDessus);
+                apply_surface(900,530+20*4+50,bouton,affichage);
+            }else{
+                bouton=load_image(boutonUp);
+                apply_surface(900,530+20*4+50,bouton,affichage);
+
+            }
+            if (event.motion.x >= 830 && event.motion.x <= 893 && event.motion.y >=660 && event.motion.y <= 710)
+            {
+                bouton=load_image(boutonDownDessus);
+                apply_surface(830,530+20*4+50,bouton,affichage);
+            }else{
+                bouton=load_image(boutonDown);
+                apply_surface(830,530+20*4+50,bouton,affichage);
+
+            }
+
             for (int i=0;i<3;i++)
             {
                 if (event.motion.x >= 620 && event.motion.x <= 820 && event.motion.y >=610+i*50 && event.motion.y <=610+i*50+50)
                 {
 
-                }
-                break;
-            }
-        }
+                    bouton=load_image(boutonDessus);
+                    switch (i)
+                    {
+                    case 0:
+                        AffAfficheTexte(bouton,"Couche",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+                        apply_surface(620,530+20*4,bouton,affichage);
+                        break;
+                    case 1:
 
+                        AffAfficheBoutonRelance(affichage,relance,true);
+                        break;
+                    case 2:
+                        AffAfficheTexte(bouton,"Tapis",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+                        apply_surface(620,530+20*4+100,bouton,affichage);
+                        break;
+
+                    }
+                }
+                else
+                {
+                    bouton=load_image(boutonP);
+                    switch (i)
+                    {
+                    case 0:
+                        AffAfficheTexte(bouton,"Couche",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+                        apply_surface(620,530+20*4,bouton,affichage);
+                        break;
+                    case 1:
+                        AffAfficheBoutonRelance(affichage,relance,false);
+
+                        break;
+                    case 2:
+                        AffAfficheTexte(bouton,"Tapis",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+                        apply_surface(620,530+20*4+100,bouton,affichage);
+                        break;
+
+                    }
+                }
+            }
+            SDL_Flip(affichage);
+            break;
+        }
+        /*    bouton=load_image(boutonP);
+            AffAfficheTexte(bouton,"Couche",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+            apply_surface(620,530+20*4,bouton,affichage);
+
+            AffAfficheBoutonRelance(affichage,relance);
+
+
+            bouton=load_image(boutonP);
+            AffAfficheTexte(bouton,"Tapis",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+            apply_surface(620,530+20*4+100,bouton,affichage);
+
+
+            bouton=load_image(boutonDown);
+            apply_surface(830,530+20*4+50,bouton,affichage);
+
+            bouton=load_image(boutonUp);
+            apply_surface(900,530+20*4+50,bouton,affichage);
+
+            SDL_Flip(affichage);/*/
 
 
     }
@@ -796,10 +964,8 @@ void calculGainTapisJoueur(Table & t)
 {
     for (int i=0;i<getMaxJoueurTable(t);i++)
     {
-        printf("--------gainb joueur ds fct :%d\n",getGainTapisJoueur(*getIemeJoueur(t,i)));
         if (getIemeJoueur(t,i)!=NULL && getStatutJoueur(*getIemeJoueur(t,i))==ALL_IN && getGainTapisJoueur(*getIemeJoueur(t,i))==0)
         {
-            printf("liaison\n");
             ajouteGainTapisJoueur(*getIemeJoueur(t,i),getTablePot(t));
 
             for (int j=0;j<getMaxJoueurTable(t);j++)
@@ -834,6 +1000,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     Table t;
     PileCarte p;
     double zoom = 1;
+
 
 
     initTable(t);
@@ -945,9 +1112,6 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         while (finTour!=0 && gameOn)
         {
 
-
-
-
             if (t.joueur[joueurJouant]!=NULL)
             {
                 if ( getStatutJoueur(*t.joueur[joueurJouant]) != SIT_OUT && getStatutJoueur(*t.joueur[joueurJouant]) != FOLD && getStatutJoueur(*t.joueur[joueurJouant]) != ALL_IN)
@@ -1017,6 +1181,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     finTour=getNJoueurTable(t)-1;
                 }
             }
+
 
 
             SDL_PollEvent(&event);
@@ -1100,7 +1265,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
 
         }
-        SDL_Delay(2000);
+
         if (gameOn)
         {
             //si tout le monde s'est couchees
@@ -1129,8 +1294,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             if (boucleJeu==1)
             {
 
-
+                afficheTxtGainTapis(t,"1er tour avt");
                 calculGainTapisJoueur(t);
+                afficheTxtGainTapis(t,"1er tour apres");
                 miseDansPot(t);
                 distribuer1CarteDecouverteJeu(t,1);
                 AffCarteDecouvertes(t,affichage);
@@ -1145,14 +1311,18 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             }
             else if (boucleJeu<4)
             {
+                afficheTxtGainTapis(t,"tour 2 ou 3 avt");
                 calculGainTapisJoueur(t);
+                afficheTxtGainTapis(t,"tour 2 ou 3 apres");
                 miseDansPot(t);
                 distribuer1CarteDecouverteJeu(t,1);
             }
             else
             {
                 a=0;
+                afficheTxtGainTapis(t,"tour finale avt");
                 calculGainTapisJoueur(t);
+                afficheTxtGainTapis(t,"tourfinale apres");
                 miseDansPot(t);
 
                 AffAfficheTapis(affichage,tapis);
@@ -1186,7 +1356,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                         }
                     }
                 }
-                if(a==1)
+                if (a==1)
                 {
                     renvoyer=2;
                     printf("\n\tgagner ou perdu \n\n\n");
