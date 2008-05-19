@@ -124,7 +124,7 @@ void setStatutJoueur (Joueur & joueur, const Statut statut);
 	@param [in,out] joueur Un joueur.
 	@return Renvoie le valeur de statut actuelle de joueur.
 */
-Statut getStatutJoueur (Joueur & joueur);
+Statut getStatutJoueur (const Joueur & joueur);
 
 
 

@@ -103,7 +103,7 @@ void setStatutJoueur (Joueur & joueur, const Statut statut)
 }
 
 
-Statut getStatutJoueur (Joueur & joueur)
+Statut getStatutJoueur (const Joueur & joueur)
 {
     return joueur.statut;
 }
