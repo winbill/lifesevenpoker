@@ -2,6 +2,8 @@
 #define AfficheSdl_H
 
 #include "AfficheDynamique.h"
+void pause();
+
 void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom);
 
 

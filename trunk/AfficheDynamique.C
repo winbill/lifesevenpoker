@@ -20,7 +20,7 @@
 
 void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 {
-    SDL_Event event;
+
     //on alloue le tableau qui va contenir le resultat de la partie
     int tabResultat[10][6][2];
 
@@ -92,11 +92,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
         {
             calulVainqueurTapis(t,tabResultat);
         }
-        event.button.button = NULL;
-        while (event.button.button != SDL_BUTTON_LEFT)
-        {
-            SDL_WaitEvent(&event);
-        }
+        pause();
     }
     else
     {
@@ -1395,17 +1391,21 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 }
                 if (a==1 && getStatutJoueur(*player)!=SIT_OUT)
                 {
+                    AffAfficheTexte(affichage,"Vous avez gagné la partie.",412,450,255,0,0,TTF_STYLE_BOLD,20);
+                    SDL_Flip(affichage);
                     renvoyer=4;
                     printf("\n\t vous avez gagner\n\n\n");
+                    pause();
                     gameOn=false;
 
                 }
                 else if (getStatutJoueur(*player)==SIT_OUT)
                 {
-                    AffAfficheTexte(affichage,"Vous avez perdu.",412,359,255,0,0,TTF_STYLE_BOLD,20);
+                    AffAfficheTexte(affichage,"Vous avez perdu la partie.",412,450,255,0,0,TTF_STYLE_BOLD,20);
+                    SDL_Flip(affichage);
                     renvoyer=4;
                     printf("\n\t vous avez perdu\n\n\n");
-                    //pause
+                    pause();
                     gameOn=false;
                 }
                 changeDealerTable(t);
