@@ -1,3 +1,11 @@
+/**
+	@brief Fichier H qui gere le langage
+	@author Tristan
+	@file Langage.h
+	@version 1.0
+	@date 2008/05/19
+ */
+
 
 #ifndef Langue_H
 #define Langue_H

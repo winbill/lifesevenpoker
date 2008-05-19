@@ -15,20 +15,61 @@
 #include "Table.h"
 #include "AfficheDynamique.h"
 
-
+/**	@brief 
+	@param aff
+	@param 	t
+	@param j
+	@param relance
+	@param s
+	@param montant
+	@note
+*/
 int atendsActionJoueur(SDL_Surface* aff,const Table&t,const Joueur & j,int & relance,Statut & s,int & montant);
+
+
+/**	@brief trie un tableau a 3 dimensions
+	@param tabResultat
+	@note
+*/
 int trieTab3d(int tabResultat[10][6][2]);
+
+
+/**	@brief determine le vainqueur de la table t
+	@param t
+	@param 	tabResultat tableau a 3 dimensions
+	@note
+*/
 int fonctionGlobaleDetrminationVainqueur(const Table & t,int tabResultat[10][6][2]);
 
+
+/**	@brief Le joueur j de la table t paie la petite blind
+	@param t
+	@param j
+	@note
+*/
 void joueurPetiteBlind(Table & t,Joueur & j);
+
+
+/**	@brief Le joueur j de la table t paie la grosse blind
+	@param t
+	@param j
+	@note
+*/
 void joueurGrosseBlind(Table & t,Joueur & j);
 
 
-
-
-//#include "AfficheDynamique.h"
+/**	@brief initialise un tableau a 3 dimensions
+	@param tabResultat
+	@note
+*/
 void intitialiseTab3d(int tabResultat[10][6][2]);
 
+
+/**	@brief 
+	@param t
+	@param tabResultat
+	@note
+*/
 void jeuDetermineVainqueur(const Table & t,int tabResultat[10][6][2]);
 
 
@@ -41,10 +82,12 @@ void jeuDetermineVainqueur(const Table & t,int tabResultat[10][6][2]);
 */
 void initialiseJeu(Table & table,int argent);
 
+
 /**	@brief donne deux carte a chacun des joueurs de la table
 	@param [in, out] table une table
 */
 void distribuer2CartesJoueursJeu(Table & table);
+
 
 /**	@brief decouvre n carte sur la table
 	@param [in, out] table une table
