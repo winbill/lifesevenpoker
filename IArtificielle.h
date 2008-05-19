@@ -7,7 +7,7 @@
 	@file IArtificielle.h
 	@version 0.0
 	@date 2008/05/09
- */
+*/
 
 #ifndef IArtificielle_H
 #define IArtificielle_H
@@ -31,4 +31,5 @@
 
 
 Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant);
+
 #endif
