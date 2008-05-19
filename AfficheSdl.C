@@ -1,7 +1,21 @@
 #include "AfficheSdl.h"
 
 
+void pause()
+{
+    int continuer = 1;
+    SDL_Event event;
 
+    while (continuer)
+    {
+        SDL_WaitEvent(&event);
+        switch(event.type)
+        {
+            case SDL_MOUSEBUTTONDOWN:
+                continuer = 0;
+        }
+    }
+}
 
 
 bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, const char* caption)
