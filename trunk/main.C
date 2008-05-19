@@ -91,7 +91,7 @@ int main (/*int argc, char** argv */)
         }
         else if (aM==2)
         {
-            printf("----------------\n\n");
+            printf("\n----------------\n");
             printf("Devellope par:\nJames DAVIS\nBenjamin GUILLON\nTristan Trollet\nOlivier Delys\n");
             printf("----------------\n\n");
             nouvellePartie=false;

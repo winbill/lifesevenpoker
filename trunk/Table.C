@@ -63,11 +63,11 @@ void initTable (Table & table)
 
 int getTablePot(const Table & t)
 {
-        return t.pot;
+    return t.pot;
 }
 void setTablePot(Table & t,int n)
 {
-        t.pot=n;
+    t.pot=n;
 }
 
 
@@ -168,17 +168,22 @@ int placeVide (const Table & table)
 
 void changeDealerTable(Table & table)
 {
-    table.positionDealer++;
-    if (table.positionDealer >= getNJoueurTable(table))
-        table.positionDealer =0;
-    while (getIemeJoueur(table,getPositionDealerTable(table))==0 && getStatutJoueur(*getIemeJoueur(table,getPositionDealerTable(table)))==SIT_OUT);
+    bool continuer=true;
+    while (continuer)
     {
+        printf("cest la\n");
         table.positionDealer++;
         if (table.positionDealer >= getNJoueurTable(table))
             table.positionDealer =0;
+        if(getIemeJoueur(table,getPositionDealerTable(table))!=NULL)
+        {
+            if(getStatutJoueur(*getIemeJoueur(table,getPositionDealerTable(table)))!=SIT_OUT)
+            {
+                continuer = false;
+            }
+        }
+
     }
-
-
 }
 
 

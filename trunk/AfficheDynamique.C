@@ -246,7 +246,7 @@ int AffMenu(SDL_Surface* affichage)
         case SDL_MOUSEBUTTONUP :
             for (int i=0;i<3;i++)
             {
-                if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w + menuRect.x && event.button.y >= 240+i*30+menuRect.y && event.button.y <= 268+i*30+menuRect.y)
+                if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w-400 + menuRect.x && event.button.y >= 240+i*30+menuRect.y && event.button.y <= 268+i*30+menuRect.y)
                 {
                     SDL_FreeSurface(menu);
                     return i+1;
@@ -256,7 +256,7 @@ int AffMenu(SDL_Surface* affichage)
         case SDL_MOUSEMOTION:
             for (int i=0;i<3;i++)
             {
-                if (event.motion.x >= menuRect.x && event.motion.x <= menu->w + menuRect.x && event.motion.y >= 240+i*30+menuRect.y && event.motion.y <= 268+i*30+menuRect.y)
+                if (event.motion.x >= menuRect.x && event.motion.x <= menu->w-400 + menuRect.x && event.motion.y >= 240+i*30+menuRect.y && event.motion.y <= 268+i*30+menuRect.y)
                 {
                     colorDestination[i] = 0;
                 }
@@ -497,7 +497,7 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
 {
 
-    AffCartesJoueursJeu( affichage,t,false);
+    AffCartesJoueursJeu( affichage,t,false);// a mettre a true pour cache les cartes des adversaires
 }
 
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
@@ -1012,7 +1012,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     }*/
 
     //nombre d'IA:
-    const int NOMBRE_JOUEUR_PC = 2;
+    const int NOMBRE_JOUEUR_PC = 4;
     const int ARGENT_DEPART = 1000;
     Table t;
     PileCarte p;
@@ -1026,7 +1026,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     //petite blind a 10
     setPetiteBlindTable (t,10);
     setMaxJoueurTable(t,NOMBRE_JOUEUR_PC+1);
-    t.positionDealer=7;
+    t.positionDealer=1;
 
 
     t.pileCarte = &p;
@@ -1160,7 +1160,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                                     renvoyer=1;
                                     break;
                                 case 2:
-                                    printf("----------------\n\n");
+                                    printf("\n----------------\n");
                                     printf("Devellope par:\nJames DAVIS\nBenjamin GUILLON\nTristan Trollet\nOlivier Delys\n");
                                     printf("----------------\n\n");
                                     sortieMenu = true;
@@ -1321,10 +1321,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 
             if (boucleJeu==1)
             {
-
-                afficheTxtGainTapis(t,"1er tour avt");
                 calculGainTapisJoueur(t);
-                afficheTxtGainTapis(t,"1er tour apres");
                 miseDansPot(t);
                 distribuer1CarteDecouverteJeu(t,1);
                 AffCarteDecouvertes(t,affichage);
@@ -1340,9 +1337,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             }
             else if (boucleJeu<4)
             {
-                afficheTxtGainTapis(t,"tour 2 ou 3 avt");
                 calculGainTapisJoueur(t);
-                afficheTxtGainTapis(t,"tour 2 ou 3 apres");
                 miseDansPot(t);
                 distribuer1CarteDecouverteJeu(t,1);
                 montant=0;
@@ -1350,9 +1345,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             else
             {
                 a=0;
-                afficheTxtGainTapis(t,"tour finale avt");
                 calculGainTapisJoueur(t);
-                afficheTxtGainTapis(t,"tourfinale apres");
                 miseDansPot(t);
                 montant=0;
 

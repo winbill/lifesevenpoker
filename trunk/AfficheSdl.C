@@ -18,6 +18,7 @@ void pause()
 }
 
 
+
 bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, const char* caption)
 {
     //Initialisation de tous les sous-systèmes de SDL
