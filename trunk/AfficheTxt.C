@@ -21,7 +21,7 @@
 
 
 
-void afficheTxtGainTapis(const Table & t,char titre[])
+void afficheTxtGainTapis(const Table & t,const char* titre)
 {
     printf("----------%s--------\n",titre);
     for(int i=0;i<getMaxJoueurTable(t);i++)

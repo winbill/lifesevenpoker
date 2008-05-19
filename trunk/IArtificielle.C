@@ -1,17 +1,124 @@
-
 #include "IArtificielle.h"
 
 Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
 {
-    getTablePot(t);
-    relance=0;
-    //printf("mise:%d   montant:%d\n",j.mise,montant);
-    if(j.mise==montant)
-        return CHECK;
-    int a=montant-getMiseJoueur(j);
-    if(a>=getArgentJoueur(j))
+    //On récupere le statut de la partie:
+    int nbCartesDecouvertes = getMainCarteNbCarte(*getMainCarteTable(t)); //Le nombre de cartes découvertes sur le tapis
+    MainCarte mainJoueur = *getMainJoueur(j); //La main de cette IA
+    int miseJoueur = getMiseJoueur(j); //La mise actuelle de cette IA dans ce tour
+    int argentJoueur = getArgentJoueur(j); //L'argent de cette IA
+    int differenceMiseMontant = montant-getMiseJoueur(j); //Difference d'argent entre ce qu'a déjà misé l'IA et le montant de la mise actuelle
+
+    //L'IA réagit selon le nombre de cartes découvertes dans un premier temps:
+    switch (nbCartesDecouvertes)
     {
-        return ALL_IN;
+        //Au moment du pré FLOP
+        case 0 :
+        {
+            if (miseJoueur == montant) return CHECK; //Soit le joueur est au niveau de la mise et il check
+
+            else if (differenceMiseMontant <= argentJoueur and montant < getPetiteBlindTable(t)*2) return CALL; //Soit il suis au niveau des blinds si il peut
+
+            else return FOLD; //Soit il se couche
+        }
+
+        //Au moment du FLOP
+        case 3 :
+        {
+            if (argentJoueur <= montant) //Si il n'est pas riche par rapport à ce qui se joue
+            {
+                if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0)) == getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))) //Il tente quand même l'aventure en cas de paire à la donne ...
+                {
+                    if(differenceMiseMontant >= argentJoueur) // ... selon si il a assez d'argent pour suivre ...
+                    {
+                        return ALL_IN; // ... il fait tapis
+                    }
+                    else return CALL;  // ... ou suis simplement
+                }
+                else return FOLD; //Sinon il se couche
+            }
+
+            if (differenceMiseMontant < argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
+            {
+                relance = montant*2;
+
+                return RAISE;  // ... il relance
+            }
+
+            else  //Et le reste du temps ...
+            {
+                if (miseJoueur == montant) return CHECK; // ... il check pour rester dans la partie
+
+                else if (miseJoueur < montant) return CALL; // ... ou alors il suis pour tenter sa chance plus tard
+            }
+        }
+
+        //Au moment du TURN
+        case 4 :
+        {
+            if (argentJoueur <= montant) //Si il n'est pas riche par rapport à ce qui se joue
+            {
+                if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0)) == getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))) //Il tente quand même l'aventure en cas de paire à la donne ...
+                {
+                    if(differenceMiseMontant >= argentJoueur) // ... selon si il a assez d'argent pour suivre ...
+                    {
+                        return ALL_IN; // ... il fait tapis
+                    }
+                    else return CALL;  // ... ou suis simplement
+                }
+                else return FOLD; //Sinon il se couche
+            }
+
+            if (differenceMiseMontant < argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
+            {
+                relance = montant*2;
+
+                return RAISE;  // ... il relance
+            }
+
+            else  //Et le reste du temps ...
+            {
+                if (miseJoueur == montant) return CHECK; // ... il check pour rester dans la partie
+
+                else if (miseJoueur < montant) return CALL; // ... ou alors il suis pour tenter sa chance plus tard
+            }
+        }
+
+        //Au moment du RIVER
+        case 5 :
+        {
+            if (argentJoueur <= montant) //Si il n'est pas riche par rapport à ce qui se joue
+            {
+                if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0)) == getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))) //Il tente quand même l'aventure en cas de paire à la donne ...
+                {
+                    if(differenceMiseMontant >= argentJoueur) // ... selon si il a assez d'argent pour suivre ...
+                    {
+                        return ALL_IN; // ... il fait tapis
+                    }
+                    else return CALL;  // ... ou suis simplement
+                }
+                else return FOLD; //Sinon il se couche
+            }
+
+            if (differenceMiseMontant < argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
+            {
+                relance = montant*2;
+
+                return RAISE;  // ... il relance
+            }
+
+            else  //Et le reste du temps ...
+            {
+                if (miseJoueur == montant) return CHECK; // ... il check pour rester dans la partie
+
+                else if (miseJoueur < montant) return CALL; // ... ou alors il suis pour tenter sa chance plus tard
+            }
+        }
+
+        //Si y'a un probleme l'IA se couche
+        default :
+
+            return FOLD;
     }
-    return CALL;
+    //Fin du switch
 }

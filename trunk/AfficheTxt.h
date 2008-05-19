@@ -17,7 +17,7 @@
 #include "Jeu.h"
 
 
-void afficheTxtGainTapis(const Table & t,char titre[]);
+void afficheTxtGainTapis(const Table & t,const char* titre);
 
 void afficheTab3(int tab[][6][2],int x);
 

@@ -234,21 +234,31 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         setStatutJoueur(j,s);
         break;
     case CALL:
-        //printf("call:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
-        a = montant - getMiseJoueur(j);
-        assert(a > 0 && getArgentJoueur(j) > a);
-        ajoutMiseJoueur(j,a);
-        setArgentJoueur(j,getArgentJoueur(j)-a);
-        setStatutJoueur(j,s);
-        //ajouteGainTapisJoueur(j,a);
+        {
+            a = montant - getMiseJoueur(j);
+            if(getArgentJoueur(j) >= a)
+            {
+                printf("call:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
+                assert(a > 0 && getArgentJoueur(j) > a);
+                ajoutMiseJoueur(j,a);
+                setArgentJoueur(j,getArgentJoueur(j)-a);
+                setStatutJoueur(j,s);
+                ajouteGainTapisJoueur(j,a);
+            }
+           /* else
+            {
+                AffAfficheTexte(affichage,"PAS ASSEZ D'ARGENT",512,380);
+                SDL_Delay(3000);
+            } */
+        }
         break;
     case CHECK:
-        //printf("check:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
+        printf("check:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
         assert(montant == getMiseJoueur(j));
         setStatutJoueur(j,s);
         break;
     case RAISE:
-        //printf("raise:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
+        printf("raise:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
         a = montant - getMiseJoueur(j);
         assert(a >= 0 && getArgentJoueur(j) > ( a + relance));
         ajoutMiseJoueur(j,a+relance);
