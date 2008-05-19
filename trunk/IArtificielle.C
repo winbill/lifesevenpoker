@@ -9,17 +9,24 @@ Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
     int argentJoueur = getArgentJoueur(j); //L'argent de cette IA
     int differenceMiseMontant = montant-getMiseJoueur(j); //Difference d'argent entre ce qu'a déjà misé l'IA et le montant de la mise actuelle
 
+    printf("-------------------- Joueur %d --------------------- \n",getIdJoueur(j));
+    printf("VALEUR RELANCE : %d \t VALEUR MONTANT : %d \n", relance, montant);
+    printf("---------------------------------\n| nbCartesDecouvertes : %d |\n ---------------------------------\n", nbCartesDecouvertes);
+    printf("miseJoueur : %d \n", miseJoueur);
+    printf("argentJoueur : %d \n", argentJoueur);
+    printf("differenceMiseMontant : %d \n", differenceMiseMontant);
+
     //L'IA réagit selon le nombre de cartes découvertes dans un premier temps:
     switch (nbCartesDecouvertes)
     {
         //Au moment du pré FLOP
         case 0 :
         {
-            if (miseJoueur == montant) return CHECK; //Soit le joueur est au niveau de la mise et il check
+            if (miseJoueur == montant){ printf("CHECK \n"); return CHECK;} //Soit le joueur est au niveau de la mise et il check
 
-            else if (differenceMiseMontant <= argentJoueur and montant < getPetiteBlindTable(t)*2) return CALL; //Soit il suis au niveau des blinds si il peut
+            else if (differenceMiseMontant <= argentJoueur and montant <= getPetiteBlindTable(t)*2) {printf("CALL \n"); return CALL;}//Soit il suis au niveau des blinds si il peut
 
-            else return FOLD; //Soit il se couche
+            else {printf("FOLD \n"); return FOLD;} //Soit il se couche
         }
 
         //Au moment du FLOP
@@ -33,14 +40,21 @@ Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
                     {
                         return ALL_IN; // ... il fait tapis
                     }
-                    else return CALL;  // ... ou suis simplement
+                    else
+                    {
+                        if(differenceMiseMontant <= argentJoueur)
+                        {
+                            return CALL;  // ... ou bien suis simplement
+                        }
+                        else return CHECK; // ... ou alors il check
+                    }
                 }
                 else return FOLD; //Sinon il se couche
             }
 
-            if (differenceMiseMontant < argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
+            if (differenceMiseMontant <= argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
             {
-                relance = montant*2;
+                relance = montant*2 - miseJoueur;
 
                 return RAISE;  // ... il relance
             }
@@ -64,14 +78,21 @@ Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
                     {
                         return ALL_IN; // ... il fait tapis
                     }
-                    else return CALL;  // ... ou suis simplement
+                    else
+                    {
+                        if(differenceMiseMontant <= argentJoueur)
+                        {
+                            return CALL;  // ... ou bien suis simplement
+                        }
+                        else return CHECK; // ... ou alors il check
+                    }
                 }
                 else return FOLD; //Sinon il se couche
             }
 
-            if (differenceMiseMontant < argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
+            if (differenceMiseMontant <= argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
             {
-                relance = montant*2;
+                relance = montant*2 - miseJoueur;
 
                 return RAISE;  // ... il relance
             }
@@ -95,14 +116,21 @@ Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
                     {
                         return ALL_IN; // ... il fait tapis
                     }
-                    else return CALL;  // ... ou suis simplement
+                    else
+                    {
+                        if(differenceMiseMontant <= argentJoueur)
+                        {
+                            return CALL;  // ... ou bien suis simplement
+                        }
+                        else return CHECK; // ... ou alors il check
+                    }
                 }
                 else return FOLD; //Sinon il se couche
             }
 
-            if (differenceMiseMontant < argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
+            if (differenceMiseMontant <= argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
             {
-                relance = montant*2;
+                relance = montant*2 - miseJoueur;
 
                 return RAISE;  // ... il relance
             }
