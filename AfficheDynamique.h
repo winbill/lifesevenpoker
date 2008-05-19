@@ -33,6 +33,8 @@
 #include "Jeu.h"
 #include "IArtificielle.h"
 
+void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus);
+
 void calulVainqueurTapis(Table & t,int tabResultat[][6][2]);
 
 /**	@brief
@@ -68,7 +70,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t);
 void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabResultat[6][2],int i);
 
 
-int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant);
+int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant,const Joueur & j,const Table & t);
 
 
 int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant,SDL_Surface* sortie);

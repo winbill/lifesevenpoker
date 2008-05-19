@@ -13,9 +13,5 @@ Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
     {
         return ALL_IN;
     }
-
-
-
-
     return CALL;
 }
