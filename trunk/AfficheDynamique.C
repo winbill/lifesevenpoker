@@ -92,8 +92,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
         {
             calulVainqueurTapis(t,tabResultat);
         }
-
-
+        event.button.button = NULL;
         while (event.button.button != SDL_BUTTON_LEFT)
         {
             SDL_WaitEvent(&event);
@@ -1009,8 +1008,12 @@ void calculGainTapisJoueur(Table & t)
 
 int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 {
+    /*
     char** tabLanguage=creeTableauLanguage("languages/french");
-
+    for(int b=0;b<2;b++)
+    {
+        printf("%s\n",tabLanguage[b]);
+    }*/
 
     //nombre d'IA:
     const int NOMBRE_JOUEUR_PC = 2;
@@ -1071,6 +1074,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     int boucleJeu=0;//compte le nombre de tour (au total 4)
     Statut statut;//permet de memoriser le nouveau statu du joueur
     int relance = 0; //variable pour memoriser la relance d'un joueur
+    bool sortieMenu=true;// indicateur de sortie du menu
 
     /*
     void afficheInfoJoueur(const Joueur & j)
@@ -1148,34 +1152,44 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                         }
                         else if (a==2)// d'afficher le menu
                         {
-
-                            switch (AffMenu(affichage))
+                            sortieMenu = true;
+                            while (sortieMenu)
                             {
-                            case 1:
-                                gameOn = false;
-                                retour=false;
-                                renvoyer=1;
-                                break;
-                            case 3:
-                                gameOn = false;
-                                retour=false;
-                                renvoyer=3;
-                                break;
-                            case 0:
-                                AffAfficheTapis(affichage,tapis);
-                                AffCartesJoueursJeu(affichage,t);
-                                AffCarteDecouvertes(t,affichage);
-                                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-                                AffInfosJoueur(affichage,*player,t);
-                                AffAffichePot(affichage,t);
-                                if (zoom != 1)
+                                sortieMenu = false;
+                                switch (AffMenu(affichage))
                                 {
-                                    SDL_Surface* surfaceZoom = rotozoomSurface(affichage,0,zoom,0);
-                                    apply_surface(0,0,surfaceZoom,affichage);
-                                    SDL_FreeSurface(surfaceZoom);
+                                case 1:
+                                    gameOn = false;
+                                    retour=false;
+                                    renvoyer=1;
+                                    break;
+                                case 2:
+                                    printf("----------------\n\n");
+                                    printf("Devellope par:\nJames DAVIS\nBenjamin GUILLON\nTristan Trollet\nOlivier Delys\n");
+                                    printf("----------------\n\n");
+                                    sortieMenu = true;
+                                    break;
+                                case 3:
+                                    gameOn = false;
+                                    retour=false;
+                                    renvoyer=3;
+                                    break;
+                                case 0:
+                                    AffAfficheTapis(affichage,tapis);
+                                    AffCartesJoueursJeu(affichage,t);
+                                    AffCarteDecouvertes(t,affichage);
+                                    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                                    AffInfosJoueur(affichage,*player,t);
+                                    AffAffichePot(affichage,t);
+                                    if (zoom != 1)
+                                    {
+                                        SDL_Surface* surfaceZoom = rotozoomSurface(affichage,0,zoom,0);
+                                        apply_surface(0,0,surfaceZoom,affichage);
+                                        SDL_FreeSurface(surfaceZoom);
+                                    }
+                                    SDL_Flip(affichage);
+                                    break;
                                 }
-                                SDL_Flip(affichage);
-                                break;
                             }
                         }
                         else
@@ -1379,12 +1393,20 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                         }
                     }
                 }
-                if (a==1 or getStatutJoueur(*player)==SIT_OUT)
+                if (a==1 && getStatutJoueur(*player)!=SIT_OUT)
                 {
-                    renvoyer=2;
-                    printf("\n\tgagner ou perdu \n\n\n");
+                    renvoyer=4;
+                    printf("\n\t vous avez gagner\n\n\n");
                     gameOn=false;
 
+                }
+                else if (getStatutJoueur(*player)==SIT_OUT)
+                {
+                    AffAfficheTexte(affichage,"Vous avez perdu.",412,359,255,0,0,TTF_STYLE_BOLD,20);
+                    renvoyer=4;
+                    printf("\n\t vous avez perdu\n\n\n");
+                    //pause
+                    gameOn=false;
                 }
                 changeDealerTable(t);
             }
@@ -1398,12 +1420,12 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         joueurs[i]=NULL;
     }
 
-    joueurDetruit(player);
 
+    joueurDetruit(player);
     pileCarteLibere(p);
     tableLibere(t);
 
-    detruitTableauLanguage(tabLanguage);
+    //detruitTableauLanguage(tabLanguage);
     return renvoyer;
 
 }
