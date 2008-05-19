@@ -171,7 +171,7 @@ void changeDealerTable(Table & table)
     table.positionDealer++;
     if (table.positionDealer >= getNJoueurTable(table))
         table.positionDealer =0;
-    while (table.joueur[table.positionDealer] == 0)
+    while (getIemeJoueur(table,getPositionDealerTable(table))==0 && getStatutJoueur(*getIemeJoueur(table,getPositionDealerTable(table)))==SIT_OUT);
     {
         table.positionDealer++;
         if (table.positionDealer >= getNJoueurTable(table))

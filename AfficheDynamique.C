@@ -112,21 +112,32 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
 void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
 {
     int i=0;
+    int exGainJoueur=0;
+
 
     while (getTablePot(t)>0)
     {
-
-
-        if (getTablePot(t)>=getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])))
+        if (exGainJoueur<=getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])))
         {
-            ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
-            setTablePot(t,getTablePot(t)-getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+            setGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]))-exGainJoueur);
+            if (getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]))>=getTablePot(t))
+            {
+                ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getTablePot(t));
+                setTablePot(t,0);
+            }
+            else
+            {
+                ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+                setTablePot(t,getTablePot(t)-getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])));
+            }
+            exGainJoueur += getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]));
         }
-        else
+        else if (getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]))==0)
         {
-            ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]), getTablePot(t));
+            ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),getTablePot(t));
             setTablePot(t,0);
         }
+
         setGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
         setTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
         i++;
@@ -351,7 +362,7 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     sprintf(message,"%s:%d",j.pseudo,j.argent);
 
     //si c'est le joueur qui est en train de jouer on change ca couleur
-    if (getIdJoueur(j) != joueurJouant)
+    if (getIdJoueur(j) != joueurJouant or getStatutJoueur(j)==SIT_OUT)
     {
         AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_NORMAL,22);
     }
@@ -377,6 +388,9 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
         break;
     case ALL_IN:
         sprintf(message,"tapis : %d",getTapisJoueur(j));
+        break;
+    case SIT_OUT:
+        sprintf(message,"ne joue pas");
         break;
     default:
         sprintf(message," ");
@@ -800,7 +814,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
         case SDL_MOUSEBUTTONUP :
             for (int i=0;i<3;i++)
             {
-                if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 620 && event.button.x <= 820 && event.button.y >= 610+i*50 && event.button.y <= 610+i*50+50)
+                if (event.button.button == SDL_BUTTON_LEFT && event.button.x > 620 && event.button.x < 820 && event.button.y > 610+i*50 && event.button.y < 610+i*50+50)
                 {
                     switch (i)
                     {
@@ -827,7 +841,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                     SDL_FreeSurface(bouton);
                     return 1;
                 }
-                if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 900 && event.button.x <= 963 && event.button.y >=660 && event.button.y <= 710)
+                if (event.button.button == SDL_BUTTON_LEFT && event.button.x > 900 && event.button.x < 963 && event.button.y >660 && event.button.y < 710)
                 {
                     relance += getPetiteBlindTable(t)*2;
                     if (relance>getArgentJoueur(j))
@@ -839,7 +853,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                     event.button.y =0;
 
                 }
-                else if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= 830 && event.button.x <= 893 && event.button.y >=660 && event.button.y <= 710)
+                else if (event.button.button == SDL_BUTTON_LEFT && event.button.x > 830 && event.button.x < 893 && event.button.y >660 && event.button.y < 710)
                 {
                     relance -= getPetiteBlindTable(t)*2;
                     if (relance<0)
@@ -852,20 +866,24 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
             }
             break;
         case SDL_MOUSEMOTION:
-            if (event.motion.x >= 900 && event.motion.x <= 963 && event.motion.y >=660 && event.motion.y <= 710)
+            if (event.motion.x > 900 && event.motion.x < 963 && event.motion.y >660 && event.motion.y < 710)
             {
                 bouton=load_image(boutonUpDessus);
                 apply_surface(900,530+20*4+50,bouton,affichage);
-            }else{
+            }
+            else
+            {
                 bouton=load_image(boutonUp);
                 apply_surface(900,530+20*4+50,bouton,affichage);
 
             }
-            if (event.motion.x >= 830 && event.motion.x <= 893 && event.motion.y >=660 && event.motion.y <= 710)
+            if (event.motion.x > 830 && event.motion.x < 893 && event.motion.y >660 && event.motion.y < 710)
             {
                 bouton=load_image(boutonDownDessus);
                 apply_surface(830,530+20*4+50,bouton,affichage);
-            }else{
+            }
+            else
+            {
                 bouton=load_image(boutonDown);
                 apply_surface(830,530+20*4+50,bouton,affichage);
 
@@ -873,7 +891,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
 
             for (int i=0;i<3;i++)
             {
-                if (event.motion.x >= 620 && event.motion.x <= 820 && event.motion.y >=610+i*50 && event.motion.y <=610+i*50+50)
+                if (event.motion.x > 620 && event.motion.x < 820 && event.motion.y >610+i*50 && event.motion.y <610+i*50+50)
                 {
 
                     bouton=load_image(boutonDessus);
@@ -1308,6 +1326,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 SDL_Delay(200);
                 distribuer1CarteDecouverteJeu(t,1);
                 AffCarteDecouvertes(t,affichage);
+                montant=0;
             }
             else if (boucleJeu<4)
             {
@@ -1316,6 +1335,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 afficheTxtGainTapis(t,"tour 2 ou 3 apres");
                 miseDansPot(t);
                 distribuer1CarteDecouverteJeu(t,1);
+                montant=0;
             }
             else
             {
@@ -1324,6 +1344,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 calculGainTapisJoueur(t);
                 afficheTxtGainTapis(t,"tourfinale apres");
                 miseDansPot(t);
+                montant=0;
 
                 AffAfficheTapis(affichage,tapis);
                 AffAffichageInfosJoueurs(affichage,t,joueurJouant);
@@ -1346,17 +1367,19 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     {
                         if (getArgentJoueur(*getIemeJoueur(t,i))>0)
                         {
+                            printf("sit:%d\n",i);
                             setStatutJoueur(*getIemeJoueur(t,i),SIT);
                             a++;
                         }
                         else
                         {
+                            printf("sitout:%d\n",i);
                             setStatutJoueur(*getIemeJoueur(t,i),SIT_OUT);
 
                         }
                     }
                 }
-                if (a==1)
+                if (a==1 or getStatutJoueur(*player)==SIT_OUT)
                 {
                     renvoyer=2;
                     printf("\n\tgagner ou perdu \n\n\n");
