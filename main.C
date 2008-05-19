@@ -58,27 +58,30 @@ int main (/*int argc, char** argv */)
     AffAfficheTapis(affichage,tapis);
     SDL_Flip(affichage);
     bool nouvellePartie=true;
-    int v;
+    int v;//valleur que renvoit lancerPartie
+    int aM;//valeur que renvoit affMenu
     bool finPartie=true;
 
     while (finPartie)
     {
         finPartie=false;
         nouvellePartie=true;
-        if (AffMenu(affichage)==1)
+        aM=AffMenu(affichage);
+        if (aM==1)
         {
 
             while (nouvellePartie)
             {
+                nouvellePartie=false;
                 AffAfficheTapis(affichage,tapis);
                 SDL_Flip(affichage);
                 nouvellePartie = 0;
                 v=lancePartie(affichage,tapis);
                 if (v==1)
                 {
-                    nouvellePartie=false;
+                    nouvellePartie=true;
                 }
-                else if (v==2)
+                else if (v==4)
                 {
                     nouvellePartie=false;
                     finPartie=true;
@@ -86,11 +89,13 @@ int main (/*int argc, char** argv */)
             }
 
         }
-
-        else if (AffMenu(affichage)==2)
+        else if (aM==2)
         {
-            //AFFICHER CREDITS
-            printf("Devellopé par:\nJames DAVIS\nBenjamin GUILLON\nTristan Trollet\nOlivier Delys\n");
+            printf("----------------\n\n");
+            printf("Devellope par:\nJames DAVIS\nBenjamin GUILLON\nTristan Trollet\nOlivier Delys\n");
+            printf("----------------\n\n");
+            nouvellePartie=false;
+            finPartie=true;
         }
 
     }
