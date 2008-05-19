@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Langage.C">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Langage.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<envvars />
