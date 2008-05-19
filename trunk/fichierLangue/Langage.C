@@ -3,6 +3,15 @@
 #include <cstdio>
 #include <stdlib.h>
 
+
+/**
+	@brief Fichier C qui gere le langage
+	@author Tristan
+	@file Langage.C
+	@version 1.0
+	@date 2008/05/19
+ */
+
 using namespace std;
 
 void ecrireDansTableau(char menu[50][50],const char nomFichier[50])
