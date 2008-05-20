@@ -133,7 +133,7 @@ Statut getStatutJoueur (const Joueur & joueur);
 
 void setTypeJoueur(Joueur & joueur, const TypeJoueur typejoueur);
 
-TypeJoueur getTypeJoueur(Joueur & joueur);
+TypeJoueur getTypeJoueur(const Joueur & joueur);
 
 
 
