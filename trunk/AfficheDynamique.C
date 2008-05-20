@@ -18,7 +18,7 @@
 
 
 
-void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
+void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50])
 {
 
     //on alloue le tableau qui va contenir le resultat de la partie
@@ -43,41 +43,41 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t)
         switch (tabResultat[0][0][0])
         {
         case 0:
-            sprintf(message2,"une carte haute");
+            sprintf(message2,"%s %s",langue[36],langue[26]);
             break;
         case 1:
-            sprintf(message2,"une paire");
+            sprintf(message2,"%s %s",langue[36],langue[25]);
             break;
         case 2:
-            sprintf(message2,"une double paire");
+            sprintf(message2,"%s %s",langue[36],langue[27]);
             break;
         case 3:
-            sprintf(message2,"un brelan");
+            sprintf(message2,"%s %s",langue[35],langue[28]);
             break;
         case 4:
-            sprintf(message2,"une quinte");
+            sprintf(message2,"%s %s",langue[36],langue[31]);
             break;
         case 5:
-            sprintf(message2,"une couleur");
+            sprintf(message2,"%s %s",langue[36],langue[30]);
             break;
         case 6:
-            sprintf(message2,"un full");
+            sprintf(message2,"%s %s",langue[35],langue[29]);
             break;
         case 7:
-            sprintf(message2,"un carre");
+            sprintf(message2,"%s %s",langue[35],langue[25]);
             break;
         case 8:
-            sprintf(message2,"une quinte flush");
+            sprintf(message2,"%s %s",langue[36],langue[32]);
             break;
         default:
-            sprintf(message2,"ERREUR DETERMINATION FORME MAIN");
+            sprintf(message2,"%s",langue[38]);
             break;
 
         }
 
 
         //affichage en texte du vainqueur et de la forme
-        sprintf(message,"vainqueur:%s avec %s\n",(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,message2);
+        sprintf(message,"%s:%s %s %s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,langue[34],message2);
         AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
         SDL_Flip(affichage);
 
@@ -196,16 +196,16 @@ void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis)
 
 
 
-void AffAffichePot(SDL_Surface* affichage,const Table & t)
+void AffAffichePot(SDL_Surface* affichage,const Table & t,const char langue[][50])
 {
     //affiche le contenu du pot
     char message[30];
-    sprintf(message,"Pot:%d",getTablePot(t));
+    sprintf(message,"%s:%d",langue[19],getTablePot(t));
     AffAfficheTexte(affichage,message,900,600,255,255,255,TTF_STYLE_NORMAL,22);
 
 }
 
-int AffMenu(SDL_Surface* affichage)
+int AffMenu(SDL_Surface* affichage,const char langue[][50]))
 {
 
     bool fin = false;
@@ -216,9 +216,9 @@ int AffMenu(SDL_Surface* affichage)
 
     const char* menuP="img/menu.png";
     SDL_Surface* menu=load_image(menuP);
-    AffAfficheTexte(menu,"Nouvelle partie",50,240,255/10,255,255);
-    AffAfficheTexte(menu,"Credits",50,270,255/10,255,255);
-    AffAfficheTexte(menu,"Quitter",50,300,255/10,255,255);
+    AffAfficheTexte(menu,langue[10],50,240,255/10,255,255);
+    AffAfficheTexte(menu,langue[11],50,270,255/10,255,255);
+    AffAfficheTexte(menu,langue[12],50,300,255/10,255,255);
     SDL_Rect menuRect = AffCentrer(menu,affichage,0);
     apply_surface(menuRect.x,menuRect.y,menu,affichage);
     SDL_Flip(affichage);
@@ -287,13 +287,13 @@ int AffMenu(SDL_Surface* affichage)
                 switch (i)
                 {
                 case 0:
-                    listeChoix = "Nouvelle partie";
+                    listeChoix = langue[10];
                     break;
                 case 1:
-                    listeChoix = "Credits";
+                    listeChoix = langue[11];
                     break;
                 case 2:
-                    listeChoix = "Quitter";
+                    listeChoix = langue[12];
                     break;
                 }
 
@@ -346,7 +346,7 @@ SDL_FreeSurface(credits);
 
 
 
-void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & table,int joueurJouant)
+void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & table,int joueurJouant,const char langue[][50])
 {
     //recuperation des coordonnés ou il doit etre placé
     int posx = getPositionJoueurX(j);
@@ -370,22 +370,22 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     switch (j.statut)
     {
     case CALL:
-        sprintf(message,"mise : %d",getMiseJoueur(j));
+        sprintf(message,"%s : %d",langue[21],getMiseJoueur(j));
         break;
     case CHECK:
-        sprintf(message,"check");
+        sprintf(message,"%s",langue[14]);
         break;
     case RAISE:
-        sprintf(message,"relance : %d",getMiseJoueur(j));
+        sprintf(message,"%s : %d",langue[15],getMiseJoueur(j));
         break;
     case FOLD:
-        sprintf(message,"se couche");
+        sprintf(message,"%s",langue[16]);
         break;
     case ALL_IN:
-        sprintf(message,"tapis : %d",getTapisJoueur(j));
+        sprintf(message,"%s : %d",langue[20],getTapisJoueur(j));
         break;
     case SIT_OUT:
-        sprintf(message,"ne joue pas");
+        sprintf(message,"%s",langue[39]);
         break;
     default:
         sprintf(message," ");
@@ -401,7 +401,7 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     //si c'est le dealer : on le marque
     if (j.idJoueur == getPositionDealerTable(table))
     {
-        sprintf(message,"Dealer");
+        sprintf(message,"%s",langue[18]);
         AffAfficheTexte(affichage,message,posx,posy+91+20*2,255,0,0,TTF_STYLE_BOLD,20);
     }
 
@@ -654,7 +654,7 @@ void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabRes
 
 }
 
-void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
+void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table,const char langue[][50])
 {
     char message[30];
     sprintf(message,"%s : %d",j.pseudo,j.argent);
@@ -666,19 +666,19 @@ void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
     switch (j.statut)
     {
     case CALL:
-        sprintf(message,"mise : %d",getMiseJoueur(j));
+        sprintf(message,"%s : %d",langue[21],getMiseJoueur(j));
         break;
     case CHECK:
-        sprintf(message,"check");
+        sprintf(message,"%s",langue[14]);
         break;
     case RAISE:
-        sprintf(message,"relance : %d",getMiseJoueur(j));
+        sprintf(message,"%s : %d",langue[15],getMiseJoueur(j));
         break;
     case FOLD:
-        sprintf(message,"se couche");
+        sprintf(message,"%s",langue[16]);
         break;
     case ALL_IN:
-        sprintf(message,"tapis : %d",getTapisJoueur(j));
+        sprintf(message,"%s : %d",langue[20],getTapisJoueur(j));
         break;
     default:
         sprintf(message," ");
@@ -701,7 +701,7 @@ void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table)
 
 
 
-void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus)
+void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus,const char langue[][50])
 {
     SDL_Surface* bouton;
     char boutonP[50];
@@ -716,7 +716,7 @@ void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus)
             sprintf(boutonP,"img/bouton.png");
         }
         bouton=load_image(boutonP);
-        AffAfficheTexte(bouton,"Suivre / Check",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+        AffAfficheTexte(bouton,langue[13],10,16,255,255,255,TTF_STYLE_NORMAL,18);
         apply_surface(620,530+20*4+50,bouton,affichage);
     }
     else
@@ -732,7 +732,7 @@ void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus)
         char relanceAff[10];
         sprintf(relanceAff,"%d",relance);
         bouton=load_image(boutonP);
-        AffAfficheTexte(bouton,"Relance : ",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+        AffAfficheTexte(bouton,langue[40],10,16,255,255,255,TTF_STYLE_NORMAL,18);
         AffAfficheTexte(bouton,relanceAff,70,16,255,255,255,TTF_STYLE_NORMAL,18);
         apply_surface(620,530+20*4+50,bouton,affichage);
     }
@@ -741,7 +741,7 @@ void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus)
     SDL_FreeSurface(bouton);
 
 }
-int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant,const Joueur & j,const Table & t)
+int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant,const Joueur & j,const Table & t,const char langue[][50])
 {
 
     bool fin = false;
@@ -760,14 +760,14 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
     relance=0;
 
     bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Couche",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+    AffAfficheTexte(bouton,langue[17],10,16,255,255,255,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4,bouton,affichage);
 
     AffAfficheBoutonRelance(affichage,relance,false);
 
 
     bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,"Tapis",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+    AffAfficheTexte(bouton,langue[20],10,16,255,255,255,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4+100,bouton,affichage);
 
 
@@ -893,7 +893,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                     switch (i)
                     {
                     case 0:
-                        AffAfficheTexte(bouton,"Couche",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+                        AffAfficheTexte(bouton,langue[17],10,16,255,255,255,TTF_STYLE_NORMAL,18);
                         apply_surface(620,530+20*4,bouton,affichage);
                         break;
                     case 1:
@@ -901,7 +901,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                         AffAfficheBoutonRelance(affichage,relance,true);
                         break;
                     case 2:
-                        AffAfficheTexte(bouton,"Tapis",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+                        AffAfficheTexte(bouton,langue[20],10,16,255,255,255,TTF_STYLE_NORMAL,18);
                         apply_surface(620,530+20*4+100,bouton,affichage);
                         break;
 
@@ -913,7 +913,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                     switch (i)
                     {
                     case 0:
-                        AffAfficheTexte(bouton,"Couche",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+                        AffAfficheTexte(bouton,langue[17],10,16,255,255,255,TTF_STYLE_NORMAL,18);
                         apply_surface(620,530+20*4,bouton,affichage);
                         break;
                     case 1:
@@ -921,7 +921,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
 
                         break;
                     case 2:
-                        AffAfficheTexte(bouton,"Tapis",10,16,255,255,255,TTF_STYLE_NORMAL,18);
+                        AffAfficheTexte(bouton,langue[20],10,16,255,255,255,TTF_STYLE_NORMAL,18);
                         apply_surface(620,530+20*4+100,bouton,affichage);
                         break;
 
@@ -1380,7 +1380,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 }
                 if (a==1 && getStatutJoueur(*player)!=SIT_OUT)
                 {
-                    AffAfficheTexte(affichage,"Vous avez gagné la partie.",412,450,255,0,0,TTF_STYLE_BOLD,20);
+                    AffAfficheTexte(affichage,langue[22],412,450,255,0,0,TTF_STYLE_BOLD,20);
                     SDL_Flip(affichage);
                     renvoyer=4;
                     printf("\n\t vous avez gagner\n\n\n");
@@ -1390,7 +1390,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 }
                 else if (getStatutJoueur(*player)==SIT_OUT)
                 {
-                    AffAfficheTexte(affichage,"Vous avez perdu la partie.",412,450,255,0,0,TTF_STYLE_BOLD,20);
+                    AffAfficheTexte(affichage,langue[23],412,450,255,0,0,TTF_STYLE_BOLD,20);
                     SDL_Flip(affichage);
                     renvoyer=4;
                     printf("\n\t vous avez perdu\n\n\n");
