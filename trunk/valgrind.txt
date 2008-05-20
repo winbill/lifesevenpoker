@@ -1,430 +1,447 @@
-==23495==    by 0x4333454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==  Address 0x4cc7f6c is 28 bytes inside a block of size 31 alloc'd
-==23495==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
-==23495==    by 0x4008031: (within /lib/ld-2.7.so)
-==23495==    by 0x400BC16: (within /lib/ld-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x400BDF9: (within /lib/ld-2.7.so)
-==23495==    by 0x40115A3: (within /lib/ld-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x4010F5D: (within /lib/ld-2.7.so)
-==23495==    by 0x4333291: (within /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x4333454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x430D186: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495== 
-==23495== Invalid read of size 4
-==23495==    at 0x40151F3: (within /lib/ld-2.7.so)
-==23495==    by 0x4005C69: (within /lib/ld-2.7.so)
-==23495==    by 0x4007A97: (within /lib/ld-2.7.so)
-==23495==    by 0x4011543: (within /lib/ld-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x4010F5D: (within /lib/ld-2.7.so)
-==23495==    by 0x4333291: (within /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x4333454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x430D186: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x4FA7F3B: (within /lib/tls/i686/cmov/libnss_compat-2.7.so)
-==23495==    by 0x4FA8EC4: _nss_compat_getgrnam_r (in /lib/tls/i686/cmov/libnss_compat-2.7.so)
-==23495==  Address 0x4cc8618 is 32 bytes inside a block of size 35 alloc'd
-==23495==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
-==23495==    by 0x4008031: (within /lib/ld-2.7.so)
-==23495==    by 0x4011543: (within /lib/ld-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x4010F5D: (within /lib/ld-2.7.so)
-==23495==    by 0x4333291: (within /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x4333454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x430D186: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x4FA7F3B: (within /lib/tls/i686/cmov/libnss_compat-2.7.so)
-==23495==    by 0x4FA8EC4: _nss_compat_getgrnam_r (in /lib/tls/i686/cmov/libnss_compat-2.7.so)
-==23495==    by 0x42B89C5: getgrnam_r (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495== 
-==23495== Invalid read of size 4
-==23495==    at 0x4015209: (within /lib/ld-2.7.so)
-==23495==    by 0x4005C69: (within /lib/ld-2.7.so)
-==23495==    by 0x4007A97: (within /lib/ld-2.7.so)
-==23495==    by 0x400BC16: (within /lib/ld-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x400BDF9: (within /lib/ld-2.7.so)
-==23495==    by 0x40115A3: (within /lib/ld-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x4010F5D: (within /lib/ld-2.7.so)
-==23495==    by 0x4333291: (within /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x4333454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==  Address 0x4cc896c is 36 bytes inside a block of size 37 alloc'd
-==23495==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
-==23495==    by 0x4008031: (within /lib/ld-2.7.so)
-==23495==    by 0x400BC16: (within /lib/ld-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x400BDF9: (within /lib/ld-2.7.so)
-==23495==    by 0x40115A3: (within /lib/ld-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x4010F5D: (within /lib/ld-2.7.so)
-==23495==    by 0x4333291: (within /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x400D5D5: (within /lib/ld-2.7.so)
-==23495==    by 0x4333454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x430D186: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495== 
-==23495== Syscall param semctl(IPC_SET, arg.buf) points to uninitialised byte(s)
-==23495==    at 0x40007F2: (within /lib/ld-2.7.so)
-==23495==    by 0x43F8785: snd_pcm_direct_semaphore_create_or_connect (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43F247D: snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43F32D9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0674: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0D72: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0DDB: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43FCDCB: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0674: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0E08: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43DC327: _snd_pcm_plug_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0674: (within /usr/lib/libasound.so.2.0.0)
-==23495==  Address 0xbec179fc is on thread 1's stack
-==23495== 
-==23495== Syscall param ioctl(arg) contains uninitialised byte(s)
-==23495==    at 0x40007F2: (within /lib/ld-2.7.so)
-==23495==    by 0x43BABE1: snd_pcm_prepare (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C11FC: snd_pcm_hw_params (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43F9253: snd_pcm_direct_initialize_slave (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43F2CB3: snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43F32D9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0674: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0D72: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0DDB: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43FCDCB: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0674: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0E08: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
-==23495== 
-==23495== Syscall param ioctl(arg) contains uninitialised byte(s)
-==23495==    at 0x40007F2: (within /lib/ld-2.7.so)
-==23495==    by 0x43BAAA1: snd_pcm_start (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43F9674: snd_pcm_direct_initialize_slave (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43F2CB3: snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43F32D9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0674: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0D72: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0DDB: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43FCDCB: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0674: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0E08: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43DC327: _snd_pcm_plug_open (in /usr/lib/libasound.so.2.0.0)
-==23495== 
-==23495== Syscall param writev(vector[...]) points to uninitialised byte(s)
-==23495==    at 0x40007F2: (within /lib/ld-2.7.so)
-==23495==    by 0x4A30EC2: (within /usr/lib/libxcb.so.1.0.0)
-==23495==    by 0x4A314AA: (within /usr/lib/libxcb.so.1.0.0)
-==23495==    by 0x4A315DE: (within /usr/lib/libxcb.so.1.0.0)
-==23495==    by 0x4A32B36: xcb_wait_for_reply (in /usr/lib/libxcb.so.1.0.0)
-==23495==    by 0x486B1EA: _XReply (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x485F249: XSync (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x4071ED4: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x407A794: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x407C9BD: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4066C00: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x804C4CE: initSDL(SDL_Surface*&, int const&, int const&, int const&, char*) (AfficheSdl.C:17)
-==23495==  Address 0x4a6ef23 is 4,363 bytes inside a block of size 8,556 alloc'd
-==23495==    at 0x4021BDE: calloc (vg_replace_malloc.c:397)
-==23495==    by 0x4A31130: xcb_connect_to_fd (in /usr/lib/libxcb.so.1.0.0)
-==23495==    by 0x4A33A50: xcb_connect (in /usr/lib/libxcb.so.1.0.0)
-==23495==    by 0x486A716: _XConnectXCB (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x4853028: XOpenDisplay (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x407186D: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x407CEAA: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4067B03: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x403B5C2: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x403B626: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x804C485: initSDL(SDL_Surface*&, int const&, int const&, int const&, char*) (AfficheSdl.C:10)
-==23495==    by 0x804EE01: main (main.C:36)
+==14529==    by 0x406E1FC: SDL_LoadObject (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x40750F0: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EDCB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== Conditional jump or move depends on uninitialised value(s)
+==14529==    at 0x40151FC: (within /lib/ld-2.7.so)
+==14529==    by 0x4335694: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4335A29: _dl_sym (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4444DE7: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444D72: dlsym (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E19E: SDL_LoadFunction (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4074A89: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x40755A6: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EDCB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4069BF5: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== Conditional jump or move depends on uninitialised value(s)
+==14529==    at 0x4015213: (within /lib/ld-2.7.so)
+==14529==    by 0x4335694: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4335A29: _dl_sym (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4444DE7: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444D72: dlsym (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E19E: SDL_LoadFunction (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4074A89: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x40758F9: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EDCB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4069BF5: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== Conditional jump or move depends on uninitialised value(s)
+==14529==    at 0x401521E: (within /lib/ld-2.7.so)
+==14529==    by 0x4335694: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4335A29: _dl_sym (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4444DE7: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444D72: dlsym (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E19E: SDL_LoadFunction (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4074A89: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x40758F9: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EDCB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4069BF5: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== Conditional jump or move depends on uninitialised value(s)
+==14529==    at 0x401522A: (within /lib/ld-2.7.so)
+==14529==    by 0x4335694: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4335A29: _dl_sym (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4444DE7: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444D72: dlsym (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E19E: SDL_LoadFunction (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4074A89: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4075A97: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EDCB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4069BF5: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== Conditional jump or move depends on uninitialised value(s)
+==14529==    at 0x4015235: (within /lib/ld-2.7.so)
+==14529==    by 0x4335694: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4335A29: _dl_sym (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4444DE7: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444D72: dlsym (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E19E: SDL_LoadFunction (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4074A89: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4075A97: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EDCB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4069BF5: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== Conditional jump or move depends on uninitialised value(s)
+==14529==    at 0x4015241: (within /lib/ld-2.7.so)
+==14529==    by 0x4335694: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4335A29: _dl_sym (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4444DE7: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444D72: dlsym (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E19E: SDL_LoadFunction (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4074A89: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4075BD9: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EDCB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4069BF5: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== Conditional jump or move depends on uninitialised value(s)
+==14529==    at 0x401524C: (within /lib/ld-2.7.so)
+==14529==    by 0x4335694: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4335A29: _dl_sym (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4444DE7: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444D72: dlsym (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E19E: SDL_LoadFunction (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4074A89: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4075BD9: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EDCB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4069BF5: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== Invalid read of size 4
+==14529==    at 0x4015209: (within /lib/ld-2.7.so)
+==14529==    by 0x400D8D9: (within /lib/ld-2.7.so)
+==14529==    by 0x4009A66: (within /lib/ld-2.7.so)
+==14529==    by 0x4335694: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4335A29: _dl_sym (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4444DE7: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444D72: dlsym (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E13A: SDL_LoadFunction (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4074A89: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4075C1E: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==  Address 0x4a4fce4 is 20 bytes inside a block of size 22 alloc'd
+==14529==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
+==14529==    by 0x4008031: (within /lib/ld-2.7.so)
+==14529==    by 0x4011543: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4010F5D: (within /lib/ld-2.7.so)
+==14529==    by 0x4444C18: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444B50: dlopen (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E1FC: SDL_LoadObject (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x40750F0: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EDCB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== Invalid read of size 4
+==14529==    at 0x4015220: (within /lib/ld-2.7.so)
+==14529==    by 0x400D8D9: (within /lib/ld-2.7.so)
+==14529==    by 0x4009A66: (within /lib/ld-2.7.so)
+==14529==    by 0x4335694: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4335A29: _dl_sym (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4444DE7: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444D72: dlsym (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E13A: SDL_LoadFunction (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4074A89: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4075C1E: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==  Address 0x4a50118 is 24 bytes inside a block of size 25 alloc'd
+==14529==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
+==14529==    by 0x4008031: (within /lib/ld-2.7.so)
+==14529==    by 0x4011543: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4010F5D: (within /lib/ld-2.7.so)
+==14529==    by 0x4444C18: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x44452BB: (within /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x4444B50: dlopen (in /lib/tls/i686/cmov/libdl-2.7.so)
+==14529==    by 0x406E1FC: SDL_LoadObject (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x40750F0: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EDCB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== Invalid read of size 4
+==14529==    at 0x4015237: (within /lib/ld-2.7.so)
+==14529==    by 0x4005C69: (within /lib/ld-2.7.so)
+==14529==    by 0x4007A97: (within /lib/ld-2.7.so)
+==14529==    by 0x400BC16: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x400BDF9: (within /lib/ld-2.7.so)
+==14529==    by 0x40115A3: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4010F5D: (within /lib/ld-2.7.so)
+==14529==    by 0x4335291: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4335454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==  Address 0x4cabddc is 28 bytes inside a block of size 31 alloc'd
+==14529==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
+==14529==    by 0x4008031: (within /lib/ld-2.7.so)
+==14529==    by 0x400BC16: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x400BDF9: (within /lib/ld-2.7.so)
+==14529==    by 0x40115A3: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4010F5D: (within /lib/ld-2.7.so)
+==14529==    by 0x4335291: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4335454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x430F186: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529== 
+==14529== Invalid read of size 4
+==14529==    at 0x40151F3: (within /lib/ld-2.7.so)
+==14529==    by 0x4005C69: (within /lib/ld-2.7.so)
+==14529==    by 0x4007A97: (within /lib/ld-2.7.so)
+==14529==    by 0x4011543: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4010F5D: (within /lib/ld-2.7.so)
+==14529==    by 0x4335291: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4335454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x430F186: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4FABF3B: (within /lib/tls/i686/cmov/libnss_compat-2.7.so)
+==14529==    by 0x4FACEC4: _nss_compat_getgrnam_r (in /lib/tls/i686/cmov/libnss_compat-2.7.so)
+==14529==  Address 0x4cac488 is 32 bytes inside a block of size 35 alloc'd
+==14529==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
+==14529==    by 0x4008031: (within /lib/ld-2.7.so)
+==14529==    by 0x4011543: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4010F5D: (within /lib/ld-2.7.so)
+==14529==    by 0x4335291: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4335454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x430F186: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4FABF3B: (within /lib/tls/i686/cmov/libnss_compat-2.7.so)
+==14529==    by 0x4FACEC4: _nss_compat_getgrnam_r (in /lib/tls/i686/cmov/libnss_compat-2.7.so)
+==14529==    by 0x42BA9C5: getgrnam_r (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529== 
+==14529== Invalid read of size 4
+==14529==    at 0x4015209: (within /lib/ld-2.7.so)
+==14529==    by 0x4005C69: (within /lib/ld-2.7.so)
+==14529==    by 0x4007A97: (within /lib/ld-2.7.so)
+==14529==    by 0x400BC16: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x400BDF9: (within /lib/ld-2.7.so)
+==14529==    by 0x40115A3: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4010F5D: (within /lib/ld-2.7.so)
+==14529==    by 0x4335291: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4335454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==  Address 0x4cac7dc is 36 bytes inside a block of size 37 alloc'd
+==14529==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
+==14529==    by 0x4008031: (within /lib/ld-2.7.so)
+==14529==    by 0x400BC16: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x400BDF9: (within /lib/ld-2.7.so)
+==14529==    by 0x40115A3: (within /lib/ld-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4010F5D: (within /lib/ld-2.7.so)
+==14529==    by 0x4335291: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x400D5D5: (within /lib/ld-2.7.so)
+==14529==    by 0x4335454: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x430F186: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529== 
+==14529== Syscall param semctl(IPC_SET, arg.buf) points to uninitialised byte(s)
+==14529==    at 0x40007F2: (within /lib/ld-2.7.so)
+==14529==    by 0x43FA785: snd_pcm_direct_semaphore_create_or_connect (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43F447D: snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43F52D9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2674: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2D72: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2DDB: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43FEDCB: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2674: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2E08: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43DE327: _snd_pcm_plug_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2674: (within /usr/lib/libasound.so.2.0.0)
+==14529==  Address 0xbe9f078c is on thread 1's stack
+==14529== 
+==14529== Syscall param ioctl(arg) contains uninitialised byte(s)
+==14529==    at 0x40007F2: (within /lib/ld-2.7.so)
+==14529==    by 0x43BCBE1: snd_pcm_prepare (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C31FC: snd_pcm_hw_params (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43FB253: snd_pcm_direct_initialize_slave (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43F4CB3: snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43F52D9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2674: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2D72: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2DDB: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43FEDCB: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2674: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2E08: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
+==14529== 
+==14529== Syscall param ioctl(arg) contains uninitialised byte(s)
+==14529==    at 0x40007F2: (within /lib/ld-2.7.so)
+==14529==    by 0x43BCAA1: snd_pcm_start (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43FB674: snd_pcm_direct_initialize_slave (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43F4CB3: snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43F52D9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2674: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2D72: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2DDB: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43FEDCB: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2674: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2E08: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43DE327: _snd_pcm_plug_open (in /usr/lib/libasound.so.2.0.0)
+==14529== 
+==14529== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==14529==    at 0x40007F2: (within /lib/ld-2.7.so)
+==14529==    by 0x4A32EC2: (within /usr/lib/libxcb.so.1.0.0)
+==14529==    by 0x4A334AA: (within /usr/lib/libxcb.so.1.0.0)
+==14529==    by 0x4A335DE: (within /usr/lib/libxcb.so.1.0.0)
+==14529==    by 0x4A34B36: xcb_wait_for_reply (in /usr/lib/libxcb.so.1.0.0)
+==14529==    by 0x486D1EA: _XReply (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x4861249: XSync (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x4073ED4: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407C794: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407E9BD: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4068C00: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x804D542: initSDL(SDL_Surface*&, int const&, int const&, int const&, char const*) (AfficheSdl.C:32)
+==14529==  Address 0x4a71583 is 4,363 bytes inside a block of size 8,556 alloc'd
+==14529==    at 0x4021BDE: calloc (vg_replace_malloc.c:397)
+==14529==    by 0x4A33130: xcb_connect_to_fd (in /usr/lib/libxcb.so.1.0.0)
+==14529==    by 0x4A35A50: xcb_connect (in /usr/lib/libxcb.so.1.0.0)
+==14529==    by 0x486C716: _XConnectXCB (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x4855028: XOpenDisplay (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x407386D: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407EEAA: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4069B03: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x403D5C2: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x403D626: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x804D4F9: initSDL(SDL_Surface*&, int const&, int const&, int const&, char const*) (AfficheSdl.C:25)
+==14529==    by 0x805053F: main (main.C:51)
 lance jeu
-==23495== 
-==23495== Conditional jump or move depends on uninitialised value(s)
-==23495==    at 0x804A2E3: AffAfficheJoueur(SDL_Surface*, Joueur const&, Table const&, int) (AfficheDynamique.C:317)
-==23495==    by 0x804A6E2: AffAffichageInfosJoueurs(SDL_Surface*, Table const&, int) (AfficheDynamique.C:423)
-==23495==    by 0x804B600: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:838)
-==23495==    by 0x804EF2C: main (main.C:71)
-==23495== 
-==23495== Conditional jump or move depends on uninitialised value(s)
-==23495==    at 0x804A2E3: AffAfficheJoueur(SDL_Surface*, Joueur const&, Table const&, int) (AfficheDynamique.C:317)
-==23495==    by 0x804A78F: AffAffichageInfosJoueurs(SDL_Surface*, Table const&, int) (AfficheDynamique.C:429)
-==23495==    by 0x804B600: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:838)
-==23495==    by 0x804EF2C: main (main.C:71)
-==23495== 
-==23495== Conditional jump or move depends on uninitialised value(s)
-==23495==    at 0x804A2E3: AffAfficheJoueur(SDL_Surface*, Joueur const&, Table const&, int) (AfficheDynamique.C:317)
-==23495==    by 0x804A830: AffAffichageInfosJoueurs(SDL_Surface*, Table const&, int) (AfficheDynamique.C:435)
-==23495==    by 0x804B600: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:838)
-==23495==    by 0x804EF2C: main (main.C:71)
-Debug:0
-==23495== 
-==23495== Conditional jump or move depends on uninitialised value(s)
-==23495==    at 0x40747AF: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4075303: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4040B36: SDL_PumpEvents (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4041046: SDL_PollEvent (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x8049367: scanActionJoueur(SDL_Surface*, int&, Statut&, int&) (AfficheDynamique.C:686)
-==23495==    by 0x804D3B9: atendsActionJoueur(SDL_Surface*, Table const&, Joueur const&, int&, Statut&, int&) (Jeu.C:35)
-==23495==    by 0x804B915: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:905)
-==23495==    by 0x804EF2C: main (main.C:71)
-==23495== 
-==23495== Conditional jump or move depends on uninitialised value(s)
-==23495==    at 0x40747D8: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4075303: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4040B36: SDL_PumpEvents (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4041046: SDL_PollEvent (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x8049367: scanActionJoueur(SDL_Surface*, int&, Statut&, int&) (AfficheDynamique.C:686)
-==23495==    by 0x804D3B9: atendsActionJoueur(SDL_Surface*, Table const&, Joueur const&, int&, Statut&, int&) (Jeu.C:35)
-==23495==    by 0x804B915: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:905)
-==23495==    by 0x804EF2C: main (main.C:71)
-statut::-1
-fintour:  4
-==23495== 
-==23495== Conditional jump or move depends on uninitialised value(s)
-==23495==    at 0x804BB44: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:968)
-==23495==    by 0x804EF2C: main (main.C:71)
-==23495== 
-==23495== Conditional jump or move depends on uninitialised value(s)
-==23495==    at 0x804BB4D: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:968)
-==23495==    by 0x804EF2C: main (main.C:71)
-==23495== 
-==23495== Conditional jump or move depends on uninitialised value(s)
-==23495==    at 0x804BB56: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:968)
-==23495==    by 0x804EF2C: main (main.C:71)
-Debug:1
-fintour:  3
-Debug:2
-fintour:  2
-Debug:3
-fintour:  1
-Debug:4
-fintour:  0
-boucleJeu:1
-Debug:5
-fintour:  4
-Debug:6
-fintour:  3
-Debug:7
-statut::-1
-fintour:  2
-Debug:8
-fintour:  1
-Debug:9
-fintour:  0
-boucleJeu:2
-Debug:10
-fintour:  4
-Debug:11
-fintour:  3
-Debug:12
-statut::-1
-fintour:  2
-Debug:13
-fintour:  1
-Debug:14
-fintour:  0
-boucleJeu:3
-Debug:15
-fintour:  4
-Debug:16
-fintour:  3
-Debug:17
-statut::-1
-fintour:  2
-Debug:18
-fintour:  1
-Debug:19
-fintour:  0
-boucleJeu:4
------Tableau[8][2]----
-i:0    :8      :4
-i:1    :13      :1
-i:2    :10      :3
-i:3    :12      :3
-i:4    :12      :1
-i:5    :6      :2
-i:6    :7      :1
-i:7    :0      :0
-
------Tableau[8][2]----
-i:0    :2      :3
-i:1    :9      :2
-i:2    :10      :3
-i:3    :12      :3
-i:4    :12      :1
-i:5    :6      :2
-i:6    :7      :1
-i:7    :0      :0
-
------Tableau[8][2]----
-i:0    :14      :2
-i:1    :11      :1
-i:2    :10      :3
-i:3    :12      :3
-i:4    :12      :1
-i:5    :6      :2
-i:6    :7      :1
-i:7    :0      :0
-
------Tableau[8][2]----
-i:0    :5      :3
-i:1    :7      :3
-i:2    :10      :3
-i:3    :12      :3
-i:4    :12      :1
-i:5    :6      :2
-i:6    :7      :1
-i:7    :0      :0
-
------Tableau[8][2]----
-i:0    :5      :1
-i:1    :14      :3
-i:2    :10      :3
-i:3    :12      :3
-i:4    :12      :1
-i:5    :6      :2
-i:6    :7      :1
-i:7    :0      :0
-
-determine_vainqueur_donne_mise_redistribue_retourner_carte
-Debug:20
-fintour:  4
-==23495== 
-==23495== ERROR SUMMARY: 288 errors from 26 contexts (suppressed: 283 from 1)
-==23495== malloc/free: in use at exit: 773,815 bytes in 5,258 blocks.
-==23495== malloc/free: 171,261 allocs, 166,003 frees, 262,162,638 bytes allocated.
-==23495== For counts of detected errors, rerun with: -v
-==23495== searching for pointers to 5,258 not-freed blocks.
-==23495== checked 1,370,736 bytes.
-==23495== 
-==23495== 
-==23495== 100 bytes in 5 blocks are definitely lost in loss record 14 of 76
-==23495==    at 0x4022F14: operator new[](unsigned) (vg_replace_malloc.c:268)
-==23495==    by 0x804D8BE: initJoueur(Joueur&) (Joueur.C:50)
-==23495==    by 0x804D965: creeJoueur() (Joueur.C:93)
-==23495==    by 0x804B538: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:811)
-==23495==    by 0x804EF2C: main (main.C:71)
-==23495== 
-==23495== 
-==23495== 140 (40 direct, 100 indirect) bytes in 5 blocks are definitely lost in loss record 16 of 76
-==23495==    at 0x4023294: operator new(unsigned) (vg_replace_malloc.c:224)
-==23495==    by 0x804D922: initJoueur(Joueur&) (Joueur.C:58)
-==23495==    by 0x804D965: creeJoueur() (Joueur.C:93)
-==23495==    by 0x804B4B5: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:802)
-==23495==    by 0x804EF2C: main (main.C:71)
-==23495== 
-==23495== 
-==23495== 112 (8 direct, 104 indirect) bytes in 1 blocks are definitely lost in loss record 18 of 76
-==23495==    at 0x4022B8E: realloc (vg_replace_malloc.c:429)
-==23495==    by 0x4876B0F: (within /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x4877654: (within /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x4879517: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x489783A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x487FF22: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x4880062: _XlcCurrentLC (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x4880500: XSetLocaleModifiers (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x407263D: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x407C0C7: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x407D0AB: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4067B03: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495== 
-==23495== 
-==23495== 20 bytes in 1 blocks are definitely lost in loss record 25 of 76
-==23495==    at 0x4022F14: operator new[](unsigned) (vg_replace_malloc.c:268)
-==23495==    by 0x804E60B: initialisationMain(MainCarte&) (MainCarte.C:24)
-==23495==    by 0x804EC9F: initTable(Table&) (Table.C:55)
-==23495==    by 0x804B427: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:783)
-==23495==    by 0x804EF2C: main (main.C:71)
-==23495== 
-==23495== 
-==23495== 30 bytes in 2 blocks are definitely lost in loss record 31 of 76
-==23495==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
-==23495==    by 0x4893722: (within /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x4892636: (within /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x48939C3: _XimSetICValueData (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x488C750: _XimLocalCreateIC (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x4870E7B: XCreateIC (in /usr/lib/libX11.so.6.2.0)
-==23495==    by 0x407BF19: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x407D0AB: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4067B03: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x403B5C2: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x403B626: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x804C485: initSDL(SDL_Surface*&, int const&, int const&, int const&, char*) (AfficheSdl.C:10)
-==23495== 
-==23495== 
-==23495== 140 bytes in 7 blocks are possibly lost in loss record 37 of 76
-==23495==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
-==23495==    by 0x439F1B5: snd_dlobj_cache_add (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43A7BA5: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x439BDA0: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x439CBD2: snd_determine_driver (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x439997C: snd_config_hook_load_for_all_cards (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x4399DFC: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x439AAC6: snd_config_searcha_hooks (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x439ACA4: snd_config_search_alias_hooks (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x439AF2A: snd_config_search_definition (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0C9E: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x406EE65: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495== 
-==23495== 
-==23495== 156 (36 direct, 120 indirect) bytes in 1 blocks are definitely lost in loss record 38 of 76
-==23495==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
-==23495==    by 0x430D3E2: (within /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x430DC2D: __nss_database_lookup (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x4FA7F1B: ???
-==23495==    by 0x4FA8EC4: ???
-==23495==    by 0x42B89C5: getgrnam_r (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x42B807D: getgrnam (in /lib/tls/i686/cmov/libc-2.7.so)
-==23495==    by 0x43F6E8B: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43F3149: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0674: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0D72: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0DDB: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
-==23495== 
-==23495== 
-==23495== 362,100 (900 direct, 361,200 indirect) bytes in 15 blocks are definitely lost in loss record 66 of 76
-==23495==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
-==23495==    by 0x406462B: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4064932: SDL_ConvertSurface (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x406698B: SDL_DisplayFormatAlpha (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x804C2D1: load_image(char*) (AfficheSdl.C:58)
-==23495==    by 0x80491D7: scanActionJoueur(SDL_Surface*, int&, Statut&, int&) (AfficheDynamique.C:669)
-==23495==    by 0x804D3B9: atendsActionJoueur(SDL_Surface*, Table const&, Joueur const&, int&, Statut&, int&) (Jeu.C:35)
-==23495==    by 0x804B915: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:905)
-==23495==    by 0x804EF2C: main (main.C:71)
-==23495== 
-==23495== 
-==23495== 35,748 bytes in 993 blocks are possibly lost in loss record 74 of 76
-==23495==    at 0x4021BDE: calloc (vg_replace_malloc.c:397)
-==23495==    by 0x4395728: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x4395850: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x4397914: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x4397F26: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x4398241: (within /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x439A42B: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x439AA37: snd_config_update (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x43C0F7B: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
-==23495==    by 0x406EE65: (within /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x403C1AD: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x403B546: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495== 
-==23495== 
-==23495== 240,000 bytes in 6 blocks are possibly lost in loss record 75 of 76
-==23495==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
-==23495==    by 0x4064768: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x4064932: SDL_ConvertSurface (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x406698B: SDL_DisplayFormatAlpha (in /usr/lib/libSDL-1.2.so.0.11.1)
-==23495==    by 0x804C2D1: load_image(char*) (AfficheSdl.C:58)
-==23495==    by 0x80491D7: scanActionJoueur(SDL_Surface*, int&, Statut&, int&) (AfficheDynamique.C:669)
-==23495==    by 0x804D3B9: atendsActionJoueur(SDL_Surface*, Table const&, Joueur const&, int&, Statut&, int&) (Jeu.C:35)
-==23495==    by 0x804B915: lancePartie(SDL_Surface*, SDL_Surface*) (AfficheDynamique.C:905)
-==23495==    by 0x804EF2C: main (main.C:71)
-==23495== 
-==23495== LEAK SUMMARY:
-==23495==    definitely lost: 1,134 bytes in 30 blocks.
-==23495==    indirectly lost: 361,524 bytes in 73 blocks.
-==23495==      possibly lost: 275,888 bytes in 1,006 blocks.
-==23495==    still reachable: 135,269 bytes in 4,149 blocks.
-==23495==         suppressed: 0 bytes in 0 blocks.
-==23495== Reachable blocks (those to which a pointer was found) are not shown.
-==23495== To see them, rerun with: --leak-check=full --show-reachable=yes
+==14529== 
+==14529== ERROR SUMMARY: 553 errors from 18 contexts (suppressed: 283 from 1)
+==14529== malloc/free: in use at exit: 60,042,833 bytes in 14,675 blocks.
+==14529== malloc/free: 352,628 allocs, 337,953 frees, 453,969,366 bytes allocated.
+==14529== For counts of detected errors, rerun with: -v
+==14529== searching for pointers to 14,675 not-freed blocks.
+==14529== checked 10,675,688 bytes.
+==14529== 
+==14529== 
+==14529== 112 (8 direct, 104 indirect) bytes in 1 blocks are definitely lost in loss record 14 of 77
+==14529==    at 0x4022B8E: realloc (vg_replace_malloc.c:429)
+==14529==    by 0x4878B0F: (within /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x4879654: (within /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x487B517: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x489983A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x4881F22: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x4882062: _XlcCurrentLC (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x4882500: XSetLocaleModifiers (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x407463D: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407E0C7: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407F0AB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4069B03: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== 
+==14529== 20 bytes in 1 blocks are definitely lost in loss record 20 of 77
+==14529==    at 0x4022F14: operator new[](unsigned) (vg_replace_malloc.c:268)
+==14529==    by 0x804FD1F: initialisationMain(MainCarte&) (MainCarte.C:24)
+==14529==    by 0x80503D7: initTable(Table&) (Table.C:55)
+==14529==    by 0x804C03E: lancePartie(SDL_Surface*, SDL_Surface*, char const (*) [50]) (AfficheDynamique.C:1018)
+==14529==    by 0x8050618: main (main.C:94)
+==14529== 
+==14529== 
+==14529== 30 bytes in 2 blocks are definitely lost in loss record 27 of 77
+==14529==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
+==14529==    by 0x4895722: (within /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x4894636: (within /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x48959C3: _XimSetICValueData (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x488E750: _XimLocalCreateIC (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x4872E7B: XCreateIC (in /usr/lib/libX11.so.6.2.0)
+==14529==    by 0x407DF19: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x407F0AB: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4069B03: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x403D5C2: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x403D626: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x804D4F9: initSDL(SDL_Surface*&, int const&, int const&, int const&, char const*) (AfficheSdl.C:25)
+==14529== 
+==14529== 
+==14529== 140 bytes in 7 blocks are possibly lost in loss record 33 of 77
+==14529==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
+==14529==    by 0x43A11B5: snd_dlobj_cache_add (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43A9BA5: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x439DDA0: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x439EBD2: snd_determine_driver (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x439B97C: snd_config_hook_load_for_all_cards (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x439BDFC: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x439CAC6: snd_config_searcha_hooks (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x439CCA4: snd_config_search_alias_hooks (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x439CF2A: snd_config_search_definition (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2C9E: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x4070E65: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== 
+==14529== 156 (36 direct, 120 indirect) bytes in 1 blocks are definitely lost in loss record 34 of 77
+==14529==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
+==14529==    by 0x430F3E2: (within /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x430FC2D: __nss_database_lookup (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x4FABF1B: ???
+==14529==    by 0x4FACEC4: ???
+==14529==    by 0x42BA9C5: getgrnam_r (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x42BA07D: getgrnam (in /lib/tls/i686/cmov/libc-2.7.so)
+==14529==    by 0x43F8E8B: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43F5149: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2674: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2D72: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2DDB: snd_pcm_open_named_slave (in /usr/lib/libasound.so.2.0.0)
+==14529== 
+==14529== 
+==14529== 100 bytes in 5 blocks are definitely lost in loss record 38 of 77
+==14529==    at 0x4022F14: operator new[](unsigned) (vg_replace_malloc.c:268)
+==14529==    by 0x804EF6E: initJoueur(Joueur&) (Joueur.C:51)
+==14529==    by 0x804F015: creeJoueur() (Joueur.C:94)
+==14529==    by 0x804C0CD: lancePartie(SDL_Surface*, SDL_Surface*, char const (*) [50]) (AfficheDynamique.C:1037)
+==14529==    by 0x8050618: main (main.C:94)
+==14529== 
+==14529== 
+==14529== 140 (40 direct, 100 indirect) bytes in 5 blocks are definitely lost in loss record 39 of 77
+==14529==    at 0x4023294: operator new(unsigned) (vg_replace_malloc.c:224)
+==14529==    by 0x804EFD2: initJoueur(Joueur&) (Joueur.C:59)
+==14529==    by 0x804F015: creeJoueur() (Joueur.C:94)
+==14529==    by 0x804C0CD: lancePartie(SDL_Surface*, SDL_Surface*, char const (*) [50]) (AfficheDynamique.C:1037)
+==14529==    by 0x8050618: main (main.C:94)
+==14529== 
+==14529== 
+==14529== 29,196 bytes in 811 blocks are possibly lost in loss record 71 of 77
+==14529==    at 0x4021BDE: calloc (vg_replace_malloc.c:397)
+==14529==    by 0x4397728: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x4397850: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x4399914: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x4399F26: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x439A241: (within /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x439C42B: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x439CA37: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x43C2F7B: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==14529==    by 0x4070E65: (within /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x403E1AD: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x403D546: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529== 
+==14529== 
+==14529== 50,334,620 (123,180 direct, 50,211,440 indirect) bytes in 2,053 blocks are definitely lost in loss record 75 of 77
+==14529==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
+==14529==    by 0x406662B: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4066932: SDL_ConvertSurface (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x406898B: SDL_DisplayFormatAlpha (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x804D345: load_image(char const*) (AfficheSdl.C:73)
+==14529==    by 0x8049DA3: scanActionJoueur(SDL_Surface*, int&, Statut&, int&, Joueur const&, Table const&, char const (*) [50]) (AfficheDynamique.C:912)
+==14529==    by 0x804EA06: atendsActionJoueur(SDL_Surface*, Table const&, Joueur const&, int&, Statut&, int&, char const (*) [50]) (Jeu.C:35)
+==14529==    by 0x804C54C: lancePartie(SDL_Surface*, SDL_Surface*, char const (*) [50]) (AfficheDynamique.C:1137)
+==14529==    by 0x8050618: main (main.C:94)
+==14529== 
+==14529== 
+==14529== 9,550,000 bytes in 273 blocks are possibly lost in loss record 76 of 77
+==14529==    at 0x4022AB8: malloc (vg_replace_malloc.c:207)
+==14529==    by 0x4066768: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x4066932: SDL_ConvertSurface (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x406898B: SDL_DisplayFormatAlpha (in /usr/lib/libSDL-1.2.so.0.11.1)
+==14529==    by 0x804D345: load_image(char const*) (AfficheSdl.C:73)
+==14529==    by 0x8049B46: scanActionJoueur(SDL_Surface*, int&, Statut&, int&, Joueur const&, Table const&, char const (*) [50]) (AfficheDynamique.C:871)
+==14529==    by 0x804EA06: atendsActionJoueur(SDL_Surface*, Table const&, Joueur const&, int&, Statut&, int&, char const (*) [50]) (Jeu.C:35)
+==14529==    by 0x804C54C: lancePartie(SDL_Surface*, SDL_Surface*, char const (*) [50]) (AfficheDynamique.C:1137)
+==14529==    by 0x8050618: main (main.C:94)
+==14529== 
+==14529== LEAK SUMMARY:
+==14529==    definitely lost: 123,414 bytes in 2,068 blocks.
+==14529==    indirectly lost: 50,211,764 bytes in 7,958 blocks.
+==14529==      possibly lost: 9,579,336 bytes in 1,091 blocks.
+==14529==    still reachable: 128,319 bytes in 3,558 blocks.
+==14529==         suppressed: 0 bytes in 0 blocks.
+==14529== Reachable blocks (those to which a pointer was found) are not shown.
+==14529== To see them, rerun with: --leak-check=full --show-reachable=yes
 
