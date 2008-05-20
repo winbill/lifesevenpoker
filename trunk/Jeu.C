@@ -26,7 +26,7 @@ int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & r
 {
     if (j.type == IA)
     {
-        s = calculIA(t,j,relance,montant);
+        s = definieStatut(calculIA(t,j,relance,montant),getArgentJoueur(j),montant);
         SDL_Delay(200);
         return 1;
     }
@@ -44,7 +44,6 @@ int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & r
     {
         return 1;//mode multijoueurs
     }
-    return CALL;
 }
 
 void joueurPetiteBlind(Table & t,Joueur & j)
