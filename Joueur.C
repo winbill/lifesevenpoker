@@ -234,23 +234,13 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         setStatutJoueur(j,s);
         break;
     case CALL:
-        {
-            a = montant - getMiseJoueur(j);
-            if(getArgentJoueur(j) >= a)
-            {
-                printf("call:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
-                assert(a > 0 && getArgentJoueur(j) > a);
-                ajoutMiseJoueur(j,a);
-                setArgentJoueur(j,getArgentJoueur(j)-a);
-                setStatutJoueur(j,s);
-                ajouteGainTapisJoueur(j,a);
-            }
-           /* else
-            {
-                AffAfficheTexte(affichage,"PAS ASSEZ D'ARGENT",512,380);
-                SDL_Delay(3000);
-            } */
-        }
+        printf("call:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
+        a = montant - getMiseJoueur(j);
+        assert(a > 0 && getArgentJoueur(j) > a);
+        ajoutMiseJoueur(j,a);
+        setArgentJoueur(j,getArgentJoueur(j)-a);
+        setStatutJoueur(j,s);
+
         break;
     case CHECK:
         printf("check:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
@@ -265,7 +255,7 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         setArgentJoueur(j,getArgentJoueur(j)-a-relance);
         setStatutJoueur(j,s);
         montant = montant+relance;
-        //ajouteGainTapisJoueur(j,a+relance);
+
         break;
     case FOLD:
         setStatutJoueur(j,s);
@@ -277,7 +267,7 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         montant = getMiseJoueur(j);
         setArgentJoueur(j,0);
         setTapisJoueur(j,montant);
-        //ajouteGainTapisJoueur(j,getArgentJoueur(j));
+
         break;
     default:
         break;
