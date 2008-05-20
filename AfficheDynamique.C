@@ -1004,12 +1004,9 @@ void calculGainTapisJoueur(Table & t)
 
 int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 {
-    /*
-    char** tabLanguage=creeTableauLanguage("languages/french");
-    for(int b=0;b<2;b++)
-    {
-        printf("%s\n",tabLanguage[b]);
-    }*/
+    char c[50][50];
+    afficherMenu(c,ecrireDansTableau(c,"languages/french"));
+
 
     //nombre d'IA:
     const int NOMBRE_JOUEUR_PC = 4;
