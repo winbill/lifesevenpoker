@@ -795,19 +795,16 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
         {
 
         case SDL_QUIT :
-            SDL_FreeSurface(bouton);
             return -1;
             break;
 
         case SDL_KEYDOWN :
             if (event.key.keysym.sym == SDLK_m)
             {
-                SDL_FreeSurface(bouton);
                 return 2;
             }
             else if (event.key.keysym.sym == SDLK_ESCAPE)
             {
-                SDL_FreeSurface(bouton);
                 return -1;
                 break;
             }
@@ -839,7 +836,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                         break;
 
                     }
-                    SDL_FreeSurface(bouton);
+
                     return 1;
                 }
                 if (event.button.button == SDL_BUTTON_LEFT && event.button.x > 900 && event.button.x < 963 && event.button.y >660 && event.button.y < 710)
@@ -946,7 +943,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
         }
 
     }
-    SDL_FreeSurface(bouton);
+    //SDL_FreeSurface(bouton);
     return 0;
 }
 
