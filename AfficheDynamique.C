@@ -205,7 +205,7 @@ void AffAffichePot(SDL_Surface* affichage,const Table & t,const char langue[][50
 
 }
 
-int AffMenu(SDL_Surface* affichage,const char langue[][50]))
+int AffMenu(SDL_Surface* affichage,const char langue[][50])
 {
 
     bool fin = false;
@@ -407,7 +407,7 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
 
 }
 
-void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJouant)
+void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJouant,const char langue[][50])
 {
     const int LARGEUR=200;
 
@@ -466,19 +466,19 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
     {
         setPositionJoueurX(*t.joueur[(d-1)-i],bordure);
         setPositionJoueurY(*t.joueur[(d-1)-i],200+200*i);
-        AffAfficheJoueur(affichage,*t.joueur[(d-1)-i],t,joueurJouant);
+        AffAfficheJoueur(affichage,*t.joueur[(d-1)-i],t,joueurJouant,langue);
     }
     for (i=d;i<h+d;i++)
     {
         setPositionJoueurX(*t.joueur[i],bordure+separation*(i-d+1)+LARGEUR*(i-d));
         setPositionJoueurY(*t.joueur[i],bordure);
-        AffAfficheJoueur(affichage,*t.joueur[i],t,joueurJouant);
+        AffAfficheJoueur(affichage,*t.joueur[i],t,joueurJouant,langue);
     }
     for (i=h+d;i<g+h+d;i++)
     {
         setPositionJoueurX(*t.joueur[i],862);
         setPositionJoueurY(*t.joueur[i],200+200*(i-h-d));
-        AffAfficheJoueur(affichage,*t.joueur[i],t,joueurJouant);
+        AffAfficheJoueur(affichage,*t.joueur[i],t,joueurJouant,langue);
     }
 }
 
@@ -763,7 +763,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
     AffAfficheTexte(bouton,langue[17],10,16,255,255,255,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4,bouton,affichage);
 
-    AffAfficheBoutonRelance(affichage,relance,false);
+    AffAfficheBoutonRelance(affichage,relance,false,langue);
 
 
     bouton=load_image(boutonP);
@@ -842,7 +842,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                     if (relance>getArgentJoueur(j))
                         relance = getArgentJoueur(j);
 
-                    AffAfficheBoutonRelance(affichage,relance,false);
+                    AffAfficheBoutonRelance(affichage,relance,false,langue);
                     SDL_Flip(affichage);
                     event.button.x =0;
                     event.button.y =0;
@@ -853,7 +853,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                     relance -= getPetiteBlindTable(t)*2;
                     if (relance<0)
                         relance = 0;
-                    AffAfficheBoutonRelance(affichage,relance,false);
+                    AffAfficheBoutonRelance(affichage,relance,false,langue);
                     SDL_Flip(affichage);
                     event.button.x =0;
                     event.button.y =0;
@@ -898,7 +898,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                         break;
                     case 1:
 
-                        AffAfficheBoutonRelance(affichage,relance,true);
+                        AffAfficheBoutonRelance(affichage,relance,true,langue);
                         break;
                     case 2:
                         AffAfficheTexte(bouton,langue[20],10,16,255,255,255,TTF_STYLE_NORMAL,18);
@@ -917,7 +917,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                         apply_surface(620,530+20*4,bouton,affichage);
                         break;
                     case 1:
-                        AffAfficheBoutonRelance(affichage,relance,false);
+                        AffAfficheBoutonRelance(affichage,relance,false,langue);
 
                         break;
                     case 2:
@@ -1002,10 +1002,9 @@ void calculGainTapisJoueur(Table & t)
 
 
 
-int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
+int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50])
 {
-    char langue[50][50];
-    ecrireDansTableau(langue,"languages/french");
+
 
     //nombre d'IA:
     const int NOMBRE_JOUEUR_PC = 4;
@@ -1072,7 +1071,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     void afficheInfoJoueur(const Joueur & j)
     void afficheMainCarte(const MainCarte & m,char titre[])*/
 
-    AffAffichageInfosJoueurs(affichage,t,joueurJouant); //on lance l'affichage, pour initialiser les positins des joueurs
+    AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue); //on lance l'affichage, pour initialiser les positins des joueurs
 
 
     while (gameOn)
@@ -1110,9 +1109,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
         AffAfficheTapis(affichage,tapis);//affiche l'arrie plan : le tapis
         AffCarteDecouvertes(t,affichage);//affiche les cartes découvertes
         AffCartesJoueursJeu(affichage,t);//affiche les cartes de tous les joueurs
-        AffInfosJoueur(affichage,*player,t);//affiche les informations personelles du joueur humain
-        AffAffichageInfosJoueurs(affichage,t,joueurJouant);//affiche les informations personelles des ordinateurs
-        AffAffichePot(affichage,t);//affiche l'etat du pot
+        AffInfosJoueur(affichage,*player,t,langue);//affiche les informations personelles du joueur humain
+        AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue);//affiche les informations personelles des ordinateurs
+        AffAffichePot(affichage,t,langue);//affiche l'etat du pot
 
 
         if (zoom != 1)//le zoom sert lors du redimensionnement
@@ -1135,7 +1134,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     {
                         //on attends ce qu'il a choisit de faire
                         relance=0;
-                        a = atendsActionJoueur(affichage,t,*t.joueur[joueurJouant],relance,statut,montant);
+                        a = atendsActionJoueur(affichage,t,*t.joueur[joueurJouant],relance,statut,montant,langue);
                         if (a==-1)//le joueur a choisit de quitter
                         {
                             gameOn = false;
@@ -1148,7 +1147,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                             while (sortieMenu)
                             {
                                 sortieMenu = false;
-                                switch (AffMenu(affichage))
+                                switch (AffMenu(affichage,langue))
                                 {
                                 case 1:
                                     gameOn = false;
@@ -1170,9 +1169,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                                     AffAfficheTapis(affichage,tapis);
                                     AffCartesJoueursJeu(affichage,t);
                                     AffCarteDecouvertes(t,affichage);
-                                    AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-                                    AffInfosJoueur(affichage,*player,t);
-                                    AffAffichePot(affichage,t);
+                                    AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue);
+                                    AffInfosJoueur(affichage,*player,t,langue);
+                                    AffAffichePot(affichage,t,langue);
                                     if (zoom != 1)
                                     {
                                         SDL_Surface* surfaceZoom = rotozoomSurface(affichage,0,zoom,0);
@@ -1234,7 +1233,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                     renvoyer=3;
                     break;
                 case SDLK_m:
-                    switch (AffMenu(affichage))
+                    switch (AffMenu(affichage,langue))
                     {
                     case 1:
                         gameOn = false;
@@ -1248,9 +1247,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                         AffAfficheTapis(affichage,tapis);
                         AffCartesJoueursJeu(affichage,t);
                         AffCarteDecouvertes(t,affichage);
-                        AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-                        AffInfosJoueur(affichage,*player,t);
-                        AffAffichePot(affichage,t);
+                        AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue);
+                        AffInfosJoueur(affichage,*player,t,langue);
+                        AffAffichePot(affichage,t,langue);
                         if (zoom != 1)
                         {
                             SDL_Surface* surfaceZoom = rotozoomSurface(affichage,0,zoom,0);
@@ -1271,12 +1270,12 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
             joueurJouant =getJoueurSuivant(t,joueurJouant);//on passe au joueur suivant
             //on reaffiche tout
             AffAfficheTapis(affichage,tapis);
-            AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+            AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue);
             AffCarteDecouvertes(t,affichage);
             AffCartesJoueursJeu(affichage,t);
-            AffInfosJoueur(affichage,*player,t);
-            AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-            AffAffichePot(affichage,t);
+            AffInfosJoueur(affichage,*player,t,langue);
+            AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue);
+            AffAffichePot(affichage,t,langue);
             if (zoom != 1)
             {
                 SDL_Surface* surfaceZoom = rotozoomSurface(affichage,0,zoom,0);
@@ -1346,15 +1345,15 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
                 montant=0;
 
                 AffAfficheTapis(affichage,tapis);
-                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
+                AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue);
                 AffCarteDecouvertes(t,affichage);
                 AffCartesJoueursJeu(affichage,t);
-                AffInfosJoueur(affichage,*player,t);
-                AffAffichageInfosJoueurs(affichage,t,joueurJouant);
-                AffAffichePot(affichage,t);
+                AffInfosJoueur(affichage,*player,t,langue);
+                AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue);
+                AffAffichePot(affichage,t,langue);
                 SDL_Flip(affichage);
 
-                affAffichageVainqueur(affichage,t);
+                affAffichageVainqueur(affichage,t,langue);
 
                 printf("determine_vainqueur_donne_mise_redistribue_retourner_carte\n");
                 blindAMettre=true;

@@ -12,13 +12,13 @@ int ecrireDansTableau(char menu[50][50],const char nomFichier[50])
     char c[50];
     int i=0;
     char**tab=(char**)malloc(50*sizeof(char*));
-    while (fgets(c, 50, f) != NULL)
+    while (fgets(c,49, f) != NULL)
     {
         strcpy(menu[i],c);
         i++;
     }
     free(tab);
-    return i-1;
+    return 1;
 }
 
 
