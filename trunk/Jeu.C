@@ -22,17 +22,17 @@
 
 
 
-int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant)
+int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50])
 {
     if (j.type == IA)
     {
-        s = definieStatut(calculIA(t,j,relance,montant),getArgentJoueur(j),montant);
+        s = calculIA(t,j,relance,montant);
         SDL_Delay(200);
         return 1;
     }
     else if (j.type == JoueurLocal)
     {
-        int a = scanActionJoueur(aff,relance,s,montant,j,t);
+        int a = scanActionJoueur(aff,relance,s,montant,j,t,langue);
         if (s==CALL)
         {
             if (j.mise==montant)
@@ -44,6 +44,7 @@ int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & r
     {
         return 1;//mode multijoueurs
     }
+    return CALL;
 }
 
 void joueurPetiteBlind(Table & t,Joueur & j)

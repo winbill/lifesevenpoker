@@ -70,12 +70,14 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t);
 void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabResultat[6][2],int i);
 
 
-int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant,const Joueur & j,const Table & t);
+int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant,const Joueur & j,const Table & t,const char langue[][50]);
+
+void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table,const char langue[][50]);
 
 
 int AffMenu(SDL_Surface* affichage,Table* t,int joueurJouant,SDL_Surface* sortie);
 
-int AffMenu(SDL_Surface* affichage);
+int AffMenu(SDL_Surface* affichage,const char langue[][50]);
 
 
 
@@ -88,7 +90,7 @@ SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option);
 
 
 
-int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis);
+int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50]);
 
 void AffAfficheCredits(SDL_Surface* affichage);
 

@@ -15,7 +15,7 @@
 #include "Table.h"
 #include "AfficheDynamique.h"
 
-/**	@brief 
+/**	@brief
 	@param aff
 	@param 	t
 	@param j
@@ -24,7 +24,7 @@
 	@param montant
 	@note
 */
-int atendsActionJoueur(SDL_Surface* aff,const Table&t,const Joueur & j,int & relance,Statut & s,int & montant);
+int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50]);
 
 
 /**	@brief trie un tableau a 3 dimensions
@@ -65,7 +65,7 @@ void joueurGrosseBlind(Table & t,Joueur & j);
 void intitialiseTab3d(int tabResultat[10][6][2]);
 
 
-/**	@brief 
+/**	@brief
 	@param t
 	@param tabResultat
 	@note
