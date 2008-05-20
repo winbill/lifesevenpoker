@@ -746,7 +746,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
 
     bool fin = false;
     SDL_Event event;
-    montant=montant;
+
 
     const char* boutonP="img/bouton.png";
     const char* boutonDessus="img/boutonDessus.png";
