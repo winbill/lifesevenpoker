@@ -13,7 +13,7 @@ Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
     printf("VALEUR RELANCE : %d \t VALEUR MONTANT : %d \n", relance, montant);
     printf("---------------------------------\n| nbCartesDecouvertes : %d |\n ---------------------------------\n", nbCartesDecouvertes);
     printf("miseJoueur : %d \n", miseJoueur);
-    printf("argentJoueur : %d \n", argentJoueur);
+    printf("montant : %d \n", montant);
     printf("differenceMiseMontant : %d \n", differenceMiseMontant);
 
     //L'IA réagit selon le nombre de cartes découvertes dans un premier temps:
@@ -54,7 +54,8 @@ Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
 
             if (differenceMiseMontant <= argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
             {
-                relance = montant*2 - miseJoueur;
+                relance = 50;
+                printf("===========================================%d:%d\n",montant*2,miseJoueur);
 
                 return RAISE;  // ... il relance
             }
@@ -150,3 +151,13 @@ Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
     }
     //Fin du switch
 }
+
+/*
+void definieStatut(statut & s,int montant,int relance)
+{
+    if(relance
+
+
+
+}
+*/

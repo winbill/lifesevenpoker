@@ -260,7 +260,7 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
     case RAISE:
         printf("raise:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
         a = montant - getMiseJoueur(j);
-        assert(a >= 0 && getArgentJoueur(j) > ( a + relance));
+        assert(a >= 0 && getArgentJoueur(j) > ( a + relance) && relance>0);
         ajoutMiseJoueur(j,a+relance);
         setArgentJoueur(j,getArgentJoueur(j)-a-relance);
         setStatutJoueur(j,s);
