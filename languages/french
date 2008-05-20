@@ -11,7 +11,7 @@ Nouvelle Partie
 Credits
 Quitter
 Suivre / Check
-check
+Check
 Relance
 Se couche
 Couche
@@ -19,20 +19,22 @@ Dealer
 Pot
 Tapis
 Mise
-Vous avez
-gagne
+Vous avez gagne la partie.
+Vous avez perdu la partie.
 perdu
 paire
 carte haute
-paire
 double paire
-Brelan
-Full
-Couleur
-Quinte
-Flush
+brelan
+full
+couleur
+quinte
+quinte flush
 vainqueur
 avec
 un
 une
-
+carre
+ERREUR DETERMINATION FORME MAIN
+Ne joue pas
+Relance : 
