@@ -161,11 +161,19 @@ Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
     return FOLD;
     //Fin du switch
 }
-Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
+Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance, int historiqueIA[][3])
 {
     //On récupere le statut de la partie:
     int nbCartesDecouvertes = getMainCarteNbCarte(*getMainCarteTable(t)); //Le nombre de cartes découvertes sur le tapis
     MainCarte mainJoueur = *getMainJoueur(j); //La main de cette IA
+    MainCarte carteDecouvertes = getMainCarteTable(t); //Les cartes découvertes sur la table
+    int idJoueur=getIdJoueur(j); //L'id de l'IA
+
+    /*
+        POUR HISTORIQUEIA:
+            1ere dimension : id des IA
+            2e dimension : code de ce qu'il s'est passé aux PREFLOP, FLOP, TURN
+        */
 
     //L'IA réagit selon le nombre de cartes découvertes dans un premier temps:
     switch (nbCartesDecouvertes)
@@ -181,11 +189,13 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
                 printf("%s a une bonne paire\n",j.pseudo);
 				//ici et partout dans le reste de la fonction, relance n'est pas une relance mais une somme approximative du maximum qu'il est pres a mettre
                 relance=100;
+                historiqueIA[idJoueur][0]=6;
             }
             else
             {
                 printf("%s a une paire\n",j.pseudo);
                 relance=20;
+                historiqueIA[idJoueur][0]=5;
             }
         }
 		//s'il a deux cartes de même couleure
@@ -196,11 +206,13 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
             {
                 printf("%s a deux cartes qui se suivent de la meme couleure\n",j.pseudo);
                 relance=getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))*10;
+                historiqueIA[idJoueur][0]=4;
             }
             else
             {
                 printf("%s a deux carte de la meme couleure\n",j.pseudo);
                 relance=getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))*4;
+                historiqueIA[idJoueur][0]=3;
             }
         }
 		//si il a deux cartes qui se suivent
@@ -208,23 +220,81 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
         {
             printf("%s a deux cartes qui se suivent\n",j.pseudo);
             relance=getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))*7;
+            historiqueIA[idJoueur][0]=2;
         }
 		//on calcul la somme des deux rangs pour savoir si il a de bonnes cartes
         else if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))>20)
         {
             printf("%s a deux bonnes cartes\n",j.pseudo);
             relance=(5*(getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))))/2;
+            historiqueIA[idJoueur][0]=1;
         }
 		//sinon il est pret a mettre le minimum pr voir le flop
         else
         {
             printf("%s n'a rien\n",j.pseudo);
             relance=20;
+            historiqueIA[idJoueur][0]=0;
         }
         break;
 
         //Au moment du FLOP
     case 3 :
+        {
+            switch(historiqueIA[idJoueur][0]
+            {
+                //une (bonne) paire au pré flop
+                case (5 or 6) :
+                {
+                    //si il a un carre
+                    int rangPaire = getCarteRang(getMainCarteIemeCarte(mainJoueur,0);
+                    if((getCarteRang(getMainCarteIemeCarte(carteDecouvertes,0)) == rangPaire
+                            and getCarteRang(getMainCarteIemeCarte(carteDecouvertes,1)) == rangPaire)
+                        or
+                        (getCarteRang(getMainCarteIemeCarte(carteDecouvertes,0)) == rangPaire
+                            and getCarteRang(getMainCarteIemeCarte(carteDecouvertes,2)) == rangPaire)
+                        or
+                        (getCarteRang(getMainCarteIemeCarte(carteDecouvertes,1)) == rangPaire
+                            and getCarteRang(getMainCarteIemeCarte(carteDecouvertes,2)) == rangPaire))
+                        {
+                            printf("%s a un carré \n", j.pseudo);
+                            relance=200;
+                            historiqueIA[idJoueur][1]= ;
+                        }
+                    //si il a un brelan
+                    else if(getCarteRang(getMainCarteIemeCarte(carteDecouvertes,0)) == rangPaire
+                            or getCarteRang(getMainCarteIemeCarte(carteDecouvertes,1)) == rangPaire
+                            or getCarteRang(getMainCarteIemeCarte(carteDecouvertes,2)) == rangPaire)
+                            {
+                                printf("%s a un brelan \n", j.pseudo);
+                                relance=150;
+                                historiqueIA[idJoueur][1]= ;
+                            }
+                    //sinon il a toujours une paire
+                    else
+                    {
+                        if(
+                        else
+                        {
+                            if(historiqueIA[idJoueur][0]==6)
+                            {
+                                printf("%s a une bonne paire \n", j.pseudo);
+                                relance=100;
+                                historiqueIA[idJoueur][1]=historiqueIA[idJoueur][0];
+                            }
+                            else if(historiqueIA[idJoueur][0]==5)
+                            {
+                                printf("%s a une paire \n", j.pseudo);
+                                relance=20;
+                                historiqueIA[idJoueur][1]=historiqueIA[idJoueur][0];
+                            }
+                        }
+                    }
+                }//Fin du case (bonne) paire
+                //deux cartes de meme couleur au preflop
+                case 4 :
+                {
+                    int couleurFlush=getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,0);
 
         //test de forme sur cinq cartes
         break;
@@ -314,4 +384,63 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
 
 
 }
+
+int determineMeilleureMainIA(MainCarte mainJoueur, MainCarte cartesDecouvertes)
+{
+    int nbCartesDecouvertes=getMainCarteNbCarte(cartesDecouvertes);
+    int nbCartesTotal = nbCartesDecouvertes + 2;
+
+    switch(nbCartesTotal)
+    {
+        case 2 :
+        {
+        }
+        break;
+
+        case 5 :
+        {
+            int histogramme[5][2]={{0,0},{0,0},{0,0},{0,0},{0,0}};
+            int h=0;
+            int i=0;
+            while(i < 2)
+            {
+                if(histogramme[h][0]==0)
+                {
+                    histogramme[h][0]=getCarteRang(getMainCarteIemeCarte(mainJoueur,i));
+                    histogramme[h][1]++;
+                    i++;
+                    h=0;
+                }
+                else if(histogramme[h][0]==getCarteRang(getMainCarteIemeCarte(mainJoueur,i))
+                {
+                    histogramme[h][1]++;
+                    i++;
+                    h=0;
+                }
+                else h++;
+            }
+
+            int j=0;
+            while(j<3)
+            {
+                if(histogramme[h][0]==0)
+                {
+                    histogramme[h][0]=getCarteRang(getMainCarteIemeCarte(carteDecouvertes,i));
+                    histogramme[h][1]++;
+                    i++;
+                    h=0;
+                }
+                else if(histogramme[h][0]==getCarteRang(getMainCarteIemeCarte(carteDecouvertes,i))
+                {
+                    histogramme[h][1]++;
+                    i++;
+                    h=0;
+                }
+                else h++;
+            }
+
+            if(histogramme[0][1]==4 or histogramme[1][1]==4) return CARRE;
+            else if(histogramme[0][1]==3 or histogramme[1][1]==3 or histogramme[2][1]==3) return BRELAN;
+            else if
+
 
