@@ -30,6 +30,8 @@
 
 
 
-Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant);
+int calculIA(const Table & t,const Joueur & j,int &relance,int & montant);
+Statut definieStatut(int retour, int argentJoueur, int montant);
+
 
 #endif
