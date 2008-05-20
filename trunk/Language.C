@@ -4,24 +4,28 @@
 
 using namespace std;
 
-char** creeTableauLanguage(const char* fichier)
+
+int ecrireDansTableau(char menu[50][50],const char nomFichier[50])
 {
     FILE * f;
-    //f=fopen ("menuFrancais.txt" , "r");
-    f=fopen (fichier , "r");
+    f=fopen (nomFichier , "r");
     char c[50];
     int i=0;
     char**tab=(char**)malloc(50*sizeof(char*));
-    while (fgets(c, 50, f) != NULL);
+    while (fgets(c, 50, f) != NULL)
     {
-        tab[i]=c;
-        //printf("%s",tab[i]);
+        strcpy(menu[i],c);
         i++;
     }
-
-    return tab;
-}
-void detruitTableauLanguage(char** tab)
-{
     free(tab);
+    return i-1;
 }
+
+
+void afficherMenu(const char c[50][50],int a)
+{
+    int i;
+    for(i=0;i<a;i++)
+    {
+        printf("%s",c[i]);
+    }
