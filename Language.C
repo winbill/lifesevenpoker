@@ -29,3 +29,4 @@ void afficherMenu(const char c[50][50],int a)
     {
         printf("%s",c[i]);
     }
+}
