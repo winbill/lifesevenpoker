@@ -22,12 +22,12 @@
 
 
 
-int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50])
+int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50], int historiqueIA[][3])
 {
     assert(relance==0);
     if (getTypeJoueur(j) == IA)
     {
-        s = calculIAJames(t,j,montant,relance);
+        s = calculIAJames(t,j,montant,relance,historiqueIA);
         definieStatut(t,s,j,montant,relance);
         if (s==CALL)
         {

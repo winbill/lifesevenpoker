@@ -24,7 +24,7 @@
 	@param montant
 	@note
 */
-int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50]);
+int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50], int historiqueIA[][3]);
 
 
 /**	@brief trie un tableau a 3 dimensions
