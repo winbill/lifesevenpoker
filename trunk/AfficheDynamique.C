@@ -1004,9 +1004,8 @@ void calculGainTapisJoueur(Table & t)
 
 int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
 {
-    char c[50][50];
-    afficherMenu(c,ecrireDansTableau(c,"languages/french"));
-
+    char langue[50][50];
+    ecrireDansTableau(langue,"languages/french");
 
     //nombre d'IA:
     const int NOMBRE_JOUEUR_PC = 4;
@@ -1035,7 +1034,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis)
     //intitialisation et creation des joueurs artificiels
     for (int i=0;i<NOMBRE_JOUEUR_PC;i++)
     {
-        sprintf(nom,"%s%d%s","Ordinateur",i,"  ");
+        sprintf(nom,"%s%s",langue[i],"  ");
         joueurs[i]=creeJoueur();
         initJoueur(*joueurs[i],nom);
         ajoutJoueurTable(t,joueurs[i]);
