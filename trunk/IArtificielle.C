@@ -172,12 +172,14 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
     {
         //Au moment du pré FLOP
     case 0 :
-
+		//si il a une paire
         if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))==getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)))
         {
+			//si c'est une bonne paire
             if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))>10)
             {
                 printf("%s a une bonne paire\n",j.pseudo);
+				//ici et partout dans le reste de la fonction, relance n'est pas une relance mais une somme approximative du maximum qu'il est pres a mettre
                 relance=100;
             }
             else
@@ -186,8 +188,10 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
                 relance=20;
             }
         }
+		//s'il a deux cartes de même couleure
         else if (getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,0))==getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,1)))
         {
+			//si les deux cartes se suivent (et sont donc de même couleure
             if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))==1+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)) or getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+1==getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)))
             {
                 printf("%s a deux cartes qui se suivent de la meme couleure\n",j.pseudo);
@@ -199,16 +203,19 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
                 relance=getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))*4;
             }
         }
-        else             if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))==1+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)) or getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+1==getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)))
+		//si il a deux cartes qui se suivent
+        else if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))==1+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)) or getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+1==getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)))
         {
             printf("%s a deux cartes qui se suivent\n",j.pseudo);
             relance=getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))*7;
         }
+		//on calcul la somme des deux rangs pour savoir si il a de bonnes cartes
         else if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))>20)
         {
             printf("%s a deux bonnes cartes\n",j.pseudo);
             relance=(5*(getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))))/2;
         }
+		//sinon il est pret a mettre le minimum pr voir le flop
         else
         {
             printf("%s n'a rien\n",j.pseudo);
@@ -243,21 +250,26 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
 
 void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int & relance)
 {
+	//a represente le nombre de thune qu'il doit allonger pour suivre
     int a = montant - getMiseJoueur(j);
     if (relance > 0)
     {
-        if (relance <= montant+20 and relance >= montant-20 )
+		//si relance(largent qui est pres a mettre) est dans un intervalle de 20 par rapport a montant il suit
+        if (relance < montant+20 and relance > montant-20 )
         {
             relance=0;
             s=CALL;
         }
-        else if (relance >= montant-20)
+		//si relance est superieur a montant plus la grosse blind
+        else if (relance >= montant+20)
         {
+			//on verifie si y a sufissement de thne pr relancer
             if (getArgentJoueur(j) > ( a + relance))
             {
                 relance+=a;
                 s=RAISE;
             }
+			//sinon on regarde si on peut suivre
             else
             {
                 if (getArgentJoueur(j) >=  a )
@@ -265,6 +277,7 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
                     relance=0;
                     s=CALL;
                 }
+				//sinon on se couche
                 else
                 {
                     relance=0;
@@ -278,8 +291,10 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
             s=FOLD;
         }
     }
+	//si relance egale 0, on essaye de suivre
     else if (relance==0)
     {
+	//on verifie sil a assez de thune
         if (getArgentJoueur(j) >=  a )
         {
             relance=0;
