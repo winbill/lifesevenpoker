@@ -24,9 +24,25 @@
 
 int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50])
 {
-    if (j.type == IA)
+    assert(relance==0);
+    if (getTypeJoueur(j) == IA)
     {
-        s = calculIA(t,j,relance,montant);
+        s = calculIAJames(t,j,montant,relance);
+        definieStatut(t,s,j,montant,relance);
+        if (s==CALL)
+        {
+            if (getMiseJoueur(j)==montant)
+                s=CHECK;
+        }
+        if (getMiseJoueur(j) == getArgentJoueur(j))
+        {
+            s=ALL_IN;
+        }
+        if (getArgentJoueur(j) <getMiseJoueur(j))
+        {
+            s=FOLD;
+        }
+
         SDL_Delay(200);
         return 1;
     }

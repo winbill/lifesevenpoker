@@ -113,7 +113,7 @@ void setTypeJoueur(Joueur & joueur, const TypeJoueur typejoueur)
     joueur.type = typejoueur;
 }
 
-TypeJoueur getTypeJoueur(Joueur & joueur)
+TypeJoueur getTypeJoueur(const Joueur & joueur)
 {
     return joueur.type;
 }
