@@ -8,9 +8,9 @@ using namespace std;
 int main()
 {
     char c[50][50];
-    ecrireDansTableau(c,"menuFrancais.txt");
-  //  afficherMenu(c);
-    ecrireDansTableau(c,"menuAnglais.txt");
-  //  afficherMenu(c);
+
+    afficherMenu(c,ecrireDansTableau(c,"menuFrancais.txt"));
+    //ecrireDansTableau(c,"menuAnglais.txt");
+    //  afficherMenu(c);
     return 0;
 }

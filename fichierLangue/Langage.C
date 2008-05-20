@@ -14,7 +14,7 @@
 
 using namespace std;
 
-void ecrireDansTableau(char menu[50][50],const char nomFichier[50])
+int ecrireDansTableau(char menu[50][50],const char nomFichier[50])
 {
     FILE * f;
     f=fopen (nomFichier , "r");
@@ -23,18 +23,18 @@ void ecrireDansTableau(char menu[50][50],const char nomFichier[50])
     char**tab=(char**)malloc(50*sizeof(char*));
     while (fgets(c, 50, f) != NULL)
     {
-        tab[i]=c;
-        printf("%s",tab[i]);
+        strcpy(menu[i],c);
         i++;
     }
     free(tab);
+    return i-1;
 }
 
 
-void afficherMenu(const char c[50][50])
+void afficherMenu(const char c[50][50],int a)
 {
     int i;
-    for(i=0;i<50;i++)
+    for(i=0;i<a;i++)
     {
         printf("%s",c[i]);
     }
