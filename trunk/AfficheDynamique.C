@@ -1146,7 +1146,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                                     break;
                                 case 2:
                                     printf("\n----------------\n");
-                                    printf("Devellope par:\nJames DAVIS\nBenjamin GUILLON\nTristan Trollet\nOlivier Delys\n");
+                                    printf("Develope par:\nJames DAVIS\nBenjamin GUILLON\nTristan ROLLET\nOlivier DELYS\n");
                                     printf("----------------\n\n");
                                     sortieMenu = true;
                                     break;
