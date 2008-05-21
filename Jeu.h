@@ -15,6 +15,8 @@
 #include "Table.h"
 #include "AfficheDynamique.h"
 
+bool compareTabResultat(const int tabResultat1[6][2],const int tabResultat2[6][2]);
+
 /**	@brief
 	@param aff
 	@param 	t
