@@ -31,6 +31,7 @@ int main (/*int argc, char** argv */)
     char configuration[50][50];
     ecrireDansTableau(configuration,"config");
     char langue[50][50];
+    int nombreJoueur=3;
     switch (configuration[0][0])
     {
     case 'f':
@@ -40,9 +41,9 @@ int main (/*int argc, char** argv */)
         ecrireDansTableau(langue,"languages/english");
         break;
     }
-
-
-
+    //on cherche le nombre de joueur
+    sscanf(configuration[1],"%d",&nombreJoueur);
+    assert(nombreJoueur<=8);
 
 
     SDL_Surface* affichage;
@@ -91,7 +92,7 @@ int main (/*int argc, char** argv */)
                 AffAfficheTapis(affichage,tapis);
                 SDL_Flip(affichage);
                 nouvellePartie = 0;
-                v=lancePartie(affichage,tapis,langue);
+                v=lancePartie(affichage,tapis,langue,nombreJoueur);
                 if (v==1)
                 {
                     nouvellePartie=true;
