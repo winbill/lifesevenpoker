@@ -266,7 +266,7 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
 			//on verifie si y a sufissement de thne pr relancer
             if (getArgentJoueur(j) > ( a + relance))
             {
-                relance+=a;
+                relance=relance-montant;
                 s=RAISE;
             }
 			//sinon on regarde si on peut suivre
@@ -315,7 +315,7 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
 
 }
 
-Main determineMeilleureMainIA(MainCarte mainJoueur, MainCarte cartesDecouvertes)
+Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & cartesDecouvertes)
 {
     int nbCartesDecouvertes=getMainCarteNbCarte(cartesDecouvertes);
     int nbCartesTotal = nbCartesDecouvertes + 2;
@@ -323,11 +323,15 @@ Main determineMeilleureMainIA(MainCarte mainJoueur, MainCarte cartesDecouvertes)
     switch(nbCartesTotal)
     {
         case 2 :
-            break;
+        {
+
+        }
+        break;
 
 //=====================================================================================================================>
 
         case 5 :
+        {
             //On cree un histogramme pour referencer les cartes
             int histogramme[5][2]={{0,0},{0,0},{0,0},{0,0},{0,0}};
             int h=0;
@@ -480,21 +484,74 @@ Main determineMeilleureMainIA(MainCarte mainJoueur, MainCarte cartesDecouvertes)
 
             //Enfin si aucun des cas précédents n'a correspondu c'est une carte haute
             return HIGH_CARD;
-            break;
+        }
+        break;
 
 //=====================================================================================================================>
 
-       /* case 6 :
-            break;
+        case 6 :
+        {
+            //On recupere toutes les combinaisons de 5 cartes parmi 6
+            int i,j,k;
+            //On travaille sur des mains temporaires
+            MainCarte mainTotale;
+            MainCarte mainReduite;
+            MainCarte mainTest1,mainTest2;
+
+            Main meilleureMain=HIGH_CARD;
+            Main resultatMain=DEF;
+
+            ajouteCarte(mainTotale,getMainCarteIemeCarte(mainJoueur,0));
+            ajouteCarte(mainTotale,getMainCarteIemeCarte(mainJoueur,1));
+            ajouteCarte(mainTotale,getMainCarteIemeCarte(cartesDecouvertes,0));
+            ajouteCarte(mainTotale,getMainCarteIemeCarte(cartesDecouvertes,1));
+            ajouteCarte(mainTotale,getMainCarteIemeCarte(cartesDecouvertes,2));
+            ajouteCarte(mainTotale,getMainCarteIemeCarte(cartesDecouvertes,3));
+
+            for(i=0;i<6;i++)
+            {
+                for(j=0;j<6;j++)
+                {
+                    if(j!=i)
+                    {
+                        ajouteCarte(mainReduite,getMainCarteIemeCarte(mainTotale,j));
+                    }
+                }
+                for(k=0;k<5;k++)
+                {
+                    if(k<2)
+                    {
+                        ajouteCarte(mainTest1,getMainCarteIemeCarte(mainReduite,k));
+                    }
+                    else
+                    {
+                        ajouteCarte(mainTest2,getMainCarteIemeCarte(mainReduite,k));
+                    }
+                }
+
+                resultatMain=determineMeilleureMainIA(mainTest1,mainTest2);
+
+                if(resultatMain>meilleureMain)
+                {
+                    meilleureMain=resultatMain;
+                }
+            }
+
+            return meilleureMain;
+        }
+        break;
 
 //=====================================================================================================================>
 
         case 7 :
-            break;
-*/
-    return DEF;
+        {
+
+        }
+        break;
 
     }
+
+    return DEF;
 }
 
 
