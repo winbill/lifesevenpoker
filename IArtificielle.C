@@ -1,166 +1,6 @@
 #include "IArtificielle.h"
 
-Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
-{
-    //On récupere le statut de la partie:
-    int nbCartesDecouvertes = getMainCarteNbCarte(*getMainCarteTable(t)); //Le nombre de cartes découvertes sur le tapis
-    MainCarte mainJoueur = *getMainJoueur(j); //La main de cette IA
-    int miseJoueur = getMiseJoueur(j); //La mise actuelle de cette IA dans ce tour
-    int argentJoueur = getArgentJoueur(j); //L'argent de cette IA
-    int differenceMiseMontant = montant-getMiseJoueur(j); //Difference d'argent entre ce qu'a déjà misé l'IA et le montant de la mise actuelle
 
-    printf("-------------------- Joueur %d --------------------- \n",getIdJoueur(j));
-    printf("VALEUR RELANCE : %d \t VALEUR MONTANT : %d \n", relance, montant);
-    printf("---------------------------------\n| nbCartesDecouvertes : %d |\n ---------------------------------\n", nbCartesDecouvertes);
-    printf("miseJoueur : %d \n", miseJoueur);
-    printf("montant : %d \n", montant);
-    printf("differenceMiseMontant : %d \n", differenceMiseMontant);
-
-    //L'IA réagit selon le nombre de cartes découvertes dans un premier temps:
-    switch (nbCartesDecouvertes)
-    {
-        //Au moment du pré FLOP
-    case 0 :
-
-        if (miseJoueur == montant)
-        {
-            printf("CHECK \n");    //Soit le joueur est au niveau de la mise et il check
-            return CHECK;
-        }
-
-        else if (differenceMiseMontant <= argentJoueur and montant <= getPetiteBlindTable(t)*2)
-        {
-            printf("CALL \n");    //Soit il suis au niveau des blinds si il peut
-            return CALL;
-        }
-
-        else
-        {
-            printf("FOLD \n");    //Soit il se couche
-            return FOLD;
-        }
-        break;
-
-        //Au moment du FLOP
-    case 3 :
-
-        if (argentJoueur <= montant) //Si il n'est pas riche par rapport à ce qui se joue
-        {
-            if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0)) == getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))) //Il tente quand même l'aventure en cas de paire à la donne ...
-            {
-                if (differenceMiseMontant >= argentJoueur) // ... selon si il a assez d'argent pour suivre ...
-                {
-                    return ALL_IN; // ... il fait tapis
-                }
-                else
-                {
-                    if (differenceMiseMontant <= argentJoueur)
-                    {
-                        return CALL;  // ... ou bien suis simplement
-                    }
-                    else return CHECK; // ... ou alors il check
-                }
-            }
-            else return FOLD; //Sinon il se couche
-        }
-
-        if (differenceMiseMontant <= argentJoueur and argentJoueur >= montant*2 and argentJoueur > 800) //Si il a plein de tunes
-        {
-            relance = 50;
-            printf("===========================================%d:%d\n",montant*2,miseJoueur);
-
-            return RAISE;  // ... il relance
-        }
-
-        else  //Et le reste du temps ...
-        {
-            if (miseJoueur == montant) return CHECK; // ... il check pour rester dans la partie
-
-            else if (miseJoueur < montant) return CALL; // ... ou alors il suis pour tenter sa chance plus tard
-        }
-        break;
-
-        //Au moment du TURN
-    case 4 :
-
-        if (argentJoueur <= montant) //Si il n'est pas riche par rapport à ce qui se joue
-        {
-            if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0)) == getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))) //Il tente quand même l'aventure en cas de paire à la donne ...
-            {
-                if (differenceMiseMontant >= argentJoueur) // ... selon si il a assez d'argent pour suivre ...
-                {
-                    return ALL_IN; // ... il fait tapis
-                }
-                else
-                {
-                    if (differenceMiseMontant <= argentJoueur)
-                    {
-                        return CALL;  // ... ou bien suis simplement
-                    }
-                    else return CHECK; // ... ou alors il check
-                }
-            }
-            else return FOLD; //Sinon il se couche
-        }
-
-        if (differenceMiseMontant <= argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
-        {
-            relance = montant*2 - miseJoueur;
-
-            return RAISE;  // ... il relance
-        }
-
-        else  //Et le reste du temps ...
-        {
-            if (miseJoueur == montant) return CHECK; // ... il check pour rester dans la partie
-
-            else if (miseJoueur < montant) return CALL; // ... ou alors il suis pour tenter sa chance plus tard
-        }
-        break;
-
-        //Au moment du RIVER
-    case 5 :
-
-        if (argentJoueur <= montant) //Si il n'est pas riche par rapport à ce qui se joue
-        {
-            if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0)) == getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))) //Il tente quand même l'aventure en cas de paire à la donne ...
-            {
-                if (differenceMiseMontant >= argentJoueur) // ... selon si il a assez d'argent pour suivre ...
-                {
-                    return ALL_IN; // ... il fait tapis
-                }
-                else
-                {
-                    if (differenceMiseMontant <= argentJoueur)
-                    {
-                        return CALL;  // ... ou bien suis simplement
-                    }
-                    else return CHECK; // ... ou alors il check
-                }
-            }
-            else return FOLD; //Sinon il se couche
-        }
-
-        if (differenceMiseMontant <= argentJoueur and argentJoueur >= montant*2 and argentJoueur > 500) //Si il a plein de tunes
-        {
-            relance = montant*2 - miseJoueur;
-
-            return RAISE;  // ... il relance
-        }
-
-        else  //Et le reste du temps ...
-        {
-            if (miseJoueur == montant) return CHECK; // ... il check pour rester dans la partie
-
-            else if (miseJoueur < montant) return CALL; // ... ou alors il suis pour tenter sa chance plus tard
-        }
-        break;
-
-
-    }
-    return FOLD;
-    //Fin du switch
-}
 Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
 {
     //On récupere le statut de la partie:
@@ -323,15 +163,16 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
     switch (nbCartesTotal)
     {
     case 2 :
+    {
 
 
 
-        break;
 
 //=====================================================================================================================>
-
+    }
+    break;
     case 5 :
-
+    {
         //On cree un histogramme pour referencer les cartes
         int histogramme[5][2]={{0,0},{0,0},{0,0},{0,0},{0,0}};
         int h=0;
@@ -486,12 +327,13 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         //Enfin si aucun des cas précédents n'a correspondu c'est une carte haute
         return HIGH_CARD;
 
-        break;
+
 
 //=====================================================================================================================>
-
+    }
+    break;
     case 6 :
-
+    {
         //On recupere toutes les combinaisons de 5 cartes parmi 6
         int i,j;
         //On travaille sur des mains temporaires
@@ -534,12 +376,13 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
         return meilleureMain;
 
-        break;
 
+    }
+    break;
 //=====================================================================================================================>
 
     case 7 :
-
+    {
         //On recupere toutes les combinaisons de 5 cartes parmi 6
         int i,j,k;
         //On travaille sur des mains temporaires
@@ -587,8 +430,9 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         return meilleureMain;
 
 
-        break;
 
+    }
+    break;
     }
 
     return DEF;

@@ -18,7 +18,7 @@
 
 
 
-void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50])
+void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50],bool afficheCarteGagnant)
 {
 
     //on alloue le tableau qui va contenir le resultat de la partie
@@ -30,16 +30,16 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][
     {
         char message2[30];
         char message[30];
-        //on affiche les cartes des joueurs faces découvertes
-        AffCartesJoueursJeu(affichage,t,false);
-        //on rajoute une image transaparente sur les images qui permettent d'avoir la forme
-        //sur les cartes decouvertes
-        AffCarteDecouvertes(t,affichage,true,tabResultat[0]);
-        //et sur les cartes du joueur concerné
-        AffCartesJoueursJeuFinale(affichage,t,tabResultat[0],tabResultat[0][0][1]);
-
-
-
+        if (afficheCarteGagnant)
+        {
+            //on affiche les cartes des joueurs faces découvertes
+            AffCartesJoueursJeu(affichage,t,false);
+            //on rajoute une image transaparente sur les images qui permettent d'avoir la forme
+            //sur les cartes decouvertes
+            AffCarteDecouvertes(t,affichage,true,tabResultat[0]);
+            //et sur les cartes du joueur concerné
+            AffCartesJoueursJeuFinale(affichage,t,tabResultat[0],tabResultat[0][0][1]);
+        }
         switch (tabResultat[0][0][0])
         {
         case 0:
@@ -75,22 +75,26 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][
 
         }
 
-
-        //affichage en texte du vainqueur et de la forme
-        sprintf(message,"%s:%s %s %s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,langue[34],message2);
-        AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
-        SDL_Flip(affichage);
-
-        if (getStatutJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))!=ALL_IN)
+        if (afficheCarteGagnant)
         {
+            //affichage en texte du vainqueur et de la forme
+            sprintf(message,"%s:%s %s %s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,langue[34],message2);
+            AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
+            SDL_Flip(affichage);
+            if (getStatutJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))!=ALL_IN)
+            {
 
-            setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
-            setTablePot(t,0);
+                setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
+                setTablePot(t,0);
 
-        }
-        else
-        {
-            calulVainqueurTapis(t,tabResultat);
+            }
+            else
+            {
+                calulVainqueurTapis(t,tabResultat);
+            }
+        }else{
+                setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
+                setTablePot(t,0);
         }
         pause();
     }
@@ -1329,7 +1333,6 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
             }
             else
             {
-                a=0;
                 calculGainTapisJoueur(t);
                 miseDansPot(t);
                 montant=0;
@@ -1342,13 +1345,27 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                 AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue);
                 AffAffichePot(affichage,t,langue);
                 SDL_Flip(affichage);
-
-                affAffichageVainqueur(affichage,t,langue);
+                //sil ne reste qu'un joueur qui joue
+                a=0;
+                for (int i=0;i<getMaxJoueurTable(t);i++)
+                {
+                    if (getStatutJoueur(*getIemeJoueur(t,i))==CALL && getStatutJoueur(*getIemeJoueur(t,i))==RAISE or getStatutJoueur(*getIemeJoueur(t,i))==ALL_IN)
+                        a++;
+                }
+                assert(a>0);
+                if (a==1)
+                {
+                    affAffichageVainqueur(affichage,t,langue,false);
+                }
+                else
+                {
+                    affAffichageVainqueur(affichage,t,langue,true);
+                }
 
                 printf("determine_vainqueur_donne_mise_redistribue_retourner_carte\n");
                 blindAMettre=true;
                 boucleJeu = 0;
-
+                a=0;
                 for (int i=0;i<getMaxJoueurTable(t);i++)
                 {
                     if (getIemeJoueur(t,i)!=NULL)
