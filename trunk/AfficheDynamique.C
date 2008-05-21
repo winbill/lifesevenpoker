@@ -96,6 +96,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][
     }
     else
     {
+
         //test pr savoir qui a les mme mains que le gagnant
         printf("--------egalite----------\n");
     }

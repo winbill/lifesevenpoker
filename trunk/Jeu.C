@@ -20,6 +20,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+bool compareTabResultat(const int tabResultat1[6][2],const int tabResultat2[6][2])
+{
+    for(int i=0;i<6;i++)
+    {
+        if(tabResultat1[i][0]!=tabResultat2[i][0])
+            return false;
+    }
+    return true;
+}
+
+
 
 
 int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50])
