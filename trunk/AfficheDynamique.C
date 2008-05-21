@@ -1285,7 +1285,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
             int j=0;
             int k=0;
 
-            while (i<=1)
+            while (i<=1 && j<10)
             {
                 if (t.joueur[j]!=NULL && (getStatutJoueur(*t.joueur[j]) != FOLD && getStatutJoueur(*t.joueur[j]) != SIT_OUT))
                 {
