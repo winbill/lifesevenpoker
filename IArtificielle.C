@@ -492,10 +492,9 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         case 6 :
         {
             //On recupere toutes les combinaisons de 5 cartes parmi 6
-            int i,j,k;
+            int i,j;
             //On travaille sur des mains temporaires
             MainCarte mainTotale;
-            MainCarte mainReduite;
             MainCarte mainTest1,mainTest2;
 
             Main meilleureMain=HIGH_CARD;
@@ -510,22 +509,18 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
             for(i=0;i<6;i++)
             {
-                for(j=0;j<6;j++)
+                for (j=0;j<6;j++)
                 {
-                    if(j!=i)
+                    if (j!=i)
                     {
-                        ajouteCarte(mainReduite,getMainCarteIemeCarte(mainTotale,j));
-                    }
-                }
-                for(k=0;k<5;k++)
-                {
-                    if(k<2)
-                    {
-                        ajouteCarte(mainTest1,getMainCarteIemeCarte(mainReduite,k));
-                    }
-                    else
-                    {
-                        ajouteCarte(mainTest2,getMainCarteIemeCarte(mainReduite,k));
+                        if (j<2)
+                        {
+                            ajouteCarte(mainTest1,getMainCarteIemeCarte(mainTotale,j));
+                        }
+                        else
+                        {
+                            ajouteCarte(mainTest2,getMainCarteIemeCarte(mainTotale,j));
+                        }
                     }
                 }
 
@@ -549,7 +544,6 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
             int i,j,k;
             //On travaille sur des mains temporaires
             MainCarte mainTotale;
-            MainCarte mainReduite;
             MainCarte mainTest1,mainTest2;
 
             Main meilleureMain=HIGH_CARD;
@@ -563,32 +557,31 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
             ajouteCarte(mainTotale,getMainCarteIemeCarte(cartesDecouvertes,3));
             ajouteCarte(mainTotale,getMainCarteIemeCarte(cartesDecouvertes,4));
 
-            for(i=0;i<7;i++)
+            for(i=0;i<6;i++)
             {
-                for(j=0;j<7;j++)
+                for(k=i+1;k<7;k++)
                 {
-                    if(j!=i)
+                    for (j=0;j<6;j++)
                     {
-                        ajouteCarte(mainReduite,getMainCarteIemeCarte(mainTotale,j));
+                        if (j!=i and j!=k)
+                        {
+                            if (j<2)
+                            {
+                                ajouteCarte(mainTest1,getMainCarteIemeCarte(mainTotale,j));
+                            }
+                            else
+                            {
+                                ajouteCarte(mainTest2,getMainCarteIemeCarte(mainTotale,j));
+                            }
+                        }
                     }
-                }
-                for(k=0;k<6;k++)
-                {
-                    if(k<2)
-                    {
-                        ajouteCarte(mainTest1,getMainCarteIemeCarte(mainReduite,k));
-                    }
-                    else
-                    {
-                        ajouteCarte(mainTest2,getMainCarteIemeCarte(mainReduite,k));
-                    }
-                }
 
-                resultatMain=determineMeilleureMainIA(mainTest1,mainTest2);
+                    resultatMain=determineMeilleureMainIA(mainTest1,mainTest2);
 
-                if(resultatMain>meilleureMain)
-                {
-                    meilleureMain=resultatMain;
+                    if(resultatMain>meilleureMain)
+                    {
+                        meilleureMain=resultatMain;
+                    }
                 }
             }
 
