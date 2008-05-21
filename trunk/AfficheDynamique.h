@@ -61,7 +61,7 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t);
 	@param [in,out] affichage
 	@param [in] t
 */
-void affAffichageVainqueur(SDL_Surface* affichage,Table & t);
+void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50],bool afficheCarteGagnant);
 
 /**	@brief affiche les cartes des joueurs face cachée (sauf les siennes)
 	@param [in,out] affichage
