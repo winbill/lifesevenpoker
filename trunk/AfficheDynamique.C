@@ -1056,7 +1056,6 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
     Statut statut;//permet de memoriser le nouveau statu du joueur
     int relance = 0; //variable pour memoriser la relance d'un joueur
     bool sortieMenu=true;// indicateur de sortie du menu
-    int historiqueIA[NOMBRE_JOUEUR_PC][3]; //tableau utilisé dans les calculs d'IA pour determiner les actions en fonction de ce qu'il s'est deja produit
 
     /*
     void afficheInfoJoueur(const Joueur & j)
@@ -1125,7 +1124,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                     {
                         //on attends ce qu'il a choisit de faire
                         relance=0;
-                        a = atendsActionJoueur(affichage,t,*t.joueur[joueurJouant],relance,statut,montant,langue,historiqueIA);
+                        a = atendsActionJoueur(affichage,t,*t.joueur[joueurJouant],relance,statut,montant,langue);
                         if (a==-1)//le joueur a choisit de quitter
                         {
                             gameOn = false;
