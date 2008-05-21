@@ -433,11 +433,11 @@ Main determineMeilleureMainIA(MainCarte mainJoueur, MainCarte cartesDecouvertes)
                 }
 
             //On trie les 5 cartes dans un tableau
-            int tab[5]={getCarteRang(*getMainCarteIemeCarte(mainJoueur,0),
-                        getCarteRang(*getMainCarteIemeCarte(mainJoueur,1),
-                        getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,0),
-                        getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,1),
-                        getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,2)};
+            int tab[5]={getCarteRang(*getMainCarteIemeCarte(mainJoueur,0)),
+                        getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)),
+                        getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,0)),
+                        getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,1)),
+                        getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,2))};
 
             indice=0;
             max=0;
@@ -484,13 +484,15 @@ Main determineMeilleureMainIA(MainCarte mainJoueur, MainCarte cartesDecouvertes)
 
 //=====================================================================================================================>
 
-        case 6 :
+       /* case 6 :
             break;
 
 //=====================================================================================================================>
 
         case 7 :
             break;
+*/
+    return DEF;
 
     }
 }
