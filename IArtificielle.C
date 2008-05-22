@@ -69,7 +69,96 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
 
         //Au moment du FLOP
     case 3 :
+        if(res == QUINTE_FLUSH_ROYALE == QUINTE_FLUSH)
+        {
+            printf("%s a une quinte flush (royale?) \n", j.pseudo);
+            relance=argent; //il fait tapis
+        }
+        else if(res == CARRE)
+        {
+            printf("%s a un carre  \n", j.pseudo);
+            relance=int(argent/2);
+        }
+        else if(res == FULL)
+        {
+            printf("%s a un full \n", j.pseudo);
+            relance=int(argent/3);
+        }
+        else if(res == QUINTE or res == COULEUR)
+        {
+            printf("%s a une quinte ou une couleur \n", j.pseudo);
+            relance=int(argent/4);
+        }
 
+        else if(res == BRELAN)
+        {
+            printf("%s a un brelan \n", j.pseudo);
+            relance=100;
+        }
+        else if(res == DOUBLE_PAIRE)
+        {
+            printf("%s a une double paire \n", j.pseudo);
+            relance=50;
+        }
+        else if(res == PAIRE)
+        {
+            printf("%s a une paire \n", j.pseudo);
+            relance=20;
+        }
+        else
+        {
+            printf("%s n'a rien \n", j.pseudo);
+            relance=0;
+        }
+        break;
+
+        //Au moment du TURN
+    case 4 :
+        if(res == QUINTE_FLUSH_ROYALE == QUINTE_FLUSH)
+        {
+            printf("%s a une quinte flush (royale?) \n", j.pseudo);
+            relance=argent; //il fait tapis
+        }
+        else if(res == CARRE)
+        {
+            printf("%s a un carre  \n", j.pseudo);
+            relance=int(argent/2);
+        }
+        else if(res == FULL)
+        {
+            printf("%s a un full \n", j.pseudo);
+            relance=int(argent/3);
+        }
+        else if(res == QUINTE or res == COULEUR)
+        {
+            printf("%s a une quinte ou une couleur \n", j.pseudo);
+            relance=int(argent/4);
+        }
+
+        else if(res == BRELAN)
+        {
+            printf("%s a un brelan \n", j.pseudo);
+            relance=100;
+        }
+        else if(res == DOUBLE_PAIRE)
+        {
+            printf("%s a une double paire \n", j.pseudo);
+            relance=50;
+        }
+        else if(res == PAIRE)
+        {
+            printf("%s a une paire \n", j.pseudo);
+            relance=20;
+        }
+        else
+        {
+            printf("%s n'a rien \n", j.pseudo);
+            relance=0;
+        }
+        break;
+
+        //Au moment du RIVER
+    case 5 :
         //Si il a une quinte flush royale
         if(res == QUINTE_FLUSH_ROYALE == QUINTE_FLUSH)
         {
@@ -112,25 +201,7 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
             printf("%s n'a rien \n", j.pseudo);
             relance=0;
         }
-
-
-        //test de forme sur cinq cartes
         break;
-
-        //Au moment du TURN
-    case 4 :
-
-        //test de forme sur 6 cartes
-        break;
-
-        //Au moment du RIVER
-    case 5 :
-
-        //test sur 7 cartes
-        break;
-
-
-
     }
     return FOLD;
 }
