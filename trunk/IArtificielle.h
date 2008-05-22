@@ -35,4 +35,5 @@ Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant);
 Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance);
 
 void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int & relance);
+Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & cartesDecouvertes);
 #endif

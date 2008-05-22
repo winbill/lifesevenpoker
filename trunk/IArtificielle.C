@@ -6,6 +6,10 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
     //On récupere le statut de la partie:
     int nbCartesDecouvertes = getMainCarteNbCarte(*getMainCarteTable(t)); //Le nombre de cartes découvertes sur le tapis
     MainCarte mainJoueur = *getMainJoueur(j); //La main de cette IA
+    MainCarte cartesDecouvertes = *getMainCarteTable(t); //La main contenant les cartes decouvertes sur la table
+    Main res = determineMeilleureMainIA(mainJoueur,cartesDecouvertes); //Code du type de main obtenu
+    int argent=getArgentJoueur(j); //l'argent actuel de l'IA
+    int rnd = rand()%100; //Nombre pseudo-aléatoire entre 1 et 100;
 
     //L'IA réagit selon le nombre de cartes découvertes dans un premier temps:
     switch (nbCartesDecouvertes)
@@ -65,6 +69,50 @@ Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
 
         //Au moment du FLOP
     case 3 :
+
+        //Si il a une quinte flush royale
+        if(res == QUINTE_FLUSH_ROYALE == QUINTE_FLUSH)
+        {
+            printf("%s a une quinte flush (royale?) \n", j.pseudo);
+            relance=argent; //il fait tapis
+        }
+        else if(res == CARRE)
+        {
+            printf("%s a un carre  \n", j.pseudo);
+            relance=int(argent/2);
+        }
+        else if(res == FULL)
+        {
+            printf("%s a un full \n", j.pseudo);
+            relance=int(argent/3);
+        }
+        else if(res == QUINTE or res == COULEUR)
+        {
+            printf("%s a une quinte ou une couleur \n", j.pseudo);
+            relance=int(argent/4);
+        }
+
+        else if(res == BRELAN)
+        {
+            printf("%s a un brelan \n", j.pseudo);
+            relance=100;
+        }
+        else if(res == DOUBLE_PAIRE)
+        {
+            printf("%s a une double paire \n", j.pseudo);
+            relance=50;
+        }
+        else if(res == PAIRE)
+        {
+            printf("%s a une paire \n", j.pseudo);
+            relance=20;
+        }
+        else
+        {
+            printf("%s n'a rien \n", j.pseudo);
+            relance=0;
+        }
+
 
         //test de forme sur cinq cartes
         break;
@@ -165,12 +213,11 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
     case 2 :
     {
 
-
-
-
-//=====================================================================================================================>
     }
     break;
+
+//=====================================================================================================================>
+
     case 5 :
     {
         //On cree un histogramme pour referencer les cartes
@@ -238,11 +285,11 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         }
 
         //On vérifie avec les valeurs de l'histogramme certaines possibilités de mains
-        if (histogramme[0][1]==4) return FOUR_OF_A_KIND;
-        else if (histogramme[0][1]==3 and histogramme[1][1]==2) return FULL_HOUSE;
-        else if (histogramme[0][1]==3 and histogramme[1][1]==1) return THREE_OF_A_KIND;
-        else if (histogramme[0][1]==2 and histogramme[1][1]==2) return TWO_TWO_OF_A_KIND;
-        else if (histogramme[0][1]==2) return TWO_OF_A_KIND;
+        if (histogramme[0][1]==4) return CARRE;
+        else if (histogramme[0][1]==3 and histogramme[1][1]==2) return FULL;
+        else if (histogramme[0][1]==3 and histogramme[1][1]==1) return BRELAN;
+        else if (histogramme[0][1]==2 and histogramme[1][1]==2) return DOUBLE_PAIRE;
+        else if (histogramme[0][1]==2) return PAIRE;
 
         //On trie maintenant l'histogramme par valeurs décroissantes au niveau du rang des cartes
         indice=0;
@@ -319,19 +366,19 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         else if (tab[0]==14 and tab[1]==5 and tab[4]==2) straight=1; //wheel
 
         //On vérifie si c'est une couleur/suite particuliere
-        if (flush and straight and royal) return ROYAL_STRAIGHT_FLUSH;
-        if (flush and straight) return STRAIGHT_FLUSH;
-        if (flush) return FLUSH;
-        if (straight) return STRAIGHT;
+        if (flush and straight and royal) return QUINTE_FLUSH_ROYALE;
+        if (flush and straight) return QUINTE_FLUSH;
+        if (flush) return COULEUR;
+        if (straight) return QUINTE;
 
         //Enfin si aucun des cas précédents n'a correspondu c'est une carte haute
-        return HIGH_CARD;
+        return CARTE_HAUTE;
 
-
-
-//=====================================================================================================================>
     }
     break;
+
+//=====================================================================================================================>
+
     case 6 :
     {
         //On recupere toutes les combinaisons de 5 cartes parmi 6
@@ -339,7 +386,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         //On travaille sur des mains temporaires
         MainCarte mainTotale;
         MainCarte mainTest1,mainTest2;
-        Main meilleureMain=HIGH_CARD;
+        Main meilleureMain=CARTE_HAUTE;
         Main resultatMain=DEF;
 
         ajouteCarte(mainTotale,getMainCarteIemeCarte(mainJoueur,0));
@@ -388,7 +435,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         //On travaille sur des mains temporaires
         MainCarte mainTotale;
         MainCarte mainTest1,mainTest2;
-        Main meilleureMain=HIGH_CARD;
+        Main meilleureMain=CARTE_HAUTE;
         Main resultatMain=DEF;
 
         ajouteCarte(mainTotale,getMainCarteIemeCarte(mainJoueur,0));
