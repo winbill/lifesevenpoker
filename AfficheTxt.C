@@ -12,9 +12,13 @@
 
 #ifndef AfficheTxt_H
 #define AfficheTxt_H
+
+//Librairies Life'Seven Poker
 #include "Joueur.h"
 #include "Table.h"
 #include "AfficheTxt.h"
+
+//Librairies Standard
 #include <stdlib.h>
 #include <stdio.h>
 

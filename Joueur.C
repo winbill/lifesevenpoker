@@ -9,9 +9,12 @@
 	@date 2008/04/23
 */
 
+//Librairies Life'Seven Poker
 #include "Joueur.h"
 #include "IArtificielle.h"
 #include "MainCarte.h"
+
+//Librairies standard
 #include <stdlib.h>
 #include <stdio.h>
 #include <cassert>

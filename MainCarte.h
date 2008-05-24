@@ -10,6 +10,8 @@
 */
 #ifndef _MainCarte
 #define _MainCarte
+
+//Librairies Life'Seven Poker
 #include "Carte.h"
 #include "PileCarte.h"
 
