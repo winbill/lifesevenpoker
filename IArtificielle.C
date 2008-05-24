@@ -518,16 +518,22 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
                     if (j<2+k)
                     {
                         ajouteCarte(mainTest1,getMainCarteIemeCarte(mainTotale,j));
+                        printf("Nb Cartes 1 : %d  \n", getMainCarteNbCarte(mainTest1));
                     }
                     else
                     {
                         ajouteCarte(mainTest2,getMainCarteIemeCarte(mainTotale,j));
+                        printf("Nb Cartes 2 : %d  \n", getMainCarteNbCarte(mainTest2));
                     }
                 }
                 else k++;
             }
 
             resultatMain=determineMeilleureMainIA(mainTest1,mainTest2);
+            MainCarteLibere(mainTest1);
+            MainCarteLibere(mainTest2);
+
+            printf("RESULTATMAIN = %d \n", resultatMain);
 
             if (resultatMain>meilleureMain)
             {
@@ -584,6 +590,8 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
                 }
 
                 resultatMain=determineMeilleureMainIA(mainTest1,mainTest2);
+                MainCarteLibere(mainTest1);
+                MainCarteLibere(mainTest2);
 
                 if (resultatMain>meilleureMain)
                 {
