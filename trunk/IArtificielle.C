@@ -1,7 +1,20 @@
+/**
+	@brief Fichier C pour l'intelligence artificielle
+
+
+	Gere les actions et reactions des joueurs de type 'ordinateur'.
+
+	@author  James Benjamin
+	@file IArtificielle.h
+	@version 1.3
+	@date 2008/05/23
+ */
+
+//Librairies Life'Seven Poker
 #include "IArtificielle.h"
 
 
-Statut calculIAJames(const Table & t,const Joueur & j,int montant,int &relance)
+Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 {
     //On récupere le statut de la partie:
     int nbCartesDecouvertes = getMainCarteNbCarte(*getMainCarteTable(t)); //Le nombre de cartes découvertes sur le tapis
@@ -277,12 +290,16 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
 Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & cartesDecouvertes)
 {
     int nbCartesDecouvertes=getMainCarteNbCarte(cartesDecouvertes);
+    printf("nbCartesDecouvertes = %d \n", nbCartesDecouvertes);
     int nbCartesTotal = nbCartesDecouvertes + 2;
+    printf("nbCartesTotal = %d \n", nbCartesTotal);
 
     switch (nbCartesTotal)
     {
     case 2 :
     {
+        printf("=====================+DEBUT CASE 2+===================== \n");
+
 
     }
     break;
@@ -291,15 +308,19 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 5 :
     {
+        printf("=====================+DEBUT CASE 5+===================== \n");
         //On cree un histogramme pour referencer les cartes
         int histogramme[5][2]={{0,0},{0,0},{0,0},{0,0},{0,0}};
         int h=0;
         int i=0;
         //On stocke les cartes de la main du joueur dans l'histogramme
+        printf("PREMIER WHILE \n");
         while (i < 2)
         {
+            printf("HISTO avec i = %d ==> [%d][0] = %d \n", i, h, histogramme[h][0]);
             if (histogramme[h][0]==0)
             {
+                printf("HISTO IF 1 ==> rang de la %d eme carte : %d | valeur de h : %d \n", i , getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)), h);
                 histogramme[h][0]=getCarteRang(*getMainCarteIemeCarte(mainJoueur,i));
                 histogramme[h][1]++;
                 i++;
@@ -307,6 +328,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
             }
             else if (histogramme[h][0]==getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)))
             {
+                printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", i , getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)), h);
                 histogramme[h][1]++;
                 i++;
                 h=0;
@@ -315,24 +337,33 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         }
         //On stocke les cartes en jeu découvertes dans l'histogramme
         int j=0;
+        printf("DEUXIEME WHILE \n");
         while (j<3)
         {
+            printf("HISTO avec j = %d ==> [%d][0] = %d \n", j, h, histogramme[h][0]);
             if (histogramme[h][0]==0)
             {
+                printf("HISTO IF 1 ==> rang de la %d eme carte : %d  | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
                 histogramme[h][0]=getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,i));
                 histogramme[h][1]++;
-                i++;
+                j++;
                 h=0;
             }
             else if (histogramme[h][0]==getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,i)))
             {
+                printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
                 histogramme[h][1]++;
-                i++;
+                j++;
                 h=0;
             }
-            else h++;
+            else
+            {
+                h++;
+                printf("HISTO IF 3 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
+            }
         }
         //On trie l'histogramme par valeurs décroissantes au niveau du nombre d'occurence des cartes
+        printf("DEBUT DU TRI DE L'HISTOGRAMME \n");
         int indice=0;
         int max=0;
         for (j=0;j<4;j++)
@@ -452,6 +483,8 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 6 :
     {
+        printf("=====================+DEBUT CASE 6+===================== \n");
+
         //On recupere toutes les combinaisons de 5 cartes parmi 6
         int i,j;
         //On travaille sur des mains temporaires
@@ -501,6 +534,8 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 7 :
     {
+        printf("=====================+DEBUT CASE 7+===================== \n");
+
         //On recupere toutes les combinaisons de 5 cartes parmi 6
         int i,j,k;
         //On travaille sur des mains temporaires

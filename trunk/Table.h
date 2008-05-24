@@ -2,7 +2,7 @@
 	@brief Fichier H pour Table
 
 
-	gere la table du jeu
+	Gere la table du jeu
 
 	@author Tristan James
 	@file Table.h

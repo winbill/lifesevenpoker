@@ -10,7 +10,7 @@
 	@date 2008/04/21
  */
 
-
+//Librairies Life'Seven Poker
 #include "AfficheDynamique.h"
 #include "Language.h"
 

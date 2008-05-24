@@ -10,6 +10,7 @@
 	@date 2008/04/16
  */
 
+//Librairies Life'Seven Poker
 #include "Jeu.h"
 #include "Carte.h"
 #include "PileCarte.h"
@@ -17,6 +18,8 @@
 #include "Joueur.h"
 #include "Table.h"
 #include "AfficheTxt.h"
+
+//Librairies Standard
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -38,7 +41,7 @@ int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & r
     assert(relance==0);
     if (getTypeJoueur(j) == IA)
     {
-        s = calculIAJames(t,j,montant,relance);
+        s = calculIA(t,j,montant,relance);
         definieStatut(t,s,j,montant,relance);
         if (s==CALL)
         {
