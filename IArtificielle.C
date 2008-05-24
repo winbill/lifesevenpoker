@@ -344,12 +344,12 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
             if (histogramme[h][0]==0)
             {
                 printf("HISTO IF 1 ==> rang de la %d eme carte : %d  | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
-                histogramme[h][0]=getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,i));
+                histogramme[h][0]=getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j));
                 histogramme[h][1]++;
                 j++;
                 h=0;
             }
-            else if (histogramme[h][0]==getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,i)))
+            else if (histogramme[h][0]==getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)))
             {
                 printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
                 histogramme[h][1]++;
