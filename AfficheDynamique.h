@@ -90,7 +90,7 @@ SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option);
 
 
 
-int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50],int nombreDeJoueur);
+int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50],int NOMBRE_JOUEUR_PC,int argentDepart);
 
 void AffAfficheCredits(SDL_Surface* affichage);
 

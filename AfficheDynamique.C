@@ -997,12 +997,12 @@ void calculGainTapisJoueur(Table & t)
 
 
 
-int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50],int NOMBRE_JOUEUR_PC)
+int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50],int NOMBRE_JOUEUR_PC,int argentDepart)
 {
 
 
     //nombre d'IA:
-    const int ARGENT_DEPART = 1000;
+    const int ARGENT_DEPART = argentDepart;
     Table t;
     PileCarte p;
     double zoom = 1;
