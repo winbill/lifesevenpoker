@@ -6,7 +6,7 @@
 
 	@author  James Benjamin
 	@file IArtificielle.h
-	@version 1.3
+	@version 1.4
 	@date 2008/05/23
  */
 
