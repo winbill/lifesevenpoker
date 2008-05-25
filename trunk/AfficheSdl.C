@@ -160,7 +160,8 @@ void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,in
     SDL_Color textColor = { r, g, b,0};
 
     //Ouverture du Font
-    font = TTF_OpenFont( "./fonts/Qlassik_TB.otf", size );
+    printf("SIZE : %d    STYLE : %d \n", size, style);
+    font = TTF_OpenFont( "./fonts/Qlassik_TB.otf", size );       //LIGNE OU CA PLANTE
     TTF_SetFontStyle(font,style);
 
 

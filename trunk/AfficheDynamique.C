@@ -343,6 +343,7 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     //si c'est le joueur qui est en train de jouer on change ca couleur
     if (getIdJoueur(j) != joueurJouant or getStatutJoueur(j)==SIT_OUT)
     {
+        //Plantage ici au 43eme breakpoint
         AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_NORMAL,22);
     }
     else
@@ -456,6 +457,7 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
     {
         setPositionJoueurX(*t.joueur[(d-1)-i],bordure);
         setPositionJoueurY(*t.joueur[(d-1)-i],200+200*i);
+        //Au 20eme passage : plantage ici
         AffAfficheJoueur(affichage,*t.joueur[(d-1)-i],t,joueurJouant,langue);
     }
     for (i=d;i<h+d;i++)
@@ -1265,6 +1267,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
             joueurJouant =getJoueurSuivant(t,joueurJouant);//on passe au joueur suivant
             //on reaffiche tout
             AffAfficheTapis(affichage,tapis);
+            printf("JOUEUR JOUANT : %d \n", joueurJouant);
             AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue);
             AffCarteDecouvertes(t,affichage);
             AffCartesJoueursJeu(affichage,t);
