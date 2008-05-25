@@ -611,5 +611,59 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
     return DEF;
 }
 
+/*
+int probaActionIA(const Joueur & j,const int & montant)
+{
+     int argentJoueur=getArgentJoueur(j);
+     int rnd = rand()%100;
 
+     if(montant >= argentJoueur)
+     {
+         if(rnd > 95) return 1;
+     }
+     else if(montant >= argentJoueur*0.9)
+     {
+         if(rnd > 90) return 1;
+     }
+     else if(montant >= argentJoueur*0.8)
+     {
+         if(rnd > 80) return 1;
+     }
+     else if(montant >= argentJoueur*0.7)
+     {
+         if(rnd > 70) return 1;
+     }
+     else if(montant >= argentJoueur*0.6)
+     {
+         if(rnd > 60) return 1;
+     }
+     else if(montant >= argentJoueur*0.5)
+     {
+         if(rnd > 50) return 1;
+     }
+     else if(montant >= argentJoueur*0.4)
+     {
+         if(rnd > 40) return 1;
+     }
+     else if(montant >= argentJoueur*0.3)
+     {
+         if(rnd > 30) return 1;
+     }
+     else if(montant >= argentJoueur*0.2)
+     {
+         if(rnd > 20) return 1;
+     }
+     else if(montant >= argentJoueur*0.1)
+     {
+         if(rnd > 10) return 1;
+     }
+     else if(montant >= argentJoueur*0)
+     {
+         if(rnd > 0) return 1;
+     }
+     else return 0;
+
+}
+
+*/
 
