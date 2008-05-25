@@ -6,8 +6,8 @@
 
 	@author  James Benjamin
 	@file AfficheDynamique.h
-	@version 1.2
-	@date 2008/04/21
+	@version 1.3
+	@date 2008/05/25
  */
 
 #ifndef AfficheDynamique_H
@@ -33,9 +33,43 @@
 #include "Jeu.h"
 #include "IArtificielle.h"
 
+
+/**	@brief détermine le ou les vainqueurs et fait l'affichage en fonction
+	@param [in,out] affichage
+	@param [in] t
+*/
+void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50],bool afficheCarteGagnant);
+
+
+/**	@brief
+	@param t
+	@param tabResultat
+	@note
+*/
+void calulVainqueurTapis(Table & t,int tabResultat[][6][2]);
+
+
+/**	@brief
+	@param
+	@param
+	@param
+	@return
+	@note
+*/
+SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option);
+
+/**	@brief
+	@param
+	@param
+	@param
+	@return
+	@note
+*/
+void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis);
+
 void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus);
 
-void calulVainqueurTapis(Table & t,int tabResultat[][6][2]);
+
 
 /**	@brief
 	@param
@@ -57,17 +91,15 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache);
 */
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t);
 
-/**	@brief détermine le ou les vainqueurs et fait l'affichage en fonction
-	@param [in,out] affichage
-	@param [in] t
-*/
-void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50],bool afficheCarteGagnant);
+
 
 /**	@brief affiche les cartes des joueurs face cachée (sauf les siennes)
 	@param [in,out] affichage
 	@param [in] t
 */
 void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabResultat[6][2],int i);
+
+
 
 
 int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant,const Joueur & j,const Table & t,const char langue[][50]);
@@ -83,10 +115,10 @@ int AffMenu(SDL_Surface* affichage,const char langue[][50]);
 
 
 
-void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis);
 
 
-SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option);
+
+
 
 
 

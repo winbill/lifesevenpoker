@@ -6,8 +6,8 @@
 
 	@author  James Benjamin
 	@file AfficheDynamique.C
-	@version 1.2
-	@date 2008/04/21
+	@version 1.3
+	@date 2008/05/25
  */
 
 //Librairies Life'Seven Poker
@@ -401,7 +401,7 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
     int h=0;
     int d=0;
 
-	
+
 	//switch qui place les joueurs en fonctions du nombre de ceux ci
 	//d represente le nombre de joueurs à droite de l'écran
 	//h le nombre de joueurs en haut de l'écran
@@ -584,7 +584,7 @@ void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabRes
     int x;
     int y;
     int j;
-	
+
 	//on regarde si le joueur qui a gagné est le joueur local
     if ( getTypeJoueur( *getIemeJoueur(t,i)) == JoueurLocal)
     {
@@ -865,7 +865,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
             }
             break;
         case SDL_MOUSEMOTION:
-		
+
 		//survolle d'un bouton
             if (event.motion.x > 900 && event.motion.x < 963 && event.motion.y >660 && event.motion.y < 710)
             {
@@ -893,7 +893,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                 SDL_FreeSurface(bouton);
 
             }
-			
+
 			//affichage ou non, de la surbrillance sur les boutons si la souris est sur l'un d'eux
             for (int i=0;i<3;i++)
             {
