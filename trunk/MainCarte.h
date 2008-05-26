@@ -94,13 +94,6 @@ void MainCarteLibere(MainCarte & m);
 */
 int couleurMainCarte(int tab7Carte[8][2]);
 
-/**	@brief Procedure de tri de main.
-	@param Prend en entree le tableau des 7 cartes du joueur
-	@return modifie le tableau de sorte que les cartes soient trié dans l'ordre décroissant
-	@author Tristan
-*/
-void trieTableauRang(int tab7Carte[7][2]);
-
 
 /** @brief fonction qui permet de savoir si on peut faire une quinte avec la main
     @note appel la fonction suiteMainCarte2

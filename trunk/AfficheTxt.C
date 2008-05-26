@@ -133,26 +133,6 @@ void afficheMainCarte(const MainCarte & m,char titre[])
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #endif
 
 
