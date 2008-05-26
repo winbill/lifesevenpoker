@@ -326,8 +326,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 5 :
     {
-        return CARTE_HAUTE;
-        /*
+
                 printf("=====================+DEBUT CASE 5+===================== \n");
                 //On cree un histogramme pour referencer les cartes
                 int histogramme[5][2]={{0,0},{0,0},{0,0},{0,0},{0,0}};
@@ -501,7 +500,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
                 //Enfin si aucun des cas précédents n'a correspondu c'est une carte haute
                 return CARTE_HAUTE;
-        */
+
     }
     break;
 
