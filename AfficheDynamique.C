@@ -327,6 +327,7 @@ int AffMenu(SDL_Surface* affichage,const char langue[][50])
 
     }
     SDL_FreeSurface(menu);
+
     return 0;
 }
 
@@ -760,23 +761,24 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
     const char* boutonDown="img/boutonDown.png";
     const char* boutonDownDessus="img/boutonDownDessus.png";
 
+    SDL_Surface* boutonCouche;
     SDL_Surface* bouton;
+    SDL_Surface* boutonTapis;
     s=CALL;
     relance=0;
 
     //chargement des images
-    bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,langue[17],10,16,255,255,255,TTF_STYLE_NORMAL,18);
-    apply_surface(620,530+20*4,bouton,affichage);
-    SDL_FreeSurface(bouton);
+    boutonCouche=load_image(boutonP);
+    AffAfficheTexte(boutonCouche,langue[17],10,16,255,255,255,TTF_STYLE_NORMAL,18);
+    apply_surface(620,530+20*4,boutonCouche,affichage);
 
     AffAfficheBoutonRelance(affichage,relance,false,langue);
 
 
-    bouton=load_image(boutonP);
-    AffAfficheTexte(bouton,langue[20],10,16,255,255,255,TTF_STYLE_NORMAL,18);
-    apply_surface(620,530+20*4+100,bouton,affichage);
-    SDL_FreeSurface(bouton);
+    boutonTapis=load_image(boutonP);
+    AffAfficheTexte(boutonTapis,langue[20],10,16,255,255,255,TTF_STYLE_NORMAL,18);
+    apply_surface(620,530+20*4+100,boutonTapis,affichage);
+
 
 
     bouton=load_image(boutonDown);
@@ -801,6 +803,8 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
         {
 
         case SDL_QUIT :
+            SDL_FreeSurface(boutonCouche);
+            SDL_FreeSurface(boutonTapis);
             return -1;
             break;
 
@@ -808,10 +812,14 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
             //affichage du menu si m pressé
             if (event.key.keysym.sym == SDLK_m)
             {
+                SDL_FreeSurface(boutonCouche);
+                SDL_FreeSurface(boutonTapis);
                 return 2;
             }
             else if (event.key.keysym.sym == SDLK_ESCAPE)
             {
+                SDL_FreeSurface(boutonCouche);
+                SDL_FreeSurface(boutonTapis);
                 return -1;
                 break;
             }
@@ -930,24 +938,20 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                 }
                 else
                 {
-                    bouton=load_image(boutonP);
                     switch (i)
                     {
                     case 0:
-                        AffAfficheTexte(bouton,langue[17],10,16,255,255,255,TTF_STYLE_NORMAL,18);
-                        apply_surface(620,530+20*4,bouton,affichage);
+                        apply_surface(620,530+20*4,boutonCouche,affichage);
                         break;
                     case 1:
                         AffAfficheBoutonRelance(affichage,relance,false,langue);
 
                         break;
                     case 2:
-                        AffAfficheTexte(bouton,langue[20],10,16,255,255,255,TTF_STYLE_NORMAL,18);
-                        apply_surface(620,530+20*4+100,bouton,affichage);
+                        apply_surface(620,530+20*4+100,boutonTapis,affichage);
                         break;
 
                     }
-                    SDL_FreeSurface(bouton);
                 }
             }
             SDL_Flip(affichage);
@@ -955,7 +959,8 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
         }
 
     }
-    //SDL_FreeSurface(bouton);
+    SDL_FreeSurface(boutonCouche);
+    SDL_FreeSurface(boutonTapis);
     return 0;
 }
 
