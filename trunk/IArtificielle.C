@@ -25,11 +25,11 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
     MainCarte cartesDecouvertes = *getMainCarteTable(t); //La main contenant les cartes decouvertes sur la table
     Main res = determineMeilleureMainIA(mainJoueur,cartesDecouvertes); //Code du type de main obtenu
 
-    printf("resultat : %d\n",(int)res);
+    //printf("resultat : %d\n",(int)res);
 
     float proba = probaActionIA(t,j,res); //La probabilité que la main actuelle du joueur soit la meilleure dans la partie.
 
-    printf("proba : %f \n", proba);
+    //printf("proba : %f \n", proba);
 
     int argent=getArgentJoueur(j); //l'argent actuel de l'IA
 
@@ -44,13 +44,13 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
             //si c'est une bonne paire
             if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))>10)
             {
-                printf("%s a une bonne paire\n",j.pseudo);
+                //printf("%s a une bonne paire\n",j.pseudo);
                 //ici et partout dans le reste de la fonction, relance n'est pas une relance mais une somme approximative du maximum qu'il est pres a mettre
                 relance=100;
             }
             else
             {
-                printf("%s a une paire\n",j.pseudo);
+                //printf("%s a une paire\n",j.pseudo);
                 relance=20;
             }
         }
@@ -60,31 +60,31 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
             //si les deux cartes se suivent (et sont donc de même couleure
             if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))==1+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)) or getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+1==getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)))
             {
-                printf("%s a deux cartes qui se suivent de la meme couleure\n",j.pseudo);
+                //printf("%s a deux cartes qui se suivent de la meme couleure\n",j.pseudo);
                 relance=getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))*10;
             }
             else
             {
-                printf("%s a deux carte de la meme couleure\n",j.pseudo);
+                //printf("%s a deux carte de la meme couleure\n",j.pseudo);
                 relance=getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))*4;
             }
         }
         //si il a deux cartes qui se suivent
         else if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))==1+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)) or getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+1==getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)))
         {
-            printf("%s a deux cartes qui se suivent\n",j.pseudo);
+            //printf("%s a deux cartes qui se suivent\n",j.pseudo);
             relance=getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))*7;
         }
         //on calcul la somme des deux rangs pour savoir si il a de bonnes cartes
         else if (getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))>20)
         {
-            printf("%s a deux bonnes cartes\n",j.pseudo);
+            //printf("%s a deux bonnes cartes\n",j.pseudo);
             relance=(5*(getCarteRang(*getMainCarteIemeCarte(mainJoueur,0))+getCarteRang(*getMainCarteIemeCarte(mainJoueur,1))))/2;
         }
         //sinon il est pret a mettre le minimum pr voir le flop
         else
         {
-            printf("%s n'a rien\n",j.pseudo);
+            //printf("%s n'a rien\n",j.pseudo);
             relance=20;
         }
         break;
@@ -93,43 +93,43 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
     case 3 :
         if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
-            printf("%s a une quinte flush (royale?) \n", j.pseudo);
+            //printf("%s a une quinte flush (royale?) \n", j.pseudo);
             relance=int(argent*proba); //il fait tapis
         }
         else if (res == CARRE)
         {
-            printf("%s a un carre  \n", j.pseudo);
+            //printf("%s a un carre  \n", j.pseudo);
             relance=int((argent/2)*proba);
         }
         else if (res == FULL)
         {
-            printf("%s a un full \n", j.pseudo);
+            //printf("%s a un full \n", j.pseudo);
             relance=int((argent/3)*proba);
         }
         else if (res == QUINTE or res == COULEUR)
         {
-            printf("%s a une quinte ou une couleur \n", j.pseudo);
+            //printf("%s a une quinte ou une couleur \n", j.pseudo);
             relance=int((argent/4)*proba);
         }
 
         else if (res == BRELAN)
         {
-            printf("%s a un brelan \n", j.pseudo);
+            //printf("%s a un brelan \n", j.pseudo);
             relance=int(100*proba);
         }
         else if (res == DOUBLE_PAIRE)
         {
-            printf("%s a une double paire \n", j.pseudo);
+            //printf("%s a une double paire \n", j.pseudo);
             relance=int(50*proba);
         }
         else if (res == PAIRE)
         {
-            printf("%s a une paire \n", j.pseudo);
+            //printf("%s a une paire \n", j.pseudo);
             relance=int(20*proba);
         }
         else
         {
-            printf("%s n'a rien \n", j.pseudo);
+            //printf("%s n'a rien \n", j.pseudo);
             relance=int(0*proba);
         }
         break;
@@ -138,43 +138,43 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
     case 4 :
         if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
-            printf("%s a une quinte flush (royale?) \n", j.pseudo);
+            //printf("%s a une quinte flush (royale?) \n", j.pseudo);
             relance=int(argent*proba); //il fait tapis
         }
         else if (res == CARRE)
         {
-            printf("%s a un carre  \n", j.pseudo);
+            //printf("%s a un carre  \n", j.pseudo);
             relance=int((argent/2)*proba);
         }
         else if (res == FULL)
         {
-            printf("%s a un full \n", j.pseudo);
+            //printf("%s a un full \n", j.pseudo);
             relance=int((argent/3)*proba);
         }
         else if (res == QUINTE or res == COULEUR)
         {
-            printf("%s a une quinte ou une couleur \n", j.pseudo);
+            //printf("%s a une quinte ou une couleur \n", j.pseudo);
             relance=int((argent/4)*proba);
         }
 
         else if (res == BRELAN)
         {
-            printf("%s a un brelan \n", j.pseudo);
+            //printf("%s a un brelan \n", j.pseudo);
             relance=int(100*proba);
         }
         else if (res == DOUBLE_PAIRE)
         {
-            printf("%s a une double paire \n", j.pseudo);
+            //printf("%s a une double paire \n", j.pseudo);
             relance=int(50*proba);
         }
         else if (res == PAIRE)
         {
-            printf("%s a une paire \n", j.pseudo);
+            //printf("%s a une paire \n", j.pseudo);
             relance=int(20*proba);
         }
         else
         {
-            printf("%s n'a rien \n", j.pseudo);
+            //printf("%s n'a rien \n", j.pseudo);
             relance=int(0*proba);
         }
         break;
@@ -184,43 +184,43 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         //Si il a une quinte flush royale
         if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
-            printf("%s a une quinte flush (royale?) \n", j.pseudo);
+            //printf("%s a une quinte flush (royale?) \n", j.pseudo);
             relance=int(argent*proba); //il fait tapis
         }
         else if (res == CARRE)
         {
-            printf("%s a un carre  \n", j.pseudo);
+            //printf("%s a un carre  \n", j.pseudo);
             relance=int((argent/2)*proba);
         }
         else if (res == FULL)
         {
-            printf("%s a un full \n", j.pseudo);
+            //printf("%s a un full \n", j.pseudo);
             relance=int((argent/3)*proba);
         }
         else if (res == QUINTE or res == COULEUR)
         {
-            printf("%s a une quinte ou une couleur \n", j.pseudo);
+            //printf("%s a une quinte ou une couleur \n", j.pseudo);
             relance=int((argent/4)*proba);
         }
 
         else if (res == BRELAN)
         {
-            printf("%s a un brelan \n", j.pseudo);
+            //printf("%s a un brelan \n", j.pseudo);
             relance=int(100*proba);
         }
         else if (res == DOUBLE_PAIRE)
         {
-            printf("%s a une double paire \n", j.pseudo);
+            //printf("%s a une double paire \n", j.pseudo);
             relance=int(50*proba);
         }
         else if (res == PAIRE)
         {
-            printf("%s a une paire \n", j.pseudo);
+            //printf("%s a une paire \n", j.pseudo);
             relance=int(20*proba);
         }
         else
         {
-            printf("%s n'a rien \n", j.pseudo);
+            //printf("%s n'a rien \n", j.pseudo);
             relance=int(0*proba);
         }
         break;
