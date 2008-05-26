@@ -17,6 +17,7 @@
 //Librairies Life'Seven Poker
 #include "Joueur.h"
 #include "Table.h"
+#include "AfficheTxt.h"
 
 //Librairies Standard.
 #include <stdlib.h>
@@ -30,6 +31,7 @@
 #include "SDL/SDL_ttf.h" //Gestion des polices True Type Fonts.
 #include <SDL/SDL_rotozoom.h>
 //#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
+
 
 
 /**	@brief Calcule ce que va faire le joueur de type ordinateur a son prochain coup.

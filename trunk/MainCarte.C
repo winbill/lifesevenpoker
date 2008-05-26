@@ -21,8 +21,8 @@
 
 void initialisationMain(MainCarte & m)
 {
-    m.tabMain = new Carte*[5];
-    memset(m.tabMain,0,sizeof(*m.tabMain)*5);
+    m.tabMain = new Carte*[7];
+    memset(m.tabMain,0,sizeof(*m.tabMain)*7);
 
     m.nCarte=0;
 }
@@ -30,7 +30,7 @@ void initialisationMain(MainCarte & m)
 
 void reinitialisationMain(MainCarte & m)
 {
-    for(int i=0;i<5;i++)
+    for(int i=0;i<7;i++)
     {
         m.tabMain[i]=0;
     }
