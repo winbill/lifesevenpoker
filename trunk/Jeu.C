@@ -84,14 +84,31 @@ int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & r
 void joueurPetiteBlind(Table & t,Joueur & j)
 {
     setStatutJoueur(j,CALL);
+    if(getArgentJoueur(j)<=getPetiteBlindTable(t))
+    {
+        ajoutMiseJoueur(j,getArgentJoueur(j));
+        setArgentJoueur(j,0);
+        setStatutJoueur(j,ALL_IN);
+        }else{
+
     setArgentJoueur(j, getArgentJoueur(j)-getPetiteBlindTable(t));
     ajoutMiseJoueur(j,getPetiteBlindTable(t));
+        }
 }
 void joueurGrosseBlind(Table & t,Joueur & j)
 {
+        if(getArgentJoueur(j)<=getPetiteBlindTable(t)*2)
+    {
+        ajoutMiseJoueur(j,getArgentJoueur(j));
+        setArgentJoueur(j,0);
+        setStatutJoueur(j,ALL_IN);
+    }else{
+
+
     setStatutJoueur(j,CALL);
     setArgentJoueur(j, getArgentJoueur(j)-getPetiteBlindTable(t)*2);
     ajoutMiseJoueur(j,getPetiteBlindTable(t)*2);
+    }
 }
 
 
