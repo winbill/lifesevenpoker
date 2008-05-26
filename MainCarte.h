@@ -141,7 +141,7 @@ void choixCarteMultiple(int tab7Carte[][2],const int tabO[],int tabResultat[][2]
 	@param m
 	@param titre
 */
-void afficheMainCarte(const MainCarte & m,char titre[]);
+void afficheMainCarte(const MainCarte & m,const char* titre);
 
 
 #endif
