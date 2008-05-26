@@ -43,7 +43,7 @@ int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & r
     assert(relance==0);
     if (getTypeJoueur(j) == IA)
     {
-        s = calculIA(t,j,montant,relance);
+        calculIA(t,j,montant,relance);
         definieStatut(t,s,j,montant,relance);
 
 
