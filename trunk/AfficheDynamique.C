@@ -846,7 +846,8 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                         break;
 
                     }
-
+                SDL_FreeSurface(boutonCouche);
+                SDL_FreeSurface(boutonTapis);
                     return 1;
                 }
                 //bouton d'augmentation et de diminution de la valeur de la relance
@@ -1078,6 +1079,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
 
     while (gameOn)
     {
+
         //joueurJouant = personne apres le dealer
         joueurJouant = getPositionDealerTable(t);
         joueurJouant =getJoueurSuivant(t,joueurJouant);
@@ -1429,7 +1431,6 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
     pileCarteLibere(p);
     tableLibere(t);
 
-    //detruitTableauLanguage(tabLanguage);
     return renvoyer;
 
 }
