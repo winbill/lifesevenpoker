@@ -82,7 +82,7 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 
         //Au moment du FLOP
     case 3 :
-        if(res == QUINTE_FLUSH_ROYALE == QUINTE_FLUSH)
+        if(res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
             relance=argent; //il fait tapis
@@ -127,7 +127,7 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 
         //Au moment du TURN
     case 4 :
-        if(res == QUINTE_FLUSH_ROYALE == QUINTE_FLUSH)
+        if(res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
             relance=argent; //il fait tapis
