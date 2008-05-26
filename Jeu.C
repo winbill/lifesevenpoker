@@ -43,9 +43,9 @@ int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & r
     assert(relance==0);
     if (getTypeJoueur(j) == IA)
     {
-        s = calculIA(t,j,relance,montant);
-        Statut calculIA(const Table & t,const Joueur & j,int &relance,int & montant)
-        //definieStatut(t,s,j,montant,relance);
+        s = calculIA(t,j,montant,relance);
+        definieStatut(t,s,j,montant,relance);
+
 
         if (s==CALL)
         {

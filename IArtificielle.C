@@ -16,12 +16,16 @@
 
 Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 {
-    printf("<<<<<<<<<<<<<<<< rentre\n");
+
     //On récupere le statut de la partie:
     int nbCartesDecouvertes = getMainCarteNbCarte(*getMainCarteTable(t)); //Le nombre de cartes découvertes sur le tapis
     MainCarte mainJoueur = *getMainJoueur(j); //La main de cette IA
     MainCarte cartesDecouvertes = *getMainCarteTable(t); //La main contenant les cartes decouvertes sur la table
     Main res = determineMeilleureMainIA(mainJoueur,cartesDecouvertes); //Code du type de main obtenu
+
+    printf("resultat : %d\n",(int)res);
+
+
     int argent=getArgentJoueur(j); //l'argent actuel de l'IA
     //int rnd = rand()%100; //Nombre pseudo-aléatoire entre 1 et 100;
 
@@ -83,7 +87,7 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 
         //Au moment du FLOP
     case 3 :
-        if(res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
+/*        if(res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
             relance=argent; //il fait tapis
@@ -123,11 +127,11 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         {
             printf("%s n'a rien \n", j.pseudo);
             relance=0;
-        }
+        }*/
         break;
 
         //Au moment du TURN
-    case 4 :
+    case 4 :/*
         if(res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
@@ -168,11 +172,13 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         {
             printf("%s n'a rien \n", j.pseudo);
             relance=0;
-        }
+        }*/
         break;
 
         //Au moment du RIVER
     case 5 :
+
+    /*
         //Si il a une quinte flush royale
         if(res == QUINTE_FLUSH_ROYALE or res== QUINTE_FLUSH)
         {
@@ -214,10 +220,9 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         {
             printf("%s n'a rien \n", j.pseudo);
             relance=0;
-        }
+        }*/
         break;
     }
-    printf("<<<<<<<<<<<<<<<< sorti\n");
     return FOLD;
 
 
@@ -294,17 +299,17 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
 Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & cartesDecouvertes)
 {
     int nbCartesDecouvertes=getMainCarteNbCarte(cartesDecouvertes);
-    printf("nbCartesDecouvertes = %d \n", nbCartesDecouvertes);
+    //printf("nbCartesDecouvertes = %d \n", nbCartesDecouvertes);
     int nbCartesJoueur=getMainCarteNbCarte(mainJoueur);
-    printf("nbCartesJoueur = %d \n", nbCartesJoueur);
+    //printf("nbCartesJoueur = %d \n", nbCartesJoueur);
     int nbCartesTotal = nbCartesDecouvertes + nbCartesJoueur;
-    printf("nbCartesTotal = %d \n", nbCartesTotal);
+    //printf("nbCartesTotal = %d \n", nbCartesTotal);
 
     switch (nbCartesTotal)
     {
     case 2 :
     {
-        printf("=====================+DEBUT CASE 2+===================== \n");
+        //printf("=====================+DEBUT CASE 2+===================== \n");
 
 
     }
@@ -314,7 +319,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 5 :
     {
-        printf("=====================+DEBUT CASE 5+===================== \n");
+        //printf("=====================+DEBUT CASE 5+===================== \n");
         //On cree un histogramme pour referencer les cartes
         int histogramme[5][2]={{0,0},{0,0},{0,0},{0,0},{0,0}};
         int h=0;
@@ -489,7 +494,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 6 :
     {
-        printf("=====================+DEBUT CASE 6+===================== \n");
+        //printf("=====================+DEBUT CASE 6+===================== \n");
 
         //On recupere toutes les combinaisons de 5 cartes parmi 6
         int i,j,k;
@@ -512,22 +517,22 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         for (i=0;i<6;i++)
         {
             k=0;
-            printf(" VALEUR DE I : %d \n", i);
+            //printf(" VALEUR DE I : %d \n", i);
             for (j=0;j<6;j++)
             {
-                printf(" VALEUR DE J : %d \n", j);
+                //printf(" VALEUR DE J : %d \n", j);
                 if (j!=i)
                 {
-                    printf("===> J != I   : \n");
+                    //printf("===> J != I   : \n");
                     if (j<2+k)
                     {
                         ajouteCarte(mainTest1,getMainCarteIemeCarte(mainTotale,j));
-                        printf("Nb Cartes 1 : %d  \n", getMainCarteNbCarte(mainTest1));
+                        //printf("Nb Cartes 1 : %d  \n", getMainCarteNbCarte(mainTest1));
                     }
                     else
                     {
                         ajouteCarte(mainTest2,getMainCarteIemeCarte(mainTotale,j));
-                        printf("Nb Cartes 2 : %d  \n", getMainCarteNbCarte(mainTest2));
+                        //printf("Nb Cartes 2 : %d  \n", getMainCarteNbCarte(mainTest2));
                     }
                 }
                 else k++;
@@ -537,7 +542,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
             MainCarteLibere(mainTest1);
             MainCarteLibere(mainTest2);
 
-            printf("RESULTATMAIN = %d \n", resultatMain);
+            //printf("RESULTATMAIN = %d \n", resultatMain);
 
             if (resultatMain>meilleureMain)
             {
@@ -554,7 +559,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 7 :
     {
-        printf("=====================+DEBUT CASE 7+===================== \n");
+        //printf("=====================+DEBUT CASE 7+===================== \n");
 
         //On recupere toutes les combinaisons de 5 cartes parmi 6
         int i,j,k,l;
@@ -611,12 +616,12 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
     }
     break;
     }
-    printf("<<<<<<<<     <<<<<<<< sorti\n");
+    //printf("<<<<<<<<     <<<<<<<< sorti\n");
 
     return DEF;
 }
 
-
+/*
 float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMainJoueur)
 {
     int i,j,k,l; //variables de boucle
@@ -724,6 +729,6 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
     return proba;
 
 }
-
+*/
 
 
