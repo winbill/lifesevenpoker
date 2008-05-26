@@ -16,6 +16,7 @@
 
 Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 {
+    printf("<<<<<<<<<<<<<<<< rentre\n");
     //On récupere le statut de la partie:
     int nbCartesDecouvertes = getMainCarteNbCarte(*getMainCarteTable(t)); //Le nombre de cartes découvertes sur le tapis
     MainCarte mainJoueur = *getMainJoueur(j); //La main de cette IA
@@ -216,7 +217,10 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         }
         break;
     }
+    printf("<<<<<<<<<<<<<<<< sorti\n");
     return FOLD;
+
+
 }
 
 
@@ -607,6 +611,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
     }
     break;
     }
+    printf("<<<<<<<<     <<<<<<<< sorti\n");
 
     return DEF;
 }

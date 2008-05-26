@@ -23,10 +23,10 @@ void pause()
     while (continuer)
     {
         SDL_WaitEvent(&event);
-        switch(event.type)
+        switch (event.type)
         {
-            case SDL_MOUSEBUTTONDOWN:
-                continuer = 0;
+        case SDL_MOUSEBUTTONDOWN:
+            continuer = 0;
         }
     }
 }
@@ -162,11 +162,11 @@ void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,in
     TTF_Font *font;
 
     //La couleur du Font
-    SDL_Color textColor = { r, g, b,0};
+    SDL_Color textColor = {r,g,b,0};
 
     //Ouverture du Font
-    printf("SIZE : %d    STYLE : %d \n", size, style);
-    font = TTF_OpenFont( "./fonts/Qlassik_TB.otf", size );       //LIGNE OU CA PLANTE
+    //printf("SIZE : %d    STYLE : %d \n", size, style);
+    font = TTF_OpenFont( "./fonts/Qlassik_TB.otf",size);       //LIGNE OU CA PLANTE
     TTF_SetFontStyle(font,style);
 
 

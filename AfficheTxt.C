@@ -69,7 +69,6 @@ void afficheTab(int tab[],int x)
     printf("\n");
 }
 
-
 void afficheInfoJoueur(const Joueur & j)
 {
     printf("--Infos Joueur--\n");
@@ -79,6 +78,10 @@ void afficheInfoJoueur(const Joueur & j)
     printf("mise : %d\n",j.mise);
     printf("statut : %d\n",(int)j.statut);
     printf("type : %d\n",j.type);
+    printf("posX : %d\n",j.posX);
+    printf("posY : %d\n",j.posY);
+    printf("tapis : %d\n",j.tapis);
+    printf("gainTapis : %d\n",j.gainTapis);
     printf("-----FIN-----\n");
 }
 

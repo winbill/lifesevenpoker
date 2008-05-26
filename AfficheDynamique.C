@@ -108,7 +108,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][
     {
 
         //test pr savoir qui a les mme mains que le gagnant
-        printf("--------egalite----------\n");
+
     }
 
 
@@ -332,6 +332,7 @@ int AffMenu(SDL_Surface* affichage,const char langue[][50])
 
 void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & table,int joueurJouant,const char langue[][50])
 {
+
     //recuperation des coordonnés ou il doit etre placé
     int posx = getPositionJoueurX(j);
     int posy = getPositionJoueurY(j);
@@ -343,11 +344,14 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     //si c'est le joueur qui est en train de jouer on change ca couleur
     if (getIdJoueur(j) != joueurJouant or getStatutJoueur(j)==SIT_OUT)
     {
+        printf("joueurJouant:%d  ---  id :%d  --- statut : %d\n",joueurJouant,j.idJoueur,(int)j.statut);
+        afficheInfoJoueur(j);
         //Plantage ici au 43eme breakpoint
         AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_NORMAL,22);
     }
     else
     {
+        printf("b\n");
         AffAfficheTexte(affichage,message,posx,posy+30*0,255,0,0,TTF_STYLE_NORMAL,22);
     }
 
@@ -455,6 +459,7 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
 
     for (i=0;i<d;i++)
     {
+        printf("%deme execution a droite\n",i);
         setPositionJoueurX(*t.joueur[(d-1)-i],bordure);
         setPositionJoueurY(*t.joueur[(d-1)-i],200+200*i);
         //Au 20eme passage : plantage ici
@@ -462,12 +467,14 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
     }
     for (i=d;i<h+d;i++)
     {
+        printf("%deme execution en haut\n",i-d);
         setPositionJoueurX(*t.joueur[i],bordure+separation*(i-d+1)+LARGEUR*(i-d));
         setPositionJoueurY(*t.joueur[i],bordure);
         AffAfficheJoueur(affichage,*t.joueur[i],t,joueurJouant,langue);
     }
     for (i=h+d;i<g+h+d;i++)
     {
+        printf("%deme execution a gauche\n",i-h-d);
         setPositionJoueurX(*t.joueur[i],862);
         setPositionJoueurY(*t.joueur[i],200+200*(i-h-d));
         AffAfficheJoueur(affichage,*t.joueur[i],t,joueurJouant,langue);
@@ -1122,11 +1129,13 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
 
         while (finTour!=0 && gameOn)
         {
-
+            printf(">>>>>>>>>>>>>>>>>>>>>>> joueur jouant : %d\n",joueurJouant);
             if (t.joueur[joueurJouant]!=NULL)
             {
+                 printf("\t non nul\n");
                 if ( getStatutJoueur(*t.joueur[joueurJouant]) != SIT_OUT && getStatutJoueur(*t.joueur[joueurJouant]) != FOLD && getStatutJoueur(*t.joueur[joueurJouant]) != ALL_IN)
                 {
+                    printf("\t statut ok nul\n");
                     //le joueur existe et il peut jouer
                     while (retour)
                     {
@@ -1203,7 +1212,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                 }
             }
 
-
+            printf("\n");
 
             SDL_PollEvent(&event);
 
@@ -1268,7 +1277,6 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
             joueurJouant =getJoueurSuivant(t,joueurJouant);//on passe au joueur suivant
             //on reaffiche tout
             AffAfficheTapis(affichage,tapis);
-            printf("JOUEUR JOUANT : %d \n", joueurJouant);
             AffAffichageInfosJoueurs(affichage,t,joueurJouant,langue);
             AffCarteDecouvertes(t,affichage);
             AffCartesJoueursJeu(affichage,t);
@@ -1367,7 +1375,6 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                     affAffichageVainqueur(affichage,t,langue,true);
                 }
 
-                printf("determine_vainqueur_donne_mise_redistribue_retourner_carte\n");
                 blindAMettre=true;
                 boucleJeu = 0;
                 a=0;
@@ -1377,13 +1384,11 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                     {
                         if (getArgentJoueur(*getIemeJoueur(t,i))>0)
                         {
-                            printf("sit:%d\n",i);
                             setStatutJoueur(*getIemeJoueur(t,i),SIT);
                             a++;
                         }
                         else
                         {
-                            printf("sitout:%d\n",i);
                             setStatutJoueur(*getIemeJoueur(t,i),SIT_OUT);
 
                         }
