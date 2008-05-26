@@ -14,6 +14,7 @@
 #include "IArtificielle.h"
 
 
+
 Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 {
 
@@ -87,38 +88,38 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 
         //Au moment du FLOP
     case 3 :
-/*        if(res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
+        if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
             relance=argent; //il fait tapis
         }
-        else if(res == CARRE)
+        else if (res == CARRE)
         {
             printf("%s a un carre  \n", j.pseudo);
             relance=int(argent/2);
         }
-        else if(res == FULL)
+        else if (res == FULL)
         {
             printf("%s a un full \n", j.pseudo);
             relance=int(argent/3);
         }
-        else if(res == QUINTE or res == COULEUR)
+        else if (res == QUINTE or res == COULEUR)
         {
             printf("%s a une quinte ou une couleur \n", j.pseudo);
             relance=int(argent/4);
         }
 
-        else if(res == BRELAN)
+        else if (res == BRELAN)
         {
             printf("%s a un brelan \n", j.pseudo);
             relance=100;
         }
-        else if(res == DOUBLE_PAIRE)
+        else if (res == DOUBLE_PAIRE)
         {
             printf("%s a une double paire \n", j.pseudo);
             relance=50;
         }
-        else if(res == PAIRE)
+        else if (res == PAIRE)
         {
             printf("%s a une paire \n", j.pseudo);
             relance=20;
@@ -127,43 +128,43 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         {
             printf("%s n'a rien \n", j.pseudo);
             relance=0;
-        }*/
+        }
         break;
 
         //Au moment du TURN
-    case 4 :/*
-        if(res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
+    case 4 :
+        if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
             relance=argent; //il fait tapis
         }
-        else if(res == CARRE)
+        else if (res == CARRE)
         {
             printf("%s a un carre  \n", j.pseudo);
             relance=int(argent/2);
         }
-        else if(res == FULL)
+        else if (res == FULL)
         {
             printf("%s a un full \n", j.pseudo);
             relance=int(argent/3);
         }
-        else if(res == QUINTE or res == COULEUR)
+        else if (res == QUINTE or res == COULEUR)
         {
             printf("%s a une quinte ou une couleur \n", j.pseudo);
             relance=int(argent/4);
         }
 
-        else if(res == BRELAN)
+        else if (res == BRELAN)
         {
             printf("%s a un brelan \n", j.pseudo);
             relance=100;
         }
-        else if(res == DOUBLE_PAIRE)
+        else if (res == DOUBLE_PAIRE)
         {
             printf("%s a une double paire \n", j.pseudo);
             relance=50;
         }
-        else if(res == PAIRE)
+        else if (res == PAIRE)
         {
             printf("%s a une paire \n", j.pseudo);
             relance=20;
@@ -172,46 +173,46 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         {
             printf("%s n'a rien \n", j.pseudo);
             relance=0;
-        }*/
+        }
         break;
 
         //Au moment du RIVER
     case 5 :
 
-    /*
+
         //Si il a une quinte flush royale
-        if(res == QUINTE_FLUSH_ROYALE or res== QUINTE_FLUSH)
+        if (res == QUINTE_FLUSH_ROYALE or res== QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
             relance=argent; //il fait tapis
         }
-        else if(res == CARRE)
+        else if (res == CARRE)
         {
             printf("%s a un carre  \n", j.pseudo);
             relance=int(argent/2);
         }
-        else if(res == FULL)
+        else if (res == FULL)
         {
             printf("%s a un full \n", j.pseudo);
             relance=int(argent/3);
         }
-        else if(res == QUINTE or res == COULEUR)
+        else if (res == QUINTE or res == COULEUR)
         {
             printf("%s a une quinte ou une couleur \n", j.pseudo);
             relance=int(argent/4);
         }
 
-        else if(res == BRELAN)
+        else if (res == BRELAN)
         {
             printf("%s a un brelan \n", j.pseudo);
             relance=100;
         }
-        else if(res == DOUBLE_PAIRE)
+        else if (res == DOUBLE_PAIRE)
         {
             printf("%s a une double paire \n", j.pseudo);
             relance=50;
         }
-        else if(res == PAIRE)
+        else if (res == PAIRE)
         {
             printf("%s a une paire \n", j.pseudo);
             relance=20;
@@ -220,7 +221,7 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         {
             printf("%s n'a rien \n", j.pseudo);
             relance=0;
-        }*/
+        }
         break;
     }
     return FOLD;
@@ -299,17 +300,17 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
 Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & cartesDecouvertes)
 {
     int nbCartesDecouvertes=getMainCarteNbCarte(cartesDecouvertes);
-    //printf("nbCartesDecouvertes = %d \n", nbCartesDecouvertes);
+    printf("nbCartesDecouvertes = %d \n", nbCartesDecouvertes);
     int nbCartesJoueur=getMainCarteNbCarte(mainJoueur);
-    //printf("nbCartesJoueur = %d \n", nbCartesJoueur);
+    printf("nbCartesJoueur = %d \n", nbCartesJoueur);
     int nbCartesTotal = nbCartesDecouvertes + nbCartesJoueur;
-    //printf("nbCartesTotal = %d \n", nbCartesTotal);
+    printf("nbCartesTotal = %d \n", nbCartesTotal);
 
     switch (nbCartesTotal)
     {
     case 2 :
     {
-        //printf("=====================+DEBUT CASE 2+===================== \n");
+        printf("=====================+DEBUT CASE 2+===================== \n");
 
 
     }
@@ -319,7 +320,9 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 5 :
     {
-        //printf("=====================+DEBUT CASE 5+===================== \n");
+return CARTE_HAUTE;
+/*
+        printf("=====================+DEBUT CASE 5+===================== \n");
         //On cree un histogramme pour referencer les cartes
         int histogramme[5][2]={{0,0},{0,0},{0,0},{0,0},{0,0}};
         int h=0;
@@ -328,10 +331,10 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         //printf("PREMIER WHILE \n");
         while (i < 2)
         {
-            //printf("HISTO avec i = %d ==> [%d][0] = %d \n", i, h, histogramme[h][0]);
+            printf("HISTO avec i = %d ==> [%d][0] = %d \n", i, h, histogramme[h][0]);
             if (histogramme[h][0]==0)
             {
-                //printf("HISTO IF 1 ==> rang de la %d eme carte : %d | valeur de h : %d \n", i , getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)), h);
+                printf("HISTO IF 1 ==> rang de la %d eme carte : %d | valeur de h : %d \n", i , getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)), h);
                 histogramme[h][0]=getCarteRang(*getMainCarteIemeCarte(mainJoueur,i));
                 histogramme[h][1]++;
                 i++;
@@ -339,22 +342,25 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
             }
             else if (histogramme[h][0]==getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)))
             {
-                //printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", i , getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)), h);
+                printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", i , getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)), h);
                 histogramme[h][1]++;
                 i++;
                 h=0;
             }
             else h++;
         }
+
+
+
         //On stocke les cartes en jeu découvertes dans l'histogramme
         int j=0;
-        //printf("DEUXIEME WHILE \n");
+        printf("DEUXIEME WHILE \n");
         while (j<3)
         {
-            //printf("HISTO avec j = %d ==> [%d][0] = %d \n", j, h, histogramme[h][0]);
+            printf("HISTO avec j = %d ==> [%d][0] = %d \n", j, h, histogramme[h][0]);
             if (histogramme[h][0]==0)
             {
-                //printf("HISTO IF 1 ==> rang de la %d eme carte : %d  | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
+                printf("HISTO IF 1 ==> rang de la %d eme carte : %d  | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
                 histogramme[h][0]=getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j));
                 histogramme[h][1]++;
                 j++;
@@ -362,7 +368,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
             }
             else if (histogramme[h][0]==getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)))
             {
-                //printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
+                printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
                 histogramme[h][1]++;
                 j++;
                 h=0;
@@ -370,11 +376,13 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
             else
             {
                 h++;
-                //printf("HISTO IF 3 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
+                printf("HISTO IF 3 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
             }
         }
+
+
         //On trie l'histogramme par valeurs décroissantes au niveau du nombre d'occurence des cartes
-        //printf("DEBUT DU TRI DE L'HISTOGRAMME \n");
+        printf("DEBUT DU TRI DE L'HISTOGRAMME \n");
         int indice=0;
         int max=0;
         for (j=0;j<4;j++)
@@ -404,6 +412,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         else if (histogramme[0][1]==2 and histogramme[1][1]==2) return DOUBLE_PAIRE;
         else if (histogramme[0][1]==2) return PAIRE;
 
+
         //On trie maintenant l'histogramme par valeurs décroissantes au niveau du rang des cartes
         indice=0;
         max=0;
@@ -427,7 +436,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
             max=indice;
         }
 
-        //On vérifie si c'est une couleur
+        //On vérifie si c'est une couleur (vive les boucles)
         bool flush=0;
         if (getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,0))==getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,1))
                 and getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,1))==getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,0))
@@ -486,7 +495,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
         //Enfin si aucun des cas précédents n'a correspondu c'est une carte haute
         return CARTE_HAUTE;
-
+*/
     }
     break;
 
@@ -494,7 +503,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 6 :
     {
-        //printf("=====================+DEBUT CASE 6+===================== \n");
+        printf("=====================+DEBUT CASE 6+===================== \n");
 
         //On recupere toutes les combinaisons de 5 cartes parmi 6
         int i,j,k;
@@ -517,38 +526,34 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         for (i=0;i<6;i++)
         {
             k=0;
-            //printf(" VALEUR DE I : %d \n", i);
             for (j=0;j<6;j++)
             {
-                //printf(" VALEUR DE J : %d \n", j);
                 if (j!=i)
                 {
-                    //printf("===> J != I   : \n");
                     if (j<2+k)
                     {
                         ajouteCarte(mainTest1,getMainCarteIemeCarte(mainTotale,j));
-                        //printf("Nb Cartes 1 : %d  \n", getMainCarteNbCarte(mainTest1));
                     }
                     else
                     {
                         ajouteCarte(mainTest2,getMainCarteIemeCarte(mainTotale,j));
-                        //printf("Nb Cartes 2 : %d  \n", getMainCarteNbCarte(mainTest2));
                     }
                 }
                 else k++;
             }
-
             resultatMain=determineMeilleureMainIA(mainTest1,mainTest2);
-            MainCarteLibere(mainTest1);
-            MainCarteLibere(mainTest2);
-
-            //printf("RESULTATMAIN = %d \n", resultatMain);
+            reinitialisationMain(mainTest1);
+            reinitialisationMain(mainTest2);
+            reinitialisationMain(mainTotale);
 
             if (resultatMain>meilleureMain)
             {
                 meilleureMain=resultatMain;
             }
         }
+        MainCarteLibere(mainTest1);
+        MainCarteLibere(mainTest2);
+        MainCarteLibere(mainTotale);
 
         return meilleureMain;
 
@@ -599,8 +604,9 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
                 }
 
                 resultatMain=determineMeilleureMainIA(mainTest1,mainTest2);
-                MainCarteLibere(mainTest1);
-                MainCarteLibere(mainTest2);
+                reinitialisationMain(mainTest1);
+                reinitialisationMain(mainTest2);
+                reinitialisationMain(mainTotale);
 
                 if (resultatMain>meilleureMain)
                 {
@@ -608,6 +614,10 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
                 }
             }
         }
+        MainCarteLibere(mainTest1);
+        MainCarteLibere(mainTest2);
+        MainCarteLibere(mainTotale);
+
 
         return meilleureMain;
 
