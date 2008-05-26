@@ -83,31 +83,33 @@ int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & r
 
 void joueurPetiteBlind(Table & t,Joueur & j)
 {
-    setStatutJoueur(j,CALL);
-    if(getArgentJoueur(j)<=getPetiteBlindTable(t))
+
+    if (getArgentJoueur(j)<=getPetiteBlindTable(t))
     {
         ajoutMiseJoueur(j,getArgentJoueur(j));
         setArgentJoueur(j,0);
         setStatutJoueur(j,ALL_IN);
-        }else{
+    }
+    else
+    {
 
-    setArgentJoueur(j, getArgentJoueur(j)-getPetiteBlindTable(t));
-    ajoutMiseJoueur(j,getPetiteBlindTable(t));
-        }
+        setArgentJoueur(j, getArgentJoueur(j)-getPetiteBlindTable(t));
+        ajoutMiseJoueur(j,getPetiteBlindTable(t));
+    }
 }
 void joueurGrosseBlind(Table & t,Joueur & j)
 {
-        if(getArgentJoueur(j)<=getPetiteBlindTable(t)*2)
+    if (getArgentJoueur(j)<=getPetiteBlindTable(t)*2)
     {
         ajoutMiseJoueur(j,getArgentJoueur(j));
         setArgentJoueur(j,0);
         setStatutJoueur(j,ALL_IN);
-    }else{
-
-
-    setStatutJoueur(j,CALL);
-    setArgentJoueur(j, getArgentJoueur(j)-getPetiteBlindTable(t)*2);
-    ajoutMiseJoueur(j,getPetiteBlindTable(t)*2);
+    }
+    else
+    {
+        setStatutJoueur(j,CALL);
+        setArgentJoueur(j, getArgentJoueur(j)-getPetiteBlindTable(t)*2);
+        ajoutMiseJoueur(j,getPetiteBlindTable(t)*2);
     }
 }
 
@@ -341,12 +343,12 @@ int codageScoreMain(const MainCarte &m, int tabResultat[6][2],const Table & tabl
                     tabResultat[k+1][1] = tabMainTotale[i][1];
                     k++;
                 }
-               i++;
+                i++;
                 //s'il a ni couleur ni quinte on regarde le reste
             }
             //on va chercher l'as (le un plutot)
             i=0;
-            while(i<7)
+            while (i<7)
             {
                 if (tabMainTotale[i][0]==14)
                 {
@@ -362,7 +364,7 @@ int codageScoreMain(const MainCarte &m, int tabResultat[6][2],const Table & tabl
         }
         else
         {
-             printf("pas bon\n");
+            printf("pas bon\n");
             while (k<5)
             {
                 assert(i<7);
