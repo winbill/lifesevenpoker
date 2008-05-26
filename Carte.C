@@ -49,7 +49,11 @@ int compareCarte(const Carte & c1, const Carte & c2)
 		return -1;
 	}
 	else
-	{// (ahahah le bug) jtai niké tristan
+	{
+	    if(getCarteCouleur(c1) == getCarteCouleur(c2))
+	    {
+	        return 2;
+	    }
 		return 0;
 	}
 }

@@ -42,6 +42,7 @@
 */
 Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance);
 
+
 /** @brief Definie le statut du joueur de type ordinateur selon ce qui aura ete calcule au prealable par calculIA.
     @param [in] t Une table.
     @param [in,out] s Un statut.
@@ -52,6 +53,7 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance);
 **/
 void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int & relance);
 
+
 /** @brief Identifie la meilleure main qu'a un joueur de type ordinateur donne quelque soit la phase de la partie dans laquelle on se trouve.
     @param [in] mainJoueur La main du joueur concerne.
     @param [in] cartesDecouvertes La main contenant les cartes deja decouvertes si il y en a.
@@ -59,5 +61,16 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
     @author Benjamin
 **/
 Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & cartesDecouvertes);
+
+
+/** @brief calcule la probabilité de gagner avec une main et un board donnés.
+    @param [in] t Une table.
+    @param [in] j Un joueur.
+    @param [in] meilleureMainJoueur L'evaluation de la main actuelle du joueur concerne.
+    @return Une valeur de type float représentant la probabilité du joueur j de gagner la manche.
+    @author Benjamin
+*/
+float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMainJoueur);
+
 
 #endif
