@@ -173,7 +173,7 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         //Au moment du RIVER
     case 5 :
         //Si il a une quinte flush royale
-        if(res == QUINTE_FLUSH_ROYALE == QUINTE_FLUSH)
+        if(res == QUINTE_FLUSH_ROYALE or res== QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
             relance=argent; //il fait tapis
@@ -611,59 +611,105 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
     return DEF;
 }
 
-/*
-int probaActionIA(const Joueur & j,const int & montant)
-{
-     int argentJoueur=getArgentJoueur(j);
-     int rnd = rand()%100;
 
-     if(montant >= argentJoueur)
-     {
-         if(rnd > 95) return 1;
-     }
-     else if(montant >= argentJoueur*0.9)
-     {
-         if(rnd > 90) return 1;
-     }
-     else if(montant >= argentJoueur*0.8)
-     {
-         if(rnd > 80) return 1;
-     }
-     else if(montant >= argentJoueur*0.7)
-     {
-         if(rnd > 70) return 1;
-     }
-     else if(montant >= argentJoueur*0.6)
-     {
-         if(rnd > 60) return 1;
-     }
-     else if(montant >= argentJoueur*0.5)
-     {
-         if(rnd > 50) return 1;
-     }
-     else if(montant >= argentJoueur*0.4)
-     {
-         if(rnd > 40) return 1;
-     }
-     else if(montant >= argentJoueur*0.3)
-     {
-         if(rnd > 30) return 1;
-     }
-     else if(montant >= argentJoueur*0.2)
-     {
-         if(rnd > 20) return 1;
-     }
-     else if(montant >= argentJoueur*0.1)
-     {
-         if(rnd > 10) return 1;
-     }
-     else if(montant >= argentJoueur*0)
-     {
-         if(rnd > 0) return 1;
-     }
-     else return 0;
+float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMainJoueur)
+{
+    int i,j,k,l;
+    Carte c1,c2; //Represente deux cartes potentiellement dans la main d'un adversaire
+
+    initialisationCarte(c1);
+    initialisationCarte(c2);
+
+    MainCarte mainJoueur = *getMainJoueur(joueur);
+    MainCarte cartesDecouvertes = *getMainCarteTable(table);
+    int nbCartesDecouvertes = getMainCarteNbCarte(cartesDecouvertes);
+
+    PileCarte ptemp;
+    initPileCarte(ptemp);
+
+    int compteur=0;
+
+
+
+    for(i=0;i<52;i++)
+    {
+        for(j=i;j<52;j++)
+        {
+            if(i!=j)
+            {
+                setCarte(c1,getCarteCouleur(*ptemp.ensembleCarte[i]),getCarteRang(*ptemp.ensembleCarte[i]));
+                setCarte(c2,getCarteCouleur(*ptemp.ensembleCarte[j]),getCarteRang(*ptemp.ensembleCarte[j]));
+
+                bool okc1 = true;
+                bool okc2 = true;
+
+                for(k=0;k<7;k++)
+                {
+                    if(k<2)
+                    {
+                        int comp = compareCarte(c1,*getMainCarteIemeCarte(mainJoueur,k));
+                        if(comp == 2)
+                        {
+                            okc1 = false;
+                        }
+                    }
+                    else
+                    {
+                        int comp = compareCarte(c1,*getMainCarteIemeCarte(cartesDecouvertes,k));
+                        if(comp == 2)
+                        {
+                            okc1 = false;
+                        }
+                    }
+                }
+
+                for(l=0;l<7;l++)
+                {
+                    if(l<2)
+                    {
+                        int comp = compareCarte(c2,*getMainCarteIemeCarte(mainJoueur,l));
+                        if(comp == 2)
+                        {
+                            okc2 = false;
+                        }
+                    }
+                    else
+                    {
+                        int comp = compareCarte(c2,*getMainCarteIemeCarte(cartesDecouvertes,l));
+                        if(comp == 2)
+                        {
+                            okc2 = false;
+                        }
+                    }
+                }
+
+
+                if(okc1 and okc2)
+                {
+                    MainCarte mainTest;
+                    initialisationMain(mainTest);
+
+                    ajouteCarte(mainTest,&c1);
+                    ajouteCarte(mainTest,&c2);
+
+                    Main res = DEF;
+
+                    res = determineMeilleureMainIA(mainTest,cartesDecouvertes);
+
+                    if(res < meilleureMainJoueur)
+                    {
+                        compteur++;
+                    }
+                }
+            }
+        }
+    }
+
+    float proba = float(compteur / (((50 - nbCartesDecouvertes) * (49 - nbCartesDecouvertes)) / 2));
+
+    return proba;
 
 }
 
-*/
+
 

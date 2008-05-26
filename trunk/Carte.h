@@ -57,6 +57,7 @@ void setCarte(Carte & c,const int & couleur,const int & rang);
 	@param [in,out] Carte Une carte.
 	@param [in,out] Carte Une autre carte.
 	@return Renvoie differentes valeurs numeriques selon le resultat de la comparaison :
+			->  2 si les deux cartes sont identiques en tout point (rang & couleur)
 			->	1 si la deuxieme carte est plus forte que la premiere
 			->	0 si les deux cartes sont de meme force
 			->	-1 si la premiere carte est plus forte que la deuxieme
