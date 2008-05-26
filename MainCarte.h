@@ -41,13 +41,21 @@ enum Main
     QUINTE_FLUSH_ROYALE=10
 };
 
+
+
+
+/**	@brief
+	@param m
+	@param
+*/
 void reinitialisationMain(MainCarte & m);
+
 
 int compareMain(int tabResultat1[6][2],int tabResultat2[6][2]);
 
 /**	@brief Procedure initialisant une main de cartes.
 	@param Prend en entree une variable de type MainCarte correctement cree.
-	@return Initialise la variable de type MainCarte.
+    @return Initialise la variable de type MainCarte.
 */
 void initialisationMain(MainCarte & m);
 
@@ -59,14 +67,11 @@ void initialisationMain(MainCarte & m);
 int getMainCarteNbCarte(const MainCarte & m);
 
 
-
-
-
+/**	@brief
+	@param m
+	@param i
+*/
 Carte* getMainCarteIemeCarte(const MainCarte & m, int i);
-
-
-
-
 
 
 /** @brief Procedure ajoutant une carte dans la main.
@@ -76,16 +81,12 @@ Carte* getMainCarteIemeCarte(const MainCarte & m, int i);
 void ajouteCarte(MainCarte & m, Carte* c);
 
 
-
-/** @brief Enumeration representant les differentes mains du jeu de poker.
-*/
-
-
 /** @brief Procedure qui prepare une variable de type MainCarte a la destruction.
     @param Prend en entree une variable de type MainCarte.
     @return Libère le tableau de pointeurs sur carte et met a 0 le champ nCarte.
 */
 void MainCarteLibere(MainCarte & m);
+
 
 /** @brief test si la main presente une couleur (5 cartes de meme couleur)
     @param [in] tab7Carte tableau des cartes (voir codageScoreMain)
@@ -118,6 +119,10 @@ int suiteMainCarte(int tab7Carte[8][2]);
 void nombreOcurenceCarte(const int tab7Carte[10][2],int tab[]);
 
 
+/**	@brief
+	@param tab7Carte
+	@param couleur
+*/
 int quinteFlushMainCarte(int tab7Carte[8][2],int couleur);
 
 
@@ -127,11 +132,15 @@ int quinteFlushMainCarte(int tab7Carte[8][2],int couleur);
     la forme et les 5 derniers sont les cartes ordonnés pour une comparaison avec
     une autre main du meme code de forme)
     @author James
-    @todo fonction qui trie le tableau en fonction des 2 dimensions (voir commentaires de MainCarte.C)
 
 */
 void choixCarteMultiple(int tab7Carte[][2],const int tabO[],int tabResultat[][2]);
 
+
+/**	@brief
+	@param m
+	@param titre
+*/
 void afficheMainCarte(const MainCarte & m,char titre[]);
 
 

@@ -5,7 +5,7 @@
 	Gere les actions et reactions des joueurs de type 'ordinateur'.
 
 	@author  James Benjamin
-	@file IArtificielle.h
+	@file IArtificielle.C
 	@version 1.4
 	@date 2008/05/23
  */

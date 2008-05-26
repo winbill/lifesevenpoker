@@ -57,13 +57,29 @@ struct Table
 	int petiteBlind;
 	int pot;
 };
+
+
+/** @brief
+	@param t
+	@return int
+*/
 int getTablePot(const Table & t);
+
+
+/** @brief
+	@param t
+	@param n
+*/
 void setTablePot(Table & t,int n);
 
+
+/** @brief
+	@param t
+*/
 void reinitialisationMainJoueurTable(Table & t);
 
-/**
-	@brief initialise la variable table
+
+/**	@brief initialise la variable table
 	@param [in, out] table une table
 */
 void initTable(Table & table);
@@ -193,8 +209,6 @@ int getJoueurSuivant(const Table & table,int i);
 	@return entier correspondant a lindice du dealer
 */
 int getPositionDealerTable(const Table & table);
-
-
 
 
 /** @brief juste pr le debug
