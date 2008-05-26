@@ -272,10 +272,11 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
 
         break;
     case FOLD:
+        printf("fold:%s - montant:%d \n",j.pseudo,montant);
         setStatutJoueur(j,s);
         break;
     case ALL_IN:
-
+        printf("all_in:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
         ajoutMiseJoueur(j,getArgentJoueur(j));
         setStatutJoueur(j,s);
         montant = getMiseJoueur(j);
@@ -284,6 +285,7 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
 
         break;
     default:
+    printf("ERREUR actionJoueur defaulrt\n");
         break;
 
 
