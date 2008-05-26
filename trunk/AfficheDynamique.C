@@ -107,14 +107,8 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][
                 setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
                 setTablePot(t,0);
             }
-            pause();
         }
-        else
-        {
 
-            //test pr savoir qui a les mme mains que le gagnant
-
-        }
 
 
     }
