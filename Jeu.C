@@ -27,9 +27,9 @@
 
 bool compareTabResultat(const int tabResultat1[6][2],const int tabResultat2[6][2])
 {
-    for(int i=0;i<6;i++)
+    for (int i=0;i<6;i++)
     {
-        if(tabResultat1[i][0]!=tabResultat2[i][0])
+        if (tabResultat1[i][0]!=tabResultat2[i][0])
             return false;
     }
     return true;
@@ -310,21 +310,55 @@ int codageScoreMain(const MainCarte &m, int tabResultat[6][2],const Table & tabl
         //on doit prendre les 5 cartes de la suite
         // /!\ il faut verifier que yen ai pas deux egale
         // cas 10 9 9 8 7 6 2 1 -> 10 9 8 7 6 et non 10 9 9 8 7
+        afficheMainCarte(m,"c'est ici le bug");
         i=0;
         k =0;
-        while (k<5)
+        if (quinte ==5)
         {
-            assert(i<7);
-            if (tabMainTotale[i][0]==quinte -k)
+
+            while (k<4)
             {
-                tabResultat[k+1][0] = tabMainTotale[i][0];
-                tabResultat[k+1][1] = tabMainTotale[i][1];
-                k++;
+                if (tabMainTotale[i][0]==quinte -k)
+                {
+                    tabResultat[k+1][0] = tabMainTotale[i][0];
+                    tabResultat[k+1][1] = tabMainTotale[i][1];
+                    k++;
+                }
+               i++;
+                //s'il a ni couleur ni quinte on regarde le reste
             }
-            i++;
-            //s'il a ni couleur ni quinte on regarde le reste
+            //on va chercher l'as (le un plutot)
+            i=0;
+            while(i<7)
+            {
+                if (tabMainTotale[i][0]==14)
+                {
+                    tabResultat[k+1][0] = tabMainTotale[i][0];
+                    tabResultat[k+1][1] = tabMainTotale[i][1];
+                    i=8;
+                }
+                i++;
+            }
+
+
+
         }
-        return 1;//on renvoit 1 pour quitter la fonction
+        else
+        {
+             printf("pas bon\n");
+            while (k<5)
+            {
+                assert(i<7);
+                if (tabMainTotale[i][0]==quinte -k)
+                {
+                    tabResultat[k+1][0] = tabMainTotale[i][0];
+                    tabResultat[k+1][1] = tabMainTotale[i][1];
+                    k++;
+                }
+                i++;
+            }
+            return 1;//on renvoit 1 pour quitter la fonction
+        }
     }
     else
     {
