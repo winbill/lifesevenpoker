@@ -32,6 +32,7 @@
 #include "AfficheSdl.h"
 #include "Jeu.h"
 #include "IArtificielle.h"
+#include "AfficheTxt.h"
 
 
 /**	@brief détermine le ou les vainqueurs et fait l'affichage en fonction

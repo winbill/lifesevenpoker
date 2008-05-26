@@ -74,14 +74,14 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][
             break;
 
         }
-		//si au moins deux personnes ne se sont pas couchés
+        //si au moins deux personnes ne se sont pas couchés
         if (afficheCarteGagnant)
         {
             //affichage en texte du vainqueur et de la forme
             sprintf(message,"%s:%s %s %s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,langue[34],message2);
             AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
             SDL_Flip(affichage);
-			//si le gagant n'a pas fait un tapis
+            //si le gagant n'a pas fait un tapis
             if (getStatutJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))!=ALL_IN)
             {
 
@@ -91,16 +91,18 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][
             }
             else
             {
-				//on execute une fonction spécifique de gain en fonction du tapis du joueur
+                //on execute une fonction spécifique de gain en fonction du tapis du joueur
                 calulVainqueurTapis(t,tabResultat);
             }
-			//si tout le monde s'est couché sauf une personne, on n'affiche pas de message sur la forme qui le fait gagner
-        }else{
-			sprintf(message,"%s:%s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo);
-			AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
-			SDL_Flip(affichage);
-			setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
-			setTablePot(t,0);
+            //si tout le monde s'est couché sauf une personne, on n'affiche pas de message sur la forme qui le fait gagner
+        }
+        else
+        {
+            sprintf(message,"%s:%s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo);
+            AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
+            SDL_Flip(affichage);
+            setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
+            setTablePot(t,0);
         }
         pause();
     }
@@ -120,11 +122,11 @@ void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
     int i=0;
     int exGainJoueur=0;
 
-	//on redistribue le pot en fonction des différents tapis
-	//on parcours tout les joueurs en partant du 1er jusquau dernier
+    //on redistribue le pot en fonction des différents tapis
+    //on parcours tout les joueurs en partant du 1er jusquau dernier
     while (getTablePot(t)>0)
     {
-		//pour remporter une partie ou tout le pot, le tapis doit etre superieur au precedent
+        //pour remporter une partie ou tout le pot, le tapis doit etre superieur au precedent
         if (exGainJoueur<=getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1])))
         {
             setGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]))-exGainJoueur);
@@ -140,7 +142,7 @@ void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
             }
             exGainJoueur += getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]));
         }
-		//si GainTapis du joueur est à zero ca veut dire qu'il n'a pas fait tapis, donc il recupere le pot entier
+        //si GainTapis du joueur est à zero ca veut dire qu'il n'a pas fait tapis, donc il recupere le pot entier
         else if (getGainTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]))==0)
         {
             ajoutArgentJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),getTablePot(t));
@@ -151,7 +153,7 @@ void calulVainqueurTapis(Table & t,int tabResultat[][6][2])
         setTapisJoueur(*getIemeJoueur(t,tabResultat[i][0][1]),0);
         i++;
     }
-	//on remet a zero toutes les variables relatives au tapis des joueurs
+    //on remet a zero toutes les variables relatives au tapis des joueurs
     for (int j=0;j<getMaxJoueurTable(t);j++)
     {
         if (getIemeJoueur(t,j)!=NULL)
@@ -231,7 +233,7 @@ int AffMenu(SDL_Surface* affichage,const char langue[][50])
 
     const char* menuP="img/menu.png";
     SDL_Surface* menu=load_image(menuP);
-	//affichage des textes du menu
+    //affichage des textes du menu
     AffAfficheTexte(menu,langue[10],50,240,255/10,255,255);
     AffAfficheTexte(menu,langue[11],50,270,255/10,255,255);
     AffAfficheTexte(menu,langue[12],50,300,255/10,255,255);
@@ -241,7 +243,7 @@ int AffMenu(SDL_Surface* affichage,const char langue[][50])
 
 
 
-	//tant que le joueur n'a effectué aucune actions
+    //tant que le joueur n'a effectué aucune actions
     while (fin!=true)
     {
         SDL_PollEvent(&event);
@@ -260,7 +262,7 @@ int AffMenu(SDL_Surface* affichage,const char langue[][50])
             }
             break;
         case SDL_MOUSEBUTTONUP :
-			//il a clicqué quelques part
+            //il a clicqué quelques part
             for (int i=0;i<3;i++)
             {
                 if (event.button.button == SDL_BUTTON_LEFT && event.button.x >= menuRect.x && event.button.x <= menu->w-400 + menuRect.x && event.button.y >= 240+i*30+menuRect.y && event.button.y <= 268+i*30+menuRect.y)
@@ -271,7 +273,7 @@ int AffMenu(SDL_Surface* affichage,const char langue[][50])
             }
             break;
         case SDL_MOUSEMOTION:
-		//s'il survolle un élément du menu, on change la couleur de destination
+            //s'il survolle un élément du menu, on change la couleur de destination
             for (int i=0;i<3;i++)
             {
                 if (event.motion.x >= menuRect.x && event.motion.x <= menu->w-400 + menuRect.x && event.motion.y >= 240+i*30+menuRect.y && event.motion.y <= 268+i*30+menuRect.y)
@@ -286,7 +288,7 @@ int AffMenu(SDL_Surface* affichage,const char langue[][50])
             break;
 
         }
-		//on applique en fondu laes couleurs de destination aux différents menus
+        //on applique en fondu laes couleurs de destination aux différents menus
         for (int i=0;i<3;i++)
         {
             if (colorDestination[i] != currentColor[i])
@@ -315,7 +317,7 @@ int AffMenu(SDL_Surface* affichage,const char langue[][50])
                     listeChoix = langue[12];
                     break;
                 }
-				//on pratique l'affichage
+                //on pratique l'affichage
                 AffAfficheTexte(menu,listeChoix,50,240+i*30,currentColor[i]/10,currentColor[i],currentColor[i]);
                 SDL_Rect menuRect = AffCentrer(menu,affichage,0);
                 apply_surface(menuRect.x,menuRect.y,menu,affichage);
@@ -352,7 +354,7 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
         AffAfficheTexte(affichage,message,posx,posy+30*0,255,0,0,TTF_STYLE_NORMAL,22);
     }
 
-	//message en fonction de son statut
+    //message en fonction de son statut
     switch (j.statut)
     {
     case CALL:
@@ -404,10 +406,10 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
     int d=0;
 
 
-	//switch qui place les joueurs en fonctions du nombre de ceux ci
-	//d represente le nombre de joueurs à droite de l'écran
-	//h le nombre de joueurs en haut de l'écran
-	//g le nombre de joueurs à droite de l'écran
+    //switch qui place les joueurs en fonctions du nombre de ceux ci
+    //d represente le nombre de joueurs à droite de l'écran
+    //h le nombre de joueurs en haut de l'écran
+    //g le nombre de joueurs à droite de l'écran
     switch (a)
     {
     case 1:
@@ -444,7 +446,7 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
     }
     int bordure = 12;
     int separation;
-	//on place les joueurs dynamiquement et on associe leurs coordonnés dans leur structure
+    //on place les joueurs dynamiquement et on associe leurs coordonnés dans leur structure
     if (h!=1)
     {
         separation = (int)(((1024-h*LARGEUR)/(h+1)));
@@ -487,7 +489,7 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
 {
 
     int i = 0;
-	//si le joueur existe
+    //si le joueur existe
     while ( getIemeJoueur(t,i) != NULL)
     {
         const int largeurCarte = 189;
@@ -496,7 +498,7 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
         int x;
         int y;
         int j;
-		//si c'est le joueur local on affiche ses cartes (découvertes) en bas de l'écran
+        //si c'est le joueur local on affiche ses cartes (découvertes) en bas de l'écran
         if ( getTypeJoueur( *getIemeJoueur(t,i)) == JoueurLocal)
         {
             for (j=0;j<2;j++)
@@ -508,11 +510,11 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
 
             }
         }
-		//sinon on les affiches a la position x et y indiqué dans sa structure
+        //sinon on les affiches a la position x et y indiqué dans sa structure
         else
         {
             assert(getTypeJoueur( *getIemeJoueur(t,i)) != 1);
-			//bien sur on ne les affiche uniquement s'il joue actuellement
+            //bien sur on ne les affiche uniquement s'il joue actuellement
             if (getStatutJoueur(*getIemeJoueur(t,i)) != FOLD and getStatutJoueur(*getIemeJoueur(t,i)) !=SIT_OUT)
             {
                 for (j=0;j<2;j++)
@@ -544,7 +546,7 @@ void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage)
 void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage,bool evidence,int tabResultat[6][2])
 {
     int i;
-	//on affiche bettement les cartes sans en mettre en évidence si evidence est à false (cad pour les premiers tours de jeu)
+    //on affiche bettement les cartes sans en mettre en évidence si evidence est à false (cad pour les premiers tours de jeu)
     if (!evidence)
     {
         for (i=0;i<getMainCarteNbCarte(*(t.carteDecouverte));i++)
@@ -554,15 +556,15 @@ void AffCarteDecouvertes(const Table & t,SDL_Surface* affichage,bool evidence,in
     }
     else
     {
-		//il faut afficher les cartes qui ont permis d'obtenir la main gagnate en évidence
+        //il faut afficher les cartes qui ont permis d'obtenir la main gagnate en évidence
         for (i=0;i<getMainCarteNbCarte(*(t.carteDecouverte));i++)
         {
             int j=1;
             int a=0;
-			//on affiche les cartes en évidence pour celle qui sont dans tabResultat sinon on les affiches bettement
+            //on affiche les cartes en évidence pour celle qui sont dans tabResultat sinon on les affiches bettement
             while (a==0 && j<6)
             {
-				//on regarde si la carte est présente dans le tableau
+                //on regarde si la carte est présente dans le tableau
                 if (tabResultat[j][0]==getCarteRang(*getMainCarteIemeCarte(*(t.carteDecouverte),i)) && tabResultat[j][1]==getCarteCouleur(*getMainCarteIemeCarte(*(t.carteDecouverte),i)))
                 {
                     a=1;
@@ -590,7 +592,7 @@ void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabRes
     int y;
     int j;
 
-	//on regarde si le joueur qui a gagné est le joueur local
+    //on regarde si le joueur qui a gagné est le joueur local
     if ( getTypeJoueur( *getIemeJoueur(t,i)) == JoueurLocal)
     {
         for (j=0;j<2;j++)
@@ -600,10 +602,10 @@ void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabRes
             y = 768 - hauteurCarte - ecart;
             int k=1;
             int a=0;
-			//boucle pour parcourir tout le tableau, sarrete des qu il trouve la carte dans le tableau, ou lorsque il a finit de parcourir le tableau
+            //boucle pour parcourir tout le tableau, sarrete des qu il trouve la carte dans le tableau, ou lorsque il a finit de parcourir le tableau
             while (a==0 && k<6)
             {
-				//si la carte est dans tabResultat on l'affiche en evidence (car c'est la carte qui l'a fait gagné)
+                //si la carte est dans tabResultat on l'affiche en evidence (car c'est la carte qui l'a fait gagné)
                 if (tabResultat[k][0]==getCarteRang(*getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j)) && tabResultat[k][1]==getCarteCouleur(*getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j)))
                 {
                     a=1;
@@ -611,7 +613,7 @@ void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabRes
                 }
                 k++;
             }
-			//la carte n'est donc pas presente dans le tableau =>on laffiche bettement
+            //la carte n'est donc pas presente dans le tableau =>on laffiche bettement
             if (a==0)
                 AffAfficheCarte(affichage,getMainCarteIemeCarte(*getMainJoueur(*getIemeJoueur(t,i)),j),x,y+15,0.8,false);
 
@@ -619,7 +621,7 @@ void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabRes
     }
     else
     {
-		//meme chose que pour le joueur local, sauf que les cartes sont placés dynamiquement
+        //meme chose que pour le joueur local, sauf que les cartes sont placés dynamiquement
         assert(getTypeJoueur( *getIemeJoueur(t,i)) != 1);
 
         if (getStatutJoueur(*getIemeJoueur(t,i)) != FOLD and getStatutJoueur(*getIemeJoueur(t,i)) !=SIT_OUT)
@@ -652,7 +654,7 @@ void AffCartesJoueursJeuFinale(SDL_Surface* affichage,const Table & t,int tabRes
 
 void AffInfosJoueur(SDL_Surface* affichage,const Joueur &j,const Table & table,const char langue[][50])
 {
-	//affichage des infos perso du joueur local
+    //affichage des infos perso du joueur local
 
     char message[30];
     sprintf(message,"%s : %d",j.pseudo,j.argent);
@@ -704,7 +706,7 @@ void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus,cons
 
     SDL_Surface* bouton;
     char boutonP[50];
-	//si la relance est à zero , le bouton est un bouton pour suivre ou checker
+    //si la relance est à zero , le bouton est un bouton pour suivre ou checker
     if (relance==0)
     {
         if (dessus)
@@ -721,7 +723,7 @@ void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus,cons
     }
     else
     {
-	//sinon le bouton est un bouton pour relancer
+        //sinon le bouton est un bouton pour relancer
         if (dessus)
         {
             sprintf(boutonP,"img/boutonDessus.png");
@@ -733,7 +735,7 @@ void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus,cons
         char relanceAff[10];
         sprintf(relanceAff,"%d",relance);
         bouton=load_image(boutonP);
-		//on affiche le message de langue "relance" puis la valeur de la relance
+        //on affiche le message de langue "relance" puis la valeur de la relance
         AffAfficheTexte(bouton,langue[40],10,16,255,255,255,TTF_STYLE_NORMAL,18);
         AffAfficheTexte(bouton,relanceAff,70,16,255,255,255,TTF_STYLE_NORMAL,18);
         apply_surface(620,530+20*4+50,bouton,affichage);
@@ -746,7 +748,7 @@ void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus,cons
 
 int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant,const Joueur & j,const Table & t,const char langue[][50])
 {
-	//fonction qui interprete l'action voulu du joueur local
+    //fonction qui interprete l'action voulu du joueur local
     bool fin = false;
     SDL_Event event;
 
@@ -762,7 +764,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
     s=CALL;
     relance=0;
 
-	//chargement des images
+    //chargement des images
     bouton=load_image(boutonP);
     AffAfficheTexte(bouton,langue[17],10,16,255,255,255,TTF_STYLE_NORMAL,18);
     apply_surface(620,530+20*4,bouton,affichage);
@@ -789,7 +791,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
 
 
 
-	//on atend une cation du joueur
+    //on atend une cation du joueur
     while (fin!=true)
     {
 
@@ -803,7 +805,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
             break;
 
         case SDL_KEYDOWN :
-		//affichage du menu si m pressé
+            //affichage du menu si m pressé
             if (event.key.keysym.sym == SDLK_m)
             {
                 return 2;
@@ -819,7 +821,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
             {
                 if (event.button.button == SDL_BUTTON_LEFT && event.button.x > 620 && event.button.x < 820 && event.button.y > 610+i*50 && event.button.y < 610+i*50+50)
                 {
-					//recupere le clic du joueur et agit en conséquence
+                    //recupere le clic du joueur et agit en conséquence
                     switch (i)
                     {
                     case 0:
@@ -845,7 +847,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
 
                     return 1;
                 }
-				//bouton d'augmentation et de diminution de la valeur de la relance
+                //bouton d'augmentation et de diminution de la valeur de la relance
                 if (event.button.button == SDL_BUTTON_LEFT && event.button.x > 900 && event.button.x < 963 && event.button.y >660 && event.button.y < 710)
                 {
                     relance += getPetiteBlindTable(t)*2;
@@ -872,7 +874,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
             break;
         case SDL_MOUSEMOTION:
 
-		//survolle d'un bouton
+            //survolle d'un bouton
             if (event.motion.x > 900 && event.motion.x < 963 && event.motion.y >660 && event.motion.y < 710)
             {
                 bouton=load_image(boutonUpDessus);
@@ -900,7 +902,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
 
             }
 
-			//affichage ou non, de la surbrillance sur les boutons si la souris est sur l'un d'eux
+            //affichage ou non, de la surbrillance sur les boutons si la souris est sur l'un d'eux
             for (int i=0;i<3;i++)
             {
                 if (event.motion.x > 620 && event.motion.x < 820 && event.motion.y >610+i*50 && event.motion.y <610+i*50+50)
@@ -1356,8 +1358,11 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                 a=0;
                 for (int i=0;i<getMaxJoueurTable(t);i++)
                 {
-                    if (getStatutJoueur(*getIemeJoueur(t,i))==CALL && getStatutJoueur(*getIemeJoueur(t,i))==RAISE or getStatutJoueur(*getIemeJoueur(t,i))==ALL_IN)
-                        a++;
+                    if (getIemeJoueur(t,i)!=NULL)
+                    {
+                        if (getStatutJoueur(*getIemeJoueur(t,i))==CALL or getStatutJoueur(*getIemeJoueur(t,i))==CHECK or getStatutJoueur(*getIemeJoueur(t,i))==RAISE or getStatutJoueur(*getIemeJoueur(t,i))==ALL_IN)
+                            a++;
+                    }
                 }
                 assert(a>0);
                 if (a==1)
