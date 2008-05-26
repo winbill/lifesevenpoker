@@ -30,6 +30,10 @@ struct PileCarte
 };
 
 
+
+
+
+
 /**     @brief initialise la pile de carte, en creant 52 cartes dans le tas
         @param [in,out] pileCarte une pile de carte
         @note ne melange pas les cartes
@@ -44,11 +48,11 @@ void initPileCarte (PileCarte & pileCarte);
 PileCarte* creePileCarte();
 
 
-
 /**     @brief libere les allocations internes a pileCarte
         @param [in,out] pileCarte une pile de carte
 */
 void pileCarteLibere (PileCarte & pileCarte);
+
 
 /**     @brief detruit la pile de carte proprement
         @param [in,out] pileCarte une adresse de pile de carte
