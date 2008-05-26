@@ -345,7 +345,7 @@ void AffAfficheJoueur(SDL_Surface* affichage,const Joueur & j,const Table & tabl
     sprintf(message,"%s:%d",j.pseudo,j.argent);
 
     //si c'est le joueur qui est en train de jouer on change ca couleur
-    if (getIdJoueur(j) != joueurJouant or getStatutJoueur(j)==SIT_OUT)
+    if (getIdJoueur(j) != joueurJouant or getStatutJoueur(j)==SIT_OUT or getStatutJoueur(j)==FOLD  or getStatutJoueur(j)==ALL_IN)
     {
         //Plantage ici au 43eme breakpoint
         AffAfficheTexte(affichage,message,posx,posy+30*0,255,255,255,TTF_STYLE_NORMAL,22);
