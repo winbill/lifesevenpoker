@@ -110,11 +110,11 @@ void afficheInfoTable(const Table & t)
 }
 
 
-void afficheMainCarte(const MainCarte & m,char titre[])
+void afficheMainCarte(const MainCarte & m,const char* titre)
 {
     printf("--Infos MainCarte  %s--\n",titre);
     printf("nCarte : %d\n",m.nCarte);
-    for(int i=0;i<5;i++)
+    for(int i=0;i<7;i++)
     {
         if(m.tabMain[i] != NULL)
         {
