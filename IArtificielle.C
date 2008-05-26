@@ -15,8 +15,7 @@
 #include "AfficheTxt.h"
 
 
-
-Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
+void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 {
     montant=montant;
     getTablePot(t);
@@ -28,9 +27,11 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 
     printf("resultat : %d\n",(int)res);
 
+    float proba = probaActionIA(t,j,res); //La probabilité que la main actuelle du joueur soit la meilleure dans la partie.
+
+    printf("proba : %f \n", proba);
 
     int argent=getArgentJoueur(j); //l'argent actuel de l'IA
-    //int rnd = rand()%100; //Nombre pseudo-aléatoire entre 1 et 100;
 
     //L'IA réagit selon le nombre de cartes découvertes dans un premier temps:
     switch (nbCartesDecouvertes)
@@ -93,146 +94,137 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
-            relance=argent; //il fait tapis
+            relance=argent*proba; //il fait tapis
         }
         else if (res == CARRE)
         {
             printf("%s a un carre  \n", j.pseudo);
-            relance=int(argent/2);
+            relance=int((argent/2)*proba);
         }
         else if (res == FULL)
         {
             printf("%s a un full \n", j.pseudo);
-            relance=int(argent/3);
+            relance=int((argent/3)*proba);
         }
         else if (res == QUINTE or res == COULEUR)
         {
             printf("%s a une quinte ou une couleur \n", j.pseudo);
-            relance=int(argent/4);
+            relance=int((argent/4)*proba);
         }
 
         else if (res == BRELAN)
         {
             printf("%s a un brelan \n", j.pseudo);
-            relance=100;
+            relance=100*proba;
         }
         else if (res == DOUBLE_PAIRE)
         {
             printf("%s a une double paire \n", j.pseudo);
-            relance=50;
+            relance=50*proba;
         }
         else if (res == PAIRE)
         {
             printf("%s a une paire \n", j.pseudo);
-            relance=20;
+            relance=20*proba;
         }
         else
         {
             printf("%s n'a rien \n", j.pseudo);
-            relance=0;
+            relance=0*proba;
         }
         break;
 
         //Au moment du TURN
     case 4 :
-       /* printf("debut\n\n\n\n\n");
-        printf("===> la proba : %f \n",probaActionIA(t,j,CARTE_HAUTE));
-        printf("fin\n\n\n\n\n");
-*/
         if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
-            relance=argent; //il fait tapis
+            relance=argent*proba; //il fait tapis
         }
         else if (res == CARRE)
         {
             printf("%s a un carre  \n", j.pseudo);
-            relance=int(argent/2);
+            relance=int((argent/2)*proba);
         }
         else if (res == FULL)
         {
             printf("%s a un full \n", j.pseudo);
-            relance=int(argent/3);
+            relance=int((argent/3)*proba);
         }
         else if (res == QUINTE or res == COULEUR)
         {
             printf("%s a une quinte ou une couleur \n", j.pseudo);
-            relance=int(argent/4);
+            relance=int((argent/4)*proba);
         }
 
         else if (res == BRELAN)
         {
             printf("%s a un brelan \n", j.pseudo);
-            relance=100;
+            relance=100*proba;
         }
         else if (res == DOUBLE_PAIRE)
         {
             printf("%s a une double paire \n", j.pseudo);
-            relance=50;
+            relance=50*proba;
         }
         else if (res == PAIRE)
         {
             printf("%s a une paire \n", j.pseudo);
-            relance=20;
+            relance=20*proba;
         }
         else
         {
             printf("%s n'a rien \n", j.pseudo);
-            relance=0;
+            relance=0*proba;
         }
         break;
 
         //Au moment du RIVER
     case 5 :
-
-
         //Si il a une quinte flush royale
-        if (res == QUINTE_FLUSH_ROYALE or res== QUINTE_FLUSH)
+        if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
-            relance=argent; //il fait tapis
+            relance=argent*proba; //il fait tapis
         }
         else if (res == CARRE)
         {
             printf("%s a un carre  \n", j.pseudo);
-            relance=int(argent/2);
+            relance=int((argent/2)*proba);
         }
         else if (res == FULL)
         {
             printf("%s a un full \n", j.pseudo);
-            relance=int(argent/3);
+            relance=int((argent/3)*proba);
         }
         else if (res == QUINTE or res == COULEUR)
         {
             printf("%s a une quinte ou une couleur \n", j.pseudo);
-            relance=int(argent/4);
+            relance=int((argent/4)*proba);
         }
 
         else if (res == BRELAN)
         {
             printf("%s a un brelan \n", j.pseudo);
-            relance=100;
+            relance=100*proba;
         }
         else if (res == DOUBLE_PAIRE)
         {
             printf("%s a une double paire \n", j.pseudo);
-            relance=50;
+            relance=50*proba;
         }
         else if (res == PAIRE)
         {
             printf("%s a une paire \n", j.pseudo);
-            relance=20;
+            relance=20*proba;
         }
         else
         {
             printf("%s n'a rien \n", j.pseudo);
-            relance=0;
+            relance=0*proba;
         }
         break;
     }
-    return FOLD;
-
-
 }
 
 
@@ -307,17 +299,17 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
 Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & cartesDecouvertes)
 {
     int nbCartesDecouvertes=getMainCarteNbCarte(cartesDecouvertes);
-    printf("nbCartesDecouvertes = %d \n", nbCartesDecouvertes);
+    //printf("nbCartesDecouvertes = %d \n", nbCartesDecouvertes);
     int nbCartesJoueur=getMainCarteNbCarte(mainJoueur);
-    printf("nbCartesJoueur = %d \n", nbCartesJoueur);
+    //printf("nbCartesJoueur = %d \n", nbCartesJoueur);
     int nbCartesTotal = nbCartesDecouvertes + nbCartesJoueur;
-    printf("nbCartesTotal = %d \n", nbCartesTotal);
+    //printf("nbCartesTotal = %d \n", nbCartesTotal);
 
     switch (nbCartesTotal)
     {
     case 2 :
     {
-        printf("=====================+DEBUT CASE 2+===================== \n");
+        //printf("=====================+DEBUT CASE 2+===================== \n");
 
 
     }
@@ -328,9 +320,9 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
     case 5 :
     {
 
-                printf("=====================+DEBUT CASE 5+===================== \n");
-                afficheMainCarte(mainJoueur,"mainJoueur");
-                afficheMainCarte(cartesDecouvertes,"cartesDecouvertes");
+                //printf("=====================+DEBUT CASE 5+===================== \n");
+                //afficheMainCarte(mainJoueur,"mainJoueur");
+                //afficheMainCarte(cartesDecouvertes,"cartesDecouvertes");
 
                 //On cree un histogramme pour referencer les cartes
                 int histogramme[5][2]={{0,0},{0,0},{0,0},{0,0},{0,0}};
@@ -502,7 +494,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
                 if (flush) return COULEUR;
                 if (straight) return QUINTE;
 
-                printf("<<<<<<<<     <<<<<<<< SORTIE 6\n");
+                //printf("<<<<<<<<     <<<<<<<< SORTIE 5\n");
                 //Enfin si aucun des cas précédents n'a correspondu c'est une carte haute
                 return CARTE_HAUTE;
 
@@ -513,7 +505,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 6 :
     {
-        printf("=====================+DEBUT CASE 6+===================== \n");
+        //printf("=====================+DEBUT CASE 6+===================== \n");
 
         //On recupere toutes les combinaisons de 5 cartes parmi 6
         int i,j,k;
@@ -526,11 +518,11 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         Main meilleureMain=CARTE_HAUTE;
         Main resultatMain=DEF;
 
-        afficheMainCarte(mainTotale,"mainTotale AVANT ajout");
-        afficheMainCarte(mainTest1,"mainTest1 AVANT ajout");
-        afficheMainCarte(mainTest2,"mainTest2 AVANT ajout");
-        afficheMainCarte(mainJoueur,"mainJoueur dans Case 6");
-        afficheMainCarte(cartesDecouvertes,"cartesDecouvertes dans Case 6");
+        //afficheMainCarte(mainTotale,"mainTotale AVANT ajout");
+        //afficheMainCarte(mainTest1,"mainTest1 AVANT ajout");
+        //afficheMainCarte(mainTest2,"mainTest2 AVANT ajout");
+        //afficheMainCarte(mainJoueur,"mainJoueur dans Case 6");
+        //afficheMainCarte(cartesDecouvertes,"cartesDecouvertes dans Case 6");
 
         ajouteCarte(mainTotale,getMainCarteIemeCarte(mainJoueur,0));
         ajouteCarte(mainTotale,getMainCarteIemeCarte(mainJoueur,1));
@@ -539,7 +531,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         ajouteCarte(mainTotale,getMainCarteIemeCarte(cartesDecouvertes,2));
         ajouteCarte(mainTotale,getMainCarteIemeCarte(cartesDecouvertes,3));
 
-        afficheMainCarte(mainTotale,"mainTotale APRES ajout");
+        //afficheMainCarte(mainTotale,"mainTotale APRES ajout");
 
         for (i=0;i<6;i++)
         {
@@ -560,8 +552,8 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
                 else k++;
             }
 
-            afficheMainCarte(mainTest1,"mainTest1 APRES ajout");
-            afficheMainCarte(mainTest2,"mainTest2 APRES ajout");
+            //afficheMainCarte(mainTest1,"mainTest1 APRES ajout");
+            //afficheMainCarte(mainTest2,"mainTest2 APRES ajout");
 
             resultatMain=determineMeilleureMainIA(mainTest1,mainTest2);
             reinitialisationMain(mainTest1);
@@ -578,7 +570,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
 
 
-        printf("<<<<<<<<     <<<<<<<< SORTIE 6\n");
+        //printf("<<<<<<<<     <<<<<<<< SORTIE 6\n");
 
         return meilleureMain;
     }
@@ -587,7 +579,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 7 :
     {
-        printf("=====================+DEBUT CASE 7+===================== \n");
+        //printf("=====================+DEBUT CASE 7+===================== \n");
 
         //On recupere toutes les combinaisons de 5 cartes parmi 6
         int i,j,k,l;
@@ -600,11 +592,11 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         Main meilleureMain=CARTE_HAUTE;
         Main resultatMain=DEF;
 
-        afficheMainCarte(mainTotale,"mainTotale AVANT ajout");
-        afficheMainCarte(mainTest1,"mainTest1 AVANT ajout");
-        afficheMainCarte(mainTest2,"mainTest2 AVANT ajout");
-        afficheMainCarte(mainJoueur,"mainJoueur dans Case 7");
-        afficheMainCarte(cartesDecouvertes,"cartesDecouvertes dans Case 7");
+        //afficheMainCarte(mainTotale,"mainTotale AVANT ajout");
+        //afficheMainCarte(mainTest1,"mainTest1 AVANT ajout");
+        //afficheMainCarte(mainTest2,"mainTest2 AVANT ajout");
+        //afficheMainCarte(mainJoueur,"mainJoueur dans Case 7");
+        //afficheMainCarte(cartesDecouvertes,"cartesDecouvertes dans Case 7");
 
         ajouteCarte(mainTotale,getMainCarteIemeCarte(mainJoueur,0));
         ajouteCarte(mainTotale,getMainCarteIemeCarte(mainJoueur,1));
@@ -614,7 +606,7 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
         ajouteCarte(mainTotale,getMainCarteIemeCarte(cartesDecouvertes,3));
         ajouteCarte(mainTotale,getMainCarteIemeCarte(cartesDecouvertes,4));
 
-        afficheMainCarte(mainTotale,"mainTotale APRES ajout");
+        //afficheMainCarte(mainTotale,"mainTotale APRES ajout");
 
         for (i=0;i<7;i++)
         {
@@ -637,8 +629,8 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
                     else l++;
                 }
 
-                afficheMainCarte(mainTest1,"mainTest1 APRES ajout");
-                afficheMainCarte(mainTest2,"mainTest2 APRES ajout");
+                //afficheMainCarte(mainTest1,"mainTest1 APRES ajout");
+                //afficheMainCarte(mainTest2,"mainTest2 APRES ajout");
 
                 resultatMain=determineMeilleureMainIA(mainTest1,mainTest2);
                 reinitialisationMain(mainTest1);
@@ -658,13 +650,13 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
 
 
-        printf("<<<<<<<<     <<<<<<<< SORTIE CASE 7\n");
+        //printf("<<<<<<<<     <<<<<<<< SORTIE CASE 7\n");
 
         return meilleureMain;
     }
     break;
     }
-    printf("<<<<<<<<     <<<<<<<< SORTIE FCT\n");
+    //printf("<<<<<<<<     <<<<<<<< SORTIE FCT\n");
 
     return DEF;
 }
@@ -674,6 +666,8 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
 {
     int i,j,k; //variables de boucle
     Carte c1,c2; //Represente deux cartes potentiellement dans la main d'un adversaire
+
+    int nbtest=0;
 
     initialisationCarte(c1);
     initialisationCarte(c2);
@@ -766,6 +760,9 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
                 }
                 MainCarteLibere(mainTest);
             }
+
+            nbtest++;
+            printf("nb de test: %d \n",nbtest);
 
         }
     }

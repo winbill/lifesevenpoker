@@ -39,10 +39,9 @@
 	@param [in] j Un joueur.
 	@param [in] montant Le montant de la mise actuel.
 	@param [in,out] relance La valeur de relance.
-	@return Une valeur de type Statut.
 	@author James
 */
-Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance);
+void calculIA(const Table & t,const Joueur & j,int montant,int &relance);
 
 
 /** @brief Definie le statut du joueur de type ordinateur selon ce qui aura ete calcule au prealable par calculIA.
