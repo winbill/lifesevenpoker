@@ -18,65 +18,65 @@
 
 
 
-void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50],bool afficheCarteGagnant)
+void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50],bool afficheCarteGagnant,int gagnantForfait)
 {
 
     //on alloue le tableau qui va contenir le resultat de la partie
     int tabResultat[10][6][2];
-
-
-    //s'il n'y a pas d'égalité
-    if (fonctionGlobaleDeterminationVainqueur(t,tabResultat)==0)
+    char message[30];
+    if (afficheCarteGagnant)
     {
-        char message2[30];
-        char message[30];
-        if (afficheCarteGagnant)
+        //s'il n'y a pas d'égalité
+        if (fonctionGlobaleDeterminationVainqueur(t,tabResultat)==0)
         {
-            //on affiche les cartes des joueurs faces découvertes
-            AffCartesJoueursJeu(affichage,t,false);
-            //on rajoute une image transaparente sur les images qui permettent d'avoir la forme
-            //sur les cartes decouvertes
-            AffCarteDecouvertes(t,affichage,true,tabResultat[0]);
-            //et sur les cartes du joueur concerné
-            AffCartesJoueursJeuFinale(affichage,t,tabResultat[0],tabResultat[0][0][1]);
-        }
-        switch (tabResultat[0][0][0])
-        {
-        case 0:
-            sprintf(message2,"%s %s",langue[36],langue[26]);
-            break;
-        case 1:
-            sprintf(message2,"%s %s",langue[36],langue[25]);
-            break;
-        case 2:
-            sprintf(message2,"%s %s",langue[36],langue[27]);
-            break;
-        case 3:
-            sprintf(message2,"%s %s",langue[35],langue[28]);
-            break;
-        case 4:
-            sprintf(message2,"%s %s",langue[36],langue[31]);
-            break;
-        case 5:
-            sprintf(message2,"%s %s",langue[36],langue[30]);
-            break;
-        case 6:
-            sprintf(message2,"%s %s",langue[35],langue[29]);
-            break;
-        case 7:
-            sprintf(message2,"%s %s",langue[35],langue[25]);
-            break;
-        case 8:
-            sprintf(message2,"%s %s",langue[36],langue[32]);
-            break;
-        default:
-            sprintf(message2,"%s",langue[38]);
-            break;
+            char message2[30];
 
-        }
-        //si au moins deux personnes ne se sont pas couchés
-        if (afficheCarteGagnant)
-        {
+            if (afficheCarteGagnant)
+            {
+                //on affiche les cartes des joueurs faces découvertes
+                AffCartesJoueursJeu(affichage,t,false);
+                //on rajoute une image transaparente sur les images qui permettent d'avoir la forme
+                //sur les cartes decouvertes
+                AffCarteDecouvertes(t,affichage,true,tabResultat[0]);
+                //et sur les cartes du joueur concerné
+                AffCartesJoueursJeuFinale(affichage,t,tabResultat[0],tabResultat[0][0][1]);
+            }
+            switch (tabResultat[0][0][0])
+            {
+            case 0:
+                sprintf(message2,"%s %s",langue[36],langue[26]);
+                break;
+            case 1:
+                sprintf(message2,"%s %s",langue[36],langue[25]);
+                break;
+            case 2:
+                sprintf(message2,"%s %s",langue[36],langue[27]);
+                break;
+            case 3:
+                sprintf(message2,"%s %s",langue[35],langue[28]);
+                break;
+            case 4:
+                sprintf(message2,"%s %s",langue[36],langue[31]);
+                break;
+            case 5:
+                sprintf(message2,"%s %s",langue[36],langue[30]);
+                break;
+            case 6:
+                sprintf(message2,"%s %s",langue[35],langue[29]);
+                break;
+            case 7:
+                sprintf(message2,"%s %s",langue[35],langue[25]);
+                break;
+            case 8:
+                sprintf(message2,"%s %s",langue[36],langue[32]);
+                break;
+            default:
+                sprintf(message2,"%s",langue[38]);
+                break;
+
+            }
+            //si au moins deux personnes ne se sont pas couchés
+
             //affichage en texte du vainqueur et de la forme
             sprintf(message,"%s:%s %s %s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,langue[34],message2);
             AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
@@ -96,22 +96,16 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][
             }
             //si tout le monde s'est couché sauf une personne, on n'affiche pas de message sur la forme qui le fait gagner
         }
-        else
-        {
-            sprintf(message,"%s:%s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo);
-            AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
-            SDL_Flip(affichage);
-            setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
-            setTablePot(t,0);
-        }
-        pause();
     }
     else
     {
-
-        //test pr savoir qui a les mme mains que le gagnant
-
+        sprintf(message,"%s:%s\n",langue[33],(*getIemeJoueur(t,gagnantForfait)).pseudo);
+        AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
+        SDL_Flip(affichage);
+        setArgentJoueur(*getIemeJoueur(t,gagnantForfait),getArgentJoueur(*getIemeJoueur(t,gagnantForfait))+getTablePot(t));
+        setTablePot(t,0);
     }
+    pause();
 
 
 }
@@ -1314,8 +1308,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                 j++;
 
             }
-            //if(i==1)
-            //tout le monde sest couche sauf k
+            if (i==1)//tout le monde sest couche sauf k
+                boucleJeu=5;
+
 
 
             finTour=getNJoueurTable(t);
@@ -1372,11 +1367,11 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                 assert(a>0);
                 if (a==1)
                 {
-                    affAffichageVainqueur(affichage,t,langue,false);
+                    affAffichageVainqueur(affichage,t,langue,false,k);
                 }
                 else
                 {
-                    affAffichageVainqueur(affichage,t,langue,true);
+                    affAffichageVainqueur(affichage,t,langue,true,k);
                 }
 
                 blindAMettre=true;
