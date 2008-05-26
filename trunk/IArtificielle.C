@@ -94,7 +94,7 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
-            relance=argent*proba; //il fait tapis
+            relance=int(argent*proba); //il fait tapis
         }
         else if (res == CARRE)
         {
@@ -115,22 +115,22 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         else if (res == BRELAN)
         {
             printf("%s a un brelan \n", j.pseudo);
-            relance=100*proba;
+            relance=int(100*proba);
         }
         else if (res == DOUBLE_PAIRE)
         {
             printf("%s a une double paire \n", j.pseudo);
-            relance=50*proba;
+            relance=int(50*proba);
         }
         else if (res == PAIRE)
         {
             printf("%s a une paire \n", j.pseudo);
-            relance=20*proba;
+            relance=int(20*proba);
         }
         else
         {
             printf("%s n'a rien \n", j.pseudo);
-            relance=0*proba;
+            relance=int(0*proba);
         }
         break;
 
@@ -139,7 +139,7 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
-            relance=argent*proba; //il fait tapis
+            relance=int(argent*proba); //il fait tapis
         }
         else if (res == CARRE)
         {
@@ -160,22 +160,22 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         else if (res == BRELAN)
         {
             printf("%s a un brelan \n", j.pseudo);
-            relance=100*proba;
+            relance=int(100*proba);
         }
         else if (res == DOUBLE_PAIRE)
         {
             printf("%s a une double paire \n", j.pseudo);
-            relance=50*proba;
+            relance=int(50*proba);
         }
         else if (res == PAIRE)
         {
             printf("%s a une paire \n", j.pseudo);
-            relance=20*proba;
+            relance=int(20*proba);
         }
         else
         {
             printf("%s n'a rien \n", j.pseudo);
-            relance=0*proba;
+            relance=int(0*proba);
         }
         break;
 
@@ -185,7 +185,7 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
-            relance=argent*proba; //il fait tapis
+            relance=int(argent*proba); //il fait tapis
         }
         else if (res == CARRE)
         {
@@ -206,22 +206,22 @@ void calculIA(const Table & t,const Joueur & j,int montant,int &relance)
         else if (res == BRELAN)
         {
             printf("%s a un brelan \n", j.pseudo);
-            relance=100*proba;
+            relance=int(100*proba);
         }
         else if (res == DOUBLE_PAIRE)
         {
             printf("%s a une double paire \n", j.pseudo);
-            relance=50*proba;
+            relance=int(50*proba);
         }
         else if (res == PAIRE)
         {
             printf("%s a une paire \n", j.pseudo);
-            relance=20*proba;
+            relance=int(20*proba);
         }
         else
         {
             printf("%s n'a rien \n", j.pseudo);
-            relance=0*proba;
+            relance=int(0*proba);
         }
         break;
     }
@@ -667,7 +667,7 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
     int i,j,k; //variables de boucle
     Carte c1,c2; //Represente deux cartes potentiellement dans la main d'un adversaire
 
-    int nbtest=0;
+    //int nbtest=0;
 
     initialisationCarte(c1);
     initialisationCarte(c2);
@@ -759,7 +759,7 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
                     {
                         //Si cela donne une main moins bonne que celle du joueur alors on incrémente le compteur
                         compteur++;
-                        printf("%d ",compteur);
+                        //printf("%d ",compteur);
 
                     }
                     MainCarteLibere(mainTest);
@@ -768,20 +768,20 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
 
             }
 
-            nbtest++;
-            printf(" i : %d  | j : %d \n", i, j);
+            //nbtest++;
+            //printf(" i : %d  | j : %d \n", i, j);
 
         }
     }
 
-    float temp = (((50 - nbCartesDecouvertes) * (49 - nbCartesDecouvertes)) / 2);
+    float possibilites = (((50 - nbCartesDecouvertes) * (49 - nbCartesDecouvertes)) / 2);
 
     //On calcule enfin la probabilité qu'a le joueur de gagner à coup sur avec sa main et le tapîs courrant
-    float proba = compteur / temp ;
+    float proba = compteur / possibilites ;
 
-    printf("nb de test: %d \n",nbtest);
-    printf("nbCartesDecouvertes : %d \n", nbCartesDecouvertes);
-    printf("temp : %f\n",temp);
+    //printf("nb de test: %d \n",nbtest);
+    //printf("nbCartesDecouvertes : %d \n", nbCartesDecouvertes);
+    //printf("temp : %f\n",temp);
 
     pileCarteLibere(ptemp);
 
