@@ -27,29 +27,30 @@
 bool compareTabResultat(const int tabResultat1[6][2],const int tabResultat2[6][2]);
 
 
-/**	@brief
-	@param aff
-	@param 	t
-	@param j
+/**	@brief attends l'action du joueur, si c'est l'ia appel la fonction d'ia si c'est humain appel la fonction de scan
+	@param aff affichage
+	@param 	t table
+	@param j joueur concerne
 	@param relance
-	@param s
+	@param s statut
 	@param montant
+	@param langue language
 	@note
 */
 int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50]);
 
 
 /**	@brief Le joueur j de la table t paie la petite blind
-	@param t
-	@param j
+	@param t table
+	@param j Joueur
 	@note
 */
 void joueurPetiteBlind(Table & t,Joueur & j);
 
 
 /**	@brief Le joueur j de la table t paie la grosse blind
-	@param t
-	@param j
+	@param t table
+	@param j Joueur
 	@note
 */
 void joueurGrosseBlind(Table & t,Joueur & j);
@@ -75,7 +76,7 @@ void distribuer1CarteDecouverteJeu(Table & table,int n);
 void intitialiseTab3d(int tabResultat[10][6][2]);
 
 
-/**	@brief
+/**	@brief Determine le vainqueur de la manche
 	@param t
 	@param tabResultat
 	@note
@@ -91,9 +92,9 @@ int trieTab3d(int tabResultat[10][6][2]);
 
 
 /**	@brief determine le vainqueur de la table t
-	@param t
+	@param t table
 	@param 	tabResultat tableau a 3 dimensions
-	@note
+	@note appel pour chaque joueur (qui joue pas i.e. pas couche) la fonction codageScoreMain
 */
 int fonctionGlobaleDeterminationVainqueur(const Table & t,int tabResultat[10][6][2]);
 
