@@ -570,7 +570,10 @@ return CARTE_HAUTE;
         int i,j,k,l;
         //On travaille sur des mains temporaires
         MainCarte mainTotale;
+        initialisationMain(mainTotale);
         MainCarte mainTest1,mainTest2;
+        initialisationMain(mainTest1);
+        initialisationMain(mainTest2);
         Main meilleureMain=CARTE_HAUTE;
         Main resultatMain=DEF;
 
