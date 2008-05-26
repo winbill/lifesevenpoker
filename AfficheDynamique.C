@@ -12,7 +12,7 @@
 
 //Librairies Life'Seven Poker
 #include "AfficheDynamique.h"
-#include "Language.h"
+#include "Langage.h"
 
 
 
@@ -26,7 +26,7 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][
 
 
     //s'il n'y a pas d'égalité
-    if (fonctionGlobaleDetrminationVainqueur(t,tabResultat)==0)
+    if (fonctionGlobaleDeterminationVainqueur(t,tabResultat)==0)
     {
         char message2[30];
         char message[30];

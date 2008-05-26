@@ -5,8 +5,8 @@
 
 	@author Tristan James Benjamin
 	@file Joueur.h
-	@version 1.2
-	@date 2008/04/23
+	@version 1.3
+	@date 2008/05/26
 */
 #ifndef Joueur_H
 #define Joueur_H
@@ -73,20 +73,18 @@ struct Joueur
 };
 
 
-/** @brief Procedure d'ajout d'argent a un joueur donne.
-    @param [in,out] joueur Un joueur.
-    @param [in] n La quantite d'argent que l'on va donner au joueur.
-    @note Modifie la valeur du champ'argent' de la structure joueur.
+/** @brief Fonction qui renvoie la valeur du champ tapis d'une structure joueur.
+    @param [in]
+    @return Une valeur de type int.
 */
-void ajoutArgentJoueur(Joueur & joueur, int n);
+int getTapisJoueur(const Joueur & j);
 
 
-/** @brief Procedure qui ajoute a un joueur ses gains de tapis.
+/** @brief Procedure qui modifie la valeur du champ tapis d'une structure joueur.
     @param [in,out] j Un joueur.
-    @param [in] n La quantite d'argent que le joueur a gagne lors du tapis.
-    @note Modifie la valeur du champ 'gainTapis' de la structure joueur.
+    @param [in] n La nouvelle valeur de tapis.
 */
-void  ajouteGainTapisJoueur(Joueur & j,int n);
+void setTapisJoueur(Joueur & j,int n);
 
 
 /** @brief Fonction qui renvoie la valeur du champ gainTapis de la structure joueur.
@@ -103,33 +101,19 @@ int getGainTapisJoueur(const Joueur & j);
 void setGainTapisJoueur(Joueur & j,int n);
 
 
-/** @brief Fonction qui renvoie la valeur du champ tapis d'une structure joueur.
-    @param [in]
-    @return Une valeur de type int.
-*/
-int getTapisJoueur(const Joueur & j);
-
-
-/** @brief Procedure qui modifie la valeur du champ tapis d'une structure joueur.
+/** @brief Procedure qui ajoute a un joueur ses gains de tapis.
     @param [in,out] j Un joueur.
-    @param [in] n La nouvelle valeur de tapis.
+    @param [in] n La quantite d'argent que le joueur a gagne lors du tapis.
+    @note Modifie la valeur du champ 'gainTapis' de la structure joueur.
 */
-void setTapisJoueur(Joueur & j,int n);
+void  ajouteGainTapisJoueur(Joueur & j,int n);
 
 
-/** @brief Procedure qui reinitialise le champ mainJoueur d'une structure joueur.
-    @param [in,out] j Un joueur.
+/**	@brief Initialise un joueur.
+	@param [in,out] joueur Un joueur.
+	@note On initialise le champ idJoueur avec la valeur -1.
 */
-void reinitialisationMainJoueur(Joueur & j);
-
-
-/** @brief Procedure qui rend effective l'action d'un joueur.
-    @param [in,out] j Un joueur.
-    @param [in] s Un statut.
-    @param [in,out] montant La valeur du montant actuelle des mises.
-    @param [in] relance La quantite d'argent qu'est pres a mettre le joueur pour continuer la manche.
-*/
-void actionJoueur(Joueur & j,Statut s,int & montant,int relance);
+void initJoueur(Joueur & joueur);
 
 
 /** @brief Fonction qui renvoie la position en X de l'affichage d'un joueur.
@@ -160,15 +144,10 @@ void setPositionJoueurY(Joueur & j,int y);
 
 /**	@brief Initialise un joueur.
 	@param [in,out] joueur Un joueur.
-	@note On initialise le champ idJoueur avec la valeur -1.
-*/
-void initJoueur(Joueur & joueur);
-
-/**	@brief Initialise un joueur.
-	@param [in,out] joueur Un joueur.
 	@param [in] pseudo Nom du joueur (15 caracteres au maximum).
 */
 void initJoueur (Joueur & joueur,const char* pseudo);
+
 
 /** @brief Cree dans le tas une variable joueur puis l'initialise.
 	@note Appelle la fonction initJoueur.
@@ -176,13 +155,15 @@ void initJoueur (Joueur & joueur,const char* pseudo);
 */
 Joueur* creeJoueur();
 
+
 /**	@brief Change le statut du joueur.
 	@param [in,out] joueur Un joueur.
 	@param [in] statut La valeur de statut qui sera attribuee au joueur.
 */
 void setStatutJoueur (Joueur & joueur, const Statut statut);
 
-/** 	@brief Recupere le statut du joueur.
+
+/** @brief Recupere le statut du joueur.
 	@param [in,out] joueur Un joueur.
 	@return Renvoie le valeur de statut actuelle de joueur.
 */
@@ -278,9 +259,27 @@ void setArgentJoueur(Joueur & joueur, int n);
 int getArgentJoueur(const Joueur & joueur);
 
 
-/** @brief affiche les infos du joueurs
-    @note fonction debug
+/** @brief Procedure d'ajout d'argent a un joueur donne.
+    @param [in,out] joueur Un joueur.
+    @param [in] n La quantite d'argent que l'on va donner au joueur.
+    @note Modifie la valeur du champ'argent' de la structure joueur.
 */
-void afficheInfoJoueur(const Joueur & j);
+void ajoutArgentJoueur(Joueur & joueur, int n);
+
+
+/** @brief Procedure qui reinitialise le champ mainJoueur d'une structure joueur.
+    @param [in,out] j Un joueur.
+*/
+void reinitialisationMainJoueur(Joueur & j);
+
+
+/** @brief Procedure qui rend effective l'action d'un joueur.
+    @param [in,out] j Un joueur.
+    @param [in] s Un statut.
+    @param [in,out] montant La valeur du montant actuelle des mises.
+    @param [in] relance La quantite d'argent qu'est pres a mettre le joueur pour continuer la manche.
+*/
+void actionJoueur(Joueur & j,Statut s,int & montant,int relance);
+
 
 #endif

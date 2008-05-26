@@ -24,11 +24,14 @@ struct Carte
 	char nomFichier[15];
 };
 
+
+
 /**	@brief Procedure initialisant une nouvelle carte.
 	@param [in,out] Carte Une carte.
 	@warning Deux valeurs par defaut existent: Init_Rang et Init_Couleur. Elles sont considerees commes des 0.
 */
 void initialisationCarte(Carte & c);
+
 
 /**	@brief Fonction recuperant le rang d'une carte.
 	@param [in] Carte Une Carte.
@@ -37,12 +40,14 @@ void initialisationCarte(Carte & c);
 */
 int getCarteRang(const Carte & c);
 
+
 /**	@brief Fonction recuperant la couleur d'une carte.
 	@param [in] Carte Une Carte.
 	@return Renvoie la valeur de la couleur de la carte.
 	@note Accesseur.
 */
 int getCarteCouleur(const Carte & c);
+
 
 /**	@brief Procedure modifiant les valeurs d'une carte.
 	@param [in,out] Carte Une carte.
@@ -52,6 +57,7 @@ int getCarteCouleur(const Carte & c);
 	@note Mutateur
 */
 void setCarte(Carte & c,const int & couleur,const int & rang);
+
 
 /**	@brief Fonction comparant deux carte par rapport a leur valeur.
 	@param [in,out] Carte Une carte.
@@ -63,6 +69,7 @@ void setCarte(Carte & c,const int & couleur,const int & rang);
 			->	-1 si la premiere carte est plus forte que la deuxieme
 */
 int compareCarte(const Carte & c1, const Carte & c2);
+
 
 /** @brief procedure qui renvoit dans un tableau le nom de l'image associe a la carte
     @param [in] c Carte

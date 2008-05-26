@@ -94,10 +94,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Joueur.h" />
-		<Unit filename="Language.C">
+		<Unit filename="Langage.C">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Language.h" />
+		<Unit filename="Langage.h" />
 		<Unit filename="MainCarte.C">
 			<Option compilerVar="CC" />
 		</Unit>

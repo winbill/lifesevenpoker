@@ -6,7 +6,7 @@
 
 	@author James
 	@file Jeu.h
-	@version 1.1
+	@version 1.2
 	@date 2008/04/11
  */
 
@@ -15,7 +15,16 @@
 #include "Table.h"
 #include "AfficheDynamique.h"
 
+
+
+/**	@brief fonction permettant de comparer deux tableaux
+	@param tabResultat
+	@param tabResultat2
+	@return bool
+	@note
+*/
 bool compareTabResultat(const int tabResultat1[6][2],const int tabResultat2[6][2]);
+
 
 /**	@brief
 	@param aff
@@ -27,21 +36,6 @@ bool compareTabResultat(const int tabResultat1[6][2],const int tabResultat2[6][2
 	@note
 */
 int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50]);
-
-
-/**	@brief trie un tableau a 3 dimensions
-	@param tabResultat
-	@note
-*/
-int trieTab3d(int tabResultat[10][6][2]);
-
-
-/**	@brief determine le vainqueur de la table t
-	@param t
-	@param 	tabResultat tableau a 3 dimensions
-	@note
-*/
-int fonctionGlobaleDetrminationVainqueur(const Table & t,int tabResultat[10][6][2]);
 
 
 /**	@brief Le joueur j de la table t paie la petite blind
@@ -60,6 +54,19 @@ void joueurPetiteBlind(Table & t,Joueur & j);
 void joueurGrosseBlind(Table & t,Joueur & j);
 
 
+/**	@brief donne deux carte a chacun des joueurs de la table
+	@param [in, out] table une table
+*/
+void distribuer2CartesJoueursJeu(Table & table);
+
+
+/**	@brief decouvre n carte sur la table
+	@param [in, out] table une table
+	@param [in] n un entier qui correspond au nombre de carte a retourner sur  la table
+*/
+void distribuer1CarteDecouverteJeu(Table & table,int n);
+
+
 /**	@brief initialise un tableau a 3 dimensions
 	@param tabResultat
 	@note
@@ -75,27 +82,27 @@ void intitialiseTab3d(int tabResultat[10][6][2]);
 void jeuDetermineVainqueur(const Table & t,int tabResultat[10][6][2]);
 
 
-
-/**	@brief initialise le jeu automatiquement pour une partie contre l'ordinateur (9 IA au max)
-	@note donne de largent a chacun des joueurs, affecte les IA, les places, le dealer....
-	@param [in, out] table une table
-	@param [in] argent montant au depart
-	@note getNJoueurTable(), setArgentJoueur()
+/**	@brief trie un tableau a 3 dimensions
+	@param tabResultat
+	@note
 */
-void initialiseJeu(Table & table,int argent);
+int trieTab3d(int tabResultat[10][6][2]);
 
 
-/**	@brief donne deux carte a chacun des joueurs de la table
-	@param [in, out] table une table
+/**	@brief determine le vainqueur de la table t
+	@param t
+	@param 	tabResultat tableau a 3 dimensions
+	@note
 */
-void distribuer2CartesJoueursJeu(Table & table);
+int fonctionGlobaleDeterminationVainqueur(const Table & t,int tabResultat[10][6][2]);
 
 
-/**	@brief decouvre n carte sur la table
-	@param [in, out] table une table
-	@param [in] n un entier qui correspond au nombre de carte a retourner sur  la table
+/**	@brief Procedure de tri de main.
+	@param Prend en entree le tableau des 7 cartes du joueur
+	@return modifie le tableau de sorte que les cartes soient trié dans l'ordre décroissant
+	@author Tristan
 */
-void distribuer1CarteDecouverteJeu(Table & table,int n);
+void trieTableauRang(int tab7Carte[7][2]);
 
 
 /** @brief fonction PRINCIPALE pour obtenir le code d'une main donc ca force

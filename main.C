@@ -13,7 +13,7 @@
 #include "Joueur.h"
 #include "Table.h"
 #include "IArtificielle.h"
-#include "Language.h"
+#include "Langage.h"
 //#include "AfficheTxt.h"
 
 

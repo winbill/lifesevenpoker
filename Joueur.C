@@ -24,21 +24,26 @@ int getTapisJoueur(const Joueur & j)
 {
     return j.tapis;
 }
+
+
 void setTapisJoueur(Joueur & j,int n)
 {
     j.tapis=n;
 }
 
 
-
 int getGainTapisJoueur(const Joueur & j)
 {
     return j.gainTapis;
 }
+
+
 void setGainTapisJoueur(Joueur & j,int n)
 {
     j.gainTapis=n;
 }
+
+
 void  ajouteGainTapisJoueur(Joueur & j,int n)
 {
     setGainTapisJoueur(j,getGainTapisJoueur(j)+n);
@@ -111,15 +116,18 @@ Statut getStatutJoueur (const Joueur & joueur)
     return joueur.statut;
 }
 
+
 void setTypeJoueur(Joueur & joueur, const TypeJoueur typejoueur)
 {
     joueur.type = typejoueur;
 }
 
+
 TypeJoueur getTypeJoueur(const Joueur & joueur)
 {
     return joueur.type;
 }
+
 
 void joueurLibere(Joueur & joueur)
 {
@@ -189,6 +197,8 @@ int getArgentJoueur(const Joueur & joueur)
 {
     return joueur.argent;
 }
+
+
 void ajoutArgentJoueur(Joueur & joueur, int n)
 {
     setArgentJoueur(joueur,getArgentJoueur(joueur)+n);
@@ -223,6 +233,7 @@ void reinitialisationMainJoueur(Joueur & j)
 {
     reinitialisationMain(*getMainJoueur(j));
 }
+
 
 void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
 {
