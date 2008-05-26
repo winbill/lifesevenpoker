@@ -2,7 +2,7 @@
 	@brief Fichier C pour l'affichage en mode texte
 
 
-	gere l'affichage et le debug en mode texte uniquement
+	Gere l'affichage et le debug en mode texte uniquement.
 
 	@author  James
 	@file AfficheTxt.h
@@ -23,8 +23,6 @@
 #include <stdio.h>
 
 
-
-
 void afficheTxtGainTapis(const Table & t,const char* titre)
 {
     printf("----------%s--------\n",titre);
@@ -35,12 +33,7 @@ void afficheTxtGainTapis(const Table & t,const char* titre)
             printf("Gain Tapis joueur n°%d : %d\n",i,getGainTapisJoueur(*getIemeJoueur(t,i)));
         }
     }
-
 }
-
-
-
-
 
 
 void afficheTab2(int tab[][2],int x)
@@ -53,6 +46,7 @@ void afficheTab2(int tab[][2],int x)
     printf("\n");
 }
 
+
 void afficheTab3(int tab[][6][2],int x)
 {
     printf("------------------Tableau[%d][6][2]------------------\n",x);
@@ -64,6 +58,7 @@ void afficheTab3(int tab[][6][2],int x)
     printf("------------------------------------------------------\n");
 }
 
+
 void afficheTab(int tab[],int x)
 {
     printf("-----Tableau[%d]----\n",x);
@@ -73,6 +68,7 @@ void afficheTab(int tab[],int x)
     }
     printf("\n");
 }
+
 
 void afficheInfoJoueur(const Joueur & j)
 {
@@ -84,9 +80,8 @@ void afficheInfoJoueur(const Joueur & j)
     printf("statut : %d\n",(int)j.statut);
     printf("type : %d\n",j.type);
     printf("-----FIN-----\n");
-
-
 }
+
 
 void afficheInfoTable(const Table & t)
 {
@@ -109,8 +104,8 @@ void afficheInfoTable(const Table & t)
     printf("positionDealer : %d\n",t.positionDealer);
 
     printf("-----FIN-----\n");
-
 }
+
 
 void afficheMainCarte(const MainCarte & m,char titre[])
 {
@@ -126,11 +121,7 @@ void afficheMainCarte(const MainCarte & m,char titre[])
         }
     }
 
-
-
     printf("-----FIN-----\n");
-
-
 }
 
 #endif

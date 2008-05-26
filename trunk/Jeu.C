@@ -2,13 +2,14 @@
 	@brief Fichier C qui gere le jeu
 
 
-	fichier principal qui sert a initialiser une partie et la terminer
+	Fichier principal qui sert a initialiser une partie et a la terminer.
 
 	@author James
 	@file Jeu.C
 	@version 1.1
 	@date 2008/04/16
  */
+
 
 //Librairies Life'Seven Poker
 #include "Jeu.h"
@@ -22,6 +23,7 @@
 //Librairies Standard
 #include <stdlib.h>
 #include <stdio.h>
+
 
 bool compareTabResultat(const int tabResultat1[6][2],const int tabResultat2[6][2])
 {

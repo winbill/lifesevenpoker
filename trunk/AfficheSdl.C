@@ -1,3 +1,17 @@
+/**
+    @brief Fichier C pour l'affichage en SDL
+
+
+    Gere les fonctions d'affichage de base avec SDL.
+
+    @author James Benjamin
+    @file AfficheSDL.C
+    @version 1.4
+    @date 2008/05/26
+*/
+
+
+//Librairies Life'Seven Poker
 #include "AfficheSdl.h"
 
 
@@ -84,8 +98,6 @@ SDL_Surface *load_image( const char* filename )
 }
 
 
-
-
 void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination )
 {
     SDL_Rect offset;
@@ -112,6 +124,8 @@ void affichageOmbreCarte(SDL_Surface* affichage,int x,int y,double zoom)
 
 
 }
+
+
 void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom)
 {
     AffAfficheCarte(affichage,c, x, y, zoom,false);
@@ -137,20 +151,11 @@ void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom
     SDL_FreeSurface(carte);
     apply_surface(x,y,surfaceZoom,affichage);
     SDL_FreeSurface(surfaceZoom);
-
-
-
-
-
 }
-
-
 
 
 void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,int r,int g,int b,int style,int size)
 {
-
-
     //La surface où on va coller le message
     SDL_Surface* texte;
     //Le Font qu'on va utiliser
@@ -185,20 +190,19 @@ void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,in
 
     TTF_CloseFont(font);
     SDL_FreeSurface(texte);
-
 }
+
 
 void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,int r,int g,int b)
 {
     AffAfficheTexte(destination,message,x,y,r,g,b,TTF_STYLE_NORMAL,28);
 }
 
+
 void AffActualiser(SDL_Surface* affichage)
 {
     SDL_Flip(affichage);
-    //SDL_UpdateRect(affichage, 0, 0, 0, 0);
 }
-
 
 
 void AffAfficheTapis(SDL_Surface* aff,SDL_Surface* tapis)
@@ -206,16 +210,4 @@ void AffAfficheTapis(SDL_Surface* aff,SDL_Surface* tapis)
     apply_surface(0,0,tapis,aff);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

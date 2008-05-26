@@ -2,7 +2,7 @@
 	@brief Fichier H pour l'affichage en mode texte
 
 
-	gere l'affichage et le debug en mode texte uniquement
+	Gere l'affichage et le debug en mode texte uniquement.
 
 	@author  Tristan, James
 	@file AfficheTxt.h
@@ -19,54 +19,56 @@
 #include "Jeu.h"
 
 
-/**	@brief
-	@param t
-	@param titre
-	@note
+/**	@brief Procedure d'affichage des gains des tapis des joueurs de la table.
+	@param [in] t Une table.
+	@param [in] titre Un tableau de caracteres contenant un titre pour l'affichage.
+	@note Utilisee pour le Debug uniquement.
 */
 void afficheTxtGainTapis(const Table & t,const char* titre);
 
 
-/**	@brief
-	@param tab
-	@note
+/**	@brief Procedure qui affiche le contenu d'un nombre donne de colonnes d'un tableau a deux dimensions.
+	@param [in] tab Le tableau en question.
+	@param [in] x Le nombres de colonnes a afficher.
+	@note Utilisee pour le Debug uniquement.
 */
 void afficheTab2(int tab[][2],int x);
 
 
-/**	@brief
-	@param tab
-	@param x
-	@note
+/**	@brief Procedure qui affiche le contenu d'un nombre donne de colonnes d'un tableau à trois dimensions.
+	@param [in] tab Le tableau en question.
+	@param [in] x Le nombres de colonnes a afficher.
+	@note Utilisee pour le Debug uniquement.
 */
-
 void afficheTab3(int tab[][6][2],int x);
 
 
-/**	@brief
-	@param tab
-	@param x
-	@note
+/**	@brief Procedure qui affiche le contenu d'un nombre donne de colonnes d'un tableau à une dimension.
+	@param [in] tab Le tableau en question.
+	@param [in] x Le nombres de colonnes a afficher.
+	@note Utilisee pour le Debug uniquement.
 */
 void afficheTab(int tab[],int x);
 
 
-/**	@brief affiche les informations du joueur j en mode txt (pseudo, argent,mise, statut...)
-	@param j Joueur j est celui dont on veut afficher les informations
+/**	@brief Procedure qui affiche les informations d'un joueur en mode texte (pseudo, argent, mise, statut, etc...).
+	@param [in] j Un joueur.
+	@note Utilisee pour le debug uniquement.
 */
 void afficheInfoJoueur(const Joueur & j);
 
 
-/**	@brief affiche les informations de la table t en mode txt (liste des joueur avec leur num de place, dealer, blind...)
-	@param Table t est la table dont on affiche les informations
+/**	@brief Procedure qui affiche les informations d'une table en mode texte (liste des joueur avec leur numero de place, dealer, blind...).
+	@param [in] t Une table.
+	@note Utilisee pour le debug uniquement.
 */
 void afficheInfoTable(const Table & t);
 
 
-/**	@brief
-	@param m
-	@param titre
-	@note
+/**	@brief Procedure qui affiche le contenu d'une main de cartes en mode texte.
+	@param [in] m La main qui contient les cartes.
+	@param [in] titre Un tableau de caracteres contenant un titre pour l'affichage.
+	@note Utilisee pour le debug uniquement.
 */
 void afficheMainCarte(const MainCarte & m,char titre[]);
 
