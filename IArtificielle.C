@@ -614,23 +614,24 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
 float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMainJoueur)
 {
-    int i,j,k,l;
+    int i,j,k,l; //variables de boucle
     Carte c1,c2; //Represente deux cartes potentiellement dans la main d'un adversaire
 
     initialisationCarte(c1);
     initialisationCarte(c2);
 
-    MainCarte mainJoueur = *getMainJoueur(joueur);
-    MainCarte cartesDecouvertes = *getMainCarteTable(table);
-    int nbCartesDecouvertes = getMainCarteNbCarte(cartesDecouvertes);
+    MainCarte mainJoueur = *getMainJoueur(joueur); //On récupere les cartes que le joueur a en main
+    MainCarte cartesDecouvertes = *getMainCarteTable(table); //On récupere les cartes du board
+    int nbCartesDecouvertes = getMainCarteNbCarte(cartesDecouvertes); //On récupere aussi le nombre de cartes du board
 
+    //On crée une pile de cartes temporaire et on la rempli des 52 cartes d'un jeu standard
     PileCarte ptemp;
     initPileCarte(ptemp);
 
+    //Variable qui compte le nombres de situations dans lesquelles le joueur est vainqueur a coup sur.
     int compteur=0;
 
-
-
+    //On parcourre toutes les combinaisons possibles de deux cartes parmi 52
     for(i=0;i<52;i++)
     {
         for(j=i;j<52;j++)
@@ -640,9 +641,11 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
                 setCarte(c1,getCarteCouleur(*ptemp.ensembleCarte[i]),getCarteRang(*ptemp.ensembleCarte[i]));
                 setCarte(c2,getCarteCouleur(*ptemp.ensembleCarte[j]),getCarteRang(*ptemp.ensembleCarte[j]));
 
-                bool okc1 = true;
-                bool okc2 = true;
+                bool okc1 = true; //Est vrai tant que la carte c1 n'a pas été trouvé dans la main du joueur ou sur le board
+                bool okc2 = true; //Idem pour c2
 
+
+                //On teste si la carte c1 n'est pas dans la main du joueur ou sur le board
                 for(k=0;k<7;k++)
                 {
                     if(k<2)
@@ -663,6 +666,7 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
                     }
                 }
 
+                //On fait pareil pour la carte c2
                 for(l=0;l<7;l++)
                 {
                     if(l<2)
@@ -684,20 +688,23 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
                 }
 
 
+                //Dans le cas ou le couple c1 c2 est une des possibilités de main adverse alors on procède aux tests.
                 if(okc1 and okc2)
                 {
+                    //On crée une main de test
                     MainCarte mainTest;
                     initialisationMain(mainTest);
 
+                    //On y ajoute nos deux cartes c1 et c2
                     ajouteCarte(mainTest,&c1);
                     ajouteCarte(mainTest,&c2);
 
                     Main res = DEF;
-
-                    res = determineMeilleureMainIA(mainTest,cartesDecouvertes);
+                    res = determineMeilleureMainIA(mainTest,cartesDecouvertes); //On regarde quelle hauteur de main cela donnerai avec le board courrant
 
                     if(res < meilleureMainJoueur)
                     {
+                        //Si cela donne une main moins bonne que celle du joueur alors on incrémente le compteur
                         compteur++;
                     }
                 }
@@ -705,8 +712,10 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
         }
     }
 
+    //On calcule enfin la probabilité qu'a le joueur de gagner à coup sur avec sa main et le board courrant
     float proba = float(compteur / (((50 - nbCartesDecouvertes) * (49 - nbCartesDecouvertes)) / 2));
 
+    //Et on retourne cette valeur
     return proba;
 
 }
