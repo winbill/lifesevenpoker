@@ -21,16 +21,18 @@
 void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50],bool afficheCarteGagnant,int gagnantForfait)
 {
 
-    //on alloue le tableau qui va contenir le resultat de la partie
-    int tabResultat[10][6][2];
-    char message[30];
+
     if (afficheCarteGagnant)
     {
+        //on alloue le tableau qui va contenir le resultat de la partie
+        int tabResultat[10][6][2];
+
+
         //s'il n'y a pas d'égalité
         if (fonctionGlobaleDeterminationVainqueur(t,tabResultat)==0)
         {
             char message2[30];
-
+            char message[30];
             if (afficheCarteGagnant)
             {
                 //on affiche les cartes des joueurs faces découvertes
@@ -76,29 +78,49 @@ void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][
 
             }
             //si au moins deux personnes ne se sont pas couchés
-
-            //affichage en texte du vainqueur et de la forme
-            sprintf(message,"%s:%s %s %s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,langue[34],message2);
-            AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
-            SDL_Flip(affichage);
-            //si le gagant n'a pas fait un tapis
-            if (getStatutJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))!=ALL_IN)
+            if (afficheCarteGagnant)
             {
+                //affichage en texte du vainqueur et de la forme
+                sprintf(message,"%s:%s %s %s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo,langue[34],message2);
+                AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
+                SDL_Flip(affichage);
+                //si le gagant n'a pas fait un tapis
+                if (getStatutJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))!=ALL_IN)
+                {
 
-                setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
-                setTablePot(t,0);
+                    setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
+                    setTablePot(t,0);
 
+                }
+                else
+                {
+                    //on execute une fonction spécifique de gain en fonction du tapis du joueur
+                    calulVainqueurTapis(t,tabResultat);
+                }
+                //si tout le monde s'est couché sauf une personne, on n'affiche pas de message sur la forme qui le fait gagner
             }
             else
             {
-                //on execute une fonction spécifique de gain en fonction du tapis du joueur
-                calulVainqueurTapis(t,tabResultat);
+                sprintf(message,"%s:%s\n",langue[33],(*getIemeJoueur(t,tabResultat[0][0][1])).pseudo);
+                AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
+                SDL_Flip(affichage);
+                setArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]),getArgentJoueur(*getIemeJoueur(t,tabResultat[0][0][1]))+getTablePot(t));
+                setTablePot(t,0);
             }
-            //si tout le monde s'est couché sauf une personne, on n'affiche pas de message sur la forme qui le fait gagner
+            pause();
         }
+        else
+        {
+
+            //test pr savoir qui a les mme mains que le gagnant
+
+        }
+
+
     }
     else
     {
+        char message[30];
         sprintf(message,"%s:%s\n",langue[33],(*getIemeJoueur(t,gagnantForfait)).pseudo);
         AffAfficheTexte(affichage,message,240,420,320,255,255,TTF_STYLE_NORMAL,22);
         SDL_Flip(affichage);
@@ -846,8 +868,8 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                         break;
 
                     }
-                SDL_FreeSurface(boutonCouche);
-                SDL_FreeSurface(boutonTapis);
+                    SDL_FreeSurface(boutonCouche);
+                    SDL_FreeSurface(boutonTapis);
                     return 1;
                 }
                 //bouton d'augmentation et de diminution de la valeur de la relance

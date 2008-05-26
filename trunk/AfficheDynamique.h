@@ -40,8 +40,9 @@
 	@param [in,out] langue fichier de langue
 	@param [in] t
 	@param [in] afficheCarteGagnant à true si on doit afficher les cartes du gagnant
+	@param [in] gagnantForfait si afficheCarteGagnant est a  true represente le gagnat
 */
-void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50],bool afficheCarteGagnant);
+void affAffichageVainqueur(SDL_Surface* affichage,Table & t,const char langue[][50],bool afficheCarteGagnant,int gagnantForfait);
 
 
 /**	@brief reparti l'argent entre les joueurs, est appelée si le meilleur joueur a fait un tapis
@@ -65,7 +66,7 @@ SDL_Rect AffCentrer(SDL_Surface* source, SDL_Surface* destination, int option);
 /**	@brief affiche le logo du debut
 	@param affichage
 	@param tapis le fond
-	@note 
+	@note
 */
 void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis);
 
@@ -128,7 +129,7 @@ void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache);
 
 /**	@brief affiche les cartes qui sont disposées sur le tapis
 	@param t table
-	@param affichage 
+	@param affichage
 	@param evidence
 	@note appel la fonction AffCarteDecouvertes(const Table & t,SDL_Surface* affichage,bool evidence,int tabResultat[6][2]);
 */
@@ -175,8 +176,8 @@ void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus,cons
 
 
 /**	@brief scan les actions du joueur, affiche des boutons pour récupérer ces actions
-	@param affichage 
-	@param relance 
+	@param affichage
+	@param relance
 	@param s statut
 	@param montant mise maximale
 	@param j joueur
