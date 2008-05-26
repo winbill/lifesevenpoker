@@ -17,7 +17,8 @@
 
 Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 {
-
+    montant=montant;
+    getTablePot(t);
     //On récupere le statut de la partie:
     int nbCartesDecouvertes = getMainCarteNbCarte(*getMainCarteTable(t)); //Le nombre de cartes découvertes sur le tapis
     MainCarte mainJoueur = *getMainJoueur(j); //La main de cette IA
@@ -133,6 +134,10 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 
         //Au moment du TURN
     case 4 :
+        printf("debut\n\n\n\n\n");
+        printf("===> la proba : %f \n",probaActionIA(t,j,CARTE_HAUTE));
+        printf("fin\n\n\n\n\n");
+
         if (res == QUINTE_FLUSH_ROYALE or res == QUINTE_FLUSH)
         {
             printf("%s a une quinte flush (royale?) \n", j.pseudo);
@@ -232,18 +237,19 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance)
 
 void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int & relance)
 {
+    int grosseBlind = getPetiteBlindTable(t)*2;
     //a represente le nombre de thune qu'il doit allonger pour suivre
     int a = montant - getMiseJoueur(j);
     if (relance > 0)
     {
         //si relance(largent qui est pres a mettre) est dans un intervalle de 20 par rapport a montant il suit
-        if (relance < montant+20 and relance > montant-20 )
+        if (relance < montant+grosseBlind and relance > montant-grosseBlind)
         {
             relance=0;
             s=CALL;
         }
         //si relance est superieur a montant plus la grosse blind
-        else if (relance >= montant+20)
+        else if (relance >= montant+grosseBlind)
         {
             //on verifie si y a sufissement de thne pr relancer
             if (getArgentJoueur(j) > ( a + relance))
@@ -320,182 +326,182 @@ Main determineMeilleureMainIA(const MainCarte & mainJoueur,const MainCarte & car
 
     case 5 :
     {
-return CARTE_HAUTE;
-/*
-        printf("=====================+DEBUT CASE 5+===================== \n");
-        //On cree un histogramme pour referencer les cartes
-        int histogramme[5][2]={{0,0},{0,0},{0,0},{0,0},{0,0}};
-        int h=0;
-        int i=0;
-        //On stocke les cartes de la main du joueur dans l'histogramme
-        //printf("PREMIER WHILE \n");
-        while (i < 2)
-        {
-            printf("HISTO avec i = %d ==> [%d][0] = %d \n", i, h, histogramme[h][0]);
-            if (histogramme[h][0]==0)
-            {
-                printf("HISTO IF 1 ==> rang de la %d eme carte : %d | valeur de h : %d \n", i , getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)), h);
-                histogramme[h][0]=getCarteRang(*getMainCarteIemeCarte(mainJoueur,i));
-                histogramme[h][1]++;
-                i++;
-                h=0;
-            }
-            else if (histogramme[h][0]==getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)))
-            {
-                printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", i , getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)), h);
-                histogramme[h][1]++;
-                i++;
-                h=0;
-            }
-            else h++;
-        }
-
-
-
-        //On stocke les cartes en jeu découvertes dans l'histogramme
-        int j=0;
-        printf("DEUXIEME WHILE \n");
-        while (j<3)
-        {
-            printf("HISTO avec j = %d ==> [%d][0] = %d \n", j, h, histogramme[h][0]);
-            if (histogramme[h][0]==0)
-            {
-                printf("HISTO IF 1 ==> rang de la %d eme carte : %d  | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
-                histogramme[h][0]=getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j));
-                histogramme[h][1]++;
-                j++;
-                h=0;
-            }
-            else if (histogramme[h][0]==getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)))
-            {
-                printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
-                histogramme[h][1]++;
-                j++;
-                h=0;
-            }
-            else
-            {
-                h++;
-                printf("HISTO IF 3 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
-            }
-        }
-
-
-        //On trie l'histogramme par valeurs décroissantes au niveau du nombre d'occurence des cartes
-        printf("DEBUT DU TRI DE L'HISTOGRAMME \n");
-        int indice=0;
-        int max=0;
-        for (j=0;j<4;j++)
-        {
-            for (i=indice;i<4;i++)
-            {
-                if (histogramme[i+1][1]>histogramme[max][1])
-                {
-                    max=i+1;
-                }
-            }
-
-            int temp[2]={histogramme[max][0],histogramme[max][1]};
-            histogramme[max][0]=histogramme[indice][0];
-            histogramme[max][1]=histogramme[indice][1];
-            histogramme[indice][0]=temp[0];
-            histogramme[indice][1]=temp[1];
-
-            indice++;
-            max=indice;
-        }
-
-        //On vérifie avec les valeurs de l'histogramme certaines possibilités de mains
-        if (histogramme[0][1]==4) return CARRE;
-        else if (histogramme[0][1]==3 and histogramme[1][1]==2) return FULL;
-        else if (histogramme[0][1]==3 and histogramme[1][1]==1) return BRELAN;
-        else if (histogramme[0][1]==2 and histogramme[1][1]==2) return DOUBLE_PAIRE;
-        else if (histogramme[0][1]==2) return PAIRE;
-
-
-        //On trie maintenant l'histogramme par valeurs décroissantes au niveau du rang des cartes
-        indice=0;
-        max=0;
-        for (j=0;j<4;j++)
-        {
-            for (i=indice;i<4;i++)
-            {
-                if (histogramme[i+1][0]>histogramme[max][0])
-                {
-                    max=i+1;
-                }
-            }
-
-            int temp[2]={histogramme[max][0],histogramme[max][1]};
-            histogramme[max][0]=histogramme[indice][0];
-            histogramme[max][1]=histogramme[indice][1];
-            histogramme[indice][0]=temp[0];
-            histogramme[indice][1]=temp[1];
-
-            indice++;
-            max=indice;
-        }
-
-        //On vérifie si c'est une couleur (vive les boucles)
-        bool flush=0;
-        if (getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,0))==getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,1))
-                and getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,1))==getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,0))
-                and getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,0))==getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,1))
-                and getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,1))==getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,2)))
-        {
-            flush=1;
-        }
-
-        //On trie les 5 cartes dans un tableau
-        int tab[5]={getCarteRang(*getMainCarteIemeCarte(mainJoueur,0)),
-                    getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)),
-                    getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,0)),
-                    getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,1)),
-                    getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,2))
-                   };
-
-        indice=0;
-        max=0;
-        for (j=0;j<4;j++)
-        {
-            for (i=indice;i<4;i++)
-            {
-                if (tab[i+1]>tab[max])
-                {
-                    max=i+1;
-                }
-            }
-
-            int temp=tab[max];
-            tab[max]=tab[indice];
-            tab[indice]=temp;
-
-            indice++;
-            max=indice;
-        }
-
-        //On vérifie si c'est une suite
-        bool straight=0;
-        bool royal=0;
-        if (tab[0]-tab[4]==4)
-        {
-            if (tab[0]==14)
-            {
-                royal=1; //royal straight
-            }
-            straight=1; //straight
-        }
-        else if (tab[0]==14 and tab[1]==5 and tab[4]==2) straight=1; //wheel
-
-        //On vérifie si c'est une couleur/suite particuliere
-        if (flush and straight and royal) return QUINTE_FLUSH_ROYALE;
-        if (flush and straight) return QUINTE_FLUSH;
-        if (flush) return COULEUR;
-        if (straight) return QUINTE;
-
-        //Enfin si aucun des cas précédents n'a correspondu c'est une carte haute
         return CARTE_HAUTE;
-*/
+        /*
+                printf("=====================+DEBUT CASE 5+===================== \n");
+                //On cree un histogramme pour referencer les cartes
+                int histogramme[5][2]={{0,0},{0,0},{0,0},{0,0},{0,0}};
+                int h=0;
+                int i=0;
+                //On stocke les cartes de la main du joueur dans l'histogramme
+                //printf("PREMIER WHILE \n");
+                while (i < 2)
+                {
+                    printf("HISTO avec i = %d ==> [%d][0] = %d \n", i, h, histogramme[h][0]);
+                    if (histogramme[h][0]==0)
+                    {
+                        printf("HISTO IF 1 ==> rang de la %d eme carte : %d | valeur de h : %d \n", i , getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)), h);
+                        histogramme[h][0]=getCarteRang(*getMainCarteIemeCarte(mainJoueur,i));
+                        histogramme[h][1]++;
+                        i++;
+                        h=0;
+                    }
+                    else if (histogramme[h][0]==getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)))
+                    {
+                        printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", i , getCarteRang(*getMainCarteIemeCarte(mainJoueur,i)), h);
+                        histogramme[h][1]++;
+                        i++;
+                        h=0;
+                    }
+                    else h++;
+                }
+
+
+
+                //On stocke les cartes en jeu découvertes dans l'histogramme
+                int j=0;
+                printf("DEUXIEME WHILE \n");
+                while (j<3)
+                {
+                    printf("HISTO avec j = %d ==> [%d][0] = %d \n", j, h, histogramme[h][0]);
+                    if (histogramme[h][0]==0)
+                    {
+                        printf("HISTO IF 1 ==> rang de la %d eme carte : %d  | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
+                        histogramme[h][0]=getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j));
+                        histogramme[h][1]++;
+                        j++;
+                        h=0;
+                    }
+                    else if (histogramme[h][0]==getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)))
+                    {
+                        printf("HISTO IF 2 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
+                        histogramme[h][1]++;
+                        j++;
+                        h=0;
+                    }
+                    else
+                    {
+                        h++;
+                        printf("HISTO IF 3 ==> rang de la %d eme carte : %d | valeur de h : %d \n", j , getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,j)), h);
+                    }
+                }
+
+
+                //On trie l'histogramme par valeurs décroissantes au niveau du nombre d'occurence des cartes
+                printf("DEBUT DU TRI DE L'HISTOGRAMME \n");
+                int indice=0;
+                int max=0;
+                for (j=0;j<4;j++)
+                {
+                    for (i=indice;i<4;i++)
+                    {
+                        if (histogramme[i+1][1]>histogramme[max][1])
+                        {
+                            max=i+1;
+                        }
+                    }
+
+                    int temp[2]={histogramme[max][0],histogramme[max][1]};
+                    histogramme[max][0]=histogramme[indice][0];
+                    histogramme[max][1]=histogramme[indice][1];
+                    histogramme[indice][0]=temp[0];
+                    histogramme[indice][1]=temp[1];
+
+                    indice++;
+                    max=indice;
+                }
+
+                //On vérifie avec les valeurs de l'histogramme certaines possibilités de mains
+                if (histogramme[0][1]==4) return CARRE;
+                else if (histogramme[0][1]==3 and histogramme[1][1]==2) return FULL;
+                else if (histogramme[0][1]==3 and histogramme[1][1]==1) return BRELAN;
+                else if (histogramme[0][1]==2 and histogramme[1][1]==2) return DOUBLE_PAIRE;
+                else if (histogramme[0][1]==2) return PAIRE;
+
+
+                //On trie maintenant l'histogramme par valeurs décroissantes au niveau du rang des cartes
+                indice=0;
+                max=0;
+                for (j=0;j<4;j++)
+                {
+                    for (i=indice;i<4;i++)
+                    {
+                        if (histogramme[i+1][0]>histogramme[max][0])
+                        {
+                            max=i+1;
+                        }
+                    }
+
+                    int temp[2]={histogramme[max][0],histogramme[max][1]};
+                    histogramme[max][0]=histogramme[indice][0];
+                    histogramme[max][1]=histogramme[indice][1];
+                    histogramme[indice][0]=temp[0];
+                    histogramme[indice][1]=temp[1];
+
+                    indice++;
+                    max=indice;
+                }
+
+                //On vérifie si c'est une couleur (vive les boucles)
+                bool flush=0;
+                if (getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,0))==getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,1))
+                        and getCarteCouleur(*getMainCarteIemeCarte(mainJoueur,1))==getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,0))
+                        and getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,0))==getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,1))
+                        and getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,1))==getCarteCouleur(*getMainCarteIemeCarte(cartesDecouvertes,2)))
+                {
+                    flush=1;
+                }
+
+                //On trie les 5 cartes dans un tableau
+                int tab[5]={getCarteRang(*getMainCarteIemeCarte(mainJoueur,0)),
+                            getCarteRang(*getMainCarteIemeCarte(mainJoueur,1)),
+                            getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,0)),
+                            getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,1)),
+                            getCarteRang(*getMainCarteIemeCarte(cartesDecouvertes,2))
+                           };
+
+                indice=0;
+                max=0;
+                for (j=0;j<4;j++)
+                {
+                    for (i=indice;i<4;i++)
+                    {
+                        if (tab[i+1]>tab[max])
+                        {
+                            max=i+1;
+                        }
+                    }
+
+                    int temp=tab[max];
+                    tab[max]=tab[indice];
+                    tab[indice]=temp;
+
+                    indice++;
+                    max=indice;
+                }
+
+                //On vérifie si c'est une suite
+                bool straight=0;
+                bool royal=0;
+                if (tab[0]-tab[4]==4)
+                {
+                    if (tab[0]==14)
+                    {
+                        royal=1; //royal straight
+                    }
+                    straight=1; //straight
+                }
+                else if (tab[0]==14 and tab[1]==5 and tab[4]==2) straight=1; //wheel
+
+                //On vérifie si c'est une couleur/suite particuliere
+                if (flush and straight and royal) return QUINTE_FLUSH_ROYALE;
+                if (flush and straight) return QUINTE_FLUSH;
+                if (flush) return COULEUR;
+                if (straight) return QUINTE;
+
+                //Enfin si aucun des cas précédents n'a correspondu c'est une carte haute
+                return CARTE_HAUTE;
+        */
     }
     break;
 
@@ -634,18 +640,18 @@ return CARTE_HAUTE;
     return DEF;
 }
 
-/*
+
 float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMainJoueur)
 {
-    int i,j,k,l; //variables de boucle
+    int i,j,k; //variables de boucle
     Carte c1,c2; //Represente deux cartes potentiellement dans la main d'un adversaire
 
     initialisationCarte(c1);
     initialisationCarte(c2);
 
     MainCarte mainJoueur = *getMainJoueur(joueur); //On récupere les cartes que le joueur a en main
-    MainCarte cartesDecouvertes = *getMainCarteTable(table); //On récupere les cartes du board
-    int nbCartesDecouvertes = getMainCarteNbCarte(cartesDecouvertes); //On récupere aussi le nombre de cartes du board
+    MainCarte cartesDecouvertes = *getMainCarteTable(table); //On récupere les cartes du tapis
+    int nbCartesDecouvertes = getMainCarteNbCarte(cartesDecouvertes); //On récupere aussi le nombre de cartes du tapis
 
     //On crée une pile de cartes temporaire et on la rempli des 52 cartes d'un jeu standard
     PileCarte ptemp;
@@ -655,93 +661,97 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
     int compteur=0;
 
     //On parcourre toutes les combinaisons possibles de deux cartes parmi 52
-    for(i=0;i<52;i++)
+    for (i=0;i<51;i++)
     {
-        for(j=i;j<52;j++)
+        for (j=i+1;j<52;j++)
         {
-            if(i!=j)
+
+            setCarte(c1,getCarteCouleur(*ptemp.ensembleCarte[i]),getCarteRang(*ptemp.ensembleCarte[i]));
+            setCarte(c2,getCarteCouleur(*ptemp.ensembleCarte[j]),getCarteRang(*ptemp.ensembleCarte[j]));
+
+            bool okc1 = true; //Est vrai tant que la carte c1 n'a pas été trouvé dans la main du joueur ou sur le tapis
+            bool okc2 = true; //Idem pour c2
+
+
+            //On teste si la carte c1 n'est pas dans la main du joueur ou sur le tapis
+            for (k=0;k<getMainCarteNbCarte(*getMainCarteTable(table));k++)
             {
-                setCarte(c1,getCarteCouleur(*ptemp.ensembleCarte[i]),getCarteRang(*ptemp.ensembleCarte[i]));
-                setCarte(c2,getCarteCouleur(*ptemp.ensembleCarte[j]),getCarteRang(*ptemp.ensembleCarte[j]));
-
-                bool okc1 = true; //Est vrai tant que la carte c1 n'a pas été trouvé dans la main du joueur ou sur le board
-                bool okc2 = true; //Idem pour c2
-
-
-                //On teste si la carte c1 n'est pas dans la main du joueur ou sur le board
-                for(k=0;k<7;k++)
+                if (k<2)
                 {
-                    if(k<2)
+                    int comp = compareCarte(c1,*getMainCarteIemeCarte(mainJoueur,k));
+                    if (comp == 2)
                     {
-                        int comp = compareCarte(c1,*getMainCarteIemeCarte(mainJoueur,k));
-                        if(comp == 2)
-                        {
-                            okc1 = false;
-                        }
-                    }
-                    else
-                    {
-                        int comp = compareCarte(c1,*getMainCarteIemeCarte(cartesDecouvertes,k));
-                        if(comp == 2)
-                        {
-                            okc1 = false;
-                        }
+                        okc1 = false;
                     }
                 }
-
-                //On fait pareil pour la carte c2
-                for(l=0;l<7;l++)
+                else
                 {
-                    if(l<2)
+                    int comp = compareCarte(c1,*getMainCarteIemeCarte(cartesDecouvertes,k-2));
+                    if (comp == 2)
                     {
-                        int comp = compareCarte(c2,*getMainCarteIemeCarte(mainJoueur,l));
-                        if(comp == 2)
-                        {
-                            okc2 = false;
-                        }
-                    }
-                    else
-                    {
-                        int comp = compareCarte(c2,*getMainCarteIemeCarte(cartesDecouvertes,l));
-                        if(comp == 2)
-                        {
-                            okc2 = false;
-                        }
-                    }
-                }
-
-
-                //Dans le cas ou le couple c1 c2 est une des possibilités de main adverse alors on procède aux tests.
-                if(okc1 and okc2)
-                {
-                    //On crée une main de test
-                    MainCarte mainTest;
-                    initialisationMain(mainTest);
-
-                    //On y ajoute nos deux cartes c1 et c2
-                    ajouteCarte(mainTest,&c1);
-                    ajouteCarte(mainTest,&c2);
-
-                    Main res = DEF;
-                    res = determineMeilleureMainIA(mainTest,cartesDecouvertes); //On regarde quelle hauteur de main cela donnerai avec le board courrant
-
-                    if(res < meilleureMainJoueur)
-                    {
-                        //Si cela donne une main moins bonne que celle du joueur alors on incrémente le compteur
-                        compteur++;
+                        okc1 = false;
                     }
                 }
             }
+
+            //On fait pareil pour la carte c2
+            for (k=0;k<getMainCarteNbCarte(*getMainCarteTable(table));k++)
+            {
+                if (k<2)
+                {
+                    int comp = compareCarte(c2,*getMainCarteIemeCarte(mainJoueur,k));
+                    if (comp == 2)
+                    {
+                        okc2 = false;
+                    }
+                }
+                else
+                {
+                    int comp = compareCarte(c2,*getMainCarteIemeCarte(cartesDecouvertes,k-2));
+                    if (comp == 2)
+                    {
+                        okc2 = false;
+                    }
+                }
+            }
+
+
+            //Dans le cas ou le couple c1 c2 est une des possibilités de main adverse alors on procède aux tests.
+            if (okc1 and okc2)
+            {
+                //On crée une main de test
+                MainCarte mainTest;
+                initialisationMain(mainTest);
+
+                //On y ajoute nos deux cartes c1 et c2
+                ajouteCarte(mainTest,&c1);
+                ajouteCarte(mainTest,&c2);
+
+                Main res = DEF;
+                res = determineMeilleureMainIA(mainTest,cartesDecouvertes); //On regarde quelle hauteur de main cela donnerai avec le tapis courrant
+
+                if (res < meilleureMainJoueur)
+                {
+                    //Si cela donne une main moins bonne que celle du joueur alors on incrémente le compteur
+                    compteur++;
+                }
+                MainCarteLibere(mainTest);
+            }
+
         }
     }
 
-    //On calcule enfin la probabilité qu'a le joueur de gagner à coup sur avec sa main et le board courrant
+    //On calcule enfin la probabilité qu'a le joueur de gagner à coup sur avec sa main et le tapîs courrant
     float proba = float(compteur / (((50 - nbCartesDecouvertes) * (49 - nbCartesDecouvertes)) / 2));
+
+
+
+    pileCarteLibere(ptemp);
 
     //Et on retourne cette valeur
     return proba;
 
 }
-*/
+
 
 
