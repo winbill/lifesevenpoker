@@ -684,93 +684,104 @@ float probaActionIA(const Table & table, const Joueur & joueur,Main meilleureMai
     int compteur=0;
 
     //On parcourre toutes les combinaisons possibles de deux cartes parmi 52
-    for (i=0;i<51;i++)
+    for (i=0;i<52;i++)
     {
         for (j=i+1;j<52;j++)
         {
-
-            setCarte(c1,getCarteCouleur(*ptemp.ensembleCarte[i]),getCarteRang(*ptemp.ensembleCarte[i]));
-            setCarte(c2,getCarteCouleur(*ptemp.ensembleCarte[j]),getCarteRang(*ptemp.ensembleCarte[j]));
-
-            bool okc1 = true; //Est vrai tant que la carte c1 n'a pas été trouvé dans la main du joueur ou sur le tapis
-            bool okc2 = true; //Idem pour c2
-
-
-            //On teste si la carte c1 n'est pas dans la main du joueur ou sur le tapis
-            for (k=0;k<getMainCarteNbCarte(*getMainCarteTable(table));k++)
+            if(i!=j)
             {
-                if (k<2)
+
+                setCarte(c1,getCarteCouleur(*ptemp.ensembleCarte[i]),getCarteRang(*ptemp.ensembleCarte[i]));
+                setCarte(c2,getCarteCouleur(*ptemp.ensembleCarte[j]),getCarteRang(*ptemp.ensembleCarte[j]));
+
+                bool okc1 = true; //Est vrai tant que la carte c1 n'a pas été trouvé dans la main du joueur ou sur le tapis
+                bool okc2 = true; //Idem pour c2
+
+
+                //On teste si la carte c1 n'est pas dans la main du joueur ou sur le tapis
+                for (k=0;k<getMainCarteNbCarte(*getMainCarteTable(table))+2;k++)
                 {
-                    int comp = compareCarte(c1,*getMainCarteIemeCarte(mainJoueur,k));
-                    if (comp == 2)
+                    if (k<2)
                     {
-                        okc1 = false;
+                        int comp = compareCarte(c1,*getMainCarteIemeCarte(mainJoueur,k));
+                        if (comp == 2)
+                        {
+                            okc1 = false;
+                        }
+                    }
+                    else
+                    {
+                        int comp = compareCarte(c1,*getMainCarteIemeCarte(cartesDecouvertes,k-2));
+                        if (comp == 2)
+                        {
+                            okc1 = false;
+                        }
                     }
                 }
-                else
+
+                //On fait pareil pour la carte c2
+                for (k=0;k<getMainCarteNbCarte(*getMainCarteTable(table))+2;k++)
                 {
-                    int comp = compareCarte(c1,*getMainCarteIemeCarte(cartesDecouvertes,k-2));
-                    if (comp == 2)
+                    if (k<2)
                     {
-                        okc1 = false;
+                        int comp = compareCarte(c2,*getMainCarteIemeCarte(mainJoueur,k));
+                        if (comp == 2)
+                        {
+                            okc2 = false;
+                        }
+                    }
+                    else
+                    {
+                        int comp = compareCarte(c2,*getMainCarteIemeCarte(cartesDecouvertes,k-2));
+                        if (comp == 2)
+                        {
+                            okc2 = false;
+                        }
                     }
                 }
-            }
 
-            //On fait pareil pour la carte c2
-            for (k=0;k<getMainCarteNbCarte(*getMainCarteTable(table));k++)
-            {
-                if (k<2)
+
+                //Dans le cas ou le couple c1 c2 est une des possibilités de main adverse alors on procède aux tests.
+                if (okc1 and okc2)
                 {
-                    int comp = compareCarte(c2,*getMainCarteIemeCarte(mainJoueur,k));
-                    if (comp == 2)
+                    //On crée une main de test
+                    MainCarte mainTest;
+                    initialisationMain(mainTest);
+
+                    //On y ajoute nos deux cartes c1 et c2
+                    ajouteCarte(mainTest,&c1);
+                    ajouteCarte(mainTest,&c2);
+
+                    Main res = DEF;
+                    res = determineMeilleureMainIA(mainTest,cartesDecouvertes); //On regarde quelle hauteur de main cela donnerai avec le tapis courrant
+
+                    if (res < meilleureMainJoueur)
                     {
-                        okc2 = false;
+                        //Si cela donne une main moins bonne que celle du joueur alors on incrémente le compteur
+                        compteur++;
+                        printf("%d ",compteur);
+
                     }
+                    MainCarteLibere(mainTest);
                 }
-                else
-                {
-                    int comp = compareCarte(c2,*getMainCarteIemeCarte(cartesDecouvertes,k-2));
-                    if (comp == 2)
-                    {
-                        okc2 = false;
-                    }
-                }
-            }
 
 
-            //Dans le cas ou le couple c1 c2 est une des possibilités de main adverse alors on procède aux tests.
-            if (okc1 and okc2)
-            {
-                //On crée une main de test
-                MainCarte mainTest;
-                initialisationMain(mainTest);
-
-                //On y ajoute nos deux cartes c1 et c2
-                ajouteCarte(mainTest,&c1);
-                ajouteCarte(mainTest,&c2);
-
-                Main res = DEF;
-                res = determineMeilleureMainIA(mainTest,cartesDecouvertes); //On regarde quelle hauteur de main cela donnerai avec le tapis courrant
-
-                if (res < meilleureMainJoueur)
-                {
-                    //Si cela donne une main moins bonne que celle du joueur alors on incrémente le compteur
-                    compteur++;
-                }
-                MainCarteLibere(mainTest);
             }
 
             nbtest++;
-            printf("nb de test: %d \n",nbtest);
+            printf(" i : %d  | j : %d \n", i, j);
 
         }
     }
 
+    float temp = (((50 - nbCartesDecouvertes) * (49 - nbCartesDecouvertes)) / 2);
+
     //On calcule enfin la probabilité qu'a le joueur de gagner à coup sur avec sa main et le tapîs courrant
-    float proba = float(compteur / (((50 - nbCartesDecouvertes) * (49 - nbCartesDecouvertes)) / 2));
+    float proba = compteur / temp ;
 
-
+    printf("nb de test: %d \n",nbtest);
+    printf("nbCartesDecouvertes : %d \n", nbCartesDecouvertes);
+    printf("temp : %f\n",temp);
 
     pileCarteLibere(ptemp);
 
