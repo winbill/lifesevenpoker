@@ -52,7 +52,7 @@ Statut calculIA(const Table & t,const Joueur & j,int montant,int &relance);
 **/
 void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int & relance);
 
-/** @brief Identifie la meilleure main qu'a un joueur de type ordinateur donne quelque soit la phase de la partie dans laquelle on que soit la phase de la partie dans laquelle on se trouve.
+/** @brief Identifie la meilleure main qu'a un joueur de type ordinateur donne quelque soit la phase de la partie dans laquelle on se trouve.
     @param [in] mainJoueur La main du joueur concerne.
     @param [in] cartesDecouvertes La main contenant les cartes deja decouvertes si il y en a.
     @return Une valeur de type Main.

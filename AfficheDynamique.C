@@ -740,6 +740,7 @@ void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus,cons
     SDL_FreeSurface(bouton);
 
 }
+
 int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant,const Joueur & j,const Table & t,const char langue[][50])
 {
 	//fonction qui interprete l'action voulu du joueur local
