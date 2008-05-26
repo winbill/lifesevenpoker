@@ -1,11 +1,23 @@
+/**
+    @brief Fichier H pour l'affichage en SDL
+
+
+    Gere les fonctions d'affichage de base avec SDL.
+
+    @author James Benjamin
+    @file AfficheSDL.C
+    @version 1.4
+    @date 2008/05/26
+*/
+
 #ifndef AfficheSdl_H
 #define AfficheSdl_H
+
 
 #include "AfficheDynamique.h"
 
 
-/** @brief
-	@note
+/** @brief Procedure qui met en pause le deroulement du programme en attendant une reaction du joueur (un clic souris)
 */
 void pause();
 
@@ -17,7 +29,6 @@ void pause();
 	@param [in] screen_bpp Le nombre de bits par pixels de la surface principale.
 	@param [in] caption Une chaine de caracteres representant le nom de la fenetre du programme.
 	@return Renvoie un booleen
-	@note
 */
 bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, const char* caption);
 
@@ -40,78 +51,72 @@ SDL_Surface *load_image( const char* filename );
 void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination );
 
 
-/** @brief
-	@param affichage
-	@param x
-	@param y
-	@param zoom
-	@note
+/** @brief Procedure qui rajoute un effet d'ombre a l'affichage d'une carte.
+	@param [in,out] affichage Un pointeur sur la surface SDL representant l'ensemble de l'affichage graphique.
+	@param [in] x La coordonnee en x de la position de l'effet d'ombre.
+	@param [in] y La coordonned en y de la position de l'effet d'ombre.
+	@param [in] zoom La valeur de zoom de l'image.
 */
 void affichageOmbreCarte(SDL_Surface* affichage,int x,int y,double zoom);
 
 
-/** @brief
-	@param affichage
-	@param c
-	@param x
-	@param y
-	@param zoom
-	@note
+/** @brief Procedure qui affiche une carte.
+	@param [in,out] affichage Un pointeur sur la surface SDL representant l'ensemble de l'affichage graphique.
+	@param [in] c Un pointeur sur la carte que l'on veut afficher.
+	@param [in] x La coordonnee en x de la position ou l'on veut afficher la carte.
+	@param [in] y La coordonnee en y de la position ou l'on veut afficher la carte.
+	@param [in] zoom La valeur de zoom de l'image.
 */
 void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom);
 
 
-/** @brief
-	@param affichage
-	@param c
-	@param x
-	@param y
-	@param zoom
-	@param evidence
-	@note
+/** @brief Procedure qui affiche une carte.
+	@param [in,out] affichage Un pointeur sur la surface SDL representant l'ensemble de l'affichage graphique.
+	@param [in] c Un pointeur sur la carte que l'on veut afficher.
+	@param [in] x La coordonnee en x de la position ou l'on veut afficher la carte.
+	@param [in] y La coordonnee en y de la position ou l'on veut afficher la carte.
+	@param [in] zoom La valeur de zoom de l'image.
+	@param [in] evidence Un booleen qui determine si on affiche la carte face cachee ou face decouverte.
 */
 void AffAfficheCarte(SDL_Surface* affichage, Carte* c, int x, int y, double zoom,bool evidence);
 
 
-/** @brief
-	@param destination
-	@param message
-	@param x
-	@param y
-	@param r
-	@param g
-    @param b
-	@param style
-	@param size
-	@note
+/** @brief Procedure qui affiche un texte sur une surface SDL.
+	@param [in,out] destination Le pointeur sur la surface SDL sur laquelle on veut afficher le message.
+	@param [in] message Le tableau de caracteres contenant le message a afficher.
+	@param [in] x La coordonnee en x de la position du message.
+	@param [in] y La coordonnee en y de la position du message.
+	@param [in] r La valeur en rouge de la couleur du message.
+	@param [in] g La valeur en vert de la couleur du message.
+    @param [in] b La valeur en bleu de la couleur du message.
+	@param [in] style Le style utilise pour ecrire le message.
+	@param [in] size La taille de police utilisee pour ecrire le message.
 */
 void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,int r,int g,int b,int style,int size);
 
 
-/** @brief
-	@param destination
-	@param message
-	@param x
-	@param y
-	@param r
-	@param g
-    @param b
-	@return
+/** @brief Procedure qui affiche un texte sur une surface SDL.
+	@param [in,out] destination Le pointeur sur la surface SDL sur laquelle on veut afficher le message.
+	@param [in] message Le tableau de caracteres contenant le message a afficher.
+	@param [in] x La coordonnee en x de la position du message.
+	@param [in] y La coordonnee en y de la position du message.
+	@param [in] r La valeur en rouge de la couleur du message.
+	@param [in] g La valeur en vert de la couleur du message.
+    @param [in] b La valeur en bleu de la couleur du message.
 	@note fait appel a AffAfficheTexte(destination,message,x,y,r,g,b,TTF_STYLE_NORMAL,28)
 */
 void AffAfficheTexte(SDL_Surface* destination,const char* message,int x,int y,int r,int g,int b);
 
 
-/** @brief
-	@param affichage
-	@note
+/** @brief Procedure qui actualise l'affichage graphique.
+	@param [in,out] affichage Un pointeur sur la surface SDL representant l'ensemble de l'affichage graphique.
 */
 void AffActualiser(SDL_Surface* affichage);
 
 
-/** @brief
-	@param aff
-	@param tapis
+/** @brief Procedure de base qui affiche la surface SDL de base représentant le tapis (image de fond)
+	@param [in,out] affichage Un pointeur sur la surface SDL representant l'ensemble de l'affichage graphique.
+	@param [in] tapis Un pointeur sur la surface SDL representant le tapis.
 	@note
 */
 void AffAfficheTapis(SDL_Surface* aff,SDL_Surface* tapis);

@@ -2,7 +2,7 @@
 	@brief Fichier H qui gere le jeu
 
 
-	fichier principal qui sert a initialiser une partie et la terminer
+	Fichier principal qui sert a initialiser une partie et a la terminer.
 
 	@author James
 	@file Jeu.h
@@ -10,18 +10,19 @@
 	@date 2008/04/11
  */
 
+
 #ifndef Jeu_H
 #define Jeu_H
+
+//Librairies Life'Seven Poker
 #include "Table.h"
 #include "AfficheDynamique.h"
 
 
-
-/**	@brief fonction permettant de comparer deux tableaux
-	@param tabResultat
-	@param tabResultat2
-	@return bool
-	@note
+/**	@brief Fonction permettant de comparer deux tableaux de dimensions [6][2].
+	@param [in] tabResultat1 Un tableau [6][2].
+	@param [in] tabResultat2 Un autre tableau [6][2].
+	@return Un booleen qui vaut true si les deux tableaux sont identiques et false sinon.
 */
 bool compareTabResultat(const int tabResultat1[6][2],const int tabResultat2[6][2]);
 

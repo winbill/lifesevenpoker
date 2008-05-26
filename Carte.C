@@ -5,11 +5,14 @@
 
 	@author Benjamin, Olivier
 	@file Carte.h
-	@version 1.3
-	@date 2008/04/19
+	@version 1.4
+	@date 2008/05/26
 */
 
+//Librairies Standard
 #include <cstring>
+
+//Librairies Life'Seven Poker
 #include "Carte.h"
 
 
@@ -60,9 +63,7 @@ int compareCarte(const Carte & c1, const Carte & c2)
 
 void getCarteNomFichier(const Carte & c, char* sortieNomFichier)
 {
-
-    //strcpy (char *dest, const char *src);
-    strcpy(sortieNomFichier,c.nomFichier);//copie le tableau c dans le tableau sortieNomFichier
-
+    //copie le tableau c dans le tableau sortieNomFichier
+    strcpy(sortieNomFichier,c.nomFichier);
 }
 
