@@ -249,8 +249,10 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         break;
     case CALL:
         printf("call:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
+        printf("TEST CALL JOUEUR.C \n");
         a = montant - getMiseJoueur(j);
-        assert(a > 0 && getArgentJoueur(j) >= a);
+        assert(a > 0 );
+        assert(getArgentJoueur(j) >= a);
         ajoutMiseJoueur(j,a);
         setArgentJoueur(j,getArgentJoueur(j)-a);
         setStatutJoueur(j,s);
@@ -279,13 +281,16 @@ void actionJoueur(Joueur & j,Statut s,int & montant,int relance)
         printf("all_in:%s - montant:%d - relance:%d\n",j.pseudo,montant,relance);
         ajoutMiseJoueur(j,getArgentJoueur(j));
         setStatutJoueur(j,s);
-        montant = getMiseJoueur(j);
+        if (getMiseJoueur(j)> montant)
+        {
+            montant = getMiseJoueur(j);
+        }
         setArgentJoueur(j,0);
-        setTapisJoueur(j,montant);
+        setTapisJoueur(j,getMiseJoueur(j));
 
         break;
     default:
-    printf("ERREUR actionJoueur defaulrt\n");
+        printf("ERREUR actionJoueur defaulrt\n");
         break;
 
 

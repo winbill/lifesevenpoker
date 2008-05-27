@@ -846,14 +846,23 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                         s=FOLD;
                         break;
                     case 1:
-                        s=RAISE;
-                        if (relance==getArgentJoueur(j))
+                        if (getArgentJoueur(j) >= montant)
                         {
-                            s=ALL_IN;
+                            s=RAISE;
+                            if (relance==getArgentJoueur(j))
+                            {
+                                s=ALL_IN;
+                            }
+                            else if (relance==0)
+                            {
+                                s=CALL;
+                            }
+
                         }
-                        else if (relance==0)
+                        else
                         {
-                            s=CALL;
+                            relance = getArgentJoueur(j) - montant;
+                            s=ALL_IN;
                         }
                         break;
                     case 2:
