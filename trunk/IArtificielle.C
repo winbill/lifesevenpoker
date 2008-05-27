@@ -233,10 +233,11 @@ void definieStatut(const Table & t,Statut & s,const Joueur & j,int montant,int &
     int grosseBlind = getPetiteBlindTable(t)*2;
     //a represente le nombre de thune qu'il doit allonger pour suivre
     int a = montant - getMiseJoueur(j);
+
     if (relance > 0)
     {
         //si relance(largent qui est pres a mettre) est dans un intervalle de 20 par rapport a montant il suit
-        if (relance < montant+grosseBlind and relance > montant-grosseBlind)
+        if (relance < montant+grosseBlind and relance > montant-grosseBlind && getArgentJoueur(j) > a)
         {
             relance=0;
             s=CALL;

@@ -41,16 +41,24 @@ bool compareTabResultat(const int tabResultat1[6][2],const int tabResultat2[6][2
 int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & relance,Statut & s,int & montant,const char langue[][50])
 {
     assert(relance==0);
+
     if (getTypeJoueur(j) == IA)
     {
         calculIA(t,j,montant,relance);
         definieStatut(t,s,j,montant,relance);
-
+        printf("s : %d  | montant : %d  | argent : %d | mise : %d \n", s,montant,getArgentJoueur(j),getMiseJoueur(j));
 
         if (s==CALL)
         {
-            if (getMiseJoueur(j)==montant)
+            if (getArgentJoueur(j) < montant)
+            {
+                printf("blabla\n");
+                s=ALL_IN;
+            }
+            else if (getMiseJoueur(j)==montant)
+            {
                 s=CHECK;
+            }
         }
         if (getMiseJoueur(j) == getArgentJoueur(j))
         {
@@ -69,6 +77,10 @@ int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & r
         int a = scanActionJoueur(aff,relance,s,montant,j,t,langue);
         if (s==CALL)
         {
+            if (getArgentJoueur(j) < montant)
+            {
+                s=ALL_IN;
+            }
             if (j.mise==montant)
                 s=CHECK;
         }
