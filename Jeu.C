@@ -47,8 +47,11 @@ int atendsActionJoueur(SDL_Surface* aff,const Table & t,const Joueur & j,int & r
         calculIA(t,j,montant,relance);
         definieStatut(t,s,j,montant,relance);
         printf("s : %d  | montant : %d  | argent : %d | mise : %d \n", s,montant,getArgentJoueur(j),getMiseJoueur(j));
-
-        if (s==CALL)
+        if(getArgentJoueur(j) <= 0)
+        {
+            s=SIT_OUT;
+        }
+        else if(s==CALL)
         {
             if (getArgentJoueur(j) < montant)
             {

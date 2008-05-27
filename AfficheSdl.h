@@ -15,7 +15,14 @@
 
 
 #include "AfficheDynamique.h"
+#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
+/** @brief appele au moment de lexit du prog
+*/
+void clean_up();
 
+/**@brief joue un petit son grace a la lib sdl_mixer
+*/
+void sonAlerte();
 
 /** @brief Procedure qui met en pause le deroulement du programme en attendant une reaction du joueur (un clic souris)
 */

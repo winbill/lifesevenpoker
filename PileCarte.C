@@ -93,7 +93,7 @@ void nouvellePileCarte(PileCarte & pileCarte)
 int hasard(int x,int y)
 {
 
-    static int first=1;
+    static int first=0;
     /*first++;
     return x+1+first*2;*/
     if (first == 0)

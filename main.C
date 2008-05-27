@@ -33,6 +33,7 @@ int main (/*int argc, char** argv */)
     char langue[50][50];
     int nombreJoueur=3;
 	int argentDepart=1000;
+	const char* nomJoueur="moi";
     switch (configuration[0][0])
     {
     case 'f':
@@ -47,6 +48,9 @@ int main (/*int argc, char** argv */)
     sscanf(configuration[2],"%d",&argentDepart);
     assert(nombreJoueur<=8);
 
+    //on recupere le nom du joueur local
+    nomJoueur=configuration[3];
+
 
     SDL_Surface* affichage;
     const char* caption="Life\'Seven Poker";
@@ -56,7 +60,7 @@ int main (/*int argc, char** argv */)
         return 1;
     }
 
-    atexit(SDL_Quit);
+    atexit(clean_up);
 
     //Chargement des fichiers
     const char* backgroundP="img/bkgrd.jpg";
@@ -94,7 +98,7 @@ int main (/*int argc, char** argv */)
                 AffAfficheTapis(affichage,tapis);
                 SDL_Flip(affichage);
                 nouvellePartie = 0;
-                v=lancePartie(affichage,tapis,langue,nombreJoueur,argentDepart);
+                v=lancePartie(affichage,tapis,langue,nombreJoueur,argentDepart,nomJoueur);
                 if (v==1)
                 {
                     nouvellePartie=true;
@@ -125,7 +129,7 @@ int main (/*int argc, char** argv */)
 
     SDL_FreeSurface(tapis);
     SDL_FreeSurface(affichage);
-    SDL_Quit();
+    clean_up();
 
     return 0;
 }
