@@ -213,7 +213,7 @@ void AffStartUp(SDL_Surface* affichage,SDL_Surface* tapis)
     SDL_SetAlpha(logo, SDL_SRCALPHA, 128);
     apply_surface(logoRect.x,logoRect.y,logo,affichage);
     SDL_Flip(affichage);
-    SDL_Delay(200);
+    SDL_Delay(1500);
     SDL_FreeSurface(logo);
 
 }
