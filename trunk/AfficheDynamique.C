@@ -493,7 +493,7 @@ void AffAffichageInfosJoueurs(SDL_Surface* affichage,const Table & t,int joueurJ
 
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t)
 {
-    AffCartesJoueursJeu( affichage,t,false);// a mettre a true pour cache les cartes des adversaires
+    AffCartesJoueursJeu( affichage,t,true);// a mettre a true pour cache les cartes des adversaires
 }
 
 void AffCartesJoueursJeu(SDL_Surface* affichage,const Table & t,bool cache)
@@ -759,6 +759,18 @@ void AffAfficheBoutonRelance(SDL_Surface* affichage,int relance,bool dessus,cons
 
 int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & montant,const Joueur & j,const Table & t,const char langue[][50])
 {
+    Mix_Music* myMus;
+    myMus=Mix_LoadMUS("./son/blip.wav");
+
+    if (myMus == NULL)
+        printf("ne peut charger le son\n");
+
+    if(Mix_PlayMusic(myMus,1)==-1)
+        printf("probleme lecture musique\n");
+
+
+
+
     //fonction qui interprete l'action voulu du joueur local
     bool fin = false;
     SDL_Event event;
@@ -804,7 +816,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
 
 
     //on atend une cation du joueur
-    while (fin!=true)
+    while (fin!=true or Mix_PlayingMusic()==1)
     {
 
         SDL_PollEvent(&event);
@@ -815,6 +827,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
         case SDL_QUIT :
             SDL_FreeSurface(boutonCouche);
             SDL_FreeSurface(boutonTapis);
+            Mix_FreeMusic(myMus);
             return -1;
             break;
 
@@ -824,12 +837,14 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
             {
                 SDL_FreeSurface(boutonCouche);
                 SDL_FreeSurface(boutonTapis);
+                Mix_FreeMusic(myMus);
                 return 2;
             }
             else if (event.key.keysym.sym == SDLK_ESCAPE)
             {
                 SDL_FreeSurface(boutonCouche);
                 SDL_FreeSurface(boutonTapis);
+                Mix_FreeMusic(myMus);
                 return -1;
                 break;
             }
@@ -873,6 +888,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
                     }
                     SDL_FreeSurface(boutonCouche);
                     SDL_FreeSurface(boutonTapis);
+                    Mix_FreeMusic(myMus);
                     return 1;
                 }
                 //bouton d'augmentation et de diminution de la valeur de la relance
@@ -981,6 +997,7 @@ int scanActionJoueur(SDL_Surface* affichage,int & relance,Statut & s,int & monta
     }
     SDL_FreeSurface(boutonCouche);
     SDL_FreeSurface(boutonTapis);
+    Mix_FreeMusic(myMus);
     return 0;
 }
 
@@ -1031,7 +1048,7 @@ void calculGainTapisJoueur(Table & t)
 
 
 
-int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50],int NOMBRE_JOUEUR_PC,int argentDepart)
+int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50],int NOMBRE_JOUEUR_PC,int argentDepart,const char* nomJoueur)
 {
 
 
@@ -1072,7 +1089,7 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
 
     //initialisation du joueur humain
     player=creeJoueur();
-    initJoueur(*player,"moi");
+    initJoueur(*player,nomJoueur);
     setStatutJoueur(*player,SIT);
     setTypeJoueur(*player,JoueurLocal);
     setArgentJoueur(*player,ARGENT_DEPART);
@@ -1158,6 +1175,8 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
             {
                 if ( getStatutJoueur(*t.joueur[joueurJouant]) != SIT_OUT && getStatutJoueur(*t.joueur[joueurJouant]) != FOLD && getStatutJoueur(*t.joueur[joueurJouant]) != ALL_IN)
                 {
+
+
                     //le joueur existe et il peut jouer
                     while (retour)
                     {
@@ -1359,6 +1378,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                 distribuer1CarteDecouverteJeu(t,1);
                 AffCarteDecouvertes(t,affichage);
                 montant=0;
+                SDL_Flip(affichage);
+                SDL_Delay(700);
+
             }
             else if (boucleJeu<4)
             {
@@ -1366,6 +1388,9 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                 miseDansPot(t);
                 distribuer1CarteDecouverteJeu(t,1);
                 montant=0;
+                SDL_Flip(affichage);
+                SDL_Delay(700);
+
             }
             else
             {
@@ -1441,6 +1466,8 @@ int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50
                 }
                 changeDealerTable(t);
             }
+
+
         }
     }
 

@@ -24,7 +24,7 @@
 #include "SDL/SDL_image.h" //Gestion des images.
 #include "SDL/SDL_ttf.h" //Gestion des polices True Type Fonts.
 #include <SDL/SDL_rotozoom.h>
-//#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
+#include "SDL/SDL_mixer.h" //Gestion du multi channeling audio.
 
 #include "Joueur.h"
 #include "Table.h"
@@ -212,7 +212,7 @@ void calculGainTapisJoueur(Table & t);
 	@return int
 	@note
 */
-int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50],int NOMBRE_JOUEUR_PC,int argentDepart);
+int lancePartie(SDL_Surface* affichage,SDL_Surface* tapis,const char langue[][50],int NOMBRE_JOUEUR_PC,int argentDepart,const char* nomJoueur);
 
 
 #endif

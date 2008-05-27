@@ -32,6 +32,31 @@ void pause()
 }
 
 
+void sonAlerte()
+{
+    Mix_Music* myMus;
+
+
+
+    myMus=Mix_LoadMUS("./son/blip.wav");
+
+    if (myMus == NULL)
+        printf("ne peut charger le son\n");
+
+    if(Mix_PlayMusic(myMus,1)==-1)
+        printf("probleme lecture musique\n");
+    while(Mix_PlayingMusic()==1)
+    {
+        SDL_Delay(2);
+    }
+
+    Mix_FreeMusic(myMus);
+
+
+
+}
+
+
 
 bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen_height, const int & screen_bpp, const char* caption)
 {
@@ -58,9 +83,13 @@ bool initSDL(SDL_Surface* & screen, const int & screen_width, const int & screen
         printf("Echec de l\'initialisation de SDL_ttf");
         return -1;
     }
+    if (Mix_OpenAudio(22050,MIX_DEFAULT_FORMAT,2,4096)==-1)
+        printf("ne peut charger le periferique son\n");
 
     //Mise en place de la barre de titre de la fenetre principale (caption)
     SDL_WM_SetCaption( caption , NULL );
+
+
 
     //Si tout s'est bien passé
     return 0;
@@ -211,3 +240,11 @@ void AffAfficheTapis(SDL_Surface* aff,SDL_Surface* tapis)
 
 }
 
+void clean_up()
+{
+
+    Mix_CloseAudio();
+    TTF_Quit();
+    SDL_Quit();
+
+}
